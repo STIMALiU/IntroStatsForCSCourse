@@ -247,7 +247,7 @@ Mattias Villani
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="23" columns="3">
+<lyxtabular version="3" rows="24" columns="3">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -323,6 +323,8 @@ Innehåll
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 FÖ 1
 \end_layout
 
@@ -332,6 +334,8 @@ FÖ 1
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 1-2.
 \end_layout
 
@@ -341,8 +345,11 @@ FÖ 1
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Introduktion.
- Datavetenskapliga motiverande exempel.
+ Datavetenskapliga exempel.
+ Sannolikhetsbegreppet.
  
 \end_layout
 
@@ -372,8 +379,9 @@ Introduktion.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Sannolikhetsbegreppet.
- Matematiska sannolikheter.
+
+\size footnotesize
+Matematiska sannolikheter.
  Betingade sannolikheter.
  Bayes sats.
 \end_layout
@@ -386,6 +394,8 @@ Sannolikhetsbegreppet.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 FÖ 2
 \end_layout
 
@@ -395,6 +405,8 @@ FÖ 2
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 3.1-3.3 
 \end_layout
 
@@ -404,6 +416,8 @@ FÖ 2
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Diskreta slumpvariabler.
  Sannolikhetsfördelning.
  Simultanfördelning.
@@ -427,6 +441,8 @@ Diskreta slumpvariabler.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 (ej 3.3.8)
 \end_layout
 
@@ -436,6 +452,8 @@ Diskreta slumpvariabler.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Marginalfördelning.
  Betingad fördelning.
  Väntevärde.
@@ -450,6 +468,8 @@ Marginalfördelning.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 FÖ 3
 \end_layout
 
@@ -459,6 +479,8 @@ FÖ 3
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 3.4
 \end_layout
 
@@ -468,10 +490,12 @@ FÖ 3
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Fördelningsfamiljer för diskreta variabler.
  Bernoulli.
  Binomial.
- Multinomial.
+ 
 \end_layout
 
 \end_inset
@@ -491,6 +515,8 @@ Fördelningsfamiljer för diskreta variabler.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 (ej 3.4.4 och 3.4.6)
 \end_layout
 
@@ -500,7 +526,10 @@ Fördelningsfamiljer för diskreta variabler.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Geometrisk.
+
+\size footnotesize
+Multinomial.
+ Geometrisk.
  Poisson.
  Multinomial.
 \end_layout
@@ -513,6 +542,8 @@ Geometrisk.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 FÖ 4
 \end_layout
 
@@ -522,6 +553,8 @@ FÖ 4
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 4
 \end_layout
 
@@ -531,6 +564,8 @@ FÖ 4
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Kontinuerliga slumpvariabler.
  Fördelningsfamiljer för kont.
  variabler.
@@ -562,6 +597,8 @@ Kontinuerliga slumpvariabler.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Likformig.
  Exponential.
  Gamma.
@@ -583,6 +620,8 @@ t
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 FÖ 5
 \end_layout
 
@@ -592,6 +631,8 @@ FÖ 5
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 5.1, 5.2.1, 5.3
 \end_layout
 
@@ -601,9 +642,11 @@ FÖ 5
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Simulering och Monte Carlo metoder.
  Stora talens lag.
- Centrala gränsvärdessatsen.
+ 
 \end_layout
 
 \end_inset
@@ -614,6 +657,39 @@ Simulering och Monte Carlo metoder.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Centrala gränsvärdessatsen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
 FÖ 6
 \end_layout
 
@@ -623,6 +699,8 @@ FÖ 6
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 6.1, 6.2.1, 6.3, 6.4
 \end_layout
 
@@ -632,6 +710,8 @@ FÖ 6
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Markovkedjor.
  Binomialprocess.
  Poissonprocess.
@@ -645,6 +725,8 @@ Markovkedjor.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 FÖ 7 
 \end_layout
 
@@ -654,6 +736,8 @@ FÖ 7
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 8
 \end_layout
 
@@ -663,6 +747,8 @@ FÖ 7
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Population.
  Stickprov.
  Parametrar.
@@ -687,6 +773,8 @@ Population.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 (ej 8.2.6, 8.3.2, 8.3.3)
 \end_layout
 
@@ -696,6 +784,8 @@ Population.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Grafisk statistik.
 \end_layout
 
@@ -707,6 +797,8 @@ Grafisk statistik.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 FÖ 8
 \end_layout
 
@@ -716,6 +808,8 @@ FÖ 8
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 9.1, 9.2.1, 9.2.2,
 \end_layout
 
@@ -725,6 +819,8 @@ FÖ 8
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Punktskattning.
  Likelihood.
  Maximum likelihood.
@@ -748,6 +844,8 @@ Punktskattning.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 9.3.1-9.3.2, 9.3.4.
 \end_layout
 
@@ -757,6 +855,8 @@ Punktskattning.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Samplingfördelning.
  Väntevärdesriktighet.
  Konfidensintervall.
@@ -770,6 +870,8 @@ Samplingfördelning.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 FÖ 9
 \end_layout
 
@@ -779,6 +881,8 @@ FÖ 9
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 9.4.1-9.4.6, 9.4.8,
 \end_layout
 
@@ -788,6 +892,8 @@ FÖ 9
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Hypotestest.
  P-värde.
  Chi2-test.
@@ -810,6 +916,8 @@ Hypotestest.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 9.4.10, 9.5.1, 
 \end_layout
 
@@ -839,6 +947,8 @@ Hypotestest.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 10.1.1-10.1.2
 \end_layout
 
@@ -859,6 +969,8 @@ Hypotestest.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 FÖ 10 
 \end_layout
 
@@ -868,6 +980,8 @@ FÖ 10
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 10.4
 \end_layout
 
@@ -877,6 +991,8 @@ FÖ 10
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Bayesiansk inferens.
 \end_layout
 
@@ -888,6 +1004,8 @@ Bayesiansk inferens.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 FÖ 11 
 \end_layout
 
@@ -906,6 +1024,8 @@ FÖ 11
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Prediktion.
  Beslut.
 \end_layout
@@ -918,6 +1038,8 @@ Prediktion.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 FÖ 12
 \end_layout
 
@@ -927,6 +1049,8 @@ FÖ 12
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 11.1, 11.2.3, 
 \end_layout
 
@@ -936,6 +1060,8 @@ FÖ 12
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Regression.
 \end_layout
 
@@ -956,6 +1082,8 @@ Regression.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 11.3.1-11.3.2
 \end_layout
 
@@ -987,9 +1115,8 @@ Regression.
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="24" columns="3">
+<lyxtabular version="3" rows="24" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row>
@@ -1005,15 +1132,6 @@ LEKTIONER
 \end_inset
 
 Lärare: Sarah Alsaadi
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -1047,21 +1165,14 @@ Tillfälle
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Innehåll
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 LE 1
 \end_layout
 
@@ -1071,31 +1182,15 @@ LE 1
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 1.5, 2.1, 2.4, 2.6, 2.16, 2.20, 2.21, 2.23, 2.24, 2.29, 2.35.
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1120,6 +1215,8 @@ LE 1
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 LE 2
 \end_layout
 
@@ -1130,15 +1227,8 @@ LE 2
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+\size footnotesize
+3.1, 3.2, 3.4, 3.9, 3.11, 3.12, 3.16, 3.18, 3.38.
 \end_layout
 
 \end_inset
@@ -1163,21 +1253,14 @@ LE 2
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 LE 3
 \end_layout
 
@@ -1192,15 +1275,6 @@ LE 3
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="left" valignment="top" usebox="none">
@@ -1221,21 +1295,14 @@ LE 3
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 LE 4
 \end_layout
 
@@ -1250,6 +1317,17 @@ LE 4
 
 \end_inset
 </cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1279,15 +1357,6 @@ LE 4
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -1295,34 +1364,7 @@ LE 4
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
+\size footnotesize
 LE 5
 \end_layout
 
@@ -1337,21 +1379,14 @@ LE 5
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 LE 6
 \end_layout
 
@@ -1366,21 +1401,14 @@ LE 6
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 LE 7 
 \end_layout
 
@@ -1395,26 +1423,8 @@ LE 7
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1439,6 +1449,8 @@ LE 7
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 LE 8
 \end_layout
 
@@ -1453,26 +1465,8 @@ LE 8
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1497,6 +1491,8 @@ LE 8
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 LE 9
 \end_layout
 
@@ -1511,6 +1507,17 @@ LE 9
 
 \end_inset
 </cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1540,15 +1547,6 @@ LE 9
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -1556,34 +1554,7 @@ LE 9
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
+\size footnotesize
 LE 10 
 \end_layout
 
@@ -1598,21 +1569,14 @@ LE 10
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 LE 11
 \end_layout
 
@@ -1627,26 +1591,8 @@ LE 11
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1671,16 +1617,9 @@ LE 11
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 LE 12
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -1731,7 +1670,7 @@ LE 12
 
 \series bold
 \size large
-DATORLABB
+DATORLABORATIONER
 \begin_inset space \qquad{}
 \end_inset
 

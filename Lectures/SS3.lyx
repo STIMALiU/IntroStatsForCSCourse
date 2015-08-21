@@ -1,0 +1,1524 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<setup, include=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(knitr)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(tikzDevice)
+\end_layout
+
+\begin_layout Plain Layout
+
+source("MVutils.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='f
+ootnotesize')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+read_chunk('Lecture3SlideCode.R')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+TDAB01
+\end_layout
+
+\end_inset
+
+Sannolikhetslära och Statistik
+\begin_inset Newline newline
+\end_inset
+
+Föreläsning 3
+\end_layout
+
+\begin_layout Author
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Mattias Villani
+\end_layout
+
+\end_inset
+
+Mattias Villani
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+STIMA, LiU
+\end_layout
+
+\end_inset
+
+Avdelningen för Statistik och Maskininlärning
+\begin_inset Newline newline
+\end_inset
+
+Institutionen för datavetenskap
+\begin_inset Newline newline
+\end_inset
+
+Linköpings universitet 
+\end_layout
+
+\begin_layout Date
+\begin_inset Graphics
+	filename LiU_secondary_1_black.png
+	lyxscale 7
+	scale 15
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Översikt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family roman
+\series bold
+\color blue
+Fördelningsfamiljer för diskreta variabler
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series bold
+\color blue
+Bernoulli, binomial, multinomial
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series bold
+\color blue
+Geometrisk
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series bold
+\color blue
+Poisson
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bernoullifördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En fördelningsfamilj är en mängd olika sannolikhetsfördelningar som indexeras
+ med en eller flera parametrar.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\color red
+Definition
+\color inherit
+.
+ En 
+\family roman
+\series bold
+\color blue
+Bernoullivariabel
+\family default
+ 
+\series default
+\color inherit
+ 
+\begin_inset Formula $X$
+\end_inset
+
+ kan anta två olika värden, 
+\begin_inset Formula $0$
+\end_inset
+
+ och 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Om 
+\begin_inset Formula $X$
+\end_inset
+
+ är 
+\family roman
+\series bold
+\color blue
+Bernoullifördelad
+\family default
+\series default
+\color inherit
+ (
+\begin_inset Formula $X\sim\mathrm{Bernoulli}(p)$
+\end_inset
+
+) så gäller att 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $P(X=1)=p$
+\end_inset
+
+ och 
+\begin_inset Formula $P(X=0)=q=1-p.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Genom att ändra parametern 
+\begin_inset Formula $p$
+\end_inset
+
+ får vi en mängd olika sannolikhetsfördelningar på 
+\begin_inset Formula $\{0,1\}$
+\end_inset
+
+.
+ Se 
+\family typewriter
+\color red
+ManipDistributions.R
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bernoullifördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<BernoulliPlot, echo=FALSE, dev='tikz', out.width='.63
+\backslash
+
+\backslash
+paperwidth'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bernoullifördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pmf för 
+\begin_inset Formula $X\sim\mathrm{Bernoulli}(p)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(x)=\begin{cases}
+q=1-p & \text{om x=0}\\
+p & \text{om x=1}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Om 
+\begin_inset Formula $X\sim\mathrm{Bernoulli}(p)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbb{E}X=p
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var(X)=p\cdot q.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Bernoulliförsök: en sekvens av oberoende Bernoulli variabler, alla med sannolikh
+et 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Slantsingling.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Binomialfördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\color red
+Definition
+\color inherit
+.
+ Antalet lyckade 
+\begin_inset Formula $(X=1)$
+\end_inset
+
+ i en sekvens av 
+\begin_inset Formula $n$
+\end_inset
+
+ Bernoulliförsök med sannolikheten 
+\begin_inset Formula $p$
+\end_inset
+
+ följer en 
+\family roman
+\series bold
+\color blue
+binomialfördelning
+\family default
+\series default
+\color inherit
+ med parametrar 
+\begin_inset Formula $n$
+\end_inset
+
+ och 
+\family roman
+\series bold
+\color blue
+
+\begin_inset Formula $p$
+\end_inset
+
+.
+
+\family default
+\series default
+\color inherit
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $X\sim\mathrm{Binomial}(n,p)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Pmf
+\begin_inset Formula 
+\[
+P(x)=\binom{n}{x}p^{x}q^{n-x},
+\]
+
+\end_inset
+
+för 
+\begin_inset Formula $x=0,1,2,...,n.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\binom{n}{x}$
+\end_inset
+
+ är antalet sekvenser av längd 
+\begin_inset Formula $n$
+\end_inset
+
+ med exakt 
+\begin_inset Formula $x$
+\end_inset
+
+ lyckade försök.
+ 
+\family roman
+\series bold
+\color blue
+Binomialkoefficienten
+\family default
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Itemize
+Om t ex 
+\begin_inset Formula $n=3$
+\end_inset
+
+ och 
+\begin_inset Formula $x=2$
+\end_inset
+
+, så leder alla tre sekvenserna 
+\begin_inset Formula $(0,1,1)$
+\end_inset
+
+, 
+\begin_inset Formula $(1,0,1)$
+\end_inset
+
+ och 
+\begin_inset Formula $(1,1,0)$
+\end_inset
+
+ till utfallet 
+\begin_inset Formula $x=2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\size footnotesize
+\color black
+Sekvensen 
+\begin_inset Formula $(0,1,1)$
+\end_inset
+
+ har sannolikheten 
+\begin_inset Formula $q\cdot p\cdot p=p^{2}q$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\size footnotesize
+\color black
+Sekvensen 
+\begin_inset Formula $(1,0,1)$
+\end_inset
+
+ har sannolikheten 
+\begin_inset Formula $p\cdot q\cdot p=p^{2}q$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\size footnotesize
+\color black
+Sekvensen 
+\begin_inset Formula $(1,1,0)$
+\end_inset
+
+ har sannolikheten 
+\begin_inset Formula $p\cdot p\cdot q=p^{2}q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\color black
+Se 
+\family typewriter
+\color red
+dbinom(x, size, prob)
+\family default
+\color inherit
+ och 
+\family typewriter
+\color red
+ManipDistributions.R
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Binomialfördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Binomialfördelningen passar data som:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+diskreta icke-negativa heltal
+\end_layout
+
+\begin_layout Itemize
+kan anta alla 
+\series bold
+heltal mellan 
+\begin_inset Formula $0$
+\end_inset
+
+ och 
+\begin_inset Formula $n$
+\end_inset
+
+
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Passande: hur många elever i klass 5A kan simma?
+\end_layout
+
+\begin_layout Itemize
+Inte passande: hur många mål gör IFK Norrköping på lördag? (ingen naturlig
+ övre gräns) eller längdmätningar (kontinuerliga).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Väntevärde
+\series default
+ och 
+\series bold
+varians
+\series default
+ för 
+\begin_inset Formula $X\sim Binomial(n,p)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mathbb{E}X=n\cdot p
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var(X)=n\cdot p\cdot q
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Bevis: 
+\begin_inset Formula $X\sim Binomial(n,p)$
+\end_inset
+
+ innebär att 
+\begin_inset Formula $X$
+\end_inset
+
+ är en summa av 
+\begin_inset Formula $n$
+\end_inset
+
+ oberoende Bernoullivariabler.
+ Väntevärde och varians av summan av oberoende variabler.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Binomialfördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<BinomialPlot, echo=FALSE, dev='tikz', out.width='.63
+\backslash
+
+\backslash
+paperwidth'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Multinomialfördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bernoullidata: 
+\begin_inset Formula $n$
+\end_inset
+
+ personer utfrågas om deras vilket partiblock de föredrar (röd eller blå).
+ 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ personer svarar röd, 
+\begin_inset Formula $n_{2}$
+\end_inset
+
+ personer svarar blå.
+\end_layout
+
+\begin_layout Itemize
+Antal sätt vi kan få dessa data: 
+\begin_inset Formula $\binom{n}{n_{1}}=\frac{n!}{n_{1}!n_{2}!}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sannolikheten för att få 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ röda i 
+\begin_inset Formula $n$
+\end_inset
+
+ försök:
+\begin_inset Formula 
+\[
+P(n_{1})=\binom{n}{n_{1}}p^{n_{1}}q^{n_{2}},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename nchoosekPlain.svg
+	lyxscale 20
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Multinomialfördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Multinomiala data: 
+\begin_inset Formula $n=4$
+\end_inset
+
+ personer utfrågas om deras vilket partiblock de föredrar (röd, blå eller
+ grön).
+ 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ personer svarar blå, 
+\begin_inset Formula $n_{2}$
+\end_inset
+
+ personer svarar blå och 
+\begin_inset Formula $n_{3}$
+\end_inset
+
+ personer svarar grön.
+\end_layout
+
+\begin_layout Itemize
+Antal sätt vi kan få dessa data ges av 
+\series bold
+multinomialkoefficienten
+\series default
+: 
+\begin_inset Formula $\binom{n}{n_{1}\,n_{2}\,n_{3}}=\frac{n!}{n_{1}!n_{2}!n_{3}!}$
+\end_inset
+
+ och
+\begin_inset Formula 
+\[
+P(n_{1},n_{2},n_{3})=\binom{n}{n_{1}\,n_{2}\,n_{3}}p_{1}^{n_{1}}p_{2}^{n_{2}}p_{3}^{n_{3}},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Notera att multinomialfördelningen är en simultanfördelning för 
+\series bold
+tre
+\series default
+ slumpvariabler: 
+\begin_inset Formula $N_{1},N_{2}$
+\end_inset
+
+ och 
+\begin_inset Formula $N_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename multinomialCoeff.svg
+	lyxscale 20
+	scale 18
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Geometrisk fördelning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Låt 
+\begin_inset Formula $X_{1},X_{2},...$
+\end_inset
+
+ vara en sekvens Bernoulli försök med sannolikhet 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Y=$
+\end_inset
+
+ 
+\series bold
+antalet misslyckade försök innan första lyckade
+\series default
+ försöket.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Y\sim Geo(p)$
+\end_inset
+
+ med 
+\series bold
+pmf
+\series default
+
+\begin_inset Formula 
+\[
+P(x)=(1-p)^{x-1}p\;\;,x=1,2,...
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Geometrisk fördelning passar data:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+som antar 
+\series bold
+diskreta icke-negativa heltal: 
+\series default
+0,1,2,...
+\end_layout
+
+\begin_layout Itemize
+som
+\series bold
+ inte har en övre gräns
+\series default
+ (jfr binomial)
+\end_layout
+
+\begin_layout Itemize
+med 
+\series bold
+monotont avtagande pmf
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Egenskaper för 
+\begin_inset Formula $X\sim Geo(p)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathbb{E}X=1/p$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Var(X)=\frac{1-p}{p^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Den enda 
+\series bold
+minneslösa
+\series default
+ 
+\series bold
+fördelningen
+\series default
+ för diskreta variabler.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Geometrisk fördelning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<GeometricPlot, echo=FALSE, dev='tikz', out.width='.63
+\backslash
+
+\backslash
+paperwidth'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel: level up!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sannolikheten att du klarar en nivå på ett spel är 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ De olika försöken är oberoende.
+ Förväntat antal spel innan du klarar nivån? Svar: 
+\begin_inset Formula $1/p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Antag nu att du klarar en nivå vid 
+\begin_inset Formula $r:$
+\end_inset
+
+te försöket med sannolikheten 
+\begin_inset Formula $1-(1-p)^{r}$
+\end_inset
+
+.
+ Förväntat antal spel? Svar: inte geometrisk.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<simgame, echo=TRUE, tidy=TRUE, size='tiny'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Poissonfördelning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\color red
+Definition
+\color inherit
+.
+ En Poissonfördelad slumpvariabel med frekvens 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $X\sim Po(\lambda)$
+\end_inset
+
+, har pmf
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $P(x)=\frac{e^{-\lambda}\lambda^{x}}{x!}\quad x=0,1,2,...$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Egenskaper: Om 
+\begin_inset Formula $X\sim Po(\lambda)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathbb{E}X=\lambda$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Var(X)=\lambda$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Poissonfördelningen passar data:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+som antar 
+\series bold
+diskreta icke-negativa heltal: 
+\series default
+0,1,2,...
+\end_layout
+
+\begin_layout Itemize
+som
+\series bold
+ inte har en övre gräns
+\series default
+ (jfr binomial)
+\end_layout
+
+\begin_layout Itemize
+vars väntevärde och varians är ungefär lika
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Poissonfördelning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Exempel 1: antalet upptäckta buggar i en kod.
+\end_layout
+
+\begin_layout Itemize
+Exempel 2: antalet döda i trafiken under år 2014.
+\end_layout
+
+\begin_layout Itemize
+Poissonfördelning med 
+\begin_inset Formula $\lambda=n\cdot p$
+\end_inset
+
+ kan användas för att approximera binomialfördelningen när 
+\begin_inset Formula $n\geq30$
+\end_inset
+
+ and 
+\begin_inset Formula $p\text{\leq0.05}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Poissonfördelning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<PoissonPlot, echo=FALSE, dev='tikz', out.width='.63
+\backslash
+
+\backslash
+paperwidth'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\end_body
+\end_document

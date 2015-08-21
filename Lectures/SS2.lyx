@@ -1,0 +1,4287 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+TDAB01
+\end_layout
+
+\end_inset
+
+Sannolikhetslära och Statistik
+\begin_inset Newline newline
+\end_inset
+
+Föreläsning 2
+\end_layout
+
+\begin_layout Author
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Mattias Villani
+\end_layout
+
+\end_inset
+
+Mattias Villani
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+STIMA, LiU
+\end_layout
+
+\end_inset
+
+Avdelningen för Statistik och Maskininlärning
+\begin_inset Newline newline
+\end_inset
+
+Institutionen för datavetenskap
+\begin_inset Newline newline
+\end_inset
+
+Linköpings universitet 
+\end_layout
+
+\begin_layout Date
+\begin_inset Graphics
+	filename LiU_secondary_1_black.png
+	lyxscale 7
+	scale 15
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Översikt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Slumpvariabler
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Sannolikhetsfördelning
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Väntevärde 
+\series default
+\color black
+och
+\series bold
+\color blue
+ varians
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Kovarians 
+\series default
+\color black
+och
+\series bold
+\color blue
+ korrelation
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Chebyshevs olikhet
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Slumpvariabler
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\color red
+Definition
+\color inherit
+.
+ En 
+\series bold
+\color blue
+slumpvariabel
+\series default
+\color inherit
+ 
+\begin_inset Formula $X$
+\end_inset
+
+ är en funktion från utfallsrummet 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ till 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+X=f(\omega)
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $\omega\in\Omega$
+\end_inset
+
+ är ett utfall.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Slumpvariabler är 
+\series bold
+praktiska
+\series default
+: vi bryr oss ofta bara om enklare variabler (X) vars utfall är en funktion
+ av den underliggande slumpen 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Två typer av slumpvariabler:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family roman
+\series bold
+\color blue
+Kontinuerlig
+\family default
+\series default
+\color inherit
+: 
+\begin_inset Formula $X$
+\end_inset
+
+ antar värden i 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ (eller 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+).
+ Längdhopp.
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series bold
+\color blue
+Diskret:
+\family default
+\series default
+\color inherit
+ 
+\begin_inset Formula $X$
+\end_inset
+
+ antar ett ändligt (t ex 
+\begin_inset Formula $\{0,1,2,...,n\}$
+\end_inset
+
+) eller uppräkneligt 
+\begin_inset Formula $(\{0,1,2,...\})$
+\end_inset
+
+ antal värden.
+ Höjdhopp.
+ 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ett annat ord för slumpvariabel (eng.
+ random variable) är 
+\family roman
+\series bold
+\color blue
+stokastisk variabel
+\family default
+\series default
+\color inherit
+ (eng.
+ stochastic variable).
+ 
+\end_layout
+
+\begin_layout Itemize
+Funktionen 
+\begin_inset Formula $f()$
+\end_inset
+
+ måste vara 
+\series bold
+mätbar.
+
+\series default
+ Teknikalitet.
+ Hänger ihop med 
+\series bold
+sigma-algebra
+\series default
+ (se sid 14-15 i Baron).
+ 
+\series bold
+Måtteori
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Slumpvariabler - några exempel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.75
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Ex]
+\end_layout
+
+\end_inset
+
+Kasta två tärningar.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\Omega=\{(1,1),(1,2),....,(6,5),(6,6)\}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X=$
+\end_inset
+
+ antalet prickar på två kast.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Ex]
+\end_layout
+
+\end_inset
+
+Singla två mynt.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+\begin_inset Formula $\Omega=\{(H,H),(H,T),(T,H),(T,T)\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+\begin_inset Formula $X=$
+\end_inset
+
+antalet 
+\begin_inset Formula $H$
+\end_inset
+
+ (krona).
+ 
+\begin_inset Formula $X$
+\end_inset
+
+ kan anta värdena 
+\begin_inset Formula $0,1,2$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+\begin_inset Formula $P(X=0)=1/4$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+\begin_inset Formula $P(X=1)=1/2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+\begin_inset Formula $P(X=2)=1/4$
+\end_inset
+
+.
+\size default
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Ex]
+\end_layout
+
+\end_inset
+
+Flyga quadcopter.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\Omega=$
+\end_inset
+
+
+\color black
+Abstrakt utfallsrum med alla möjliga utfall på faktorer som bestämmer quadcopter
+ns resväg.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X=$
+\end_inset
+
+ Tre-dimensionella koordinater (x,y,z) över quadcopterns position vid tidpunkt
+ 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.25
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+\begin_inset Graphics
+	filename sumOfTwoDiceWithDist.png
+	lyxscale 20
+	scale 13
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sannolikhetsfördelning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\color red
+Definition
+\color inherit
+.
+ 
+\series bold
+\color blue
+(sannolikhets)fördelningen
+\series default
+\color inherit
+ för en slumpvariabel 
+\begin_inset Formula $X$
+\end_inset
+
+ är sannolikheterna för alla dess utfall, dvs 
+\begin_inset Formula 
+\[
+P(x)=\mathbf{P}\{X=x\}
+\]
+
+\end_inset
+
+ för alla möjliga utfall 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stora och små bokstäver spelar roll:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $X$
+\end_inset
+
+ är 
+\series bold
+slumpvariabeln
+\series default
+.
+ Ex.
+ summan av två tärningarna
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x$
+\end_inset
+
+ är ett 
+\series bold
+givet utfall
+\series default
+.
+ Ex.
+ 7 prickar.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Fet stil eller ej spelar roll:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathbf{P}$
+\end_inset
+
+ är sannolikheten för ett givet utfall.
+ 
+\begin_inset Formula $\mathbf{P}\{X=x\}$
+\end_inset
+
+ betyder egentligen 'Sannolikheten för alla de utfall [
+\begin_inset Formula $(1,6),(2,5)\text{ etc}$
+\end_inset
+
+] som ger summan 7'.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P(x)$
+\end_inset
+
+ är en enkel reel-värd funktion, precis som i vanlig analys.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+För diskreta slumpvariabler kallas 
+\begin_inset Formula $P(x)$
+\end_inset
+
+ ofta för 
+\family roman
+\series bold
+\color blue
+pmf
+\family default
+\series default
+\color inherit
+:en (probability mass function).
+\end_layout
+
+\begin_layout Itemize
+Slumpvariabelns 
+\series bold
+support
+\series default
+: 
+\begin_inset Formula $\left\{ x:P(x)>0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fördelningsfunktion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\color red
+Definition
+\color inherit
+.
+
+\series bold
+\color blue
+ Fördelningsfunktionen
+\series default
+\color inherit
+ för en slumpvariabel 
+\begin_inset Formula $X$
+\end_inset
+
+ defineras som 
+\begin_inset Formula 
+\[
+F(x)=\mathbf{P}\{X\leq x\}=\sum_{y\leq x}P(y).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+En sannolikhetsfördelning summerar till 1:
+\begin_inset Formula 
+\[
+\sum_{\text{alla }x}P(x)=\sum_{\text{alla }x}\mathbf{P}\{X=x\}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fördelningsfunktionen är icke-avtagande mellan 0 och 1:
+\begin_inset Formula 
+\[
+\lim_{x\downarrow-\infty}F(x)=0\qquad\lim_{x\uparrow+\infty}F(x)=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fördelningsfunktionen kallas också för den 
+\family roman
+\series bold
+\color blue
+kumulativa täthetsfunktionen
+\family default
+\series default
+\color inherit
+ (cumulative density function), eller 
+\family roman
+\series bold
+\color blue
+cdf
+\family default
+\series default
+\color inherit
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sannolikhets- och fördelningsfunktion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="6">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.05
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.35
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.95
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.00
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /Users/matvi05/Dropbox/Teaching/ProbStatUProg/Figures/pmf.png
+	lyxscale 20
+	scale 30
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /Users/matvi05/Dropbox/Teaching/ProbStatUProg/Figures/cdf.png
+	lyxscale 20
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Simultanfördelning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Låt 
+\begin_inset Formula $X$
+\end_inset
+
+ och 
+\begin_inset Formula $Y$
+\end_inset
+
+ vara slumpvariabler.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ är en 
+\family roman
+\series bold
+\color blue
+slumpvektor 
+\family default
+\series default
+\color inherit
+med typiskt utfall 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Fördelningen för 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ kallas 
+\family roman
+\series bold
+\color blue
+simultanfördelning
+\family default
+\series default
+\color inherit
+.
+\begin_inset Formula 
+\[
+P(x,y)=\mathbf{P}\{(X,Y)=(x,y)\}=\mathbf{P}\{X=x\cap Y=y\}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Simultanfördelningen är en sannolikhetsfördelning:
+\begin_inset Formula 
+\[
+\sum_{x}\sum_{y}P(x,y)=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Ex]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $X=$
+\end_inset
+
+Spam/Ham och 
+\begin_inset Formula $Y=$
+\end_inset
+
+Inbox/Spambox.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spam
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ham
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Inbox
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.02
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.88
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spambox
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.09
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.01
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Simultanfördelningen: 'Vad är sannolikheten att få ett ham-mejl 
+\series bold
+och
+\series default
+ att det hamnar i spamboxen?'
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Simultanfördelning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Ex]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $X=$
+\end_inset
+
+avkastning aktie X och 
+\begin_inset Formula $Y=$
+\end_inset
+
+avkastning aktie Y.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aktie Y
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Låg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Medel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hög
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Låg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.15
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aktie X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Medel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.20
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hög
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.05
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Aktieportfölj: 50% i aktie X och 50% i aktie Y.
+\end_layout
+
+\begin_layout Itemize
+Simultanfördelningen: 'Vad är sannolikheten att min aktieportfölj får medelavkas
+tning?'
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Marginalfördelning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fördelningen för bara X kallas 
+\family roman
+\series bold
+\color blue
+marginalfördelningen
+\family default
+\series default
+\color inherit
+ (för X).
+ 
+\end_layout
+
+\begin_layout Itemize
+Fördelningen för bara Y kallas marginalfördelningen (för Y).
+\end_layout
+
+\begin_layout Itemize
+Marginalfördelningen: 'Vad är sannolikheten att få ett spam-mejl (oavsett
+ var det hamnar)?'
+\end_layout
+
+\begin_layout Itemize
+Marginalfördelningen fås genom att summera ut den andra variabeln:
+\begin_inset Formula 
+\[
+P_{X}(x)=\sum_{y}P(x,y)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P_{Y}(y)=\sum_{x}P(x,y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Jämför med Lagen om total sannolikhet (F1).
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Ex]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $X=$
+\end_inset
+
+Spam/Ham och 
+\begin_inset Formula $Y=$
+\end_inset
+
+Inbox/Spambox.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spam
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ham
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Inbox
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.02
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.88
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{gray97}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.9
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spambox
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.09
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.01
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{gray97}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{gray97}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.11
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{gray97}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.89
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Marginalfördelning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Ex]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $X=$
+\end_inset
+
+avkastning aktie X och 
+\begin_inset Formula $Y=$
+\end_inset
+
+avkastning aktie Y.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="6">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aktie Y
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Låg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Medel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hög
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Låg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.25
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aktie X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Medel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hög
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.15
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vilka portföljandelar är optimala? Beslut under osäkerhet.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Oberoende
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\color red
+Definition
+\color inherit
+.
+ Slumpvariablerna 
+\begin_inset Formula $X$
+\end_inset
+
+ och 
+\begin_inset Formula $Y$
+\end_inset
+
+ är 
+\family roman
+\series bold
+\color blue
+oberoende
+\family default
+\series default
+\color inherit
+ om 
+\begin_inset Formula 
+\[
+P(x,y)=P_{X}(x)\cdot P_{Y}(y)
+\]
+
+\end_inset
+
+för 
+\series bold
+alla
+\series default
+ värden på 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Ex]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $X=$
+\end_inset
+
+Spam/Ham och 
+\begin_inset Formula $Y=$
+\end_inset
+
+Inbox/Spambox.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spam
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ham
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Inbox
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.02
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.88
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{gray97}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.9
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spambox
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.09
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{robinsegg}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.01
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{gray97}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{gray97}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.11
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size scriptsize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{gray97}
+\end_layout
+
+\end_inset
+
+
+\family default
+\size default
+0.89
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Valet av box är inte oberoende av om mejlet är ham eller spam:
+\begin_inset Formula 
+\[
+P(\text{inbox})\cdot P(\text{ham})=0.9\cdot0.89=0.801\neq0.88=P(\text{inbox},\text{ham})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P(\text{inbox}\vert\text{ham})=\frac{P(\text{inbox},\text{ham})}{P(ham)}=\frac{0.88}{0.89}=0.988>0.9=P(\text{inbox})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Lättare att gissa box om man vet att mejlet är ham.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Lägesmått
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En sannolikhetsfördelning 
+\begin_inset Formula $P(x)$
+\end_inset
+
+ beskriver 
+\series bold
+all
+\series default
+ osäkerhet om 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Kan vara komplicerat att förmedla hela 
+\begin_inset Formula $P(x)$
+\end_inset
+
+, speciellt om 
+\begin_inset Formula $X$
+\end_inset
+
+ är en fler-dimensionell slumpvektor.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Naturliga 
+\family roman
+\series bold
+\color blue
+lägesmått
+\family default
+\series default
+\color inherit
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family roman
+\series bold
+\color blue
+Median
+\family default
+\series default
+\color inherit
+, 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ 
+\begin_inset Formula $P(X\leq m)=0.5$
+\end_inset
+
+.
+ Hälften av sannolikhetsmassan ligger till vänster om 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series bold
+\color blue
+Väntevärdet
+\family default
+\series default
+\color inherit
+ (eng.
+ expected value), 
+\begin_inset Formula $\mu$
+\end_inset
+
+ eller 
+\begin_inset Formula $\mathbf{\mathbb{E}(}X)$
+\end_inset
+
+, är det genomsnittliga värdet för 
+\begin_inset Formula $X$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mu=\mathbf{\mathbb{E}}(X)=\sum_{x}x\cdot P(x).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series bold
+\color blue
+Typvärdet
+\family default
+\series default
+\color inherit
+ (eng.
+ mode) är det mest sannolika värdet, dvs 
+\begin_inset Formula $\mathrm{argmax_{x}}P(x)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Lägesmått - exempel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="6">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.05
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Väntevärdet
+\begin_inset Formula 
+\[
+\mathbf{\mathbb{E}}(X)=0\cdot0.15+1\cdot0.20+2\cdot0.40+3\cdot0.20+4\cdot0.05=1.8
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /Users/matvi05/Dropbox/Teaching/ProbStatUProg/Figures/pmfWithLocSummary.png
+	lyxscale 20
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Lägesmått säger inget om spridningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Väntevärdet är ett lägesmått.
+ Ingen info om fördelningens spridning.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /Users/matvi05/Dropbox/Teaching/ProbStatUProg/Figures/pmfWithLocSummary.png
+	lyxscale 20
+	scale 30
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /Users/matvi05/Dropbox/Teaching/ProbStatUProg/Figures/pmfWithLocSummaryTighter.png
+	lyxscale 20
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Varians
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Storleken på avvikelserna 
+\begin_inset Formula $x-\mathbf{\mathbb{E}}(X)$
+\end_inset
+
+ säger något om spridningen.
+ 
+\end_layout
+
+\begin_layout Itemize
+Idé till spridningsmått: den förväntade avvikelsen: 
+\begin_inset Formula 
+\[
+\mathbf{\mathbb{E}}\left(X-\mu\right)=\sum_{x}P(x)\cdot\left(X-\mu\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Problem: 
+\begin_inset Formula $\mathbf{\mathbb{E}}\left(X-\mu\right)$
+\end_inset
+
+ är alltid exakt noll ...
+ Positiva och negativa avvikelser tar ut varandra.
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series bold
+\color blue
+Varians
+\family default
+\series default
+\color inherit
+: förväntade kvadrerade avvikelsen:
+\begin_inset Formula 
+\[
+\sigma^{2}=Var(X)=\mathrm{\mathbf{\mathbb{E}}}\left(X-\mu\right)^{2}=\sum_{x}\left(x-\mu\right)^{2}\cdot P(x).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Alternativ formel
+\begin_inset Formula 
+\[
+Var(X)=\mathbf{\mathbb{E}}X^{2}-\mu^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series bold
+\color blue
+Standardavvikelse
+\family default
+\series default
+\color inherit
+: 
+\begin_inset Formula $\sigma=Std(X)=\sqrt{Var(X)}$
+\end_inset
+
+.
+ Samma skala som 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Egenskaper hos väntevärde och varians
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathbb{E}(c)=c$
+\end_inset
+
+, där 
+\begin_inset Formula $c$
+\end_inset
+
+ är en konstant.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbf{\mathbb{E}}(aX+b)=a\mathbf{\mathbb{E}}(X)+b$
+\end_inset
+
+, 
+\begin_inset Formula $a,b$
+\end_inset
+
+ konstanter.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbf{\mathbb{E}}(X+Y)=\mathbb{E}X+\mathbb{E}Y$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbf{\mathbb{E}}(aX+bY+c)=a\mathbf{\mathbb{E}}(X)+b\mathbb{E}(Y)+c$
+\end_inset
+
+, 
+\begin_inset Formula $a,b,c$
+\end_inset
+
+ konstanter.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Var(aX+b)=a\cdot Var(X)$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Om 
+\begin_inset Formula $X$
+\end_inset
+
+ och 
+\begin_inset Formula $Y$
+\end_inset
+
+ oberoende: 
+\begin_inset Formula $\mathbb{E}(X\cdot Y)=\mathbb{E}(X)\cdot\mathbb{E}(Y)$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Om 
+\begin_inset Formula $X$
+\end_inset
+
+ och 
+\begin_inset Formula $Y$
+\end_inset
+
+ oberoende: 
+\begin_inset Formula $Var(X+Y)=Var(X)+Var(Y)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kovarians och korrelation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mått på 
+\family roman
+\series bold
+\color blue
+samvariation
+\family default
+\series default
+\color inherit
+.
+ Sammanfattning av simultanfördelning.
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series bold
+\color blue
+Kovarians
+\family default
+\series default
+\color inherit
+ mellan 
+\begin_inset Formula $X$
+\end_inset
+
+ och 
+\begin_inset Formula $Y$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\sigma_{XY}=Cov(X,Y)=\mathbb{E}\left\{ \left(X-\mathbb{E}X\right)\left(Y-\mathbb{E}Y\right)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Positiv kovarians: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $X$
+\end_inset
+
+ tenderar att vara större än 
+\begin_inset Formula $\mathbb{E}X$
+\end_inset
+
+ samtidigt som 
+\begin_inset Formula $Y$
+\end_inset
+
+ tenderar att vara större än 
+\begin_inset Formula $\mathbb{E}Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X$
+\end_inset
+
+ tenderar att vara mindre än 
+\begin_inset Formula $\mathbb{E}X$
+\end_inset
+
+ samtidigt som 
+\begin_inset Formula $Y$
+\end_inset
+
+ tenderar att vara mindre än 
+\begin_inset Formula $\mathbb{E}Y$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\family roman
+\series bold
+\color blue
+Korrelationskoefficienten
+\family default
+\series default
+\color inherit
+ mellan 
+\begin_inset Formula $X$
+\end_inset
+
+ och 
+\begin_inset Formula $Y$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\rho=Corr(X,Y)=\frac{Cov(X,Y)}{Std(X)\cdot Std(Y)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $-1\leq\rho\leq1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Egenskaper hos kovarians
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $Cov(X,Y)=Cov(Y,X)$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Var(aX+bY+c)=a\cdot Var(X)+b\cdot Var(Y)+2a\cdot b\cdot Cov(X,Y)$
+\end_inset
+
+, 
+\begin_inset Formula $a,b,c$
+\end_inset
+
+ konstanter.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Cov(a\cdot X+b,c\cdot Y+d)=a\cdot c\cdot Cov(X,Y)$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Om 
+\begin_inset Formula $X$
+\end_inset
+
+ och 
+\begin_inset Formula $Y$
+\end_inset
+
+ oberoende: 
+\begin_inset Formula $Cov(X,Y)=0$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Om 
+\begin_inset Formula $X$
+\end_inset
+
+ och 
+\begin_inset Formula $Y$
+\end_inset
+
+ oberoende: 
+\begin_inset Formula $\rho(X,Y)=0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Chebyshevs olikhet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Väntevärdet 
+\begin_inset Formula $\mu$
+\end_inset
+
+ och Variansen 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ innehåller information om sannolikhetsfördelningen.
+\end_layout
+
+\begin_layout Itemize
+Chebyshevs olikhet: givet 
+\begin_inset Formula $\mu$
+\end_inset
+
+ och 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ så kommer 
+\begin_inset Formula $X$
+\end_inset
+
+ ligga i intervallet 
+\begin_inset Formula $[\mu-\varepsilon,\mu+\varepsilon]$
+\end_inset
+
+ med en sannolikhet som är åtminstone 
+\begin_inset Formula $1-\left(\sigma/\epsilon\right)^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series bold
+\color blue
+Chebyshevs olikhet
+\family default
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+P\left\{ \left|X-\mu\right|>\varepsilon\right\} \leq\left(\frac{\sigma}{\varepsilon}\right)^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Notera att Chebyshevs olikhet endast kräver vetskap om 
+\begin_inset Formula $\mu$
+\end_inset
+
+ och 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+ Inget andra egenskaper behövs (symmetri, skevhet).
+\end_layout
+
+\begin_layout Itemize
+Men den lilla information har sitt pris: 
+\begin_inset Formula $\left(\frac{\sigma}{\varepsilon}\right)^{2}$
+\end_inset
+
+ är ofta bra mycket större än den sanna sannolikheten 
+\begin_inset Formula $P\left\{ \left|X-\mu\right|>\varepsilon\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Chebyshevs olikhet är ofta nyttig i teoretiska sammanhang.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\end_body
+\end_document
