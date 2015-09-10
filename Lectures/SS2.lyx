@@ -3897,7 +3897,7 @@ Egenskaper hos väntevärde och varians
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $Var(aX+b)=a\cdot Var(X)$
+\begin_inset Formula $Var(aX+b)=a^{2}\cdot Var(X)$
 \end_inset
 
 
