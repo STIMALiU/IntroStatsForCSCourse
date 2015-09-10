@@ -4113,7 +4113,7 @@ Egenskaper hos kovarians
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $Var(aX+bY+c)=a\cdot Var(X)+b\cdot Var(Y)+2a\cdot b\cdot Cov(X,Y)$
+\begin_inset Formula $Var(aX+bY+c)=a^{2}\cdot Var(X)+b^{2}\cdot Var(Y)+2a\cdot b\cdot Cov(X,Y)$
 \end_inset
 
 , 

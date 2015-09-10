@@ -934,7 +934,7 @@ Bernoullidata:
 \begin_inset Formula $n$
 \end_inset
 
- personer utfrågas om deras vilket partiblock de föredrar (röd eller blå).
+ personer utfrågas om vilket partiblock de föredrar (röd eller blå).
  
 \begin_inset Formula $n_{1}$
 \end_inset
@@ -1007,11 +1007,10 @@ Multinomialfördelningen
 \begin_deeper
 \begin_layout Itemize
 Multinomiala data: 
-\begin_inset Formula $n=4$
+\begin_inset Formula $n$
 \end_inset
 
- personer utfrågas om deras vilket partiblock de föredrar (röd, blå eller
- grön).
+ personer utfrågas om vilket partiblock de föredrar (röd, blå eller grön).
  
 \begin_inset Formula $n_{1}$
 \end_inset
@@ -1020,7 +1019,7 @@ Multinomiala data:
 \begin_inset Formula $n_{2}$
 \end_inset
 
- personer svarar blå och 
+ personer svarar röd och 
 \begin_inset Formula $n_{3}$
 \end_inset
 
@@ -1120,9 +1119,13 @@ Låt
 
  
 \series bold
-antalet misslyckade försök innan första lyckade
+antalet försök för att få ett lyckat
 \series default
- försöket.
+ 
+\series bold
+försök
+\series default
+.
 \end_layout
 
 \begin_layout Itemize
@@ -1199,15 +1202,8 @@ Egenskaper för
 
 \end_deeper
 \begin_layout Itemize
-Den enda 
-\series bold
-minneslösa
-\series default
- 
-\series bold
-fördelningen
-\series default
- för diskreta variabler.
+Väntevärde och varians beräknas med hjälp av den geometriska serien, se
+ sid 61 i Baron.
 \end_layout
 
 \end_deeper
@@ -1404,6 +1400,18 @@ Egenskaper: Om
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+Väntevärde och varians beräknas med Taylorutvecklingen: 
+\begin_inset Formula 
+\[
+e^{\lambda}=\sum_{x=0}^{\infty}\frac{\lambda^{x}}{x!}
+\]
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Itemize
 Poissonfördelningen passar data:
 \end_layout
