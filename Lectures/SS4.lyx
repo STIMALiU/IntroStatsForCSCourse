@@ -164,7 +164,7 @@ status open
 
 \begin_layout Plain Layout
 
-read_chunk('Lecture3SlideCode.R')
+read_chunk('Lecture4SlideCode.R')
 \end_layout
 
 \begin_layout Plain Layout
@@ -746,9 +746,10 @@ Kovarians
 \color inherit
 
 \begin_inset Formula 
-\[
-Cov(X,Y)=\mathbb{E}\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)=\int\int\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)f(x,y)dxdy
-\]
+\begin{align*}
+Cov(X,Y) & =\mathbb{E}\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)\\
+ & =\int\int\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)f(x,y)dxdy
+\end{align*}
 
 \end_inset
 
@@ -779,30 +780,217 @@ Likformig fördelning
 \series bold
 Täthetsfunktion
 \series default
- för likformig fördelad slumpvariabel över support 
+ för likformig fördelad slumpvariabel över 
 \begin_inset Formula $[a,b]$
 \end_inset
 
 
 \begin_inset Formula 
 \[
-f(x)=\frac{1}{b-a}\quad\text{för }a\leq x\leq b,
+f(x)=\frac{1}{b-a}\quad\text{för }a\leq x\leq b,\;\text{och }f(x)=0\text{ annars}.
 \]
 
 \end_inset
 
-och 
-\begin_inset Formula $f(x)=0$
+
+\end_layout
+
+\begin_layout Itemize
+Man skriver of 
+\begin_inset Formula $X\sim U(a,b)$
 \end_inset
 
- annars.
+ för att säga: 
+\begin_inset Newline newline
+\end_inset
+
+'Slumpvariabel 
+\begin_inset Formula $X$
+\end_inset
+
+ följer en likformig fördelning på intervallet 
+\begin_inset Formula $(a,b)$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Likformig = 
+\series bold
+\color blue
+U
+\series default
+\color inherit
+niform på engelska.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename UniformPDF.png
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename UniformCDF.png
+	lyxscale 30
+	scale 18
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Likformig fördelning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Väntevärde
+\series default
+\color inherit
+:
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}X & =\int x\cdot f(x)dx=\frac{1}{b-a}\int xdx=\frac{1}{b-a}\left[\frac{1}{2}x^{2}\right]_{a}^{b}\\
+ & =\frac{1}{2(b-a)}\left(b^{2}-a^{2}\right)=\frac{(b-a)(b+a)}{2(b-a)}=\frac{a+b}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Varians
+\series default
+\color inherit
+: 
+\begin_inset Formula $Var(X)=\mathbb{E}X^{2}-\mu^{2}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}X^{2} & =\int x^{2}\cdot f(x)dx=\frac{1}{b-a}\int x^{2}dx=\frac{a^{2}+b^{2}+ab}{3}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+Var(X) & =\mathbb{E}X^{2}-\mu^{2}=\frac{a^{2}+b^{2}+ab}{3}-\left(\frac{a+b}{2}\right)^{2}=\frac{(b-a)^{2}}{12}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Alt.
+ härledning, se Baron s.
+ 81.
+ Alla likformiga variabler kan genereras från 
+\series bold
+\color blue
+standardmedlemmen
+\series default
+\color inherit
+: 
+\begin_inset Formula $Y\sim U(0,1)$
+\end_inset
+
+ genom följande resultat:
+\begin_inset Formula 
+\[
+X=a+(b-a)Y\text{ där }Y\sim U(0,1)\Longrightarrow X\sim U(a,b).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exponentialfördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Täthetsfunktion
+\series default
+ för exponentialfördelad slumpvariabel över 
+\begin_inset Formula $(0,\infty)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+f(x)=\lambda e^{-\lambda x},\text{ för }x>0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vi skriver: 
+\begin_inset Formula $\mathrm{X\sim Exp}(\lambda)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
 Väntevärde
 \begin_inset Formula 
 \[
-\mathbb{E}X=\int x\cdot f(x)dx=\frac{1}{b-a}\int xdx=\frac{1}{b-a}\left[\frac{1}{2}x^{2}\right]_{a}^{b}=\frac{1}{2(b-a)}\left(b^{2}-a^{2}\right)=\frac{(b-a)(b+a)}{2(b-a)}=\frac{a+b}{2}.
+\mathbb{E}X=\frac{1}{\lambda}
 \]
 
 \end_inset
@@ -814,15 +1002,646 @@ Väntevärde
 Varians
 \begin_inset Formula 
 \[
-Var(X)=\mathbb{E}X^{2}-\mu^{2}
+Var(X)=\frac{1}{\lambda^{2}}
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Exponential_pdf.svg
+	scale 40
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Exponential_cdf.svg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exponentialfördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tiden mellan Poissonhändelser är exponentialfördelad.
+ 
+\end_layout
+
+\begin_layout Itemize
+Låt 
+\begin_inset Formula $t\sim Po(\lambda t)$
+\end_inset
+
+ räkna antalet händelser i tidsintervallet 
+\begin_inset Formula $[0,t)$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{align*}
+P\left\{ \text{nästa händelse innan \ensuremath{t}}\right\}  & =1-P\left\{ \text{nästa händelse efter \ensuremath{t}}\right\} \\
+ & =1-P\left\{ \text{inga händelser i intervallet \ensuremath{[0,t)}}\right\} \\
+ & =1-\frac{e^{-\lambda t}(\lambda t)^{0}}{0!}=1-e^{-\lambda t}
+\end{align*}
+
+\end_inset
+
+vilket är cdf:en för en 
+\begin_inset Formula $\mathrm{Exp}(\lambda)$
+\end_inset
+
+ variabel.
+\end_layout
+
+\begin_layout Itemize
+Exponentialfördelade variabler är 
+\series bold
+minneslösa
+\series default
+:
 \begin_inset Formula 
 \[
-\mathbb{E}X^{2}=
+\mathbf{P}\left\{ T>t+x\vert T>t\right\} =\mathbf{P}\left\{ T>t+x\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gammafördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Antag att tiden för att ladda ner en fil är 
+\begin_inset Formula $\mathrm{Exp}(\lambda)$
+\end_inset
+
+ fördelad.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Tiden för att ladda ner 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ filer följer en 
+\begin_inset Formula $\mathrm{Gamma}(\alpha,\lambda)$
+\end_inset
+
+ fördelning om nedladdningstiderna är oberoende.
+\end_layout
+
+\begin_layout Itemize
+Alltså: Om 
+\begin_inset Formula $X_{1},X_{2},...,X_{\alpha}$
+\end_inset
+
+ är 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ stycken 
+\series bold
+oberoende
+\series default
+ 
+\begin_inset Formula $\mathrm{Exp}(\lambda)$
+\end_inset
+
+ variabler:
+\begin_inset Formula 
+\[
+Y=X_{1}+X_{2}+...+X_{\alpha}\sim\mathrm{Gamma}(\alpha,\lambda)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha$
+\end_inset
+
+ kallas för en 
+\series bold
+\color blue
+shape
+\series default
+\color inherit
+parameter.
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ är en 
+\series bold
+\color blue
+frekvens
+\series default
+\color inherit
+parameter.
+\end_layout
+
+\begin_layout Itemize
+Exponential är ett specialfall av Gamma: 
+\begin_inset Formula $\mathrm{Gamma}(1,\lambda)=\mathrm{Exp}(\lambda)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Väntevärde
+\begin_inset Formula 
+\[
+\mathbb{E}X=\frac{\alpha}{\lambda}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Varians
+\begin_inset Formula 
+\[
+Var(X)=\frac{\alpha}{\lambda^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gammafördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<GammaPlot, echo=FALSE, dev='tikz', out.width='.63
+\backslash
+
+\backslash
+paperwidth'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Normalfördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Täthetsfunktion
+\series default
+ för 
+\begin_inset Formula $X\sim N(\mu,\sigma^{2})$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+f(x)=\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left[-\frac{\left(x-\mu\right)^{2}}{2\sigma^{2}}\right]\quad\text{för }-\infty<x<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Väntevärde
+\series default
+\color inherit
+ och 
+\series bold
+\color blue
+varians
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+\mathbb{E}X=\mu,\qquad Var(X)=\sigma^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+CDF
+\series default
+\color inherit
+ finns inte i sluten form.
+ Om 
+\begin_inset Formula $Z\sim N(0,1)$
+\end_inset
+
+ så är CDFn
+\begin_inset Formula 
+\[
+\Phi(z)=\int_{-\infty}^{z}\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{z^{2}}{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout FragileFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Normalfördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<NormalPlot, echo=FALSE, dev='tikz', out.width='.63
+\backslash
+
+\backslash
+paperwidth'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Normalfördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Standardmedlem
+\series default
+\color inherit
+: 
+\begin_inset Formula $Z\sim N(0,1)$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+X=\mu+\sigma Z\text{ där }Z\sim N(0,1)\Longrightarrow X\sim N(\mu,\sigma^{2}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Standardisering
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+Z=\frac{X-\mu}{\sigma}\sim N(0,1)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbf{P}\left\{ Z<1.35\right\} =\Phi(1.35)=0.9115$
+\end_inset
+
+ och 
+\begin_inset Formula $\mathbf{P}\left\{ Z>1.35\right\} =1-\Phi(1.35)=0.0885$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Standardisering är praktiskt.
+ Låt 
+\begin_inset Formula $X\sim N(\mu=900,\sigma=200)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\mathbf{P}\left\{ 600<X<1200\right\}  & =\mathbf{P}\left\{ \frac{600-\mu}{\sigma}<\frac{X-\mu}{\sigma}<\frac{1200-\mu}{\sigma}\right\} \\
+ & =\mathbf{P}\left\{ -1.5<Z<1.5\right\} \\
+ & =\Phi(1.5)-\Phi(-1.5)=0.9332-0.0668=0.8664
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Centrala gränsvärdessatsen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hur är summan 
+\begin_inset Formula $S_{n}=X_{1}+X_{2}+...+X_{n}$
+\end_inset
+
+ utav 
+\begin_inset Formula $n$
+\end_inset
+
+oberoende variabler fördelad?
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Demo av 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $S_{n}\qquad\qquad Var(S_{n})=n\sigma^{2}\rightarrow\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S_{n}/n\qquad\quad Var(S_{n}/n)=\sigma^{2}/n\rightarrow0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S_{n}/\sqrt{n}\qquad Var(S_{n}/\sqrt{n})=\sigma^{2}$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+CLT: Medelvärden
+\series default
+ av 
+\begin_inset Formula $n$
+\end_inset
+
+ oberoende variabler med godtycklig fördelning 
+\series bold
+blir alltmer normalfördelade när 
+\begin_inset Formula $n$
+\end_inset
+
+ ökar
+\series default
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n>30$
+\end_inset
+
+ är en vanlig tumregel.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Centrala gränsvärdessatsen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+Låt 
+\begin_inset Formula $X_{1},X_{2},...,X_{n}$
+\end_inset
+
+ vara oberoende variabler med väntevärde 
+\begin_inset Formula $\mu=\mathbb{E}X_{i}$
+\end_inset
+
+ och standardavvikelse 
+\begin_inset Formula $\sigma=\mathrm{Std}(X_{i})$
+\end_inset
+
+ och låt
+\begin_inset Formula 
+\[
+S_{n}=\sum_{i=1}^{n}X_{i}=X_{1}+X_{2}+...+X_{n}.
+\]
+
+\end_inset
+
+När 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+ så kommer den standardiserade summan 
+\begin_inset Formula 
+\[
+Z_{n}=\frac{S_{n}-\mathbb{E}S_{n}}{\mathrm{Std}(S_{n})}
+\]
+
+\end_inset
+
+att 
+\series bold
+\color blue
+konvergera i fördelning
+\series default
+\color inherit
+ till en 
+\begin_inset Formula $N(0,1)$
+\end_inset
+
+ variabel, dvs
+\begin_inset Formula 
+\[
+F_{Z_{n}}(z)=P\left\{ \frac{S_{n}-n\mu}{\sigma\sqrt{n}}\leq z\right\} \longrightarrow\Phi(z)
 \]
 
 \end_inset

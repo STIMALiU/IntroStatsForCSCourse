@@ -9,7 +9,7 @@ library(manipulate) # Manipulate requires RStudio.
 
 BernPlot <- function(p){
   xGrid <- c(0, 1)
-  pmf = c(p,1-p)
+  pmf = c(1-p,p)
   barplot(pmf, names.arg=c("0", "1"), main = 'Bernoulli(p) density')
 }
 

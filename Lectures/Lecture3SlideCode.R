@@ -34,11 +34,11 @@ p4 <- ggplot(data, aes(x,pmf)) + geom_bar(width=.5, stat="identity") + ggtitle("
 multiplot(p1, p2, p3, p4, cols=2)
 
 ## ---- BernoulliPlot
-data <- data.frame(pmf = c(0.1,0.9), x = as.factor(c(0,1)))
+data <- data.frame(pmf = c(0.9,0.1), x = as.factor(c(0,1)))
 p1 <- ggplot(data, aes(x,pmf)) + geom_bar(width=.2, stat="identity") + ggtitle("p = 0.1") +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.title.y = element_blank())
 
-data <- data.frame(pmf = c(0.3,0.7), x = as.factor(c(0,1)))
+data <- data.frame(pmf = c(0.7,0.3), x = as.factor(c(0,1)))
 p2 <- ggplot(data, aes(x,pmf)) + geom_bar(width=.2, stat="identity") + ggtitle("p = 0.3") +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.title.y = element_blank())
 
@@ -46,7 +46,7 @@ data <- data.frame(pmf = c(0.5,0.5), x = as.factor(c(0,1)))
 p3 <- ggplot(data, aes(x,pmf)) + geom_bar(width=.2, stat="identity") + ggtitle("p = 0.5") +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.title.y = element_blank())
 
-data <- data.frame(pmf = c(0.9,0.1), x = as.factor(c(0,1)))
+data <- data.frame(pmf = c(0.1,0.9), x = as.factor(c(0,1)))
 p4 <- ggplot(data, aes(x,pmf)) + geom_bar(width=.2, stat="identity") + ggtitle("p = 0.9") +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.title.y = element_blank())
 

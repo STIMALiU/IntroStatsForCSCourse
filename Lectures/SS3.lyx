@@ -1114,7 +1114,7 @@ Låt
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $Y=$
+\begin_inset Formula $X=$
 \end_inset
 
  
@@ -1129,7 +1129,7 @@ försök
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $Y\sim Geo(p)$
+\begin_inset Formula $X\sim Geo(p)$
 \end_inset
 
  med 

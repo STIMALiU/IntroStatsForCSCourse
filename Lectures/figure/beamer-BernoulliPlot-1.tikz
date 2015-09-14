@@ -1,4 +1,4 @@
-% Created by tikzDevice version 0.8.1 on 2015-09-10 14:21:42
+% Created by tikzDevice version 0.8.1 on 2015-09-10 15:28:11
 % !TEX encoding = UTF-8 Unicode
 \batchmode
 \makeatletter
@@ -99,9 +99,9 @@
 \path[fill=fillColor] ( 40.14,290.94) rectangle (238.49,473.26);
 \definecolor{fillColor}{gray}{0.20}
 
-\path[fill=fillColor] ( 85.22,299.22) rectangle (103.25,317.64);
+\path[fill=fillColor] ( 85.22,299.22) rectangle (103.25,464.97);
 
-\path[fill=fillColor] (175.38,299.22) rectangle (193.41,464.97);
+\path[fill=fillColor] (175.38,299.22) rectangle (193.41,317.64);
 \end{scope}
 \begin{scope}
 \path[clip] (  0.00,  0.00) rectangle (505.89,505.89);
@@ -175,9 +175,9 @@
 \path[fill=fillColor] ( 34.91, 37.99) rectangle (238.49,220.32);
 \definecolor{fillColor}{gray}{0.20}
 
-\path[fill=fillColor] ( 81.18, 46.28) rectangle ( 99.69,117.31);
+\path[fill=fillColor] ( 81.18, 46.28) rectangle ( 99.69,212.03);
 
-\path[fill=fillColor] (173.72, 46.28) rectangle (192.22,212.03);
+\path[fill=fillColor] (173.72, 46.28) rectangle (192.22,117.31);
 \end{scope}
 \begin{scope}
 \path[clip] (  0.00,  0.00) rectangle (505.89,505.89);
@@ -337,9 +337,9 @@
 \path[fill=fillColor] (293.08, 37.99) rectangle (491.44,220.32);
 \definecolor{fillColor}{gray}{0.20}
 
-\path[fill=fillColor] (338.16, 46.28) rectangle (356.19,212.03);
+\path[fill=fillColor] (338.16, 46.28) rectangle (356.19, 64.69);
 
-\path[fill=fillColor] (428.32, 46.28) rectangle (446.36, 64.69);
+\path[fill=fillColor] (428.32, 46.28) rectangle (446.36,212.03);
 \end{scope}
 \begin{scope}
 \path[clip] (  0.00,  0.00) rectangle (505.89,505.89);

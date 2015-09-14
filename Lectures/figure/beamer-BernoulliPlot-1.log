@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.3.23)  10 SEP 2015 14:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.3.23)  10 SEP 2015 15:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1087,7 +1087,7 @@ Here is how much of TeX's memory you used:
  56i,9n,59p,415b,633s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb>
-Output written on beamer-BernoulliPlot-1.pdf (1 page, 13273 bytes).
+Output written on beamer-BernoulliPlot-1.pdf (1 page, 13270 bytes).
 PDF statistics:
  24 PDF objects out of 1000 (max. 8388607)
  12 compressed objects within 1 object stream
