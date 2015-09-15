@@ -899,6 +899,10 @@ slumptal
 
  simuleras med 
 \family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
 rnorm(n, mean = 2, sd = 3)
 \end_layout
 
@@ -916,6 +920,10 @@ slumptal
 
  simuleras med 
 \family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
 rgamma(n, shape = 2 , rate = 3)
 \end_layout
 
@@ -939,7 +947,15 @@ pdf:en
 \begin_inset Formula $N(\mu=2,\sigma^{2}=3^{2})$
 \end_inset
 
-: dnorm
+: 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+dnorm
 \family typewriter
 (x=1.5, mean = 2, sd = 3)
 \end_layout
@@ -957,7 +973,15 @@ cdf:en
 \begin_inset Formula $N(\mu=2,\sigma^{2}=3^{2})$
 \end_inset
 
-: pnorm
+: 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+pnorm
 \family typewriter
 (x=1.5, mean = 2, sd = 3)
 \end_layout

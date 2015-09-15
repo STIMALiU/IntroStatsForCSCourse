@@ -1087,7 +1087,7 @@ minneslösa
 :
 \begin_inset Formula 
 \[
-\mathbf{P}\left\{ T>t+x\vert T>t\right\} =\mathbf{P}\left\{ T>t+x\right\} 
+\mathbf{P}\left\{ T>t+x\vert T>t\right\} =\mathbf{P}\left\{ T>x\right\} 
 \]
 
 \end_inset
@@ -1460,7 +1460,7 @@ Z=\frac{X-\mu}{\sigma}\sim N(0,1)
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 Standardisering är praktiskt.
  Låt 
 \begin_inset Formula $X\sim N(\mu=900,\sigma=200)$
