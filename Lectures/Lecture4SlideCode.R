@@ -16,8 +16,8 @@ plot(x,pdf1, type = "l", lwd = 3, ylab = "f(X)")
 lines(x,pdf3, col = "red", lwd = 3)
 lines(x,pdf5, col = "blue", lwd = 3)
 lines(x,pdf10, col = "green", lwd = 3)
-legend("right", legend = c( expression(paste(lambda,"=1")),expression(paste(lambda,"=3")),
-                               expression(paste(lambda,"=5")),expression(paste(lambda,"=10"))),inset = .05, lty=c(1,1,1,1), lwd=c(3,3,3,3), col=c("black","red","blue","green"))
+legend("right", legend = c( expression(paste(alpha,"=1")),expression(paste(alpha,"=3")),
+                               expression(paste(alpha,"=5")),expression(paste(alpha,"=10"))),inset = .05, lty=c(1,1,1,1), lwd=c(3,3,3,3), col=c("black","red","blue","green"))
 
 # CDF
 cdf1 = pgamma(x, shape = 1, rate = lambda)
@@ -28,8 +28,8 @@ plot(x,cdf1, type = "l", lwd = 3, ylab = "F(X)")
 lines(x,cdf3, col = "red", lwd = 3)
 lines(x,cdf5, col = "blue", lwd = 3)
 lines(x,cdf10, col = "green", lwd = 3)
-legend("right", legend = c( expression(paste(lambda,"=1")),expression(paste(lambda,"=3")),
-                               expression(paste(lambda,"=5")),expression(paste(lambda,"=10"))),inset = .05, lty=c(1,1,1,1), lwd=c(3,3,3,3), col=c("black","red","blue","green"))
+legend("right", legend = c( expression(paste(alpha,"=1")),expression(paste(alpha,"=3")),
+                               expression(paste(alpha,"=5")),expression(paste(alpha,"=10"))),inset = .05, lty=c(1,1,1,1), lwd=c(3,3,3,3), col=c("black","red","blue","green"))
 
 
 ## ---- NormalPlot

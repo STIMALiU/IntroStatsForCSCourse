@@ -282,6 +282,13 @@ Centrala gränsvärdessatsen
 Simulering
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+\color blue
+Monte Carlo metoder
+\end_layout
+
 \end_deeper
 \begin_layout Separator
 
@@ -382,7 +389,7 @@ Hur är summan
 \begin_inset Formula $n$
 \end_inset
 
-oberoende variabler fördelad?
+ oberoende variabler fördelad?
 \begin_inset VSpace medskip
 \end_inset
 
@@ -726,6 +733,20 @@ Om
 
 \end_layout
 
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Inversa CDF metoden - diskreta fallet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
@@ -737,6 +758,7 @@ Om
 
 \end_layout
 
+\end_deeper
 \begin_layout Separator
 
 \end_layout
@@ -858,7 +880,22 @@ X=-\frac{1}{\lambda}\ln(1-U)
 
 \end_layout
 
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Inversa CDF metoden - kontinuerliga fallet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
+\align center
 \begin_inset Graphics
 	filename InverseCDFCont.pdf
 
@@ -867,6 +904,7 @@ X=-\frac{1}{\lambda}\ln(1-U)
 
 \end_layout
 
+\end_deeper
 \begin_layout Separator
 
 \end_layout
@@ -984,6 +1022,436 @@ cdf:en
 pnorm
 \family typewriter
 (x=1.5, mean = 2, sd = 3)
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monte Carlo metoder
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Simulering från fördelningar kan användas för att approximera t ex olika
+ sannolikheter.
+ 
+\end_layout
+
+\begin_layout Itemize
+Låt 
+\begin_inset Formula $X_{1},X_{2},...,X_{N}$
+\end_inset
+
+ vara oberoende dragningar från en sannolikhetsfördelning.
+ Vi kan t ex approximera sannolikheten 
+\begin_inset Formula $p=\mathbf{P}\{X<2\}$
+\end_inset
+
+ med
+\begin_inset Formula 
+\[
+\hat{p}=\hat{\mathbf{P}}\{X<2\}=\frac{\text{antal av }X_{1},X_{2},...,X_{N}\text{ som är mindre än 2}}{N}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ (t ex 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+) är en estimator (uppskattning) av kvantiteten 
+\begin_inset Formula $\theta$
+\end_inset
+
+ (t ex 
+\begin_inset Formula $p$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+x = rnorm(10000, mean = 1, sd = 2); 
+\begin_inset Newline newline
+\end_inset
+
+pHat = sum(x<2)/10000
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monte Carlo metoder, forts.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Men 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+ är bara en 
+\series bold
+skattning
+\series default
+ av 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Varierar från stickprov till stickprov.
+ 
+\end_layout
+
+\begin_layout Itemize
+Om vi upprepar hela receptet flera ggr, varje gång med ett nytt stickprov
+ av storleken 
+\begin_inset Formula $N$
+\end_inset
+
+, kommer vi då att ha rätt i genomsnitt? Dvs är 
+\begin_inset Formula $E(\hat{p})=p$
+\end_inset
+
+? 
+\end_layout
+
+\begin_layout Itemize
+Hur mycket kommer 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+ att variera från stickprov till stickprov? Dvs hur stor är 
+\begin_inset Formula $Var(\hat{p})$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Y=$
+\end_inset
+
+Antal 
+\begin_inset Formula $X_{1},...,X_{N}$
+\end_inset
+
+ som är mindre än 
+\begin_inset Formula $2$
+\end_inset
+
+.
+ 
+\begin_inset Formula $Y\sim Bin(N,p)$
+\end_inset
+
+.
+ Så
+\begin_inset Formula 
+\[
+E(\hat{p})=E\left(\frac{Y}{N}\right)=\frac{1}{N}N\cdot p=p
+\]
+
+\end_inset
+
+så 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+ är en 
+\series bold
+väntevärdesriktig
+\series default
+ (
+\series bold
+unbiased
+\series default
+) estimator.
+ 
+\begin_inset Formula 
+\[
+Var(\hat{p})=\frac{1}{N^{2}}Np(1-p)=\frac{p(1-p)}{N}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Se Baron s.
+ 115-116 om hur man kan välja 
+\begin_inset Formula $N$
+\end_inset
+
+ för att given exakthet 
+\begin_inset Formula $\mathbf{P}\left\{ \left|\hat{p}-p\right|>\varepsilon\right\} \leq\alpha$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monte Carlo integration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mål: 
+\begin_inset Formula $\mbox{\mathcal{I}}=\int_{0}^{1}g(x)dx$
+\end_inset
+
+ där 
+\begin_inset Formula $0\leq x\leq1$
+\end_inset
+
+ och 
+\begin_inset Formula $0\leq g(x)\leq1$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Simulera likformigt fördelade tal 
+\begin_inset Formula $U_{1},...,U_{N}$
+\end_inset
+
+ och 
+\begin_inset Formula $V_{1},...,V_{N}$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Monte Carlo skattning 
+\begin_inset Formula 
+\[
+\hat{\mathcal{I}}=\frac{\text{Antal dragningar där }V_{i}<g(U_{i})}{N}
+\]
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+u = runif(10000);
+\begin_inset Newline newline
+\end_inset
+
+v = runif(10000);
+\begin_inset Newline newline
+\end_inset
+
+IHat = mean(v < g(u))
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monte Carlo integration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename MonteCarloOnSquare.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Importance sampling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Räkna 
+\series bold
+integraler som väntevärden
+\series default
+
+\begin_inset Formula 
+\[
+\mathcal{I}=\int_{a}^{b}g(x)dx=\frac{1}{b-a}\int_{a}^{b}(b-a)g(x)dx=\mathbb{E}\left\{ (b-a)g(X)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stora talens lag: Om 
+\begin_inset Formula $X_{1},...,X_{N}$
+\end_inset
+
+ dras från 
+\begin_inset Formula $U(a,b)$
+\end_inset
+
+ så kommer 
+\begin_inset Formula 
+\[
+\frac{(b-a)g(X_{1})+...+(b-a)g(X_{N})}{N}
+\]
+
+\end_inset
+
+vara nära 
+\begin_inset Formula $\mathbb{E}\left\{ (b-a)g(X)\right\} $
+\end_inset
+
+ när 
+\begin_inset Formula $N$
+\end_inset
+
+ är stort (konvergerar i sannolikhet).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Importance sampling
+\series default
+\color inherit
+.
+ Samma trick, med godtycklig pdf 
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{I}=\int_{a}^{b}g(x)dx=\int_{a}^{b}\frac{g(x)}{f(x)}f(x)dx=\mathbb{E}\left(\frac{g(X)}{f(X)}\right)
+\]
+
+\end_inset
+
+där väntevärdet beräknas med avseende på 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Importance sampling estimatorn
+\series default
+: 
+\begin_inset Formula $X_{1},...,X_{N}$
+\end_inset
+
+ oberoende från 
+\begin_inset Formula $f(X):$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\hat{\mathcal{I}}=\frac{1}{N}\sum_{i=1}^{N}\frac{g(X_{i})}{f(X_{i})}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper

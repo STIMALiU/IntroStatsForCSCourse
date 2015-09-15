@@ -1,0 +1,1421 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<setup, include=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(knitr)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(tikzDevice)
+\end_layout
+
+\begin_layout Plain Layout
+
+source("MVutils.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='f
+ootnotesize')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+read_chunk('Lecture4SlideCode.R')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+TDAB01
+\end_layout
+
+\end_inset
+
+Sannolikhetslära och Statistik
+\begin_inset Newline newline
+\end_inset
+
+Föreläsning 5
+\end_layout
+
+\begin_layout Author
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Mattias Villani
+\end_layout
+
+\end_inset
+
+Mattias Villani
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+STIMA, LiU
+\end_layout
+
+\end_inset
+
+Avdelningen för Statistik och Maskininlärning
+\begin_inset Newline newline
+\end_inset
+
+Institutionen för datavetenskap
+\begin_inset Newline newline
+\end_inset
+
+Linköpings universitet 
+\end_layout
+
+\begin_layout Date
+\begin_inset Graphics
+	filename LiU_secondary_1_black.png
+	lyxscale 7
+	scale 15
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Översikt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stora talen lag
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Centrala gränsvärdessatsen
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Simulering
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stora talens lag
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Medelvärde: 
+\begin_inset Formula $\bar{X}_{n}=\frac{X_{1}+X_{2}+...+X_{n}}{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Medelvärden av många oberoende slumpvariabler med samma fördelning kommer
+ att ligga allt närmare variablernas väntevärde.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Stora talens lag
+\series default
+:
+\begin_inset Formula 
+\[
+\lim_{n\rightarrow\infty}P\left(\left|\bar{X}_{n}-\mu\right|>\epsilon\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Bevis via Chebyshevs olikhet
+\begin_inset Formula 
+\[
+P\left\{ \left|X-\mu\right|>\varepsilon\right\} \leq\frac{\sigma^{2}}{\varepsilon^{2}}
+\]
+
+\end_inset
+
+eftersom 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ i detta fall är 
+\begin_inset Formula $Var(\bar{X}_{n})=Var(X_{i})/n\rightarrow0$
+\end_inset
+
+ när 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Centrala gränsvärdessatsen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hur är summan 
+\begin_inset Formula $S_{n}=X_{1}+X_{2}+...+X_{n}$
+\end_inset
+
+ utav 
+\begin_inset Formula $n$
+\end_inset
+
+oberoende variabler fördelad?
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Demo av 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $S_{n}\qquad\qquad Var(S_{n})=n\sigma^{2}\rightarrow\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S_{n}/n\qquad\quad Var(S_{n}/n)=\sigma^{2}/n\rightarrow0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S_{n}/\sqrt{n}\qquad Var(S_{n}/\sqrt{n})=\sigma^{2}$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+CLT: Medelvärden
+\series default
+ av 
+\begin_inset Formula $n$
+\end_inset
+
+ oberoende variabler med godtycklig fördelning 
+\series bold
+blir alltmer normalfördelade när 
+\begin_inset Formula $n$
+\end_inset
+
+ ökar
+\series default
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n>30$
+\end_inset
+
+ är en vanlig tumregel.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Centrala gränsvärdessatsen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+Låt 
+\begin_inset Formula $X_{1},X_{2},...,X_{n}$
+\end_inset
+
+ vara oberoende variabler med väntevärde 
+\begin_inset Formula $\mu=\mathbb{E}X_{i}$
+\end_inset
+
+ och standardavvikelse 
+\begin_inset Formula $\sigma=\mathrm{Std}(X_{i})$
+\end_inset
+
+ och låt
+\begin_inset Formula 
+\[
+S_{n}=\sum_{i=1}^{n}X_{i}=X_{1}+X_{2}+...+X_{n}.
+\]
+
+\end_inset
+
+När 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+ så kommer den standardiserade summan 
+\begin_inset Formula 
+\[
+Z_{n}=\frac{S_{n}-\mathbb{E}S_{n}}{\mathrm{Std}(S_{n})}
+\]
+
+\end_inset
+
+att 
+\series bold
+\color blue
+konvergera i fördelning
+\series default
+\color inherit
+ till en 
+\begin_inset Formula $N(0,1)$
+\end_inset
+
+ variabel, dvs
+\begin_inset Formula 
+\[
+F_{Z_{n}}(z)=P\left\{ \frac{S_{n}-n\mu}{\sigma\sqrt{n}}\leq z\right\} \longrightarrow\Phi(z)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Simulering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Pseudoslumptalsgenerator
+\series default
+: Datorer kan generera en lång sekvens tal som ser ut som 
+\begin_inset Formula $U(0,1)$
+\end_inset
+
+ slumptal.
+ Good enough.
+\end_layout
+
+\begin_layout Itemize
+R: 
+\family typewriter
+runif(1)
+\family default
+.
+ Matlab: 
+\family typewriter
+rand
+\family default
+.
+ Python: 
+\family typewriter
+numpy.random.uniform()
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+Från 
+\begin_inset Formula $U\sim U(0,1)$
+\end_inset
+
+ kan vi skapa slumptal från andra fördelningar.
+\end_layout
+
+\begin_layout Itemize
+Ex.
+ 
+\series bold
+Bernoulli
+\series default
+ med sannolikhet 
+\begin_inset Formula $p$
+\end_inset
+
+ att lyckas: 
+\begin_inset Formula 
+\[
+X=\begin{cases}
+1 & \text{om }U<p\\
+0 & \text{om }U\geq p
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+R kod Bernoulli: 
+\family typewriter
+U=runif(1); X=(U<p)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ex.
+ 
+\series bold
+Binomial
+\series default
+.
+ Summan av Bernoullis
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+R-kod för Binomial(n,p): 
+\family typewriter
+U=runif(n); X=sum(U<p
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Simulering från diskret fördelning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Simulering från allmän diskret fördelning:
+\begin_inset Formula 
+\[
+p_{i}=\mathbf{P}\left\{ X=x_{i}\right\} ,\quad\sum_{i=1}p_{i}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dela upp intervallet 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ i delintervall: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $A_{1}=[0,p_{1})$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A_{2}=[p_{1},p_{2})$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A_{n}=[p_{n-1},1)$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Slumpa 
+\begin_inset Formula $U\sim U(0,1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Om 
+\begin_inset Formula $U\in A_{i}$
+\end_inset
+
+ låt 
+\begin_inset Formula $X=x_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Inversa CDF metoden - diskreta fallet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename InverseCDF.pdf
+	scale 95
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Inversa transformationsmetoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Simulering från allmän 
+\series bold
+kontinuerlig
+\series default
+ fördelning.
+\end_layout
+
+\begin_layout Theorem
+Låt 
+\begin_inset Formula $X$
+\end_inset
+
+ vara en kontinuerlig variabel med cdf 
+\begin_inset Formula $F_{X}(x)$
+\end_inset
+
+ och låt 
+\begin_inset Formula $U=F_{X}(X)$
+\end_inset
+
+ vara en ny slumpvariabel.
+ Då gäller att 
+\begin_inset Formula $U\sim U(0,1)$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Inversa transformationsmetoden
+\series default
+: Antag att 
+\begin_inset Formula $X$
+\end_inset
+
+ har cdf 
+\begin_inset Formula $F(X)$
+\end_inset
+
+.
+ X kan då simuleras med hjälp av en 
+\begin_inset Formula $U\sim U(0,1)$
+\end_inset
+
+ variabel: 
+\begin_inset Formula $X=F^{-1}(U)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Dvs lös ut 
+\begin_inset Formula $X$
+\end_inset
+
+ från ekvationen 
+\begin_inset Formula $U=F(X).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex.
+ 
+\begin_inset Formula $X\sim Exp(\lambda)$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+U=1-e^{\lambda X}
+\]
+
+\end_inset
+
+vilket har lösningen
+\begin_inset Formula 
+\[
+X=-\frac{1}{\lambda}\ln(1-U)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Inversa CDF metoden - kontinuerliga fallet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename InverseCDFCont.pdf
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Simulering i R
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $n$
+\end_inset
+
+ 
+\series bold
+slumptal
+\series default
+ från 
+\begin_inset Formula $N(\mu=2,\sigma^{2}=3^{2})$
+\end_inset
+
+ simuleras med 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+rnorm(n, mean = 2, sd = 3)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n$
+\end_inset
+
+ 
+\series bold
+slumptal
+\series default
+ från 
+\begin_inset Formula $Gamma(\alpha=2,\lambda=3)$
+\end_inset
+
+ simuleras med 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+rgamma(n, shape = 2 , rate = 3)
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Beräkna 
+\series bold
+pdf:en
+\series default
+ i punkten 
+\begin_inset Formula $x=1.5$
+\end_inset
+
+ för 
+\begin_inset Formula $N(\mu=2,\sigma^{2}=3^{2})$
+\end_inset
+
+: 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+dnorm
+\family typewriter
+(x=1.5, mean = 2, sd = 3)
+\end_layout
+
+\begin_layout Itemize
+Beräkna 
+\series bold
+cdf:en
+\series default
+ i punkten 
+\begin_inset Formula $x=1.5$
+\end_inset
+
+ för 
+\begin_inset Formula $N(\mu=2,\sigma^{2}=3^{2})$
+\end_inset
+
+: 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+pnorm
+\family typewriter
+(x=1.5, mean = 2, sd = 3)
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monte Carlo metoder
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Simulering från fördelningar kan användas för att approximera t ex olika
+ sannolikheter.
+ 
+\end_layout
+
+\begin_layout Itemize
+Låt 
+\begin_inset Formula $X_{1},X_{2},...,X_{N}$
+\end_inset
+
+ vara oberoende dragningar från en sannolikhetsfördelning.
+ Vi kan t ex approximera sannolikheten 
+\begin_inset Formula $p=\mathbf{P}\{X<2\}$
+\end_inset
+
+ med
+\begin_inset Formula 
+\[
+\hat{p}=\hat{\mathbf{P}}\{X<2\}=\frac{\text{antal av }X_{1},X_{2},...,X_{N}\text{ som är mindre än 2}}{N}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ (t ex 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+) betecknar en estimator (uppskattning) av kvaniteten 
+\begin_inset Formula $\theta$
+\end_inset
+
+ (t ex 
+\begin_inset Formula $p$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+x = rnorm(10000, mean = 1, sd = 2); 
+\begin_inset Newline newline
+\end_inset
+
+pHat = sum(x<2)/10000
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monte Carlo metoder, forts.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Men 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+ är bara en 
+\series bold
+skattning
+\series default
+ av 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Varierar från stickprov till stickprov.
+ 
+\end_layout
+
+\begin_layout Itemize
+Om vi upprepar hela receptet flera ggr, varje gång med ett nytt stickprov
+ av storleken 
+\begin_inset Formula $N$
+\end_inset
+
+, kommer vi då att ha rätt i genomsnitt? Dvs är 
+\begin_inset Formula $E(\hat{p})=p$
+\end_inset
+
+? 
+\end_layout
+
+\begin_layout Itemize
+Hur mycket kommer 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+ att variera från stickprov till stickprov? Dvs hur stor är 
+\begin_inset Formula $Var(\hat{p})$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Y=$
+\end_inset
+
+Antal 
+\begin_inset Formula $X_{1},...,X_{N}$
+\end_inset
+
+ som är mindre än 
+\begin_inset Formula $2$
+\end_inset
+
+.
+ 
+\begin_inset Formula $Y\sim Bin(N,p)$
+\end_inset
+
+.
+ Så
+\begin_inset Formula 
+\[
+E(\hat{p})=E\left(\frac{Y}{N}\right)=\frac{1}{N}N\cdot p=p
+\]
+
+\end_inset
+
+så 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+ är en 
+\series bold
+väntevärdesriktig
+\series default
+ (
+\series bold
+unbiased
+\series default
+) estimator.
+ 
+\begin_inset Formula 
+\[
+Var(\hat{p})=\frac{1}{N^{2}}Np(1-p)=\frac{p(1-p)}{N}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Se Baron s.
+ 115-116 om hur man kan välja 
+\begin_inset Formula $N$
+\end_inset
+
+ för att given exakthet 
+\begin_inset Formula $\mathbf{P}\left\{ \left|\hat{p}-p\right|>\varepsilon\right\} \leq\alpha$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monte Carlo integration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mål: 
+\begin_inset Formula $\mbox{\mathcal{I}}=\int_{0}^{1}g(x)dx$
+\end_inset
+
+ där 
+\begin_inset Formula $0\leq x\leq1$
+\end_inset
+
+ och 
+\begin_inset Formula $0\leq g(x)\leq1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Simulera likformigt fördelade tal 
+\begin_inset Formula $U_{1},...,U_{N}$
+\end_inset
+
+ och 
+\begin_inset Formula $V_{1},...,V_{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Monte Carlo skattning 
+\begin_inset Formula 
+\[
+\hat{\mathcal{I}}=\frac{\text{Antal dragningar där }V_{i}<g(U_{i})}{N}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+u = runif(10000);
+\begin_inset Newline newline
+\end_inset
+
+v = runif(10000);
+\begin_inset Newline newline
+\end_inset
+
+IHat = mean(v < g(u))
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monte Carlo integration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename MonteCarloOnSquare.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Importance sampling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Räkna integraler som väntevärden
+\begin_inset Formula 
+\[
+\mathcal{I}=\int_{a}^{b}g(x)dx=\frac{1}{b-a}\int_{a}^{b}(b-a)g(x)dx=\mathbb{E}\left\{ (b-a)g(X)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stora talens lag: Om 
+\begin_inset Formula $X_{1},...,X_{N}$
+\end_inset
+
+ dras från 
+\begin_inset Formula $U(a,b)$
+\end_inset
+
+ så kommer 
+\begin_inset Formula 
+\[
+\frac{(b-a)g(X_{1})+...+(b-a)g(X_{N})}{N}
+\]
+
+\end_inset
+
+vara nära 
+\begin_inset Formula $\mathbb{E}\left\{ (b-a)g(X)\right\} $
+\end_inset
+
+ när 
+\begin_inset Formula $N$
+\end_inset
+
+ är stort (konvergerar i sannolikhet).
+\end_layout
+
+\begin_layout Itemize
+Importance sampling är samma trick, men med godtycklig täthetsfunktion 
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{I}=\int_{a}^{b}g(x)dx=\int_{a}^{b}\frac{g(x)}{f(x)}f(x)dx=\mathbb{E}\left(\frac{g(X)}{f(X)}\right)
+\]
+
+\end_inset
+
+där väntevärdet beräknas med avseende på 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Importance sampling estimator
+\begin_inset Formula 
+\[
+\hat{\mathcal{I}}=\frac{1}{N}\sum_{i=1}^{N}\frac{g(X_{i})}{f(X_{i})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\end_body
+\end_document
