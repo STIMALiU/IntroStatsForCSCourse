@@ -1,0 +1,1587 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Programming i R}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Programming i R}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language swedish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+TBDA01: Laboration 1
+\end_layout
+
+\begin_layout Author
+Måns Magnusson, Mattias Villani
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Instruktioner.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduktion till R
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "RIntro.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Laboration
+\end_layout
+
+\begin_layout Section
+Simulering och 
+\begin_inset Quotes sld
+\end_inset
+
+Monte carlo
+\begin_inset Quotes srd
+\end_inset
+
+-metoder
+\end_layout
+
+\begin_layout Standard
+De första uppgifterna i denna laboration syftar till hur vi kan använda
+ oss av simulering (eller 
+\begin_inset Quotes sld
+\end_inset
+
+Monte Carlo
+\begin_inset Quotes srd
+\end_inset
+
+-metoder) för att studera sannolikhetsfördelningar.
+ I R är det mycket enkelt att simulera från de flesta sannolikhetsfördelningar
+ som har behandlats i kursen såhär långt.
+\end_layout
+
+\begin_layout Standard
+För att dra 5 slumpmässiga värden från 
+\begin_inset Formula $\mathcal{N}(\mu=3,\sigma=1)$
+\end_inset
+
+ gör vi på följande sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- rnorm(n = 5, mean = 3, sd = 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+x
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionen returnerar en vektor med utfall från vår fördelning.
+ På liknande sätt kan 3 värden från exponentialfördelningen dras på följande
+ sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- rexp(n = 3, rate = 10)
+\end_layout
+
+\begin_layout Plain Layout
+
+y
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+ och slumpmässiga värden från binomialfördelningen dras på följande sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+z <- rbinom(n = 4, size = 1000, prob = 0.1)
+\end_layout
+
+\begin_layout Plain Layout
+
+z
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Observera att 
+\family typewriter
+n
+\family default
+ i funktionen anger hur många dragningar från fördelningen du vill ha.
+ I binomialfördelningen är det vanligt att parametrisera fördelningen som
+ 
+\begin_inset Formula $\mbox{Bin}(n,p)$
+\end_inset
+
+.
+ I R motsvaras 
+\begin_inset Formula $n$
+\end_inset
+
+ av 
+\family typewriter
+size
+\family default
+ och 
+\begin_inset Formula $p$
+\end_inset
+
+ av 
+\family typewriter
+prob
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+För att enkelt visualisera en fördelning kan vi använda funktionen 
+\family typewriter
+hist()
+\family default
+ på följande sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE, fig.height=3.5, fig.width=3.5, fig.align='center'>
+>=
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- rbinom(n = 10000, size = 1000, prob = 0.1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hist(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection
+Uppgift 1 Simulering av normalfördelning
+\end_layout
+
+\begin_layout Plain Layout
+Simulera 10 och 10000 dragningar från en normalfördelning med 
+\begin_inset Formula $\mu=10$
+\end_inset
+
+ och 
+\begin_inset Formula $\sigma=4$
+\end_inset
+
+.
+ Visualisera fördelningarna i två histogram.
+ Beskriv skillnaden mellan de olika graferna.
+ Vad är de största visuella skillnaderna?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection
+Uppgift 2 Simulera och visualisera andra fördelningar
+\end_layout
+
+\begin_layout Plain Layout
+Simulera och visualisera nu på liknande sätt förljande fördelningar med
+ 10000 dragningar från varje fördelning.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Diskreta fördelningar
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbf{x}_{1} & \sim & \mbox{Bernoulli}(p=0.2)\\
+\mathbf{x}_{2} & \sim & \mbox{Binomial}(n=20,p=0.1)\\
+\mathbf{x}_{3} & \sim & \mbox{Binomial}(n=20,p=0.5)\\
+\mathbf{x}_{4} & \sim & \mbox{Geometrisk}(n=20,p=0.1)\\
+\mathbf{x}_{5} & \sim & \mbox{Poisson}(\lambda=10)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Kontinuerliga fördelningar
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbf{y}_{1} & \sim & \mbox{Likformig}(\mbox{min}=0,\mbox{max}=1)\\
+\mathbf{y}_{2} & \sim & \mbox{Exp}(\theta=3)\\
+\mathbf{y}_{3} & \sim & \mbox{Gamma}(\alpha=2,\beta=1)\\
+\mathbf{y}_{4} & \sim & \mbox{Student-t}(\nu=3)\\
+\mathbf{y}_{5} & \sim & \mbox{Beta}(\alpha=0.1,\beta=0.1)\\
+\mathbf{y}_{6} & \sim & \mbox{Beta}(\alpha=1,\beta=1)\\
+\mathbf{y}_{7} & \sim & \mbox{Beta}(\alpha=10,\beta=5)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Tips! 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ heter 
+\family typewriter
+shape
+\family default
+ och 
+\begin_inset Formula $\beta$
+\end_inset
+
+ heter 
+\family typewriter
+scale
+\family default
+ för gammafördelningen i R.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Som behandlats under föreläsningarna finns det också relationer mellan olika
+ fördelningar.
+ Vi kunde se det i föregående uppgift där betafördelningen med 
+\begin_inset Formula $\alpha=\beta=1$
+\end_inset
+
+ ger en likformig fördelning.
+ Det finns flera sådana relationer som är värdefulla att känna till.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection*
+Uppgift 3 Relation mellan fördelningar
+\end_layout
+
+\begin_layout Plain Layout
+Nedan finns tre stycken sannolikhetsfördelningar som konvergerar mot en
+ annan sannolikhetsfördelning.
+ Beskriv vilken annan fördelning som den konvergerar mot och simulera dragningar
+ från denna fördelning.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathbf{x}_{1} & \sim & \mbox{Binomial}(n=10000,p=0.001)\\
+\mathbf{x}_{2} & \sim & \mbox{Exp}(\theta=1)+\mbox{Exp}(\theta=1)\\
+\mathbf{x}_{3} & \sim & \mbox{Student-t}(\nu=10000)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Observera att du ska simulera två (oberoende) exponentialfördelningar och
+ lägga ihop deras värde.
+ D.v.s.
+ 
+\begin_inset Formula $\mbox{Exp}(\theta=1)+\mbox{Exp}(\theta=1)\neq2\cdot\mbox{Exp}(\theta=1)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Som vi har sett är det mycket enkelt att simulera värden från olika fördelningar
+ i R.
+ Att simulera värden från en fördelning är ofta ett alternativ till att
+ lösa sannolikhetsproblem analytiskt, särskilt om den analytiska lösningen
+ är komplicerad eller omöjlig att beräkna.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection
+Uppgift 4 Analytisk sannolikhet och approximation med 
+\begin_inset Quotes sld
+\end_inset
+
+Monte Carlo
+\begin_inset Quotes srd
+\end_inset
+
+ - metoder
+\end_layout
+
+\begin_layout Plain Layout
+Varje fördelning i R har också en funktion för att beräkna sannolikheten
+ direkt.
+ På samma sätt som funktioner simulerar värden med prefixet 
+\family typewriter
+r
+\family default
+ har vi den kumulativa fördelningsfunktionen med prefixet 
+\family typewriter
+p
+\family default
+ och täthetfunktionen med prefixet 
+\family typewriter
+d
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+I denna uppgift ska vi arbeta med två fördelningar
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+X & \sim & \mathcal{N}(\mu=0,\sigma=1)\\
+Y & \sim & \mbox{Bin}(\mbox{n=10},p=0.1)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+a)
+\end_layout
+
+\begin_layout Plain Layout
+Använd täthetsfunktionen i R för att beräkna 
+\begin_inset Formula $P(Y=0)$
+\end_inset
+
+.
+ Simulera nu 10000 dragningar från 
+\begin_inset Formula $Y$
+\end_inset
+
+ och beräkna andelen dragningar där 
+\begin_inset Formula $y=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Beräkna nu på liknande sätt 
+\begin_inset Formula $P(Y=10)$
+\end_inset
+
+ både med täthetsfunktionen och genom simulering.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+b)
+\end_layout
+
+\begin_layout Plain Layout
+Använd nu den kumulativa fördelningsfunktionen i R för att beräkna följande
+ sannolikheter.
+ Gör motsvarande beräkning genom simulering.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P(X<0)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P(-1<X<1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P(1.96<X)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P(0<Y<10)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P(Y=0)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P(0\leq Y\leq10)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Som ett nästa steg ska vi försöka göra en lite mer realistisk beräkning
+ av sannolikheter och hur simuleringar kan användas för att hjälpa oss fatta
+ beslut under osäkerhet.
+ Vi kan genom att specificera vår osäkerhet som sannolikhetsfördelningar
+ enkelt få svar på komplexa frågor genom simuleringar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection*
+Uppgift 5 Beräkna (icke-triviala) sannolikheter
+\end_layout
+
+\begin_layout Plain Layout
+Du är CTO för ett företag och är osäker på om du ska bygga om ert nuvarande
+ system för att minska kostnaden för underhåll.
+ I ert nuvarande system vet du att ni har en felfrekvens cirka 10% eller
+ 
+\begin_inset Formula $p=0.1$
+\end_inset
+
+ sett till antalet kunder och år.
+ Ni har totalt 
+\begin_inset Formula $337$
+\end_inset
+
+ kunder och antalet fel/buggar nästa år kan således beskrivas som en 
+\begin_inset Formula $\mbox{Bin}(n=337,p=0.1)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Det alternativ du står inför är betydligt mycket osäkrare, du vet inte hur
+ stor felfrekvensen kommer bli så du uppskattar att felfrekvensen kommer
+ ligga mellan 0.02 och 0.16.
+ Din osäkerhet kan således beskrivas som en likformig fördelning 
+\begin_inset Formula $P\sim U(0.02,0.16)$
+\end_inset
+
+, baserat på dessa dragningar följer sedan antalet fel 
+\begin_inset Formula $\mbox{Bin}(n=337,p=P)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+För att lösa detta problem gör 10 000 simuleringar för det nuvarande systemet
+ och 10 000 simuleringar för det gamla systemet och besvara förljande frågor.
+\end_layout
+
+\begin_layout Enumerate
+Vad är det förväntade antalet fel för de båda systemen?
+\end_layout
+
+\begin_layout Enumerate
+Vad är sannolikheten att det nuvarande systemet genererar färre fel än det
+ nya systemet?
+\end_layout
+
+\begin_layout Enumerate
+Vad är sannolikheten att du kommer få fler än 50 fel för respektive system?
+\end_layout
+
+\begin_layout Enumerate
+Vad är sannolikheten att du inte kommer ha något fel i respektive system?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes sld
+\end_inset
+
+Monte carlo
+\begin_inset Quotes srd
+\end_inset
+
+-metoder kan också användas för att lösa andra problem än rena sannolikhetsberäk
+ningar.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Paragraph*
+Uppgift 6 Markovmetoder
+\end_layout
+
+\begin_layout Plain Layout
+Simulera två likformiga fördelningar (
+\begin_inset Formula $U(0,1)$
+\end_inset
+
+ ) av storlek 
+\begin_inset Formula $n=1000$
+\end_inset
+
+ som du kallar 
+\family typewriter
+x
+\family default
+ och 
+\family typewriter
+y
+\family default
+.
+ Ta bort de positioner ur vektorerna 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+ där 
+\begin_inset Formula $\sqrt{x^{2}+y^{2}}>1$
+\end_inset
+
+.
+ Visualisera de punkter som är kvar i en scatterplot.
+ 
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+plot()
+\family default
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Räkna antalet punkter du har kvar och kalla detta för 
+\begin_inset Formula $z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Gör följande beräkning: 
+\begin_inset Formula 
+\[
+4\cdot\frac{z}{n}
+\]
+
+\end_inset
+
+Vad blir ditt resultat?
+\end_layout
+
+\begin_layout Plain Layout
+Upprepa beräkningen men simulera nu 1 000 000 likformiga dragningar från
+ 
+\begin_inset Formula $U(0,1)$
+\end_inset
+
+.
+ Vad är din slutsats? Vilken konstant har vi försökt approximera och hur
+ väl tycker du vi lyckas?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Stora talens lag
+\end_layout
+
+\begin_layout Standard
+En del av de resultat vi fick ovan bygger delvis på Stora talens lag vilket
+ innebär att 
+\begin_inset Formula 
+\[
+\lim_{n\rightarrow\infty}P\left(|\bar{X}_{n}-\mu|>\epsilon\right)=0
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $\bar{X}_{n}=\frac{1}{n}\sum_{i}^{n}X_{i}$
+\end_inset
+
+.
+ Uttryckt annorlunda kommer medelvärdet av 
+\begin_inset Formula $n$
+\end_inset
+
+ slumpmässiga variabler konvergera mot det teoretiska förväntade värdet,
+ 
+\begin_inset Formula $\mu$
+\end_inset
+
+, av fördelningen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Paragraph*
+Uppgift 7 Stora talens lag
+\end_layout
+
+\begin_layout Plain Layout
+Vi ska studera följande två stokastiska variabler
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{eqnarray*}
+X & \sim & \mbox{Bin}(n=10,p=0.2)\\
+Y & \sim & \mbox{Gamma}(\alpha=2,\beta=2)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+a)
+\end_layout
+
+\begin_layout Plain Layout
+Använd wikipedia för att beräkna de (teoretiska) förväntade värdena för
+ dessa variabler.
+\end_layout
+
+\begin_layout Paragraph*
+b)
+\end_layout
+
+\begin_layout Plain Layout
+Dra 10, 20, ..., 990, 1000 antal värden från respektive fördelning, räkna ut
+ medelvärdet med 
+\family typewriter
+mean()
+\family default
+ och spara medelvärdet en vektor av längd 1.
+ Visualisera hur medelvärdet förändras ju fler dragningar som görs med hjälp
+ av 
+\family typewriter
+plot()
+\family default
+ med 
+\family typewriter
+type=
+\begin_inset Quotes srd
+\end_inset
+
+l
+\begin_inset Quotes srd
+\end_inset
+
+
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Egenskaper hos väntevärden och varians
+\end_layout
+
+\begin_layout Standard
+I Mattias slides (slide 17) från föreläsning 2 finns de (vanligaste) räkneregler
+na för väntevärden och varians.
+ Vi ska nu undersöka dessa delar mer genom simulering.
+ Baserat på Mattias slides kan vi beräkna det teoretiska förväntade värdet
+ och den teoretiska variansen.
+ Med Monte carlo-metoder kan vi uppskatta det förväntade värdet med 
+\family typewriter
+mean()
+\family default
+ och variansen med 
+\family typewriter
+var()
+\family default
+ i R.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection*
+Uppgift 8 Väntevärde och varians
+\end_layout
+
+\begin_layout Plain Layout
+Vi ska utgå från följande två (oberoende) fördelningar
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{eqnarray*}
+X & \sim & \mbox{Exp}(\theta=10)\\
+Y & \sim & \mbox{Poisson}(\lambda=3)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+a)
+\end_layout
+
+\begin_layout Plain Layout
+Besök wikipediasidorna för dessa två fördelningar för att ta reda på följande
+ (teoretiska) storheter 
+\begin_inset Formula $E(X)$
+\end_inset
+
+, 
+\begin_inset Formula $Var(X)$
+\end_inset
+
+, 
+\begin_inset Formula $E(Y)$
+\end_inset
+
+ och 
+\begin_inset Formula $Var(Y)$
+\end_inset
+
+.
+ Simulera nu 10 000 värden och beräkna 
+\begin_inset Formula $E(X)$
+\end_inset
+
+, 
+\begin_inset Formula $Var(X)$
+\end_inset
+
+, 
+\begin_inset Formula $E(Y)$
+\end_inset
+
+ och 
+\begin_inset Formula $Var(Y)$
+\end_inset
+
+ baserat på de utfall av fördelningarna du fått.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+b)
+\end_layout
+
+\begin_layout Plain Layout
+Använd de teoretiska formlerna från Mattias material för att beräkna följande
+ storheter:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E(3)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E(3\cdot X+2)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E(X+Y)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E(X\cdot Y)$
+\end_inset
+
+ (observera att 
+\begin_inset Formula $X$
+\end_inset
+
+ och 
+\begin_inset Formula $Y$
+\end_inset
+
+ är oberoende)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E(3\cdot X+2\cdot Y-3)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Var(2\cdot X-5)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Var(X+Y)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+c)
+\end_layout
+
+\begin_layout Plain Layout
+Vill vi beräkna 
+\begin_inset Formula $E(2\cdot Z-5)$
+\end_inset
+
+ där 
+\begin_inset Formula $Z\sim\mathcal{N}(\mu=0,\sigma=1)$
+\end_inset
+
+ genom simulering gör vi på följande sätt i R.
+ I exemplet nedan gör jag 10000 dragningar.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+z <- rnorm(n = 10000, mean = 0, sd = 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+mean(2 * z - 5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Detta värde kan jämföras med det 
+\begin_inset Quotes sld
+\end_inset
+
+sanna
+\begin_inset Quotes srd
+\end_inset
+
+ teoretiska värdet 
+\begin_inset Formula $E(2\cdot Z-5)=-5$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Upprepa nu samtliga beräkningar i
+\series bold
+ b)
+\series default
+ ovan men med hjälp av simulering.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Centrala gränsvärdessatsen
+\end_layout
+
+\begin_layout Standard
+Ovan såg vi att Stora talens lag garanterade oss att medelvärdet av flera
+ utfall av en slumpmässig variabel kommer konvergera mot det förväntade
+ värdet då antalet dragningar går mot oändligheten.
+ Centrala gränsvärdessatsen ger oss ett liknande resultat men gällande fördelnin
+gen för 
+\begin_inset Formula $\bar{X}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection*
+Uppgift 9 Centrala gränsvärdessatsen
+\end_layout
+
+\begin_layout Plain Layout
+Vi ska studera följande tre stokastiska variabler
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{eqnarray*}
+X & \sim & \mbox{Poisson}(\lambda=5)\\
+Y & \sim & \mbox{Exp}(\theta=1)\\
+Z & \sim & \mbox{Binom}(n=10,p=0.01)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Dra 1000 observationer från respektive fördelning och visualisera fördelningen
+ med 
+\family typewriter
+hist()
+\family default
+.
+\end_layout
+
+\begin_layout Paragraph*
+a)
+\end_layout
+
+\begin_layout Plain Layout
+Skriv en loop/funktion i R som drar 10 värden från 
+\begin_inset Formula $X$
+\end_inset
+
+ och 
+\begin_inset Formula $Y$
+\end_inset
+
+ och beräknar medelvärdet för dessa värden.
+ Upprepa detta 1000 gånger och spara varje medelvärde i en vektor.
+ Visualisera denna vektor med 
+\family typewriter
+hist()
+\family default
+.
+\end_layout
+
+\begin_layout Paragraph*
+b)
+\end_layout
+
+\begin_layout Plain Layout
+Upprepa det du gjorde i uppgift a) men dra nu 30, 100 och 1000 värden istället
+ och visualisera resultatet.
+ Vilken fördelning konvergerar medelvärdena mot? Vilken av de stokastiska
+ variablerna 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ och 
+\begin_inset Formula $Z$
+\end_inset
+
+ konvergerar snabbast? Varför? Du behöver inte inkludera samtliga grafer
+ i laborationsrapporten.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
