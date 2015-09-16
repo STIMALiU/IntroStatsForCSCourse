@@ -1,0 +1,322 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+R är ett programmeringspråk för statistisk programmering som påminner mycket
+ om Matlab.
+ R bygger på öppen källkod och kan laddas ned 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://cran.r-project.org/"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ R-Studio är en mycket populär IDE för R (som också påminner mycket om Matlab).
+ Denna IDE finns att tillgå 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.rstudio.com/"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ I R-Studio finns funktionalitet för literate programming med R markdown
+ implementerat för att kombinera R kod med markdownsyntax.
+ På detta sätt är det enkelt att generera rapporter med både text, grafik
+ och kod.
+ Det är R:s motsvarighet till Python Notebook.
+\end_layout
+
+\begin_layout Standard
+För en ingång till R från andra språk kan onlineboken 
+\shape italic
+Advanced R
+\shape default
+ rekommenderas som finns 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://adv-r.had.co.nz/"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ Kapitlen 
+\shape italic
+Data structures
+\shape default
+, 
+\shape italic
+Subsetting
+\shape default
+ och 
+\shape italic
+Functions
+\shape default
+ bör ge en snabb introduktion.
+ 
+\end_layout
+
+\begin_layout Standard
+Även boken 
+\shape italic
+The art of R programming
+\shape default
+ av Norman Matloff kan vara till hjälp som referenslitteratur.
+ Boken finns 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://heather.cs.ucdavis.edu/~matloff/132/NSPpart.pdf"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Videomaterial
+\end_layout
+
+\begin_layout Itemize
+För en introduktion till syntaxen i R se Google developers R videomaterial
+ 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "här(http://www.youtube.com/watch?v=iffR3fWv4xw&list=PLOU2XLYxmsIK9qQfztXeybpHvru-TrqAP)"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Itemize
+Mer (detaljerat) videomaterial av Roger Peng finns att tillgå 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.youtube.com/user/rdpeng/videos"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Itemize
+För att visualisera med basgrafiken finns 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "följande"
+target "https://www.youtube.com/watch?v=SjcUlHh3UJg"
+
+\end_inset
+
+ 
+\series default
+\color inherit
+introduktionsvideo.
+\end_layout
+
+\begin_layout Itemize
+För mer komplicerad grafik rekommenderas 
+\family typewriter
+ggplot2
+\family default
+-paketet.
+ En introduktionsvideo finns 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.youtube.com/watch?v=HeqHMM4ziXA"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+En introduktion till R markdown finns 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.youtube.com/watch?v=cWJzjHh_3kk"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Cheatsheets
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+R reference card v.2
+\shape default
+ av Matt Baggot med vanliga funktioner i R finns att tillgå 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://cran.r-project.org/doc/contrib/Baggott-refcard-v2.pdf"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+R markdown cheatsheet 
+\shape default
+av R-Studio med tips för R markdown finns att tillgå 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\end_body
+\end_document
