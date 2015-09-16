@@ -1,0 +1,1768 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<setup, include=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(knitr)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(tikzDevice)
+\end_layout
+
+\begin_layout Plain Layout
+
+source("MVutils.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='f
+ootnotesize')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+read_chunk('Lecture4SlideCode.R')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+TDAB01
+\end_layout
+
+\end_inset
+
+Sannolikhetslära och Statistik
+\begin_inset Newline newline
+\end_inset
+
+Föreläsning 6
+\end_layout
+
+\begin_layout Author
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Mattias Villani
+\end_layout
+
+\end_inset
+
+Mattias Villani
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+STIMA, LiU
+\end_layout
+
+\end_inset
+
+Avdelningen för Statistik och Maskininlärning
+\begin_inset Newline newline
+\end_inset
+
+Institutionen för datavetenskap
+\begin_inset Newline newline
+\end_inset
+
+Linköpings universitet 
+\end_layout
+
+\begin_layout Date
+\begin_inset Graphics
+	filename LiU_secondary_1_black.png
+	lyxscale 7
+	scale 15
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Översikt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stokastiska processer
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Markovkedjor
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Binomialprocess
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Poissonproces
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stokastiska processer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stokastisk process
+\series default
+\color inherit
+: En 
+\series bold
+sekvens
+\series default
+ av slumpvariabler 
+\begin_inset Formula $X_{1},X_{2},...,X_{T}$
+\end_inset
+
+ 
+\series bold
+observerade över tid
+\series default
+.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex.
+ 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ = antalet påträffade buggar under dag 
+\begin_inset Formula $t$
+\end_inset
+
+, 
+\begin_inset Formula $t=1,2,...,T.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex.
+ 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ = slutkursen på Ericsson aktie vid dag 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Ex.
+ temperaturen vid en viss plats vid tidpunkt 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stokastisk process
+\series default
+\color inherit
+: en slumpvariabel 
+\begin_inset Formula $X(t,\omega)$
+\end_inset
+
+ som också beror av tiden, där:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t\in\mathcal{T}$
+\end_inset
+
+, och 
+\begin_inset Formula $\mathcal{T}$
+\end_inset
+
+ är en mängd tidpunkter, t ex 
+\begin_inset Formula $\mathcal{T}=\left\{ 1,2,3,...\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\omega\in\Omega$
+\end_inset
+
+, är utfallet i ett experiment (precis som förut).
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stokastiska processer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stokastisk process
+\series default
+\color inherit
+: en slumpvariabel 
+\begin_inset Formula $X(t,\omega)$
+\end_inset
+
+ som också beror av tiden, där:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t\in\mathcal{T}$
+\end_inset
+
+, och 
+\begin_inset Formula $\mathcal{T}$
+\end_inset
+
+ är en mängd tidpunkter, t ex 
+\begin_inset Formula $\mathcal{T}=\left\{ 1,2,3,...\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\omega\in\Omega$
+\end_inset
+
+, är utfallet i ett experiment (precis som förut).
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $X(t,\omega)$
+\end_inset
+
+ kan betraktas på två sätt:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+För givet 
+\begin_inset Formula $t\in\mathcal{T}$
+\end_inset
+
+ är 
+\begin_inset Formula $X_{t}(\omega)$
+\end_inset
+
+ en vanlig slumpvariabel
+\end_layout
+
+\begin_layout Itemize
+För givet 
+\begin_inset Formula $\omega\in\Omega$
+\end_inset
+
+ är 
+\begin_inset Formula $X_{\omega}(t)$
+\end_inset
+
+ en deterministisk funktion av tiden 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $X_{\omega}(t)$
+\end_inset
+
+ kallas för en 
+\series bold
+\color blue
+realisation
+\series default
+\color inherit
+ (eng.
+ 
+\series bold
+sample path
+\series default
+ eller trajectory) av processen 
+\begin_inset Formula $X(t,\omega)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stokastiska processer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Värden på 
+\begin_inset Formula $X(t,\omega)$
+\end_inset
+
+ kallas 
+\series bold
+\color blue
+tillstånd
+\series default
+\color inherit
+ (eng.
+ 
+\series bold
+states
+\series default
+)
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Uppdelning av processer: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+diskreta eller kontinuerliga 
+\series bold
+tillstånd
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+diskret eller kontinuerlig 
+\series bold
+tid
+\series default
+.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+diskret tillstånd, kontinerlig tid: väljarsympatier över tid.
+\end_layout
+
+\begin_layout Itemize
+diskret tillstånd, diskret tid: väljarsympatier på valdagen.
+\end_layout
+
+\begin_layout Itemize
+kontinuerligt tillstånd, diskret tid: dagens högsta temperatur
+\end_layout
+
+\begin_layout Itemize
+kontinuerligt tillstånd, kontinuerlig tid: en robots position vid tidpunkten
+ 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Markovkedjor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Markovprocess
+\series default
+\color inherit
+: prognosen för morgondagen beror endast på idag:
+\begin_inset Formula 
+\[
+P\left\{ \text{framtiden}\vert\text{nu},\text{historiken}\right\} =P\left\{ \text{framtiden}\vert\text{nu}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Markovprocess
+\series default
+\color inherit
+: för alla tidpunkter 
+\begin_inset Formula $t_{1}<...<t_{n}<t$
+\end_inset
+
+ och händelser 
+\begin_inset Formula $A,A_{1},...,A_{n}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbf{P}\left\{ X(t)\in A\vert X(t_{1})\in A_{1},...X(t_{n})\in A_{n}\right\} =\mathbf{P}\left\{ X(t)\in A\vert X(t_{1})\in A_{1}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Många processer är inte Markov.
+ Praktiskt 
+\series bold
+antagande
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Markovkedja
+\series default
+\color inherit
+: 
+\series bold
+diskret tid
+\series default
+, 
+\series bold
+diskreta tillstånd
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{T}=\left\{ 0,1,2,...\right\} $
+\end_inset
+
+ och 
+\begin_inset Formula $\Omega=\left\{ 1,2,...,n\right\} $
+\end_inset
+
+ (godtyckliga labels, jfr partier).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Transitionssannolikheter (en-stegs)
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+p_{ij}(t)=\mathbf{P}\left\{ X(t+1)=j\vert X(t)=i\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Transitionssannolikheter (h-stegs)
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+p_{ij}^{(h)}(t)=\mathbf{P}\left\{ X(t+h)=j\vert X(t)=i\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Markovkedjor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Markovprocess
+\series default
+\color inherit
+: prognosen för morgondagen beror endast på idag:
+\begin_inset Formula 
+\[
+P\left\{ \text{framtiden}\vert\text{nu},\text{historiken}\right\} =P\left\{ \text{framtiden}\vert\text{nu}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Markovprocess
+\series default
+\color inherit
+: för alla tidpunkter 
+\begin_inset Formula $t_{1}<...<t_{n}<t$
+\end_inset
+
+ och händelser 
+\begin_inset Formula $A,A_{1},...,A_{n}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbf{P}\left\{ X(t)\in A\vert X(t_{1})\in A_{1},...X(t_{n})\in A_{n}\right\} =\mathbf{P}\left\{ X(t)\in A\vert X(t_{1})\in A_{1}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Många processer är inte Markov.
+ Praktiskt 
+\series bold
+antagande
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Markovkedja
+\series default
+\color inherit
+: 
+\series bold
+diskret tid
+\series default
+, 
+\series bold
+diskreta tillstånd
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{T}=\left\{ 0,1,2,...\right\} $
+\end_inset
+
+ och 
+\begin_inset Formula $\Omega=\left\{ 1,2,...,n\right\} $
+\end_inset
+
+ (godtyckliga labels, jfr partier).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Transitionssannolikheter (en-stegs)
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+p_{ij}(t)=\mathbf{P}\left\{ X(t+1)=j\vert X(t)=i\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Markovkedjor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename 3state_markov.jpg
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Markovkedjor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Homogen Markovkedja
+\series default
+\color inherit
+: transitionssannolikheterna är konstanta över tiden:
+\begin_inset Formula 
+\[
+p_{ij}(t)=p_{ij}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Transitionsmatris
+\color inherit
+
+\begin_inset Formula 
+\[
+\mathbf{P}=\left(\begin{array}{cc}
+p_{11} & p_{12}\\
+p_{21} & p_{22}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex.
+ två tillstånd, 
+\begin_inset Formula $\Omega=\{\mbox{sol},\mbox{ regn}\}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbf{P}=\left(\begin{array}{cc}
+0.9 & 0.1\\
+0.7 & 0.3
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex.
+ tre tillstånd, 
+\begin_inset Formula $\Omega=\{\text{RödGröna},\text{Alliansen, SD}\}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P=\left(\begin{array}{ccc}
+0.8 & 0.1 & 0.1\\
+0.1 & 0.6 & 0.3\\
+0.1 & 0.5 & 0.4
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Markovkedjor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Transitionssannolikheter (h-stegs)
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+p_{ij}^{(h)}(t)=\mathbf{P}\left\{ X(t+h)=j\vert X(t)=i\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Komplext.
+ Det finns många vägar som tar oss 
+\begin_inset Formula $i\rightarrow j$
+\end_inset
+
+ när 
+\begin_inset Formula $h>1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Ex: 
+\begin_inset Formula $\Omega=\left\{ 1,2\right\} $
+\end_inset
+
+.
+ Om 
+\begin_inset Formula $h=2$
+\end_inset
+
+ kan vi göra resan 
+\begin_inset Formula $1\rightarrow2$
+\end_inset
+
+ på flera sätt: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $1\rightarrow2\rightarrow2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $1\rightarrow1\rightarrow2$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+2-stegs transitionssannolikhet 
+\begin_inset Formula $1\rightarrow2$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+p_{12}^{(2)}=p_{11}p_{12}+p_{12}p_{22}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+3-stegs transitionssannolikhet 
+\begin_inset Formula $1\rightarrow2$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+p_{12}^{(3)} & =p_{11}p_{11}p_{12}+p_{11}p_{12}p_{22}+p_{12}p_{21}p_{12}+p_{12}p_{22}p_{22}\\
+ & =p_{11}(p_{11}p_{12}+p_{12}p_{22})+p_{12}(p_{21}p_{12}+p_{22}p_{22})\\
+ & =p_{11}p_{12}^{(2)}+p_{12}p_{22}^{(2)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Markovkedjor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Transitionsmatris 
+\begin_inset Formula $1$
+\end_inset
+
+-steg
+\begin_inset Formula 
+\[
+\mathbf{P}=\left(\begin{array}{cccc}
+p_{11} & p_{12} & \cdots & p_{1n}\\
+p_{21} & p_{22} & \cdots & p_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+p_{n1} & p_{n2} & \cdots & p_{nn}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Transitionsmatris 
+\begin_inset Formula $h$
+\end_inset
+
+-steg
+\begin_inset Formula 
+\[
+\mathbf{P}^{(h)}=\left(\begin{array}{cccc}
+p_{11}^{(h)} & p_{12}^{(h)} & \cdots & p_{1n}^{(h)}\\
+p_{21}^{(h)} & p_{22}^{(h)} & \cdots & p_{2n}^{(h)}\\
+\vdots & \vdots & \ddots & \vdots\\
+p_{n1}^{(h)} & p_{n2}^{(h)} & \cdots & p_{nn}^{(h)}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Resultat: 
+\begin_inset Formula $\mathbf{P}^{(h)}$
+\end_inset
+
+ är 
+\begin_inset Formula $h$
+\end_inset
+
+:te matrispotensen av 
+\begin_inset Formula $\mathbf{P}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbf{P}^{(h)}=\mathbf{P}\cdot\mathbf{P}\cdots\mathbf{P}=\mathbf{P}^{h}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Marginalfördelning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Initialfördelning
+\series default
+ vid 
+\begin_inset Formula $t=0$
+\end_inset
+
+ är radvektorn
+\begin_inset Formula 
+\[
+P_{0}=\left(P_{0}(1),P_{0}(2),....,P_{0}(n)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sannolikhetsfördelning över tillstånden efter 
+\begin_inset Formula $h$
+\end_inset
+
+ steg (tidsperioder)
+\begin_inset Formula 
+\[
+P_{h}=\left(P_{h}(1),P_{h}(2),....,P_{h}(n)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Resultat
+\begin_inset Formula 
+\[
+P_{h}=P_{0}P^{h}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex.
+ 
+\begin_inset Formula $P_{0}=\left(1/3,1/3,1/3\right)$
+\end_inset
+
+ och 
+\begin_inset Formula 
+\[
+P=\left(\begin{array}{ccc}
+0.8 & 0.1 & 0.1\\
+0.1 & 0.6 & 0.3\\
+0.1 & 0.5 & 0.4
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P_{3}=\left(1/3,1/3,1/3\right)\left(\begin{array}{ccc}
+0.8 & 0.1 & 0.1\\
+0.1 & 0.6 & 0.3\\
+0.1 & 0.5 & 0.4
+\end{array}\right)^{3}=\left(0.333,0.407,0.259\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bernoulliprocess
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Räkneprocesser
+\color inherit
+:
+\series default
+ 
+\begin_inset Formula $X(t)$
+\end_inset
+
+ är antalet räknade saker t o m tidpunkt 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Binomialprocess
+\series default
+\color inherit
+: 
+\begin_inset Formula $X(n)$
+\end_inset
+
+ är
+\series bold
+ antalet lyckade försök i de 
+\begin_inset Formula $n$
+\end_inset
+
+första
+\series default
+ utav en sekvens oberoende Bernoulliförsök med sannolikhet 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X(n)\sim Binomial(n,p)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Y$
+\end_inset
+
+ = antalet försök mellan två lyckade.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Y\sim Geometrisk(p)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bernoulliprocess (Baron s.
+ 149)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename BinomialProcess.pdf
+	lyxscale 30
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bernoulliprocess
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ett nytt Bernoulliförsök var 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ sekund.
+ 
+\begin_inset Formula $\Delta$
+\end_inset
+
+= 
+\series bold
+time frame
+\series default
+.
+ Jfr film.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n$
+\end_inset
+
+ försök tar 
+\begin_inset Formula $t=n\Delta$
+\end_inset
+
+ sekunder att utföra.
+ 
+\end_layout
+
+\begin_layout Itemize
+Processen kan defineras som funktion av (klock)tid: 
+\begin_inset Formula $X(n)=X(t/\Delta)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Förväntat antal lyckade under hela tidsperioden 
+\begin_inset Formula $t$
+\end_inset
+
+ är 
+\begin_inset Formula $\mathbb{E}X(n)=np$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Förväntat antal försök per sekund
+\series default
+: 
+\begin_inset Formula 
+\[
+\mathbb{E}X\left(\frac{t}{\Delta}\right)=\frac{t}{\Delta}p,
+\]
+
+\end_inset
+
+dvs 
+\begin_inset Formula $\lambda=p/\Delta$
+\end_inset
+
+ lyckade per sekund.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Ankomstfrekvensen
+\series default
+\color inherit
+ (arrival rate): 
+\begin_inset Formula $\lambda=p/\Delta$
+\end_inset
+
+ är 
+\series bold
+förväntat antal lyckade per tidsenhet
+\series default
+ (t ex sekund).
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bernoulliprocess
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Interarrival time
+\series default
+\color inherit
+ 
+\begin_inset Formula $T$
+\end_inset
+
+ är tiden mellan lyckade försök.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Y$
+\end_inset
+
+ = antalet försök mellan två lyckade.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Y\sim Geometrisk(p)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $T=Y\Delta$
+\end_inset
+
+.
+ Följer en skalad geometrisk fördelning med support 
+\begin_inset Formula $\Delta,2\Delta,3\Delta,...$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Notera att Binomialprocessen kan vara restriktiv om 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ väljs för stort.
+ Endast en Bernoullihändelse i varje time frame 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Poissonprocess
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Poissonprocessen
+\series default
+\color inherit
+ fås genom att låta 
+\begin_inset Formula $\Delta\downarrow0$
+\end_inset
+
+ samtidigt som 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ hålls konstant (dvs även 
+\begin_inset Formula $p\downarrow0$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Kom ihåg: 
+\begin_inset Formula $X(t)\sim Binomial(n,p)\rightarrow Poisson(\lambda)$
+\end_inset
+
+ när 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+ och 
+\begin_inset Formula $p\rightarrow0$
+\end_inset
+
+ och 
+\begin_inset Formula $\lambda=np$
+\end_inset
+
+ är konstant.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\color black
+Poissonprocessen
+\series bold
+\color white
+ 
+\series default
+\color black
+är en process i 
+\series bold
+kontinuerlig tid
+\series default
+.
+ Jfr frames i filmer.
+\end_layout
+
+\begin_layout Itemize
+Interarrival time 
+\begin_inset Formula $T\sim Exp(\lambda)$
+\end_inset
+
+.
+ Används vid simulering, see 
+\family typewriter
+\color blue
+SimulatePoissonProcess.R
+\family default
+\color inherit
+.
+\end_layout
+
+\begin_layout Itemize
+Interarrvival för 
+\begin_inset Formula $k$
+\end_inset
+
+ framtida händelser 
+\begin_inset Formula $T_{k}\sim Gamma(k,\lambda)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Se definition 6.14 för alternativ definition av Poissonprocessen.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Poissonprocess (Baron s.
+ 155)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename PoissonProcess.pdf
+	lyxscale 30
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\end_body
+\end_document
