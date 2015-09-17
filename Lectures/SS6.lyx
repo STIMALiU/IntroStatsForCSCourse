@@ -609,7 +609,7 @@ tid
 
 \end_deeper
 \begin_layout Itemize
-diskret tillstånd, kontinerlig tid: väljarsympatier över tid.
+diskret tillstånd, kontinuerlig tid: väljarsympatier över tid.
 \end_layout
 
 \begin_layout Itemize
@@ -639,7 +639,7 @@ kontinuerligt tillstånd, kontinuerlig tid: en robots position vid tidpunkten
 status open
 
 \begin_layout Plain Layout
-Markovkedjor
+Markovprocesser
 \end_layout
 
 \end_inset
@@ -661,6 +661,10 @@ Markovprocess
 P\left\{ \text{framtiden}\vert\text{nu},\text{historiken}\right\} =P\left\{ \text{framtiden}\vert\text{nu}\right\} 
 \]
 
+\end_inset
+
+
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -690,6 +694,10 @@ Markovprocess
 \end_inset
 
 
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -699,72 +707,6 @@ Många processer är inte Markov.
 antagande
 \series default
 .
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Markovkedja
-\series default
-\color inherit
-: 
-\series bold
-diskret tid
-\series default
-, 
-\series bold
-diskreta tillstånd
-\series default
-.
- 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\mathcal{T}=\left\{ 0,1,2,...\right\} $
-\end_inset
-
- och 
-\begin_inset Formula $\Omega=\left\{ 1,2,...,n\right\} $
-\end_inset
-
- (godtyckliga labels, jfr partier).
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Transitionssannolikheter (en-stegs)
-\series default
-\color inherit
-
-\begin_inset Formula 
-\[
-p_{ij}(t)=\mathbf{P}\left\{ X(t+1)=j\vert X(t)=i\right\} 
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Transitionssannolikheter (h-stegs)
-\series default
-\color inherit
-
-\begin_inset Formula 
-\[
-p_{ij}^{(h)}(t)=\mathbf{P}\left\{ X(t+h)=j\vert X(t)=i\right\} 
-\]
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -790,59 +732,6 @@ Markovkedjor
 
 \series bold
 \color blue
-Markovprocess
-\series default
-\color inherit
-: prognosen för morgondagen beror endast på idag:
-\begin_inset Formula 
-\[
-P\left\{ \text{framtiden}\vert\text{nu},\text{historiken}\right\} =P\left\{ \text{framtiden}\vert\text{nu}\right\} 
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Markovprocess
-\series default
-\color inherit
-: för alla tidpunkter 
-\begin_inset Formula $t_{1}<...<t_{n}<t$
-\end_inset
-
- och händelser 
-\begin_inset Formula $A,A_{1},...,A_{n}$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\mathbf{P}\left\{ X(t)\in A\vert X(t_{1})\in A_{1},...X(t_{n})\in A_{n}\right\} =\mathbf{P}\left\{ X(t)\in A\vert X(t_{1})\in A_{1}\right\} 
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Många processer är inte Markov.
- Praktiskt 
-\series bold
-antagande
-\series default
-.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
 Markovkedja
 \series default
 \color inherit
@@ -856,6 +745,10 @@ diskreta tillstånd
 \series default
 .
  
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -867,6 +760,10 @@ diskreta tillstånd
 \end_inset
 
  (godtyckliga labels, jfr partier).
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -880,6 +777,28 @@ Transitionssannolikheter (en-stegs)
 \begin_inset Formula 
 \[
 p_{ij}(t)=\mathbf{P}\left\{ X(t+1)=j\vert X(t)=i\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Transitionssannolikheter (h-stegs)
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+p_{ij}^{(h)}(t)=\mathbf{P}\left\{ X(t+h)=j\vert X(t)=i\right\} 
 \]
 
 \end_inset
@@ -1081,19 +1000,19 @@ Ex:
 \begin_inset Formula $1\rightarrow2$
 \end_inset
 
- på flera sätt: 
+ på två sätt: 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $1\rightarrow2\rightarrow2$
+\begin_inset Formula $1\rightarrow1\rightarrow2$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $1\rightarrow1\rightarrow2$
+\begin_inset Formula $1\rightarrow2\rightarrow2$
 \end_inset
 
 
@@ -1355,6 +1274,10 @@ Räkneprocesser
 \end_inset
 
 .
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1374,17 +1297,25 @@ Binomialprocess
 \begin_inset Formula $n$
 \end_inset
 
-första
+ första
 \series default
  utav en sekvens oberoende Bernoulliförsök med sannolikhet 
 \begin_inset Formula $p$
 \end_inset
 
 .
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $X(n)\sim Binomial(n,p)$
+\end_inset
+
+
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -1396,6 +1327,10 @@ första
 
  = antalet försök mellan två lyckade.
  
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1472,6 +1407,10 @@ time frame
 \series default
 .
  Jfr film.
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1484,6 +1423,10 @@ time frame
 
  sekunder att utföra.
  
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1492,6 +1435,10 @@ Processen kan defineras som funktion av (klock)tid:
 \end_inset
 
 .
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1504,14 +1451,22 @@ Förväntat antal lyckade under hela tidsperioden
 \end_inset
 
 .
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Förväntat antal försök per sekund
+Förväntat antal försök under 
+\begin_inset Formula $t$
+\end_inset
+
+ sekund
 \series default
-: 
+er: 
 \begin_inset Formula 
 \[
 \mathbb{E}X\left(\frac{t}{\Delta}\right)=\frac{t}{\Delta}p,
@@ -1524,6 +1479,10 @@ dvs
 \end_inset
 
  lyckade per sekund.
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1575,6 +1534,10 @@ Interarrival time
 \end_inset
 
  är tiden mellan lyckade försök.
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1583,10 +1546,18 @@ Interarrival time
 
  = antalet försök mellan två lyckade.
  
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $Y\sim Geometrisk(p)$
+\end_inset
+
+
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -1599,6 +1570,10 @@ Interarrival time
 .
  Följer en skalad geometrisk fördelning med support 
 \begin_inset Formula $\Delta,2\Delta,3\Delta,...$
+\end_inset
+
+
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -1656,6 +1631,10 @@ Poissonprocessen
 \end_inset
 
 ).
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1677,6 +1656,10 @@ Kom ihåg:
 
  är konstant.
  
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1694,6 +1677,12 @@ kontinuerlig tid
 \series default
 .
  Jfr frames i filmer.
+\color inherit
+
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1709,6 +1698,10 @@ SimulatePoissonProcess.R
 \family default
 \color inherit
 .
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1721,6 +1714,10 @@ Interarrvival för
 \end_inset
 
 .
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize

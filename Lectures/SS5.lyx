@@ -635,7 +635,7 @@ Binomial
 \begin_layout Itemize
 R-kod för Binomial(n,p): 
 \family typewriter
-U=runif(n); X=sum(U<p
+U=runif(n); X=sum(U<p)
 \end_layout
 
 \end_deeper
@@ -768,7 +768,7 @@ Inversa CDF metoden - diskreta fallet
 status open
 
 \begin_layout Plain Layout
-Inversa transformationsmetoden
+Inversa CDF metoden - kontinuerlig
 \end_layout
 
 \end_inset
@@ -777,14 +777,6 @@ Inversa transformationsmetoden
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-Simulering från allmän 
-\series bold
-kontinuerlig
-\series default
- fördelning.
-\end_layout
-
 \begin_layout Theorem
 Låt 
 \begin_inset Formula $X$
@@ -830,7 +822,11 @@ Inversa transformationsmetoden
 \end_inset
 
  variabel: 
-\begin_inset Formula $X=F^{-1}(U)$
+\begin_inset Formula 
+\[
+X=F^{-1}(U)
+\]
+
 \end_inset
 
 .
@@ -863,7 +859,7 @@ U=1-e^{\lambda X}
 
 \end_inset
 
-vilket har lösningen
+
 \begin_inset Formula 
 \[
 X=-\frac{1}{\lambda}\ln(1-U)
@@ -885,7 +881,7 @@ X=-\frac{1}{\lambda}\ln(1-U)
 status open
 
 \begin_layout Plain Layout
-Inversa CDF metoden - kontinuerliga fallet
+Inversa CDF metoden - kontinuerlig
 \end_layout
 
 \end_inset
@@ -1034,6 +1030,111 @@ pnorm
 status open
 
 \begin_layout Plain Layout
+Testar inversa CDF metoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Följande funkar (dvs Fx blir likformigt fördelad):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+x = rgamma(10000, shape = 2, rate = 3)
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+Fx = pgamma(x, shape = 2, rate = 3) 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+hist(Fx,30)
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename InverseCDFCorrect.png
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename InverseCDFWrong.png
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Följande funkar inte (dvs Fx blir 
+\series bold
+inte
+\series default
+ likformigt fördelad):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+x = rgamma(10000, shape = 2, rate = 3)
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+Fx = pgamma(x, 
+\series bold
+\color red
+shape = 1
+\series default
+\color inherit
+, rate = 3) 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+hist(Fx,30)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Monte Carlo metoder
 \end_layout
 
@@ -1047,6 +1148,10 @@ Monte Carlo metoder
 Simulering från fördelningar kan användas för att approximera t ex olika
  sannolikheter.
  
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1068,6 +1173,10 @@ Låt
 \end_inset
 
 
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1078,7 +1187,13 @@ Låt
 \begin_inset Formula $\hat{p}$
 \end_inset
 
-) är en estimator (uppskattning) av kvantiteten 
+) är en 
+\series bold
+\color blue
+estimator
+\series default
+\color inherit
+ (uppskattning) av kvantiteten 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -1087,6 +1202,10 @@ Låt
 \end_inset
 
 ).
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1142,8 +1261,12 @@ Om vi upprepar hela receptet flera ggr, varje gång med ett nytt stickprov
 \begin_inset Formula $N$
 \end_inset
 
-, kommer vi då att ha rätt i genomsnitt? Dvs är 
-\begin_inset Formula $E(\hat{p})=p$
+, kommer vi då att ha rätt i genomsnitt? 
+\begin_inset Newline newline
+\end_inset
+
+Är 
+\begin_inset Formula $\mathbb{E}(\hat{p})=p$
 \end_inset
 
 ? 
@@ -1154,7 +1277,11 @@ Hur mycket kommer
 \begin_inset Formula $\hat{p}$
 \end_inset
 
- att variera från stickprov till stickprov? Dvs hur stor är 
+ att variera från stickprov till stickprov? 
+\begin_inset Newline newline
+\end_inset
+
+Hur stor är 
 \begin_inset Formula $Var(\hat{p})$
 \end_inset
 
@@ -1182,7 +1309,7 @@ Antal
  Så
 \begin_inset Formula 
 \[
-E(\hat{p})=E\left(\frac{Y}{N}\right)=\frac{1}{N}N\cdot p=p
+\mathbb{E}(\hat{p})=\mathbb{E}\left(\frac{Y}{N}\right)=\frac{1}{N}N\cdot p=p
 \]
 
 \end_inset
@@ -1199,11 +1326,15 @@ väntevärdesriktig
 \series bold
 unbiased
 \series default
-) estimator.
+) estimator av 
+\begin_inset Formula $p$
+\end_inset
+
+.
  
 \begin_inset Formula 
 \[
-Var(\hat{p})=\frac{1}{N^{2}}Np(1-p)=\frac{p(1-p)}{N}.
+Var(\hat{p})=Var\left(\frac{Y}{N}\right)=\frac{1}{N^{2}}Np(1-p)=\frac{p(1-p)}{N}.
 \]
 
 \end_inset
@@ -1217,7 +1348,7 @@ Se Baron s.
 \begin_inset Formula $N$
 \end_inset
 
- för att given exakthet 
+ för att nå given exakthet 
 \begin_inset Formula $\mathbf{P}\left\{ \left|\hat{p}-p\right|>\varepsilon\right\} \leq\alpha$
 \end_inset
 

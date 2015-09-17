@@ -1,7 +1,7 @@
 nIter = 10000;
 S = zeros(1,nIter);
 for n = 2:nIter
-    S(n) = S(n-1) + 10*randn;
+    S(n) = S(n-1) + randn;
 end
 n = 1:nIter;
 comet(n,S);title('S');pause(3)
