@@ -136,11 +136,17 @@ target "https://www.ida.liu.se/~TDAB01/index.sv.shtml"
 \begin_layout Itemize
 Registrera dig på 
 \series bold
-webreg
+webreg 
 \series default
-.
+med följande länk:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+https://www.ida.liu.se/webreg3/TDAB01-2015-1/LAB1
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Samtliga uppgifter ska skickas via e-post till 
 \series bold
