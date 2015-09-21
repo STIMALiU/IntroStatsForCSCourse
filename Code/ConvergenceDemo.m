@@ -4,9 +4,9 @@ for n = 2:nIter
     S(n) = S(n-1) + randn;
 end
 n = 1:nIter;
-comet(n,S);title('S');pause(3)
-comet(n,S./n);title('S/n');pause(3)
-comet(n,S./sqrt(n));title('S/sqrt(n)');pause(3)
+comet(n,S);title('S');pause(10)
+comet(n,S./n);title('S/n');pause(10)
+comet(n,S./sqrt(n));title('S/sqrt(n)');pause(10)
 
 
 g = @(x) 0.7*x.^2 + 0.3*sin(4*x);

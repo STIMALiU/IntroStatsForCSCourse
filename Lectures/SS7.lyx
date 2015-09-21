@@ -1,0 +1,1413 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<setup, include=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(knitr)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(tikzDevice)
+\end_layout
+
+\begin_layout Plain Layout
+
+source("MVutils.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='f
+ootnotesize')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+read_chunk('Lecture4SlideCode.R')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+TDAB01
+\end_layout
+
+\end_inset
+
+Sannolikhetslära och Statistik
+\begin_inset Newline newline
+\end_inset
+
+Föreläsning 7
+\end_layout
+
+\begin_layout Author
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Mattias Villani
+\end_layout
+
+\end_inset
+
+Mattias Villani
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+STIMA, LiU
+\end_layout
+
+\end_inset
+
+Avdelningen för Statistik och Maskininlärning
+\begin_inset Newline newline
+\end_inset
+
+Institutionen för datavetenskap
+\begin_inset Newline newline
+\end_inset
+
+Linköpings universitet 
+\end_layout
+
+\begin_layout Date
+\begin_inset Graphics
+	filename LiU_secondary_1_black.png
+	lyxscale 7
+	scale 15
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Översikt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Population, parametrar, stickprov och statistik.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Deskriptiv statistik
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Introduktion till parameterestimation och samplingfördelningar.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Grafiska metoder - demo
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Grundläggande begrepp
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Population
+\series default
+\color inherit
+ = alla enheter av intresse.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sveriges befolkning.
+ 
+\end_layout
+
+\begin_layout Itemize
+Alla möjliga handskrivna siffror.
+\end_layout
+
+\begin_layout Itemize
+Alla producerade enheter vid en fabrik.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Parameter
+\series default
+\color inherit
+ = numerisk beskrivning av populationen.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Genomsnittsinkomst (
+\begin_inset Formula $\mu$
+\end_inset
+
+) eller inkomstspridning (
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Medelintensitet i gråskala vid en viss pixel i en bild av en 8:a.
+\end_layout
+
+\begin_layout Itemize
+Andelen trasiga produkter.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stickprov
+\series default
+\color inherit
+ (eng.
+ sample) = en delmängd av observerad enheter från populationen.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+1000 slumpmässigt valda personer.
+\end_layout
+
+\begin_layout Itemize
+1000 handskrivna siffror (0-9) av olika personer i olika åldrar.
+\end_layout
+
+\begin_layout Itemize
+10 utvalda lådor med produkter.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Statistika
+\series default
+\color inherit
+ (eng.
+ statistic) = sammanfattande funktion av stickprovet.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\bar{X}$
+\end_inset
+
+, medelvärdet.
+ 
+\begin_inset Formula $s^{2}$
+\end_inset
+
+, stickprovsvariansen, andelen trasiga produkter 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sannolikhetslära och statistisk inferens
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Quotation
+\align center
+\begin_inset Graphics
+	filename StatistiskInferens.png
+	lyxscale 40
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Estimator
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Populationsparameter:
+\series default
+\color inherit
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ Okänd.
+ 
+\series bold
+Inferens
+\series default
+/
+\series bold
+learning
+\series default
+: lära sig om 
+\begin_inset Formula $\theta$
+\end_inset
+
+ från data.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ är en 
+\series bold
+\color blue
+estimator
+\series default
+\color inherit
+ av 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ För ett givet stickprov får vi ett 
+\series bold
+estimat
+\series default
+ (ett värde) av 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ som representerar vår 
+\series bold
+bästa 
+\begin_inset Quotes eld
+\end_inset
+
+gissning
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\series default
+av 
+\begin_inset Formula $\theta$
+\end_inset
+
+ baserat på information i stickprovet.
+\end_layout
+
+\begin_layout Itemize
+Exempel: 
+\begin_inset Formula $\theta=p$
+\end_inset
+
+, sannolikheten i en sekvens Bernoulliförsök: 
+\begin_inset Formula 
+\[
+\hat{p}=\frac{\sum_{i=1}^{n}X_{i}}{n}=\text{andelen lyckade}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+ är 
+\series bold
+rätt i genomsnitt
+\series default
+ sett över alla möjliga stickprov av storleken 
+\begin_inset Formula $n$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbb{E}\hat{p}=\mathbb{E}\left(\frac{\sum_{i=1}^{n}X_{i}}{n}\right)=\left(\frac{\sum_{i=1}^{n}\mathbb{E}X_{i}}{n}\right)=\frac{\sum_{i=1}^{n}p}{n}=\frac{np}{n}=p
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+En estimator 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ av 
+\begin_inset Formula $\theta$
+\end_inset
+
+ är 
+\series bold
+\color blue
+väntevärdesriktig
+\series default
+\color inherit
+ (eng.
+ 
+\series bold
+unbiased
+\series default
+) om 
+\begin_inset Formula 
+\[
+\mathbb{E}\hat{\theta}=\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Bias
+\series default
+\color inherit
+:
+\begin_inset Formula 
+\[
+Bias(\hat{\theta})=\mathbb{E}\left(\hat{\theta}\right)-\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Samplingfördelning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Men 
+\series bold
+hur fel kan det bli i ett givet stickprov
+\series default
+?
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Samplingfördelning
+\series default
+\color inherit
+ för 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ beskriver hur 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ kan variera från stickprov till stickprov.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex.
+ Population: 
+\begin_inset Formula $\{3,5,5,8,10\}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\theta=\frac{3+5+5+7+10}{5}=6$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Stickprov av storleken 
+\begin_inset Formula $n$
+\end_inset
+
+, utan återläggning.
+ 
+\end_layout
+
+\begin_layout Itemize
+Samplingfördelning för 
+\begin_inset Formula $\bar{X}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Ex.
+ 
+\begin_inset Formula $n=3$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Stickprov 1: 
+\begin_inset Formula $\{3,5,5\}$
+\end_inset
+
+ med 
+\begin_inset Formula $\bar{x}=4.333.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stickprov 2: 
+\begin_inset Formula $\{3,5,7\}$
+\end_inset
+
+ med 
+\begin_inset Formula $\bar{x}=5.000.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stickprov 10: 
+\begin_inset Formula $\{5,7,10\}$
+\end_inset
+
+ med 
+\begin_inset Formula $\bar{x}=7.333.$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Samplingfördelning för 
+\begin_inset Formula $\bar{X}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename SamplingDistn2.png
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename SamplingDistn3.png
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename SamplingDistn4.png
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename SamplingDistn5.png
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Medelvärdesestimatorn
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Medelvärde: 
+\begin_inset Formula $\bar{X}=\frac{X_{1}+...+X_{n}}{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Väntevärdesriktig
+\series default
+ för 
+\begin_inset Formula $\mu=E(X)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbb{E}\bar{X}=\mu
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Enkelt slumpmässigt urval
+\series default
+\color inherit
+: 
+\series bold
+samplingdesign
+\series default
+ där enheter väljs 
+\series bold
+oberoende
+\series default
+ av varandra från populationen och med 
+\series bold
+lika
+\series default
+ 
+\series bold
+sannolikheter
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+iid
+\series default
+\color inherit
+ (
+\series bold
+i
+\series default
+ndependent 
+\series bold
+i
+\series default
+dentically 
+\series bold
+d
+\series default
+istributed).
+ sv.
+ 
+\series bold
+oberoende likafördelade
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Samplingvarians
+\series default
+\color inherit
+, eller 
+\series bold
+\color blue
+standardfel
+\series default
+\color inherit
+, för 
+\begin_inset Formula $\bar{X}$
+\end_inset
+
+ om 
+\begin_inset Formula $X_{1},...,X_{n}$
+\end_inset
+
+ är 
+\series bold
+iid
+\series default
+ med väntevärde 
+\begin_inset Formula $\mu$
+\end_inset
+
+ och varians 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+Var(\bar{X})=Var\left(\frac{\sum_{i=1}^{n}X_{i}}{n}\right)=\frac{1}{n^{2}}\sum_{i=1}^{n}Var(X_{i})=\frac{1}{n^{2}}n\sigma^{2}=\frac{\sigma^{2}}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Konsistens och CLT
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\bar{X}$
+\end_inset
+
+ är 
+\series bold
+\color blue
+konsistent
+\series default
+\color inherit
+ för 
+\begin_inset Formula $\mu$
+\end_inset
+
+ om samplingfördelningen blir alltmer koncentrerad kring 
+\begin_inset Formula $\mu$
+\end_inset
+
+ när stickprovsstorleken 
+\begin_inset Formula $n$
+\end_inset
+
+ ökar.
+ 
+\end_layout
+
+\begin_layout Itemize
+Formellt är estimatorn 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ konsistent för 
+\begin_inset Formula $\theta$
+\end_inset
+
+ om, för alla 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbf{P}\left\{ \left|\hat{\theta}-\theta\right|>\varepsilon\right\} \rightarrow0\text{ när }n\rightarrow\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sats
+\series default
+: för ett iid stickprov är 
+\begin_inset Formula $\bar{X}$
+\end_inset
+
+ är konsistent för 
+\begin_inset Formula $\mu=\mathbb{E}X$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Bevis
+\series default
+: Chebyshevs olikhet:
+\begin_inset Formula 
+\[
+\mathbf{P}\left\{ \left|\bar{X}-\mu\right|>\varepsilon\right\} \leq\frac{Var(\bar{X})}{\varepsilon^{2}}=\frac{\sigma^{2}/n}{\varepsilon^{2}}\rightarrow0\text{ när }n\rightarrow\infty.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Centralagränsvärdessatsen
+\series default
+\color inherit
+ säger att samplingfördelningen för 
+\begin_inset Formula $\bar{X}$
+\end_inset
+
+ är approximativt 
+\begin_inset Formula $N\left(\mu,\sigma^{2}/n\right)$
+\end_inset
+
+ för stora 
+\begin_inset Formula $n$
+\end_inset
+
+ (tumregel: 
+\begin_inset Formula $n>30)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Formellt: CDFn för 
+\begin_inset Formula 
+\[
+Z=\frac{\bar{X}-\mathbb{E}\bar{X}}{Std(\bar{X})}=\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}
+\]
+
+\end_inset
+
+konvergerar mot CDFn för en standard normal 
+\begin_inset Formula $N(0,1)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Median och kvantiler
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Medelvärdet är känsligt till extrema mätvärden, s k 
+\series bold
+\color blue
+outliers
+\series default
+\color inherit
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Medianen
+\series default
+\color inherit
+, 
+\begin_inset Formula $M$
+\end_inset
+
+, är mer 
+\series bold
+\color blue
+robust
+\series default
+\color inherit
+
+\begin_inset Formula 
+\begin{align*}
+P\left(X>M\right) & \leq0.5\\
+P(X<M) & \leq0.5
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Median = hälften av sannolikhetsmassan till vänster, hälften till höger.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Samplemedianen
+\series default
+\color inherit
+ 
+\begin_inset Formula 
+\[
+\hat{M}=\begin{cases}
+\left(\text{\frac{n+1}{2}}\right)\text{:te minsta observationen} & \text{ om }n\text{ udda}\\
+\text{medelvärdet av \ensuremath{\left(\text{\frac{n}{2}}\right)\text{:te minsta observation och \left(\frac{n+2}{2}\right)\text{:te} observationen}}} & \text{ om }n\text{jämnt}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Generalisering av median: 
+\begin_inset Formula $p$
+\end_inset
+
+-
+\series bold
+kvantil
+\series default
+ är ett tal 
+\begin_inset Formula $c$
+\end_inset
+
+ som löser
+\begin_inset Formula 
+\begin{align*}
+P\left(X>c\right) & \leq p\\
+P(X<c) & \leq1-p
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Percentiler
+\series default
+: 
+\begin_inset Formula $5\%,$
+\end_inset
+
+ 
+\begin_inset Formula $37\%$
+\end_inset
+
+ etc
+\series bold
+.
+ Kvartiler
+\series default
+: 
+\begin_inset Formula $25\%$
+\end_inset
+
+, 
+\begin_inset Formula $50\%$
+\end_inset
+
+, 
+\begin_inset Formula $75\%$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R:$
+\end_inset
+
+
+\color black
+ 
+\family typewriter
+qnorm(p=0.05,mean=1,sd =
+\begin_inset Formula $2$
+\end_inset
+
+) 
+\family default
+returnerar 
+\begin_inset Formula $-2.289707$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stickprovsvariansen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Populationsvarians: 
+\begin_inset Formula $\sigma^{2}=\mathbb{E}\left(X-\mu\right)^{2}$
+\end_inset
+
+.
+ Hur skatta 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ från stickprov?
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stickprovsvariansen
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+s^{2}=\frac{\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}}{n-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s^{2}$
+\end_inset
+
+ verkar vara en naturlig estimator, men varför division med 
+\begin_inset Formula $n-1$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+Svar: därför att bara med 
+\begin_inset Formula $n-1$
+\end_inset
+
+ får man 
+\begin_inset Formula $\mathbb{E}s^{2}=\sigma^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Bevis: Vi kan skriva om 
+\begin_inset Formula $s^{2}$
+\end_inset
+
+ som (se Remark på sid.
+ 220 för bevis):
+\size footnotesize
+\color black
+ 
+\begin_inset Formula 
+\[
+s^{2}=\frac{\sum_{i=1}^{n}X_{i}^{2}-n\bar{X}^{2}}{n-1}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbb{E}s^{2}=\frac{\sum_{i=1}^{n}\mathbb{E}X_{i}^{2}-n\mathbb{E}\left(\bar{X}^{2}\right)}{n-1}
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $\mathbb{E}X_{i}^{2}=Var(X_{i})+\mu^{2}=\sigma^{2}+\mu^{2}$
+\end_inset
+
+ och 
+\begin_inset Formula $\mathbb{E}\left(\bar{X}^{2}\right)=Var(\bar{X})+\left(\mathbb{E}\bar{X}\right)^{2}=\frac{\sigma^{2}}{n}+\mu^{2}$
+\end_inset
+
+.
+ Så
+\begin_inset Formula 
+\[
+\sum_{i=1}^{n}\mathbb{E}X_{i}^{2}-n\mathbb{E}\left(\bar{X}^{2}\right)=n\left(\sigma^{2}+\mu^{2}\right)-n\left(\frac{\sigma^{2}}{n}+\mu^{2}\right)=\sigma^{2}(n-1)
+\]
+
+\end_inset
+
+
+\size default
+\color inherit
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\end_body
+\end_document
