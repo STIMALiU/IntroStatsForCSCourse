@@ -134,10 +134,41 @@ target "https://www.ida.liu.se/~TDAB01/index.sv.shtml"
 \end_layout
 
 \begin_layout Itemize
-Samtliga uppgifter ska lämnas in och vara godkända för att laborationen
- ska godkännas.
+Registrera dig på 
+\series bold
+webreg 
+\series default
+med följande länk:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+https://www.ida.liu.se/webreg3/TDAB01-2015-1/LAB1
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Samtliga uppgifter ska skickas via e-post till 
+\series bold
+mans.magnusson@liu.se
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ange rubriken 
+\begin_inset Quotes eld
+\end_inset
+
+Labb <labnummer> för grupp <labbgrupp> - TBDA01
+\begin_inset Quotes erd
+\end_inset
+
+ i meddelandet.
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset CommandInset line
 LatexCommand rule
