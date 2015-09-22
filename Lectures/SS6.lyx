@@ -1478,7 +1478,7 @@ dvs
 \begin_inset Formula $\lambda=p/\Delta$
 \end_inset
 
- lyckade per sekund.
+ förväntat antal lyckade per sekund.
 \begin_inset VSpace medskip
 \end_inset
 
