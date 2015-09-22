@@ -1,4 +1,4 @@
-# Simulates a Poisson process
+# Simulates a Normal Auto Regressive (AR) process
 # Author: Mattias Villani, Division of Statistics and Machine Learning, Linköping University
 # http://mattiasvillani.com
 
