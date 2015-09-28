@@ -1,0 +1,1639 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Programming i R}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Programming i R}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language swedish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+TBDA01: Laboration 2
+\end_layout
+
+\begin_layout Author
+Måns Magnusson, Mattias Villani
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Set you (local) path
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/TBDA1/exe
+rcise_solutions/"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+for(sol_file in solution_files) source(file = paste0(solution_path, sol_file),
+ echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Instruktioner.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduktion till R
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "RIntro.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Laboration
+\end_layout
+
+\begin_layout Standard
+I denna laboration kommer vi gå djupare in på statistisk inferens.
+ D.v.s.
+ givet att vi observerat data, vilka slutsatser kan vi dra om parametrarna
+ i våra sannolikhetsmodeller.
+ När vi gör statistisk inferens kommer vi (oftast) att behöva göra 
+\series bold
+antaganden
+\series default
+ om från vilken modell vårt datamaterial kommer.
+ Det är därför nyttigt att ha med sig följande citat av George Box.
+\end_layout
+
+\begin_layout Quote
+\begin_inset Quotes sld
+\end_inset
+
+All models are wrong, but some are useful.
+\begin_inset Quotes srd
+\end_inset
+
+ - George E.
+ P.
+ Box
+\end_layout
+
+\begin_layout Section
+Likelihoodfunktionen
+\end_layout
+
+\begin_layout Standard
+Vi ska nu visualisera likelihoodfunktionen.
+ Nedan är 10 respektive 100 dragningar från en 
+\begin_inset Formula $\mbox{Gamma}(\alpha=2,\beta=2)$
+\end_inset
+
+, vilket i detta exempel är vår 
+\begin_inset Quotes sld
+\end_inset
+
+sanna
+\begin_inset Quotes srd
+\end_inset
+
+ fördelning.
+ Observera att vi sätter slumpfröet till 4711.
+ Det gör att vi kan replikera dessa dragningar exakt.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(4711)
+\end_layout
+
+\begin_layout Plain Layout
+
+x1 <- rgamma(n = 10, shape = 4, scale = 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+x1
+\end_layout
+
+\begin_layout Plain Layout
+
+x2 <- rgamma(n = 100, shape = 4, scale = 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vi ska nu implementera log-likelihoodfunktioner (och anta att observationerna
+ är obeorende av varandra).
+ För att härleda en log-likelihoodfunktion utgår vi ofta från vår sannolikhetsfö
+rdelnings täthetsfunktion.
+ 
+\end_layout
+
+\begin_layout Standard
+Nedan är ett exempel på log-likelihoodfunktionen för gammafördelade variabler
+ och en vektor 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ med data.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+l(\alpha,\beta|\mathbf{x}) & = & \ln\left(\prod^{n}\frac{\beta^{\alpha}}{\Gamma(\alpha)}x_{i}^{\alpha-1}e^{-\beta x_{i}}\right)\\
+ & = & n\cdot\left[\alpha\cdot\ln\beta-\ln\Gamma(\alpha)\right]+(\alpha-1)\sum_{i}^{n}\ln(x_{i})-\beta\sum^{n}x_{i}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection
+Uppgift 1 Likelihoodfunktioner
+\end_layout
+
+\begin_layout Paragraph*
+a)
+\end_layout
+
+\begin_layout Plain Layout
+Skapa en funktion i R du kallar 
+\family typewriter
+llgamma(x, alpha, beta)
+\family default
+ som tar datapunkterna i en vektor 
+\family typewriter
+x
+\family default
+ och värden för 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ och 
+\begin_inset Formula $\beta$
+\end_inset
+
+ och returnerar log-likelihoodvärdet för parametrarna givet det observerade
+ materialet 
+\family typewriter
+x
+\family default
+.
+ Inkludera funktionen i rapporten.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Tips!
+\series default
+ 
+\begin_inset Formula $\log\Gamma(x)$
+\end_inset
+
+ heter 
+\family typewriter
+lgamma()
+\family default
+ och 
+\begin_inset Formula $\ln$
+\end_inset
+
+ heter 
+\family typewriter
+log()
+\family default
+ i R.
+\end_layout
+
+\begin_layout Plain Layout
+Nedan är ett exempel på värden funktionen ska returnera.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+llgamma(x = x1, alpha = 2, beta = 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+b)
+\end_layout
+
+\begin_layout Plain Layout
+Beräkna och visualisera loglikelihood värden för 
+\begin_inset Formula $\mathbf{x}_{1}$
+\end_inset
+
+ och 
+\begin_inset Formula $\mathbf{x}_{2}$
+\end_inset
+
+ som simulerades ovan då 
+\begin_inset Formula $\alpha=4$
+\end_inset
+
+.
+ Du behöver beräkna log-likelihooden för olika värden på 
+\begin_inset Formula $\beta$
+\end_inset
+
+ på intervallet 
+\begin_inset Formula $(0,3]$
+\end_inset
+
+, förslagsvis med en stegstorlek på 0.01.
+ Vad är din visuella bedömning av funktionens maximum? 
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+plot()
+\family default
+ 
+\end_layout
+
+\begin_layout Paragraph*
+c)
+\end_layout
+
+\begin_layout Plain Layout
+Upprepa det du gjort i 
+\series bold
+b)
+\series default
+ ovan men anta nu att 
+\begin_inset Formula $\beta=1$
+\end_inset
+
+ och visualisera på ett liknande sätt 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ på intervallet 
+\begin_inset Formula $(0,10]$
+\end_inset
+
+ för 
+\begin_inset Formula $\mathbf{x}_{1}$
+\end_inset
+
+ och 
+\begin_inset Formula $\mathbf{x}_{2}$
+\end_inset
+
+.
+ Vad är din viduella bedömning av funktionens maximum?
+\end_layout
+
+\begin_layout Paragraph*
+d)
+\end_layout
+
+\begin_layout Plain Layout
+Härled nu log-likelihoodfunktionen för en vektor 
+\begin_inset Formula $\mathbf{y}$
+\end_inset
+
+ med normalfördelade datapunkter och inkludera härledningen i rapporten.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Implementera log-likelihoodfunktionen som en funktion i R som du kalla 
+\family typewriter
+llnorm(x, mu, sigma2)
+\family default
+.
+ Funktionen ska kunna ta en vektor med datapunkter 
+\family typewriter
+x
+\family default
+, samt värden på 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ och 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Inkludera funktionen i rapporten.
+\end_layout
+
+\begin_layout Plain Layout
+Nedan är ett exempel på hur funktionen ska fungera.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+llnormal(x = x1, mu = 2, sigma2 = 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Tips!
+\series default
+ 
+\begin_inset Formula $\pi$
+\end_inset
+
+ är inkluderat som 
+\family typewriter
+pi
+\family default
+ i R.
+\end_layout
+
+\begin_layout Paragraph*
+e) 
+\end_layout
+
+\begin_layout Plain Layout
+Visualisera på samma sätt som i 
+\series bold
+b)
+\series default
+ och 
+\series bold
+c)
+\series default
+ ovan log-likelihood funktionen för 
+\begin_inset Formula $\mu$
+\end_inset
+
+ på intervallet 
+\begin_inset Formula $[0,10]$
+\end_inset
+
+ för de (gammafördelade) dragningarna 
+\begin_inset Formula $\mathbf{x}_{1}$
+\end_inset
+
+ och 
+\begin_inset Formula $\mathbf{x}_{2}$
+\end_inset
+
+ ovan.
+ Vi antar att 
+\begin_inset Formula $\sigma^{2}=1$
+\end_inset
+
+.
+ Vad är dina slutsatser? Går det att se på log-likelihoodfunktionen om datat
+ kommer från en gammafördelning?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Punktskattningar från populationsmodell
+\end_layout
+
+\begin_layout Standard
+Vi har sett ovan att likelihoodfunktionen är en funktion som innehåller
+ information om de parametrar vi är intresserade av.
+ Vi vill då uppskatta dessa parametrar baserat på data vi har samlat in.
+ En av de vanligaste metoderna för att göra detta är med vad som brukar
+ kallas 
+\series bold
+maximum likelihood estimation
+\series default
+ (MLE), som namnet antyder handlar det om att maximera likelihoodfunktionen
+ vi studerade ovan.
+ Är vi intresserade av att försöka uppskatta parametrarna i vår modell med
+ ett enda värde per parameter är vi intresserad av en 
+\series bold
+punktskattning
+\series default
+ av modellens parametrar.
+ Det är också det vi ska studera i detta avsnitt.
+\end_layout
+
+\begin_layout Standard
+För gammafördelningens parameter 
+\begin_inset Formula $\beta$
+\end_inset
+
+ går det att analytiskt härleda maximum för loglikelihoodfunktionen med
+ avseende på parametern 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ Detta kan göras på traditionellt sett genom att derivera log likelihoodfunktion
+en, sätta derivatan till 0 och lösa ut 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ En punktskattning anges ofta med ett litet 
+\begin_inset Quotes sld
+\end_inset
+
+tak
+\begin_inset Quotes srd
+\end_inset
+
+ över den parameter vi är intresserad av för att indikera att det är en
+ skattning av parametern 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{\beta}_{MLE}=n\alpha\left(\sum^{n}x_{i}\right)^{-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionen för att beräkna vår punktskattning är vad som kallas en 
+\series bold
+estimator
+\series default
+.
+ Det värde funktionen returnerar kallas för 
+\series bold
+estimat
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection
+Uppgift 2 Punktskattning med MLE i en gammafördelning
+\end_layout
+
+\begin_layout Plain Layout
+Implementera estimatorn ovan som en funktion du kallar 
+\family typewriter
+gamma_beta_mle(x, alpha)
+\family default
+ med parametrarna 
+\family typewriter
+x
+\family default
+ (data) och 
+\family typewriter
+alpha
+\family default
+.
+ Nedan är ett exempel på hur funktionen ska fungera:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+gamma_beta_mle(x = x1, alpha=2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Skatta 
+\begin_inset Formula $\hat{\beta}_{MLE}$
+\end_inset
+
+ med denna estimator för 
+\begin_inset Formula $\mathbf{x}_{1}$
+\end_inset
+
+ och 
+\begin_inset Formula $\mathbf{x}_{2}$
+\end_inset
+
+ ovan med 
+\begin_inset Formula $\alpha=4$
+\end_inset
+
+.
+ Vad är dina slutsatser? 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+På ett liknande sätt är det möjligt att skatta parametrarna 
+\begin_inset Formula $\mu$
+\end_inset
+
+ och 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ i en normalfördelning.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection
+Uppgift 3 Punktskattning med MLE i en normalfördelning
+\end_layout
+
+\begin_layout Paragraph*
+a)
+\end_layout
+
+\begin_layout Plain Layout
+MLE-estimatorn för 
+\begin_inset Formula $\mu$
+\end_inset
+
+ och 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ i en normalfördelning finns 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://en.wikipedia.org/wiki/Normal_distribution#Estimation_of_parameters"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ Implementera dessa estimatorer som 
+\family typewriter
+norm_mu_mle(x)
+\family default
+ och 
+\family typewriter
+norm_sigma2_mle(x)
+\family default
+ med 
+\family typewriter
+x
+\family default
+ (data) som argument.
+ Se nedan för ett exempel på hur funktionerna ska fungera.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+test_x <- 1:10
+\end_layout
+
+\begin_layout Plain Layout
+
+norm_mu_mle(x = test_x)
+\end_layout
+
+\begin_layout Plain Layout
+
+norm_sigma2_mle(x = test_x)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+b) 
+\end_layout
+
+\begin_layout Plain Layout
+Gör 10 och 100 dragningar från följande fördelning.
+ Sätt slumpfröet till 42 innan du gör dina dragningar på samma sätt som
+ 
+\begin_inset Formula $\mathbf{x}_{1}$
+\end_inset
+
+ och 
+\begin_inset Formula $\mathbf{x}_{2}$
+\end_inset
+
+ ovan.
+ 
+\begin_inset Formula 
+\[
+\mathbf{y}\sim\mbox{\mathcal{N}}(\mu=10,\sigma^{2}=4)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Använd sedan dina två estimatorer för att först skatta 
+\begin_inset Formula $\mu$
+\end_inset
+
+och 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ sedan.
+ Vad är skillnaden mellan 10 och 100 dragningar? Vad beror detta på (
+\series bold
+Tips!
+\series default
+ Föregående laboration)?
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Obs!
+\series default
+ Tänk på att 
+\family typewriter
+rnorm()
+\family default
+ är parametriserad med 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, inte 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Samplingfördelning och väntevärdesriktighet
+\end_layout
+
+\begin_layout Standard
+Vi ska nu studera egenskaperna hos dessa estimatorer genom simulering, detta
+ är en vanlig metod för att utvärdera hur väl olika 
+\series bold
+estimatorer
+\series default
+ fungerar.
+ Vi ska nu studera 
+\series bold
+fördelningen
+\series default
+ för de estimatorer vi har implementerat ovan.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection
+Uppgift 4 Samplingfördelningen för 
+\begin_inset Formula $\hat{\beta}_{MLE}$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{\mu}_{MLE}$
+\end_inset
+
+ och 
+\begin_inset Formula $\hat{\sigma^{2}}_{MLE}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Som ett första steg ska vi studera fördelningen för de estimatorer vi har
+ implementerat.
+ Vi gör detta genom att upprepa skattningen för ett antal olika utfall från
+ våra fördelningear och se hur våra estimatorer varierar när våra data varierar.
+ Detta kallas estimatorns 
+\series bold
+samplingfördelning
+\series default
+.
+\end_layout
+
+\begin_layout Plain Layout
+Implementera pseudokoden nedan för att beräkna 2000 MLE-skattningar.
+\end_layout
+
+\begin_layout Verbatim
+
+for i in 1 to 2000 do
+\end_layout
+
+\begin_layout Verbatim
+
+   x1 = draw Gamma(n =10, alpha= 4, beta = 1)
+\end_layout
+
+\begin_layout Verbatim
+
+   x2 = draw Gamma(n =100, alpha= 4, beta = 1)
+\end_layout
+
+\begin_layout Verbatim
+
+   beta1_mle[i] = gamma_beta_mle(x = x1, alpha = 4)
+\end_layout
+
+\begin_layout Verbatim
+
+   beta2_mle[i] = gamma_beta_mle(x = x2, alpha = 4)
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+   y1 = draw Normal(n = 10, mu = 10, sigma2 = 4)
+\end_layout
+
+\begin_layout Verbatim
+
+   y2 = draw Normal(n = 100, mu = 10, sigma2 = 4)
+\end_layout
+
+\begin_layout Verbatim
+
+   mu1[i] = norm_mu_mle(x = y1)
+\end_layout
+
+\begin_layout Verbatim
+
+   mu2[i] = norm_mu_mle(x = y2)
+\end_layout
+
+\begin_layout Verbatim
+
+   sigma2[i] = norm_sigma2_mle(x = y1, mu = 10) 
+\end_layout
+
+\begin_layout Verbatim
+
+   sigma2[i] = norm_sigma2_mle(x = y2, mu = 10)
+\end_layout
+
+\begin_layout Paragraph
+a) 
+\end_layout
+
+\begin_layout Plain Layout
+Visualisera samplingfördelningarna för 
+\begin_inset Formula $\hat{\beta}_{MLE}$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{\mu}_{MLE}$
+\end_inset
+
+ och 
+\begin_inset Formula $\hat{\sigma^{2}}_{MLE}$
+\end_inset
+
+ då 
+\begin_inset Formula $n=10$
+\end_inset
+
+ och då 
+\begin_inset Formula $n=100$
+\end_inset
+
+ i ett histogram.
+ Vad är dina slutsatser? 
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+hist()
+\end_layout
+
+\begin_layout Paragraph*
+b)
+\end_layout
+
+\begin_layout Plain Layout
+Öka nu antalet dragningarna till 
+\begin_inset Formula $n=1000$
+\end_inset
+
+ för respektive fördelning.
+ Vad är dina slutsatser? Hur förändras våra skattningar när vi har fler
+ datapunkter som vi använder för att skatta våra parametrar? Vad beror detta
+ på?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I föregående laboration så studerade vi fördelningars förväntade värde,
+ 
+\begin_inset Formula $E(X)$
+\end_inset
+
+, och varians, 
+\begin_inset Formula $Var(X)$
+\end_inset
+
+.
+ När vi arbetar med estimatorer kan vi också tala om en estimators förväntade
+ värde på precis samma sätt som i föregående laboration.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection
+Uppgift 5 Det förväntade värdet för 
+\begin_inset Formula $\hat{\beta}_{MLE}$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{\mu}_{MLE}$
+\end_inset
+
+ och 
+\begin_inset Formula $\hat{\sigma^{2}}_{MLE}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Beräkna det förväntade värdet för 
+\begin_inset Formula $\hat{\beta}_{MLE}$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{\mu}_{MLE}$
+\end_inset
+
+ och 
+\begin_inset Formula $\hat{\sigma^{2}}_{MLE}$
+\end_inset
+
+ baserat på de samplingfördelningar du beräknat ovan.
+ Vad är din slutsats? Förändras det förväntade värdet om vi ökar urvalsstorleken
+?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+På ett liknande sätt går det att beräkna en estimators varians.
+\end_layout
+
+\begin_layout Section
+Numerisk maximum likelihood estimation
+\end_layout
+
+\begin_layout Standard
+De exempel vi arbetat med såhär långt har varit 
+\begin_inset Quotes sld
+\end_inset
+
+snälla
+\begin_inset Quotes srd
+\end_inset
+
+ situationer där det finns analytiskt härledda estimatorer för våra estimatorer.
+ Men som vi sett ovan (exempelvis för 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ i gammafördelningen) är det långt ifrån självklart att det finns analytiska
+ resultat för att göra en MLE.
+ I lite mer komplicerade fall vill vi därför istället använda oss av numeriska
+ optimerare för att göra vår skattningar.
+ I R finns funktionen 
+\family typewriter
+optim()
+\family default
+ som är en bra numerisk optimerare som kan användas för MLE oavsett om vi
+ känner likelihoodens gradient och hessian eller inte.
+ 
+\end_layout
+
+\begin_layout Standard
+Nedan är ett exempel på hur 
+\family typewriter
+optim()
+\family default
+ kan användas för att numeriskt finna MLE skattningar av 
+\begin_inset Formula $\mu$
+\end_inset
+
+och 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ i exemplet ovan.
+ 
+\family typewriter
+optim()
+\family default
+ kräver att parametrarna som ska optimeras finns i en vektor, likaså finner
+ 
+\family typewriter
+optim()
+\family default
+ ett minimum varför vi behöver multiplicera log likelihooden med -1.
+ Det ger följande funktion:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+llnormal2(par = c(2, 1), x = x1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Med denna funktion kan vi sedan använda 
+\family typewriter
+optim()
+\family default
+ för att numeriskt finna våra maximum likelihoodskattningar.
+ Jämför med resultaten vi fick ovan med de analytiska lösningarna.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+opt_res <- optim(c(0,1), llnormal2, x=test_x, method="L-BFGS-B", lower =
+ c(-Inf,0))
+\end_layout
+
+\begin_layout Plain Layout
+
+opt_res$par
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection
+Uppgift 6 Log-likelihoodfunktionen för betafördelningen
+\end_layout
+
+\begin_layout Paragraph*
+a)
+\end_layout
+
+\begin_layout Plain Layout
+Härled (eller leta reda på) log-likelihoodfunktionen för betafördelningen
+ och implementera den som en funktion i R som kan optimeras med 
+\family typewriter
+optim()
+\family default
+.
+ Nedan är ett exempel på log-likelihoodfunktionen (multiplicerad med -1)
+ som kan användas i 
+\family typewriter
+optim()
+\family default
+.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+llbeta(par = c(2, 2), x = c(0.01, 0.5, 0.99))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+b)
+\end_layout
+
+\begin_layout Plain Layout
+Simulera 50 dragningar från en 
+\begin_inset Formula $\mathcal{B}(\alpha=0.2,\beta=2)$
+\end_inset
+
+ och visualisera dragningarna med ett histogram.
+ 
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+hist()
+\end_layout
+
+\begin_layout Paragraph*
+c) 
+\end_layout
+
+\begin_layout Plain Layout
+Använd 
+\family typewriter
+optim()
+\family default
+ för att baserat på dessa dragningar och log-likelihoodfunktionen uppskatta
+ parametrarna 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ och 
+\begin_inset Formula $\beta$
+\end_inset
+
+ i betafördelningen.
+ Tänk på att 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ och 
+\series bold
+
+\begin_inset Formula $\beta$
+\end_inset
+
+ 
+\series default
+är definierade på
+\series bold
+ 
+\begin_inset Formula $\mathbb{R}^{+}$
+\end_inset
+
+ 
+\series default
+när du anger intervallen till 
+\family typewriter
+optim()
+\family default
+.
+\end_layout
+
+\begin_layout Paragraph*
+d)
+\end_layout
+
+\begin_layout Plain Layout
+Upprepa 
+\series bold
+b)
+\series default
+ och 
+\series bold
+c)
+\series default
+ 2000 ggr (d.v.s.
+ ta fram samplingfördelningen för 
+\begin_inset Formula $\hat{\alpha}_{MLE}$
+\end_inset
+
+ och
+\series bold
+ 
+\series default
+
+\begin_inset Formula $\hat{\beta}_{MLE}$
+\end_inset
+
+).
+ Visualisera dessa samplingfördelningar i ett histogram.
+ 
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+hist()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
