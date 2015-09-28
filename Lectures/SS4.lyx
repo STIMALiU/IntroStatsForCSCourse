@@ -296,6 +296,20 @@ Gammafördelningen
 Normalfördelningen
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+\color blue
+Betafördelningen
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+t-fördelningen
+\end_layout
+
 \end_deeper
 \begin_layout Separator
 
@@ -1479,6 +1493,340 @@ Standardisering är praktiskt.
 
 \end_layout
 
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Betafördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Passar 
+\series bold
+kontinuerliga
+\series default
+ variabler i intervallet 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+, t ex andelar.
+\end_layout
+
+\begin_layout Itemize
+Täthet för 
+\begin_inset Formula $X\sim Beta(\alpha,\beta)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+f(x)=\frac{1}{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1}\quad\text{for }0\leq x\leq1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Betafunktionen
+\series default
+
+\begin_inset Formula 
+\[
+B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Väntevärde
+\series default
+ och 
+\series bold
+varians
+\series default
+
+\begin_inset Formula 
+\[
+\mathbb{E}X=\frac{\alpha}{\alpha+\beta}\qquad Var(X)=\frac{\alpha\beta}{(\alpha+\beta)^{2}(\alpha+\beta+1)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename BetaPDF.png
+	lyxscale 30
+	scale 14
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename BetaCDF.png
+	lyxscale 30
+	scale 14
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+t
+\emph default
+-fördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Normalfördelningen har 
+\series bold
+tunna svansar
+\series default
+.
+ Mycket osannolikt att observera extrema observationer.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t$
+\end_inset
+
+-fördelningen är en generalisering av normalfördelningen med en parameter
+ 
+\begin_inset Formula $\nu$
+\end_inset
+
+ (
+\series bold
+frihetsgrader
+\series default
+) som modellerar hur tunga svansarna är.
+\end_layout
+
+\begin_layout Itemize
+En 
+\series bold
+\color blue
+
+\begin_inset Formula $t$
+\end_inset
+
+-fördelad
+\series default
+\color inherit
+ variabel 
+\begin_inset Formula $X\sim t_{\nu}(\mu,\sigma^{2})$
+\end_inset
+
+ har täthetsfunktionen
+\begin_inset Formula 
+\[
+f(x)=\frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\Gamma\left(\frac{\nu}{2}\right)\sqrt{\pi\nu\sigma^{2}}}\left(1+\frac{1}{\nu}\left(\frac{x-\mu}{\sigma}\right)\right)^{-\frac{\nu+1}{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Väntevärde
+\series default
+ och 
+\series bold
+varians
+\series default
+
+\begin_inset Formula 
+\[
+\mathbb{E}X=\mu\quad\text{om }\nu>1
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var(X)=\sigma^{2}\frac{\nu}{\nu-2}\quad\text{om }\nu>2
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t_{\nu}(0,1)$
+\end_inset
+
+ är standardmedlemmen.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+t
+\emph default
+-fördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Cauchy-fördelningen
+\series default
+\color inherit
+ är speciallfallet med 
+\begin_inset Formula $\nu=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Normalfördelningen fås när 
+\begin_inset Formula $\nu\rightarrow\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename TPDF.png
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename TCDF.png
+	lyxscale 30
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Viktig koppling mellan 
+\begin_inset Formula $t-$
+\end_inset
+
+fördelning och normalfördelning:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $X_{1},..,X_{n}\vert\mu,\sigma^{2}\overset{iid}{\sim}N(\mu,\sigma^{2})$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ 
+\series bold
+känd
+\series default
+.
+ 
+\begin_inset Formula $Z=\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}\sim N(0,1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X_{1},..,X_{n}\vert\mu,\sigma^{2}\overset{iid}{\sim}N(\mu,\sigma^{2})$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ 
+\series bold
+okänd
+\series default
+, skattas med 
+\begin_inset Formula $s^{2}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $T=\frac{\bar{X}-\mu}{s/\sqrt{n}}\sim t_{n-1}(0,1).$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Separator
 
