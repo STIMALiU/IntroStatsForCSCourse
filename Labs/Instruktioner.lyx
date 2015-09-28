@@ -158,13 +158,9 @@ mans.magnusson@liu.se
 \begin_deeper
 \begin_layout Itemize
 Ange rubriken 
-\begin_inset Quotes eld
-\end_inset
-
-Labb <labnummer> för grupp <labbgrupp> - TBDA01
-\begin_inset Quotes erd
-\end_inset
-
+\family typewriter
+Labb [labnummer] för grupp [labbgrupp] - TBDA01
+\family default
  i meddelandet.
 \end_layout
 
