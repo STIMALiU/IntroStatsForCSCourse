@@ -284,6 +284,16 @@ All models are wrong, but some are useful.
  Box
 \end_layout
 
+\begin_layout Paragraph
+Obs! 
+\end_layout
+
+\begin_layout Quote
+De flesta beräkningar i denna laboration är avrundade.
+ Du kan mycket väl få något annorlunda resultat (men som avrundat bör ge
+ samma resultat som i exemplen).
+\end_layout
+
 \begin_layout Section
 Likelihoodfunktionen
 \end_layout
@@ -291,7 +301,7 @@ Likelihoodfunktionen
 \begin_layout Standard
 Vi ska nu visualisera likelihoodfunktionen.
  Nedan är 10 respektive 100 dragningar från en 
-\begin_inset Formula $\mbox{Gamma}(\alpha=2,\beta=2)$
+\begin_inset Formula $\mbox{Gamma}(\alpha=4,\beta=1)$
 \end_inset
 
 , vilket i detta exempel är vår 
@@ -373,10 +383,10 @@ Nedan är ett exempel på log-likelihoodfunktionen för gammafördelade variable
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{eqnarray*}
-l(\alpha,\beta|\mathbf{x}) & = & \ln\left(\prod^{n}\frac{\beta^{\alpha}}{\Gamma(\alpha)}x_{i}^{\alpha-1}e^{-\beta x_{i}}\right)\\
- & = & n\cdot\left[\alpha\cdot\ln\beta-\ln\Gamma(\alpha)\right]+(\alpha-1)\sum_{i}^{n}\ln(x_{i})-\beta\sum^{n}x_{i}
-\end{eqnarray*}
+\begin{eqnarray}
+l(\alpha,\beta|\mathbf{x}) & = & \ln\left(\prod_{i=1}^{n}\frac{\beta^{\alpha}}{\Gamma(\alpha)}x_{i}^{\alpha-1}e^{-\beta x_{i}}\right)\\
+ & = & n\cdot\left[\alpha\cdot\ln\beta-\ln\Gamma(\alpha)\right]+(\alpha-1)\sum_{i=1}^{n}\ln(x_{i})-\beta\sum_{i=1}^{n}x_{i}
+\end{eqnarray}
 
 \end_inset
 
@@ -444,7 +454,7 @@ x
 Tips!
 \series default
  
-\begin_inset Formula $\log\Gamma(x)$
+\begin_inset Formula $\ln\Gamma(x)$
 \end_inset
 
  heter 
@@ -753,9 +763,9 @@ tak
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\hat{\beta}_{MLE}=n\alpha\left(\sum^{n}x_{i}\right)^{-1}
-\]
+\begin{equation}
+\hat{\beta}_{MLE}=n\alpha\left(\sum_{i=1}^{n}x_{i}\right)^{-1}
+\end{equation}
 
 \end_inset
 
