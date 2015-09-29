@@ -1,0 +1,1964 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<setup, include=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(knitr)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(tikzDevice)
+\end_layout
+
+\begin_layout Plain Layout
+
+source("MVutils.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='f
+ootnotesize')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+read_chunk('Lecture4SlideCode.R')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+TDAB01
+\end_layout
+
+\end_inset
+
+Sannolikhetslära och Statistik
+\begin_inset Newline newline
+\end_inset
+
+Föreläsning 8
+\end_layout
+
+\begin_layout Author
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Mattias Villani
+\end_layout
+
+\end_inset
+
+Mattias Villani
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+STIMA, LiU
+\end_layout
+
+\end_inset
+
+Avdelningen för Statistik och Maskininlärning
+\begin_inset Newline newline
+\end_inset
+
+Institutionen för datavetenskap
+\begin_inset Newline newline
+\end_inset
+
+Linköpings universitet 
+\end_layout
+
+\begin_layout Date
+\begin_inset Graphics
+	filename LiU_secondary_1_black.png
+	lyxscale 7
+	scale 15
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Översikt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Punktskattning
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Samplingfördelning
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Konfidensintervall
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Konfidensintervall för populationsväntevärden
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Konfidensintervall för proportioner
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Punktskattning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Grundproblem: sannolikhetsmodeller har 
+\series bold
+okända
+\series default
+ 
+\series bold
+parametrar
+\series default
+, 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ex medelinkomsten i Sveriges: populationens väntevärde 
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex andelen defekta komponenter i produktionen av en produkt 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Ex spamfilter: 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ och 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ är parametrar 
+\begin_inset Formula 
+\[
+\mathrm{Pr}\left(\text{Spam}\vert\text{antal\$}\right)=\frac{\exp\left(\beta_{0}+\beta_{1}\cdot\text{antal\$}\right)}{1+\exp\left(\beta_{0}+\beta_{1}\cdot\text{antal\$}\right)}
+\]
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vi vill använda (tränings)data för att bestämma värden för dessa parametrar.
+ 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Punktskattning
+\series default
+\color inherit
+: vår 
+\series bold
+bästa gissning
+\series default
+ utifrån data.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Momentmetoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ex 
+\begin_inset Formula $X_{1},...,X_{n}\vert\lambda$
+\end_inset
+
+
+\begin_inset Formula $\overset{iid}{\sim}$
+\end_inset
+
+Poisson
+\begin_inset Formula $(\mu)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $E(X)=\mu$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Rimlig punktskattning av populationväntevärdet 
+\begin_inset Formula $\mu$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\hat{\mu}=\bar{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Moment
+\series default
+ av ordningen 
+\begin_inset Formula $k=1,2,...$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mu_{k}=\mathbb{E}\left(X^{k}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Samplemoment
+\series default
+ av ordningen 
+\begin_inset Formula $k$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+m_{k}=\frac{1}{n}\sum_{i=1}^{n}X_{i}^{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex: 
+\begin_inset Formula $k=1$
+\end_inset
+
+: 
+\begin_inset Formula $\mu_{1}=\mu=\mathbb{E}X$
+\end_inset
+
+ och 
+\begin_inset Formula $m_{1}=\frac{1}{n}\sum_{i=1}^{n}X_{i}=\bar{X}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Momentmetoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Momentmetoden för att skatta 
+\begin_inset Formula $k$
+\end_inset
+
+ modellparametrar 
+\begin_inset Formula $\theta_{1},...,\theta_{k}$
+\end_inset
+
+: Lös följande ekvationssystem m a p 
+\begin_inset Formula $\theta_{1},...,,\theta_{k}:$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\mu_{1} & =m_{1}\\
+\mu_{2} & =m_{2}\\
+ & \vdots\\
+\mu_{k} & =m_{k}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Notera att 
+\begin_inset Formula $\mu_{1},...,\mu_{k}$
+\end_inset
+
+ är funktioner av 
+\begin_inset Formula $\theta_{1},...,\theta_{k}$
+\end_inset
+
+.
+ Mer korrekt:
+\begin_inset Formula 
+\begin{align*}
+\mu_{1}(\theta_{1},...,\theta_{k}) & =m_{1}\\
+\mu_{2}(\theta_{1},...,\theta_{k}) & =m_{2}\\
+ & \vdots\\
+\mu_{k}(\theta_{1},...,\theta_{k}) & =m_{k}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Momentmetoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ibland mer praktiskt att jobba med centralmoment
+\series bold
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Centralmoment
+\series default
+ av ordningen 
+\begin_inset Formula $k=2,3...$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mu_{k}^{'}=\mathbb{E}\left(X-\mu_{1}\right)^{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Samplecentralmoment
+\series default
+ av ordningen 
+\begin_inset Formula $k$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+m_{k}^{'}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Notera att 
+\begin_inset Formula $\mu_{2}^{'}=Var(X)$
+\end_inset
+
+ och 
+\begin_inset Formula 
+\[
+m_{2}^{'}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}\neq\frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Momentmetoden - Beta exempel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ex 
+\begin_inset Formula $X_{1},...,X_{n}\vert\alpha,\beta\overset{iid}{\sim}\mathrm{Beta}(\alpha,\beta)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mu_{1}=\mathbb{E}X=\frac{\alpha}{\alpha+\beta}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mu_{2}=\mathbb{E}(X^{2})=\frac{\alpha(\alpha+1)}{(\alpha+\beta)(\alpha+\beta+1)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Momentskattningar: lös för 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ och 
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{\alpha}{\alpha+\beta} & =m_{1}\\
+\frac{\alpha(\alpha+1)}{(\alpha+\beta)(\alpha+\beta+1)} & =m_{2}
+\end{align*}
+
+\end_inset
+
+ger 
+\begin_inset Formula $\hat{\alpha}=\frac{m_{1}(m_{2}-m_{1})}{m_{1}^{2}-m_{2}}$
+\end_inset
+
+ och 
+\begin_inset Formula $\hat{\beta}=\frac{(m_{1}-m_{2})(m_{1}-1)}{m_{1}^{2}-m_{2}}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Maximum likelihood-metoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Maximum likelihood (ML) estimatorn
+\series default
+\color inherit
+: Välj det 
+\begin_inset Formula $\theta$
+\end_inset
+
+ som maximerar sannolikheten för data:
+\begin_inset Formula 
+\[
+\hat{\theta}=\mathrm{argmax}_{\theta\in\Theta}P(x_{1},...,x_{n}\vert\theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Kontinuerliga fallet: 
+\begin_inset Formula 
+\[
+\hat{\theta}=\mathrm{argmax}_{\theta\in\Theta}f(x_{1},...,x_{n}\vert\theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Likelihoodfunktionen
+\series default
+\color inherit
+ är sannolikheten för stickprovet sett 
+\series bold
+som en funktion av parametern
+\series default
+
+\begin_inset Formula 
+\[
+L(\theta)=P(x_{1},...,x_{n}\vert\theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+ML-estimatorn maximerar 
+\begin_inset Formula $L(\theta)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Ex data från Bernoulli med sannolikhet 
+\begin_inset Formula $p$
+\end_inset
+
+: 
+\begin_inset Formula $X_{1}=0,X_{2}=1,X_{3}=1,X_{4}=0,X_{5}=1$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+L(p)=(1-p)pp(1-p)p=p^{3}(1-p)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Maximum likelihood - Bernoulliexempel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename BernLikes3f2.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename BernLikes1f4.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Maximum likelihood-metoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi kan hitta 
+\series bold
+ML-skattningen
+\series default
+ analytiskt: Lös m a p 
+\begin_inset Formula $\theta$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial L(\theta)}{\partial\theta}=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Oftast enklare att 
+\series bold
+maximera log-likelihoodfunktionen
+\series default
+
+\begin_inset Formula 
+\[
+\frac{\partial\ln L(\theta)}{\partial\theta}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex Bernoulli:
+\begin_inset Formula 
+\[
+\frac{\partial\ln L(p)}{\partial p}=\frac{\partial}{\partial p}\left(s\ln p+f\ln(1-p)\right)=\frac{s}{p}+f\frac{-1}{1-p}=\frac{s}{p}-\frac{f}{1-p}=0
+\]
+
+\end_inset
+
+vilket ger lösningen 
+\begin_inset Formula $\hat{p}=\frac{s}{s+f}=\frac{s}{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Kontrollera 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+ är ett maximum - andraderivatan är negativ i 
+\begin_inset Formula $p=\hat{p}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\frac{\partial^{2}\ln L(\theta)}{\partial\theta^{2}}=-\frac{s}{p^{2}}-\frac{f}{(1-p)^{2}}<0
+\]
+
+\end_inset
+
+för alla 
+\begin_inset Formula $p\in[0,1]$
+\end_inset
+
+, inklusive 
+\begin_inset Formula $p=\hat{p}.$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+ML-metoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Notera att oberoende data är praktiskt
+\begin_inset Formula 
+\[
+L(\theta)=\prod_{i=1}^{n}f(x_{i}\vert\theta)
+\]
+
+\end_inset
+
+så log-likelihooden blir en summa
+\begin_inset Formula 
+\[
+\ln L(\theta)=\sum_{i=1}^{n}\ln f(x_{i}\vert\theta).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex: 
+\begin_inset Formula $X_{1},...,X_{n}\vert\lambda\overset{iid}{\sim}Exp(\lambda)$
+\end_inset
+
+ ger
+\begin_inset Formula 
+\[
+L(\lambda)=\prod_{i=1}^{n}\lambda e^{-\lambda x_{i}}=\lambda^{n}e^{-\lambda\sum_{i=1}^{n}x_{i}}
+\]
+
+\end_inset
+
+och 
+\begin_inset Formula 
+\[
+\frac{\partial\ln L(\lambda)}{\partial\lambda}=\frac{n}{\lambda}-\sum_{i=1}^{n}x_{i}=\frac{n}{\lambda}-n\bar{x},
+\]
+
+\end_inset
+
+och därmed 
+\begin_inset Formula $\hat{\lambda}=1/\bar{x}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Samlingfördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hur bra är en 
+\series bold
+\color blue
+estimator
+\series default
+\color inherit
+ 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+?
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Väntevärdesriktig
+\series default
+\color inherit
+? 
+\begin_inset Formula $\mathbb{E}\hat{\theta}=\theta$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathrm{Bias}(\hat{\theta})=\mathbb{E}(\hat{\theta})-\theta$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Samplingfördelningen
+\series default
+\color inherit
+ beskriver variationen i 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ 
+\series bold
+över alla stickprov
+\series default
+ av en viss storlek 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Standardfelet
+\series default
+\color inherit
+ för 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ är 
+\begin_inset Formula $\sqrt{Var(\hat{\theta})}$
+\end_inset
+
+, dvs standardavvikelsen för 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ 
+\series bold
+över alla stickprov
+\series default
+ av storleken 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Mean Squared Error
+\series default
+\color inherit
+ (MSE): 
+\begin_inset Formula 
+\[
+MSE(\hat{\theta})=\mathbb{E}\left(\hat{\theta}-\theta\right)^{2}=\mbox{Var}(\hat{\theta})+\left[\mathrm{Bias}(\hat{\theta})\right]^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Samlingfördelningen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ex.
+ Poisson.
+ ML-estimator för 
+\begin_inset Formula $\mu$
+\end_inset
+
+: 
+\begin_inset Formula $\bar{X}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Väntevärdesriktig: 
+\begin_inset Formula $\mathbb{E}(\hat{\mu})=\mu$
+\end_inset
+
+ och 
+\begin_inset Formula $Var(\hat{\mu})=\frac{\sigma^{2}}{n}=\frac{\mu}{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Notera att 
+\begin_inset Formula $Var(\hat{\mu})=\frac{\mu}{n}$
+\end_inset
+
+ beror på den okända parametern 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ Lösning: sätt 
+\begin_inset Formula $\mu=\hat{\mu}=\bar{x}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Två vanliga tekniker för att räkna ut samplingfördelningen för en estimator
+ 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Centrala gränsvärdessatsen
+\series default
+: 
+\begin_inset Formula $\hat{\theta}\overset{approx}{\sim}N\left[\theta,Var(\hat{\theta})\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Bootstrap
+\series default
+simulering.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Bootstrap
+\series default
+\color inherit
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Skapa 
+\begin_inset Formula $N$
+\end_inset
+
+ 
+\series bold
+bootstrapstickprov
+\series default
+ 
+\begin_inset Formula $\mathbf{x}^{(1)},...,\mathbf{x}^{(N)}$
+\end_inset
+
+av samma storlek som det ursprungliga stickprovet genom dragning 
+\series bold
+med
+\series default
+ 
+\series bold
+återläggning
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Beräkna estimatet 
+\begin_inset Formula $\hat{\theta}(\mathbf{x}^{(1)}),...,\hat{\theta}(\mathbf{x}^{(N)})$
+\end_inset
+
+ för var och ett av dessa 
+\begin_inset Formula $N$
+\end_inset
+
+ stickprov.
+ 
+\end_layout
+
+\begin_layout Itemize
+Den empiriska fördelningen för 
+\begin_inset Formula $\hat{\theta}(\mathbf{x}^{(1)}),...,\hat{\theta}(\mathbf{x}^{(N)})$
+\end_inset
+
+ (tänk histogram) är en approximation av samplingfördelningen för 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Konfidensintervall
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Punktskattning ger bara en bästa gissning för 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ Konfidensintervall är ett försök att beskriva osäkerheten om 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+95%-igt 
+\color blue
+konfidensintervall
+\series default
+\color inherit
+ för 
+\begin_inset Formula $\theta$
+\end_inset
+
+ är ett intervall 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ sådant att 
+\begin_inset Formula 
+\[
+\mathbf{P}\{a\leq\theta\leq b\}=0.95.
+\]
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Viktigt: det är 
+\series bold
+intervallet
+\series default
+ som är 
+\series bold
+slumpmässigt
+\series default
+.
+ Parametern 
+\begin_inset Formula $\theta$
+\end_inset
+
+ är en fix konstant.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tolkning
+\series default
+: ett 95%-igt konfidensintervall 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ kommer att 
+\series bold
+täcka
+\series default
+ (
+\begin_inset Formula $\theta\in[a,b]$
+\end_inset
+
+) parametervärdet 
+\begin_inset Formula $\theta$
+\end_inset
+
+ i 95% av alla möjliga stickprov.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Man kan naturligtvis ha andra 
+\series bold
+\color blue
+konfidensnivåer
+\series default
+\color inherit
+ än 95%.
+ 
+\begin_inset Newline newline
+\end_inset
+
+90%, 95% och 99% är vanligast.
+ Se den lite klumpiga allmänna notationen 
+\begin_inset Formula $(1-\alpha)\cdot100\%$
+\end_inset
+
+-igt konfidensintervall i Baron.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Konfidensintervall
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CICoveragePlot.png
+	lyxscale 40
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Konfidensintervall - standardprocedur
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Standardprocedur för att skapa ett 95%-igt konfidensintervall.
+\end_layout
+
+\begin_layout Itemize
+Antag normalfördelad väntevärdesriktig estimator 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+.
+ Då gäller 
+\begin_inset Formula 
+\[
+Z=\frac{\hat{\theta}-\theta}{\sigma(\hat{\theta})}\sim N(0,1)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Låt 
+\begin_inset Formula $z_{0.975}$
+\end_inset
+
+ vara 97.5% percentilen i 
+\begin_inset Formula $N(0,1)$
+\end_inset
+
+ fördelningen.
+ Tabell A4 i Baron ger att 
+\begin_inset Formula $z_{0.975}=1.96$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Då gäller att
+\begin_inset Formula 
+\[
+\mathbf{P}\left\{ -z_{0.975}\leq\frac{\hat{\theta}-\theta}{\sigma(\hat{\theta})}\leq z_{0.975}\right\} =0.95
+\]
+
+\end_inset
+
+vilket kan skrivas om som
+\begin_inset Formula 
+\[
+\mathbf{P}\left\{ \hat{\theta}-z_{0.975}\cdot\sigma(\hat{\theta})\leq\theta\leq\hat{\theta}+z_{0.975}\cdot\sigma(\hat{\theta})\right\} =0.95
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Alltså: 
+\begin_inset Formula $[\hat{\theta}-z_{0.975}\cdot\sigma(\hat{\theta}),\hat{\theta}+z_{0.975}\cdot\sigma(\hat{\theta})]$
+\end_inset
+
+ är ett 
+\begin_inset Formula $95\%$
+\end_inset
+
+-igt konfidensintervall för 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Konfidensintervall för populationsväntevärdet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\theta=\mu$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\hat{\theta}=\bar{X}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\sigma(\hat{\theta})=Std(\bar{X})=\sigma/\sqrt{n}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ antas känd.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Centrala gränsvärdessatsen ger att 
+\begin_inset Formula $\hat{\theta}=\bar{X}$
+\end_inset
+
+ är approximativt normalfördelad när 
+\begin_inset Formula $n$
+\end_inset
+
+ är stort (
+\begin_inset Formula $n\geq30$
+\end_inset
+
+).
+ Oavsett hur data är fördelade.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Alltså: 
+\begin_inset Formula $\bar{X}\pm z_{0.975}\cdot\frac{\sigma}{\sqrt{n}}$
+\end_inset
+
+ är ett (approximativt) 
+\begin_inset Formula $95\%$
+\end_inset
+
+-igt konfidensintervall för 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Bestämning av stickprovsstorlek
+\series default
+\color inherit
+ 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Vi kan bestämma 
+\begin_inset Formula $n$
+\end_inset
+
+ så att vi får ett konfidensintervall av given bredd.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Konfidensintervall - okänt standardfel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+I praktiken är 
+\begin_inset Formula $\sigma(\hat{\theta})$
+\end_inset
+
+ inte känd utan måste skattas (estimeras) från data.
+ Ex: 
+\begin_inset Formula $Std(\bar{X})=\sigma/\sqrt{n}$
+\end_inset
+
+ och 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ är ofta okänd.
+\end_layout
+
+\begin_layout Itemize
+Vid stora stickprov (stort 
+\begin_inset Formula $n$
+\end_inset
+
+) får vi ett bra approximativt konfidensintervall genom att ersätta 
+\begin_inset Formula $\sigma(\hat{\theta})$
+\end_inset
+
+ med en skattning.
+ T ex 
+\begin_inset Formula $s/\sqrt{n}$
+\end_inset
+
+ istället för 
+\begin_inset Formula $\sigma/\sqrt{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Konfidensintervall för populationsväntevärdet 
+\begin_inset Formula $\mu$
+\end_inset
+
+ vid 
+\series bold
+små stickprov
+\series default
+ 
+\series bold
+en
+\series default
+ 
+\series bold
+normalfördel
+\series default
+ad 
+\series bold
+population
+\series default
+:
+\begin_inset Formula 
+\[
+t=\frac{\bar{X}-\mu}{s/\sqrt{n}}\sim t_{n-1}(0,1)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Så ett exakt 95%-igt konfidensintervall för 
+\begin_inset Formula $\mu$
+\end_inset
+
+ ges då av
+\begin_inset Formula 
+\[
+\bar{X}\pm t_{0.025}(n-1)\frac{s}{\sqrt{n}}
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $t_{0.025}(n-1)$
+\end_inset
+
+ är 
+\begin_inset Formula $2.5\%$
+\end_inset
+
+ percentilen i 
+\series bold
+
+\begin_inset Formula $t$
+\end_inset
+
+-fördelningen
+\series default
+ med 
+\begin_inset Formula $\nu=n-1$
+\end_inset
+
+ frihetsgrader.
+ Läses av från Tabell A5 i Baron.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Konfidensintervall för en andel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ex.
+ 196 av 2000 utfrågade svarar att de röstar på centerpartiet.
+ Hur stor andel 
+\begin_inset Formula $p$
+\end_inset
+
+ röstar på centerpartiet i hela populationen?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\hat{p}=0.098$
+\end_inset
+
+ är ML-skattningen.
+ Med hur säkra är vi?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\hat{p}=\frac{1}{n}\sum_{i=1}^{n}X_{i}$
+\end_inset
+
+ där 
+\begin_inset Formula $X_{i}=1$
+\end_inset
+
+ om den i:te utfrågade person röstar på centerpartiet och 
+\begin_inset Formula $X_{i}=0$
+\end_inset
+
+ annars.
+ Så 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+ är också ett medelvärde!
+\end_layout
+
+\begin_layout Itemize
+Antag att 
+\begin_inset Formula $X_{i}\overset{iid}{\sim}$
+\end_inset
+
+
+\begin_inset Formula $Bernoulli(p).$
+\end_inset
+
+ Då gäller 
+\begin_inset Formula $\mathbb{E}X_{i}=p$
+\end_inset
+
+ och 
+\begin_inset Formula $Var(X_{i})=p(1-p)$
+\end_inset
+
+.
+ Alltså
+\begin_inset Formula 
+\[
+\mathbb{E}\hat{p}=p\qquad Var(\hat{p})=\frac{1}{n^{2}}\sum_{^{i=1}}^{n}Var(X_{i})=\frac{1}{n^{2}}np(1-p)=\frac{p(1-p)}{n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma(\hat{p})$
+\end_inset
+
+ beror på 
+\begin_inset Formula $p$
+\end_inset
+
+, som vi ersätter med en skattning: 
+\begin_inset Formula $s(\hat{p})=\sqrt{\hat{p}(1-\hat{p})/n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Centrala gränsvärdessatsen ger ett approximativt 
+\begin_inset Formula $(1-\alpha)100\%$
+\end_inset
+
+-igt intervall 
+\begin_inset Formula 
+\[
+\hat{p}\pm z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\end_body
+\end_document
