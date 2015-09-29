@@ -10,15 +10,15 @@
   \fancyhf{} % clear all header and footer fields
   \fancyhead[L]{
     LINK\"OPING UNIVERSITY\\
-    Avdelningen för Statistik\\
+    Avdelningen för Statistik och maskininlärning\\
     Institutionen för datavetenskap
   }
-  \fancyhead[R]{Programming i R}
+  \fancyhead[R]{TBDA01}
 }
 %The remaining pages
 
 \fancyhead[RO,LE]{}
-\fancyhead[C]{Programming i R}
+\fancyhead[C]{TBDA01}
 \fancyhead[LO,RE]{}
 
  
