@@ -179,8 +179,22 @@ solution_files <- dir(solution_path)
 
 \begin_layout Plain Layout
 
-for(sol_file in solution_files) source(file = paste0(solution_path, sol_file),
- echo = FALSE)
+for(sol_file in solution_files) {
+\end_layout
+
+\begin_layout Plain Layout
+
+#print(sol_file)
+\end_layout
+
+\begin_layout Plain Layout
+
+source(file = paste0(solution_path, sol_file), echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \begin_layout Plain Layout
