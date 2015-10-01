@@ -10,15 +10,15 @@
   \fancyhf{} % clear all header and footer fields
   \fancyhead[L]{
     LINK\"OPING UNIVERSITY\\
-    Avdelningen för Statistik\\
+    Avdelningen för Statistik och maskininlärning\\
     Institutionen för datavetenskap
   }
-  \fancyhead[R]{Programming i R}
+  \fancyhead[R]{TBDA01}
 }
 %The remaining pages
 
 \fancyhead[RO,LE]{}
-\fancyhead[C]{Programming i R}
+\fancyhead[C]{TBDA01}
 \fancyhead[LO,RE]{}
 
  
@@ -164,8 +164,8 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/TBDA1/exe
-rcise_solutions/"
+solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/IntroStat
+sForCS/Hidden/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -179,8 +179,22 @@ solution_files <- dir(solution_path)
 
 \begin_layout Plain Layout
 
-for(sol_file in solution_files) source(file = paste0(solution_path, sol_file),
- echo = FALSE)
+for(sol_file in solution_files) {
+\end_layout
+
+\begin_layout Plain Layout
+
+#print(sol_file)
+\end_layout
+
+\begin_layout Plain Layout
+
+source(file = paste0(solution_path, sol_file), echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \begin_layout Plain Layout
@@ -270,6 +284,16 @@ All models are wrong, but some are useful.
  Box
 \end_layout
 
+\begin_layout Paragraph
+Obs! 
+\end_layout
+
+\begin_layout Quote
+De flesta beräkningar i denna laboration är avrundade.
+ Du kan mycket väl få något annorlunda resultat (men som avrundat bör ge
+ samma resultat som i exemplen).
+\end_layout
+
 \begin_layout Section
 Likelihoodfunktionen
 \end_layout
@@ -277,7 +301,7 @@ Likelihoodfunktionen
 \begin_layout Standard
 Vi ska nu visualisera likelihoodfunktionen.
  Nedan är 10 respektive 100 dragningar från en 
-\begin_inset Formula $\mbox{Gamma}(\alpha=2,\beta=2)$
+\begin_inset Formula $\mbox{Gamma}(\alpha=4,\beta=1)$
 \end_inset
 
 , vilket i detta exempel är vår 
@@ -359,10 +383,10 @@ Nedan är ett exempel på log-likelihoodfunktionen för gammafördelade variable
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{eqnarray*}
-l(\alpha,\beta|\mathbf{x}) & = & \ln\left(\prod^{n}\frac{\beta^{\alpha}}{\Gamma(\alpha)}x_{i}^{\alpha-1}e^{-\beta x_{i}}\right)\\
- & = & n\cdot\left[\alpha\cdot\ln\beta-\ln\Gamma(\alpha)\right]+(\alpha-1)\sum_{i}^{n}\ln(x_{i})-\beta\sum^{n}x_{i}
-\end{eqnarray*}
+\begin{eqnarray}
+l(\alpha,\beta|\mathbf{x}) & = & \ln\left(\prod_{i=1}^{n}\frac{\beta^{\alpha}}{\Gamma(\alpha)}x_{i}^{\alpha-1}e^{-\beta x_{i}}\right)\\
+ & = & n\cdot\left[\alpha\cdot\ln\beta-\ln\Gamma(\alpha)\right]+(\alpha-1)\sum_{i=1}^{n}\ln(x_{i})-\beta\sum_{i=1}^{n}x_{i}
+\end{eqnarray}
 
 \end_inset
 
@@ -430,7 +454,7 @@ x
 Tips!
 \series default
  
-\begin_inset Formula $\log\Gamma(x)$
+\begin_inset Formula $\ln\Gamma(x)$
 \end_inset
 
  heter 
@@ -544,7 +568,7 @@ b)
 \end_inset
 
 .
- Vad är din viduella bedömning av funktionens maximum?
+ Vad är din visuella bedömning av funktionens maximum?
 \end_layout
 
 \begin_layout Paragraph*
@@ -739,9 +763,9 @@ tak
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\hat{\beta}_{MLE}=n\alpha\left(\sum^{n}x_{i}\right)^{-1}
-\]
+\begin{equation}
+\hat{\beta}_{MLE}=n\alpha\left(\sum_{i=1}^{n}x_{i}\right)^{-1}
+\end{equation}
 
 \end_inset
 
