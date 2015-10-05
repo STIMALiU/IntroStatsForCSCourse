@@ -1201,20 +1201,15 @@ Z-test
 \color inherit
  
 \series default
-används när nollfördelningen är normal.
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Ex 1: vi har ett iid stickprov från 
-\begin_inset Formula $N(\mu,\sigma^{2})$
+används när nollfördelningen är normalfördelad.
+ T ex om vi har en normalfördelad estimator 
+\begin_inset Formula $\hat{\theta}$
 \end_inset
 
- och använder teststatistiskan 
+
 \begin_inset Formula 
 \[
-Z=\frac{\bar{X}-\mu_{0}}{\sigma/\sqrt{n}}.
+Z=\frac{\hat{\theta}-\theta_{0}}{\sqrt{Var(\hat{\theta})}}.
 \]
 
 \end_inset
@@ -1222,15 +1217,6 @@ Z=\frac{\bar{X}-\mu_{0}}{\sigma/\sqrt{n}}.
 
 \end_layout
 
-\begin_layout Itemize
-Ex 2: iid från godtycklig fördelning, men 
-\begin_inset Formula $n>30$
-\end_inset
-
- så CLT kan användas.
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 Exempel: 
 \begin_inset Formula $H_{0}:\mu=\mu_{0}$
@@ -1826,7 +1812,7 @@ Samplingfördelning
 
 \begin_inset Formula 
 \[
-\frac{(n-1)s^{2}}{\sigma^{2}}=\sum_{i=1}^{n}\left(\frac{X_{i}-\bar{X}}{\sigma}\right)^{2}\sim\chi_{n-1}^{2}
+\frac{(n-1)s^{2}}{\sigma^{2}}=\sum_{i=1}^{n}\left(\frac{X_{i}-\bar{X}}{\sigma}\right)\sim\chi_{n-1}^{2}
 \]
 
 \end_inset
@@ -1838,7 +1824,8 @@ Samplingfördelning
 \begin_inset Formula $\chi^{2}$
 \end_inset
 
--fördelningen används för konfidensintervall och hypotestest för 
+-fördelningen kan användas för att skapa konfidensintervall och hypotestest
+ för 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
