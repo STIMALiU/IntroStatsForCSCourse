@@ -1,5 +1,6 @@
 /Hidden
 .DS_Store
 *.lyx~
+*.lyx#
 *.Rproj*
 .Rproj.user
