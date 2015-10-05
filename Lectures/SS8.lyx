@@ -422,7 +422,7 @@ Momentmetoden
 \begin_deeper
 \begin_layout Itemize
 Ex 
-\begin_inset Formula $X_{1},...,X_{n}\vert\lambda$
+\begin_inset Formula $X_{1},...,X_{n}\vert\mu$
 \end_inset
 
 
@@ -1007,7 +1007,7 @@ L(\theta)=\prod_{i=1}^{n}f(x_{i}\vert\theta)
 
 \end_inset
 
-så log-likelihooden blir en summa
+så log-likelihooden blir en summa som är lättare att derivera
 \begin_inset Formula 
 \[
 \ln L(\theta)=\sum_{i=1}^{n}\ln f(x_{i}\vert\theta).
