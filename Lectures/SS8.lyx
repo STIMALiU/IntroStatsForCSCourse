@@ -1555,16 +1555,25 @@ Z=\frac{\hat{\theta}-\theta}{\sigma(\hat{\theta})}\sim N(0,1)
 
 \begin_layout Itemize
 Låt 
-\begin_inset Formula $z_{0.975}$
+\begin_inset Formula $z_{\alpha}$
 \end_inset
 
- vara 97.5% percentilen i 
+ vara 
+\begin_inset Formula $(1-\alpha)$
+\end_inset
+
+% percentilen i 
 \begin_inset Formula $N(0,1)$
 \end_inset
 
- fördelningen.
+-fördelningen.
+ Det värde som klipper av ytan 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ till vänster.
  Tabell A4 i Baron ger att 
-\begin_inset Formula $z_{0.975}=1.96$
+\begin_inset Formula $z_{0.025}=1.96$
 \end_inset
 
 .
@@ -1574,7 +1583,7 @@ Låt
 Då gäller att
 \begin_inset Formula 
 \[
-\mathbf{P}\left\{ -z_{0.975}\leq\frac{\hat{\theta}-\theta}{\sigma(\hat{\theta})}\leq z_{0.975}\right\} =0.95
+\mathbf{P}\left\{ -z_{0.025}\leq\frac{\hat{\theta}-\theta}{\sigma(\hat{\theta})}\leq z_{0.025}\right\} =0.95
 \]
 
 \end_inset
@@ -1582,7 +1591,7 @@ Då gäller att
 vilket kan skrivas om som
 \begin_inset Formula 
 \[
-\mathbf{P}\left\{ \hat{\theta}-z_{0.975}\cdot\sigma(\hat{\theta})\leq\theta\leq\hat{\theta}+z_{0.975}\cdot\sigma(\hat{\theta})\right\} =0.95
+\mathbf{P}\left\{ \hat{\theta}-z_{0.025}\cdot\sigma(\hat{\theta})\leq\theta\leq\hat{\theta}+z_{0.025}\cdot\sigma(\hat{\theta})\right\} =0.95
 \]
 
 \end_inset
@@ -1592,7 +1601,7 @@ vilket kan skrivas om som
 
 \begin_layout Itemize
 Alltså: 
-\begin_inset Formula $[\hat{\theta}-z_{0.975}\cdot\sigma(\hat{\theta}),\hat{\theta}+z_{0.975}\cdot\sigma(\hat{\theta})]$
+\begin_inset Formula $[\hat{\theta}-z_{0.025}\cdot\sigma(\hat{\theta}),\hat{\theta}+z_{0.025}\cdot\sigma(\hat{\theta})]$
 \end_inset
 
  är ett 
@@ -1674,7 +1683,7 @@ Centrala gränsvärdessatsen ger att
 
 \begin_layout Itemize
 Alltså: 
-\begin_inset Formula $\bar{X}\pm z_{0.975}\cdot\frac{\sigma}{\sqrt{n}}$
+\begin_inset Formula $\bar{X}\pm z_{0.025}\cdot\frac{\sigma}{\sqrt{n}}$
 \end_inset
 
  är ett (approximativt) 
@@ -1792,7 +1801,7 @@ population
 :
 \begin_inset Formula 
 \[
-t=\frac{\bar{X}-\mu}{s/\sqrt{n}}\sim t_{n-1}(0,1)
+t=\frac{\bar{X}-\mu}{s/\sqrt{n}}\sim t\left(\mu=0,\sigma^{2}=1,\nu=n-1\right)
 \]
 
 \end_inset
@@ -1818,7 +1827,7 @@ där
 \end_inset
 
  är 
-\begin_inset Formula $2.5\%$
+\begin_inset Formula $97.5\%$
 \end_inset
 
  percentilen i 

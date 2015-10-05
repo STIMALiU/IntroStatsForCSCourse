@@ -1032,7 +1032,11 @@ signifikansnivån
 \begin_inset Formula $T_{obs}$
 \end_inset
 
- är det observerade värdet på 
+ är det 
+\series bold
+observerade
+\series default
+ värdet på 
 \begin_inset Formula $T$
 \end_inset
 
@@ -1201,20 +1205,21 @@ Z-test
 \color inherit
  
 \series default
-används när nollfördelningen är normal.
+används när nollfördelningen är normalfördelad.
  
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Ex 1: vi har ett iid stickprov från 
-\begin_inset Formula $N(\mu,\sigma^{2})$
+Ex 1.
+ 
+\begin_inset Formula $X_{1},...,X_{n}\overset{iid}{\sim}N(\mu,\sigma^{2})$
 \end_inset
 
- och använder teststatistiskan 
+ och 
 \begin_inset Formula 
 \[
-Z=\frac{\bar{X}-\mu_{0}}{\sigma/\sqrt{n}}.
+Z=\frac{\bar{X}-\mu_{0}}{\sigma/\sqrt{/n}}.
 \]
 
 \end_inset
@@ -1223,11 +1228,8 @@ Z=\frac{\bar{X}-\mu_{0}}{\sigma/\sqrt{n}}.
 \end_layout
 
 \begin_layout Itemize
-Ex 2: iid från godtycklig fördelning, men 
-\begin_inset Formula $n>30$
-\end_inset
-
- så CLT kan användas.
+Ex 2.
+ CLT.
 \end_layout
 
 \end_deeper
@@ -1838,7 +1840,8 @@ Samplingfördelning
 \begin_inset Formula $\chi^{2}$
 \end_inset
 
--fördelningen används för konfidensintervall och hypotestest för 
+-fördelningen kan användas för att skapa konfidensintervall och hypotestest
+ för 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
