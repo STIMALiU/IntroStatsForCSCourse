@@ -1,0 +1,1230 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik och maskininlärning (STIMA)\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Programming i R}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Programming i R}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language swedish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+TBDA01: Laboration 3
+\end_layout
+
+\begin_layout Author
+Måns Magnusson, Mattias Villani
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Set you (local) path
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/TBDA1/exe
+rcise_solutions/"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+for(sol_file in solution_files) source(file = paste0(solution_path, sol_file),
+ echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Instruktioner.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduktion till R
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "RIntro.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Laboration
+\end_layout
+
+\begin_layout Standard
+I denna laboration kommer vi gå djupare in på bayesianska metoder.
+ När vi arbetar med bayesianska metoder betraktar vi inte längre våra okända
+ parametrar som konstanta strheter, utan vi betraktar dem som okända stokastiska
+ variabler.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Bayes sats och aposteriorifördelningen
+\end_layout
+
+\begin_layout Standard
+Bayes sats ges av 
+\begin_inset Formula 
+\[
+p(\theta|\mathbf{y})=\frac{p(\mathbf{y}|\theta)p(\theta)}{p(\mathbf{y})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dock kan 
+\begin_inset Formula $p(\mathbf{y})=\int p(\mathbf{y}|\theta)p(\theta)d\theta$
+\end_inset
+
+ ofta var kluriga att beräkna.
+ Då vi är intresserade av en given parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+ kan vi i många fall 
+\begin_inset Quotes sld
+\end_inset
+
+kasta
+\begin_inset Quotes srd
+\end_inset
+
+ bort de delar som inte innehåller vår parameter av intresse, d.v.s.
+ 
+\begin_inset Formula 
+\[
+p(\theta|\mathbf{y})\propto p(\mathbf{y}|\theta)p(\theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 342-343"
+key "baron2013probability"
+
+\end_inset
+
+ för exempel på en härledning av en onormaliserad sannolikhetsfunktion.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection
+Uppgift 1 Visualisera posteriorn
+\end_layout
+
+\begin_layout Plain Layout
+Vi ska nu visualisera en lite klurigare posterior.
+ Antag att dina data kommer från en normalfördelning där 
+\begin_inset Formula $\sigma=1$
+\end_inset
+
+ (d.v.s är känd).
+ Du är intresserad av parametern 
+\begin_inset Formula $\mu$
+\end_inset
+
+ och vill beräkna dess posterior.
+ Som prior väljer du student-t fördelning med 
+\begin_inset Formula $\nu=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+a)
+\end_layout
+
+\begin_layout Plain Layout
+Visualisera din prior exakt (d.v.s.
+ använd 
+\family typewriter
+dt()
+\family default
+) över intervallet 
+\begin_inset Formula $[-5,15]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+b)
+\end_layout
+
+\begin_layout Plain Layout
+Härled den proportionella (onormaliserade) posteriorn, d.v.s.
+ 
+\begin_inset Formula $p(\theta|\mathbf{y})\propto p(\mathbf{y}|\theta)p(\theta)$
+\end_inset
+
+.
+ Tänk på att de faktorer som inte innehåller 
+\begin_inset Formula $\mu$
+\end_inset
+
+ kan förkortas bort.
+\end_layout
+
+\begin_layout Paragraph*
+c)
+\end_layout
+
+\begin_layout Plain Layout
+Nedan är 7 datapunkter som du observerat.
+ Visualisera dessa som ett histogram på intervallet 
+\begin_inset Formula $[-5,15]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(42)
+\end_layout
+
+\begin_layout Plain Layout
+
+rnorm(7, 10)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Tips!
+\end_layout
+
+\begin_layout Plain Layout
+Använd argumentet 
+\family typewriter
+xlim
+\family default
+ i 
+\family typewriter
+hist()
+\family default
+.
+\end_layout
+
+\begin_layout Paragraph*
+d)
+\end_layout
+
+\begin_layout Plain Layout
+Visualisera den onormaliserade posteriorn genom att beräkna värden för 1000
+ punkter på intervallet 
+\begin_inset Formula $[-5,15]$
+\end_inset
+
+ med funktionen du härlett i a) ovan.
+ Visualisera den onormaliserade posteriorn med 
+\family typewriter
+plot(type='l')
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Binomial - beta
+\end_layout
+
+\begin_layout Standard
+Vi ska nu studera aposteriorifördelningen för 
+\begin_inset Formula $p$
+\end_inset
+
+ i en binomialfördelning.
+ Mer information finns i 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 344"
+key "baron2013probability"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection
+Uppgift 2 Produkt A eller B?
+\end_layout
+
+\begin_layout Plain Layout
+Du har precis skapat en startup med två produktidéer, A och B.
+ Du har skapat prototyper för de två produkterna och demonstrerat dem för
+ ett antal personer.
+ Produkt A har du demonstrerat för 13 personer varav 8 var intresserade
+ och produkt 
+\begin_inset Formula $B$
+\end_inset
+
+ har ni bara haft möjlighet att demonstrera för tre personer och av dessa
+ var två personer intresserade.
+ Ni kommer initialt bara kunna skapa en av dessa produkter och kommer därför
+ behöva välja vilken produkt ni ska satsa på.
+\end_layout
+
+\begin_layout Paragraph
+a)
+\end_layout
+
+\begin_layout Plain Layout
+För att det ska gå att dra slutsatser från materialet behöver du bestämma
+ din prior som parametrar i en Betafördelning.
+ Vilka parametrar väljer du och varför.
+ Simulera och visualisera din prior i ett histogram, eller om du väljer
+ två olika priorfördelning (en för varje produkt), visualisera båda.
+\end_layout
+
+\begin_layout Paragraph
+b)
+\end_layout
+
+\begin_layout Plain Layout
+Använd konjugategenskapen mellan beta och binomialfördelningen för att räkna
+ ut din posteriorfördelning analytiskt i respektive fall.
+ Beräkna analytiskt den förväntade proportionen för respektive produkt.
+ Vilken produkt har den högsta förväntade proportionen intresserade?
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+c)
+\end_layout
+
+\begin_layout Plain Layout
+Precis som när det gäller maximum likelihood kan vi studera maximum av vår
+ posteriorifördelning, vilket ofta kallas maximum aposteriori skattningen
+ (MAP).
+ Ta reda på hur maximum beräknas för betafördelningen.
+ Vad är MAP skattningen för respektive produkt?
+\end_layout
+
+\begin_layout Paragraph
+d)
+\end_layout
+
+\begin_layout Plain Layout
+Simulera och visualisera dina två posteriorfördelning ovan i ett histogram
+ och svara på följande frågor:
+\end_layout
+
+\begin_layout Enumerate
+Vad är sannolikheten att proportionen intresserade kunder är större för
+ produkt 
+\begin_inset Formula $A$
+\end_inset
+
+ än produkt 
+\begin_inset Formula $B$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+Vad är sannolikheten att 
+\begin_inset Formula $P(p>0.5)$
+\end_inset
+
+ för respektive produkt?
+\end_layout
+
+\begin_layout Paragraph
+e)
+\end_layout
+
+\begin_layout Plain Layout
+Storleken på er marknad är 87 andra företag ni vill nå med era produkter.
+ Använd era två aposteriorfördelningar för respektive produkt för att simulera
+ hur många intresserade kunder ni kan tänkas få för respektive produkt.
+ Simulera först från er betafördeling (posterior) och sedan använder ni
+ de simulerade värdena 
+\begin_inset Formula $p$
+\end_inset
+
+ för att dra en binomialfördelad variabel med 
+\begin_inset Formula $\mbox{Bin}(n=87,p)$
+\end_inset
+
+.
+ Visualisera fördelningenöver antale intresserade kunder ni kommer ha med
+ respektive produkt.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Hur stor är sannolikheten att få fler än 40 intresserade kunder med respektive
+ produkt?
+\end_layout
+
+\begin_layout Enumerate
+Vad är det förväntade antalet intresserade kunder med respektive produkt?
+\end_layout
+
+\begin_layout Paragraph
+f)
+\end_layout
+
+\begin_layout Plain Layout
+Vilken produkt skulle ni satsa på och varför?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Normal - normal
+\end_layout
+
+\begin_layout Standard
+I denna uppgift ska vi arbeta med normalfördelade data.
+ Som framgår av 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 344"
+key "baron2013probability"
+
+\end_inset
+
+ är en normal prior konjugat för 
+\begin_inset Formula $\mu$
+\end_inset
+
+ i en normalmodell.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection
+Uppgift 3 Aktieanalys
+\end_layout
+
+\begin_layout Plain Layout
+Du ska bygga en handelsrobot som löpande bevakar aktieutvecklingen för olika
+ aktier.
+ Den dagliga avkastningen för en aktie beräknas med formeln 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset Formula 
+\[
+x_{t}=\frac{y_{t}-y_{t-1}}{y_{t-1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+där 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ är aktievärdet vid dag 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Nedan följer den dagliga avkastningen för aktien SCA A under vecka 39.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- c(0.0315, -0.0180,-0.0021,-0.0202,0.0076)
+\end_layout
+
+\begin_layout Plain Layout
+
+x
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Vi modellerar den dagliga avkastningen som oberoende normalfördelade slumpvariab
+ler med väntevärde 
+\begin_inset Formula $\mu$
+\end_inset
+
+ och varians 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+ I denna uppgift gör vi det enkelt för oss, vi säger att 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ är känd men räknar ut den baserat på de datapunkter vi har.
+ D.v.s.
+ 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ är följande värde för SCA A:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+var(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+a)
+\end_layout
+
+\begin_layout Plain Layout
+Börja med att ange en prior för 
+\begin_inset Formula $\mu$
+\end_inset
+
+och ange också din osäkerhet med apriorivariansen 
+\begin_inset Formula $\tau^{2}$
+\end_inset
+
+.
+ Simulera och visualisera var du tror, a priori, om den dagliga avkastningen
+ för SCA A.
+\end_layout
+
+\begin_layout Paragraph
+b)
+\end_layout
+
+\begin_layout Plain Layout
+Använd dig av resultaten i 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 344"
+key "baron2013probability"
+
+\end_inset
+
+ för att räkna ut vår aposteriorifördelning för avkastningen efter att vi
+ har observerat data.
+ Vad är den förväntade avkastningen 
+\begin_inset Formula $E(\mu\vert Data)$
+\end_inset
+
+, där 
+\begin_inset Formula $Data$
+\end_inset
+
+ representerar observerad avkastning för SCA A under vecka 39?
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+c)
+\end_layout
+
+\begin_layout Plain Layout
+Investerare är ofta intresserade av det som kallas Value-at-Risk (VaR) för
+ en investering.
+ VaR är ett mått på hur illa det kan gå vid en investering och defineras
+ ofta som 
+\begin_inset Formula $1\%$
+\end_inset
+
+ percentilen i avkastningens fördelning.
+ Man ser helt enkelt ett utfall i 1% percentilen som ett oturligt, men inte
+ omöjligt, negativt utfall.
+ Säg att er robot har investerat 
+\begin_inset Formula $100\mbox{ }000$
+\end_inset
+
+ kr i SCA A (eller ngn annan aktie).
+ Vi vill nu veta vad Value-at-Risk är för denna investering per dag.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Simulera 10 000 dragningar från din posteriorfördelning för 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ Beräkna sedan den 1% percentilen för en normalfördelning med vårt simulerade
+ 
+\begin_inset Formula $\mu$
+\end_inset
+
+ och kända 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+ Nu har du fått en fördelning för 1% percentilen, 
+\begin_inset Formula $p_{1}$
+\end_inset
+
+.
+ Använd detta för att beräkna ut fördelningen för Value-at-Risk, d.v.s.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mbox{VaR}=\left|p_{1}\cdot100\mbox{ }000\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+för varje simulerat värde för 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ Nu har du beräknat fördelningen för Value-at-Risk.
+ Visualisera denna fördelning.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Tips!
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+quantile()
+\end_layout
+
+\begin_layout Paragraph
+d)
+\end_layout
+
+\begin_layout Plain Layout
+Beräkna ett 95% sannolikhetsintervall för Value-at-Risk.
+\end_layout
+
+\begin_layout Paragraph*
+e) 
+\end_layout
+
+\begin_layout Plain Layout
+Din modell ovan antar att avkastningarna är oberoende över tid och att avkastnin
+garna är normalfördelade.
+ Diskutera om du tror att dessa antaganden är rimliga.
+ Finns det något bra sätt att undersöka om dessa antaganden är rimliga?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Multinomial - dirichlet
+\end_layout
+
+\begin_layout Standard
+En generalisering av betafördelningen är dirichletfördelningen och på samma
+ sätt är multinomialfördelningen en generalisering av binomialfördelningen.
+ Använd Mattias föreläsningsanteckningar om apriori och aposteriorifördelningen
+ för multinomialfördelningen för att lösa dessa uppgifter.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Subsubsection
+Uppgift 4 Analys av opinionsundersökningar
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\color blue
+\begin_inset CommandInset href
+LatexCommand href
+name "Här"
+target "https://github.com/MansMeg/SwedishPolls"
+
+\end_inset
+
+
+\series default
+\color inherit
+ finns samtliga svenska opinionsundersökningar.
+ 
+\end_layout
+
+\begin_layout Paragraph
+a)
+\end_layout
+
+\begin_layout Plain Layout
+Vi börjar med att försöka bestämma vår a priori-fördelning för de olika
+ partierna.
+ Vår apriorifördelning specificerar vi som en dirichletfördelning med en
+ parameter 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ per parti.
+ Pröva dig fram och simulera från din prior, dirichletfördelningen finns
+ i R-paketet 
+\family typewriter
+gtools
+\family default
+.
+ Eftersom dirichletfördelningen är multivariat görs en dragning för alla
+ partier på en och samma gång.
+ Gör 1000 dragningar från din apriorifördelning och presentera din prior
+ för respektive parti.
+ I din apriorifördelning bör utfallen från valet 2014 inte vara allt för
+ osannolikt.
+ Använd 
+\family typewriter
+abline()
+\family default
+ och argumentet 
+\family typewriter
+v
+\family default
+ för att visualisera din prior för respektive parti och valresultatet.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+install.packages("gtools")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gtools)
+\end_layout
+
+\begin_layout Plain Layout
+
+rdirichlet(n = 3, alpha = c(1,1.2,0.2,3,2))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+b)
+\end_layout
+
+\begin_layout Plain Layout
+Ladda ned eller använd en av de senaste undersökningarna (och ange vilken
+ du valt).
+ Det finns en hel del problem med opinionsundersökningar (se 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://bottenada.se/2015/09/18/bortfallsmodeller-ar-viktigare-an-urvalsmetoden/"
+
+\end_inset
+
+
+\series default
+\color inherit
+ för en diskussion) vilket gör att vi inte kan räkna baserat på institutens
+ urvalsstorlekar direkt.
+ Anta därför istället att den undersökning du valt har 200 personer som
+ deltagit och räkna ut (och avrunda) hur många som svarat för respektive
+ parti.
+ Ange vilken undersökning du valt och dina (avrundade) antal observationer
+ för respektive parti.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+c)
+\end_layout
+
+\begin_layout Plain Layout
+Beräkna nu aposteriorifördelningen för andelen per riksdagsparti och gör
+ 10 000 simuleringar från din aposteriorifördelning.
+ När du svarar på frågorna nedan ska du ta hänsyn till de s k 4% spärren,
+ dvs att ett parti måste få minst 4% av rösterna för att sitta i riksdagen.
+ Svara sedan på följande frågor om det vore val idag:
+\end_layout
+
+\begin_layout Enumerate
+Vad är sannolikheten att de rödgröna är större än alliansen?
+\end_layout
+
+\begin_layout Enumerate
+Vad är sannolikheten att Sverigedemokraterna har en vågmästarroll, d.v.s.
+ varken de rödgröna eller alliansen får egen majoritet?
+\end_layout
+
+\begin_layout Enumerate
+Vad är sannolikheten att KD 
+\series bold
+inte
+\series default
+ skulle komma in i Riksdagen (få mindre än 4 %)
+\end_layout
+
+\begin_layout Enumerate
+Vad är sannolikheten att Fi skulle komma in i Riksdagen?
+\end_layout
+
+\begin_layout Enumerate
+Vad är sannolikheten att FP skulle åka ur Riksdagen?
+\end_layout
+
+\begin_layout Enumerate
+Vad är sannolikheten att SD skulle bli Sveriges största parti?
+\end_layout
+
+\begin_layout Enumerate
+Skapa ett sannolikhetsintervall (95 %) för Socialdemokraterna.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "References"
+options "plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
