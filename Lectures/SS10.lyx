@@ -2015,7 +2015,7 @@ Multinomial model
 l:
 \begin_inset Formula 
 \[
-p(y|\theta)\propto\prod_{k=1}^{K}\theta_{k}^{y_{k}},\text{ where }\sum_{k=1}^{K}\theta_{j}=1.
+p(y|\theta)\propto\prod_{k=1}^{K}\theta_{k}^{y_{k}},\text{ där }\sum_{k=1}^{K}\theta_{j}=1.
 \]
 
 \end_inset
@@ -2058,10 +2058,6 @@ p(\theta)\propto\prod_{k=1}^{K}\theta_{j}^{\alpha_{j}-1}.
 
 \series bold
 Väntevärde
-\series default
- och 
-\series bold
-varians
 \series default
  för 
 \begin_inset Formula $\theta=(\theta_{1},...,\theta_{K})'\sim Dirichlet(\alpha_{1},...,\alpha_{K})$
@@ -2191,6 +2187,10 @@ Slumpa
 \end_inset
 
 .
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -2199,6 +2199,10 @@ Beräkna
 \end_inset
 
 .
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
