@@ -1219,7 +1219,7 @@ Ex 1.
  och 
 \begin_inset Formula 
 \[
-Z=\frac{\bar{X}-\mu_{0}}{\sigma/\sqrt{/n}}.
+Z=\frac{\bar{X}-\mu_{0}}{\sigma/\sqrt{n}}.
 \]
 
 \end_inset
@@ -1369,7 +1369,7 @@ inte
  blir inte 
 \begin_inset Formula 
 \[
-\frac{\hat{\theta}-\theta_{0}}{\sqrt{s^{2}/n}}
+\frac{\hat{\theta}-\theta_{0}}{s/\sqrt{n}}
 \]
 
 \end_inset
