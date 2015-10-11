@@ -1,0 +1,1548 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<setup, include=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(knitr)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(tikzDevice)
+\end_layout
+
+\begin_layout Plain Layout
+
+source("MVutils.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='f
+ootnotesize')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+read_chunk('Lecture4SlideCode.R')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+TDAB01
+\end_layout
+
+\end_inset
+
+Sannolikhetslära och Statistik
+\begin_inset Newline newline
+\end_inset
+
+Föreläsning 11
+\end_layout
+
+\begin_layout Author
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Mattias Villani
+\end_layout
+
+\end_inset
+
+Mattias Villani
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+STIMA, LiU
+\end_layout
+
+\end_inset
+
+Avdelningen för Statistik och Maskininlärning
+\begin_inset Newline newline
+\end_inset
+
+Institutionen för datavetenskap
+\begin_inset Newline newline
+\end_inset
+
+Linköpings universitet 
+\end_layout
+
+\begin_layout Date
+\begin_inset Graphics
+	filename LiU_secondary_1_black.png
+	lyxscale 7
+	scale 15
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Översikt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Enkel regression
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Kovarians och korrelation
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Multipel regression
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Regression med binär respons
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hittills: modeller utan förklaringsvärde.
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+= sannolikheten för spam.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Samma spam-sannolikhet, 
+\begin_inset Formula $\theta$
+\end_inset
+
+, för:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ett mejl med 256 $-tecken, som inte nämner mitt namn, och som kommer från
+ avsändare utanför min adressbok
+\end_layout
+
+\begin_layout Itemize
+ett mejl utan $-tecken, som nämner mitt namn, och som kommer från en avsändare
+ i min adressbok.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Prediktion av siffror: vi vill koppla klassen (0-9) till gråheten i pixlarna.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lösning: låt 
+\begin_inset Formula $\theta$
+\end_inset
+
+ vara en funktion av förklaringsvariabler, t ex antal$, mittNamn, kändAvsändare
+ etc.
+ 
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Regression
+\series default
+\color inherit
+: låt fördelning för en 
+\series bold
+\color blue
+responsvariabel
+\series default
+\color inherit
+ 
+\begin_inset Formula $Y$
+\end_inset
+
+ (t ex binära Spam/Ham) bero på ett antal 
+\series bold
+\color blue
+förklarande variabler
+\series default
+\color inherit
+ 
+\begin_inset Formula $X^{(1)},...,X^{(k)}$
+\end_inset
+
+ (alt.
+ namn: prediktorer, kovariater, oberoende variabler).
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Enkel regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Enkel
+\series default
+\color inherit
+ 
+\series bold
+regression
+\series default
+: en enda förklarande variabel, 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ 
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Regression modellerar den betingade fördelningen 
+\begin_inset Formula $f(Y\vert X=x)$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vanligast: 
+\begin_inset Formula $X$
+\end_inset
+
+ påverkar bara väntevärdet i fördelningen: 
+\begin_inset Formula $E(Y\vert X=x)$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Antag 
+\begin_inset Formula $Y\vert(X=x)\sim N\left(\mu\left(x\right),\sigma^{2}\right)$
+\end_inset
+
+, där
+\begin_inset Formula 
+\[
+E(Y\vert X=x)=\mu\left(x\right)=\beta_{0}+\beta_{1}x
+\]
+
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Kan också skrivas
+\begin_inset Formula 
+\[
+y=\beta_{0}+\beta_{1}x+\varepsilon,\qquad\varepsilon\sim N(0,\sigma^{2})
+\]
+
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ kallas för 
+\series bold
+störning
+\series default
+ eller 
+\series bold
+felterm
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Enkel regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename RegCondDens.png
+	lyxscale 30
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel: stoppsträcka=f(hastighet)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CarsOrigData.png
+	lyxscale 30
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel: stoppsträcka=f(hastighet)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CarsLogScale.png
+	lyxscale 30
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Estimation - minsta kvadratmetoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Data
+\series default
+ är X-Y talpar: 
+\begin_inset Formula $(x_{1},y_{1}),...,(x_{n},y_{n})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Regressionlinjen
+\series default
+\color inherit
+ 
+\begin_inset Formula $\beta_{0}+\beta_{1}\cdot x$
+\end_inset
+
+ ger prognoserna: 
+\begin_inset Formula $\hat{y}_{i}=\beta_{0}+\beta_{1}\cdot x_{i},\:i=1,...,n.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Residualen
+\series default
+\color inherit
+ vid 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+e_{i}=y_{i}-\hat{y}_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Minsta kvadratmetoden: välj 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ och 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ så summan av kvadrerade residualerna minimeras
+\begin_inset Formula 
+\[
+Q=\sum_{i=1}^{n}e_{i}^{2}=\left(y_{i}-\beta_{0}-\beta_{1}\cdot x_{i}\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+(partial)derivera med avseende på 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ och 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ och lös ekvationssystemet
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial Q}{\partial\beta_{0}} & =0\\
+\frac{\partial Q}{\partial\beta_{1}} & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Estimation - minsta kvadratmetoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(partial)derivera med avseende på 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ och 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ och lös ekvationssystemet
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial Q}{\partial\beta_{0}} & =0\\
+\frac{\partial Q}{\partial\beta_{1}} & =0
+\end{align*}
+
+\end_inset
+
+ger lösningen
+\begin_inset Formula 
+\begin{align*}
+\hat{\beta}_{1} & =\frac{S_{xy}}{S_{xx}}=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{x})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}}\\
+\hat{\beta}_{0} & =\bar{y}-\hat{\beta}_{1}\bar{x}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[fragile]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Regression i R}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<RegInR, eval=TRUE, size='tiny'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+data(cars) # Loading one of R's internal data sets 
+\end_layout
+
+\begin_layout Plain Layout
+
+attach(cars) # Making variables in cars available (outside of 'namespace')
+\end_layout
+
+\begin_layout Plain Layout
+
+lmFit <- lm(log(dist) ~ log(speed)) # general:lm(y ~ x1 + x2 + x1*x2)
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(lmFit)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel: stoppsträcka=f(hastighet)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CarsLogScaleReg.png
+	lyxscale 30
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Estimation - maximum likelihood
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+ML
+\series default
+: välj värden på 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ och 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ som maximerar sannolikheten (tätheten) för data.
+ Antag oberoende normalfördelade feltermer (
+\begin_inset Formula $\varepsilon_{1},...,\varepsilon_{n})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Likelihoodfunktionen
+\series default
+
+\begin_inset Formula 
+\[
+L(\beta_{0},\beta_{1})=\prod_{i=1}^{n}N\left(y_{i}\vert\mu(x_{i}),\sigma^{2}\right)
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $N\left(y_{i}\vert\mu(x_{i}),\sigma^{2}\right)$
+\end_inset
+
+ är tätheten för en 
+\begin_inset Formula $N(\mu(x_{i}),\sigma^{2})$
+\end_inset
+
+ fördelning
+\begin_inset Formula 
+\[
+f(y_{i})=\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left(-\frac{1}{2\sigma^{2}}\left(y_{i}-\mu_{i}(x)\right)^{2}\right)
+\]
+
+\end_inset
+
+Alltså
+\begin_inset Formula 
+\[
+L(\beta_{0},\beta_{1})=\left(\frac{1}{\sqrt{2\pi\sigma^{2}}}\right)^{n}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\mu_{i}(x)\right)^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Estimation - maximum likelihood
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Likelihoodfunktionen
+\series default
+
+\begin_inset Formula 
+\[
+L(\beta_{0},\beta_{1})=\left(\frac{1}{\sqrt{2\pi\sigma^{2}}}\right)^{n}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\mu_{i}(x)\right)^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vi kan lika gärna maximera 
+\series bold
+log-likelihoodfunktionen
+\series default
+
+\begin_inset Formula 
+\[
+\ln L(\beta_{0},\beta_{1})=c-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\mu_{i}(x)\right)^{2},
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $c=-n\ln\left(\sqrt{2\pi\sigma^{2}}\right)$
+\end_inset
+
+ är en konstant som inte beror på 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ och 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Maximera 
+\begin_inset Formula $\ln L(\beta_{0},\beta_{1})$
+\end_inset
+
+ är detsamma som minimera 
+\begin_inset Formula $\sum_{i=1}^{n}\left(y_{i}-\mu_{i}(x)\right)^{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ML = minsta kvadrat!
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Regression och korrelation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Kovarians
+\begin_inset Formula 
+\[
+Cov(X,Y)=\mathbb{E}\left[\left(X-\mathbb{E}X\right)\left(Y-\mathbb{E}Y\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Korrelationskoefficient
+\series default
+ 
+\begin_inset Formula $-1\le\rho\leq1$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\rho=\frac{Cov(X,Y)}{Std(X)\cdot Std(Y)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Stickprovskovarians
+\series default
+ (väntevärdesriktig estimator av 
+\begin_inset Formula $Cov(X,Y)$
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+s_{xy}=\frac{\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)\left(y_{i}-\bar{y}\right)}{n-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Stickprovskorrelationskoefficient
+\series default
+
+\begin_inset Formula 
+\[
+r=\frac{s_{xy}}{s_{x}s_{y}},\;\text{där }s_{x}=\sqrt{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}/(n-1)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Relation mellan regression och korrelation
+\begin_inset Formula 
+\[
+\hat{\beta}_{1}=\frac{S_{xy}}{S_{x}}=\frac{s_{xy}}{s_{x}^{2}}=r\cdot\frac{s_{y}}{s_{x}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Multipel regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fler än en förklarande variabel.
+\end_layout
+
+\begin_layout Itemize
+Antag 
+\begin_inset Formula 
+\[
+Y\vert X^{(1)}=x^{(1)},...,X^{(k)}=x^{(k)})\sim N\left(\mu\left(x^{(1)},...,x^{(k)}\right),\sigma^{2}\right)
+\]
+
+\end_inset
+
+där
+\begin_inset Formula 
+\[
+\mu\left(x^{(1)},...,x^{(k)}\right)=\beta_{0}+\beta_{1}x^{(1)}+...+\beta_{k}x^{(k)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Kan också skrivas
+\begin_inset Formula 
+\[
+y=\beta_{0}+\beta_{1}x^{(1)}+...+\beta_{k}x^{(k)}+\varepsilon,\qquad\varepsilon\sim N(0,\sigma^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Se Baron 11.3.2 för minsta kvadrat.
+ ML = minsta kvadrat.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Polynomregression
+\series default
+\color inherit
+ för icke-linjär regression
+\begin_inset Formula 
+\[
+y=\beta_{0}+\beta_{1}x+\beta_{2}x^{2}+...+\beta_{k}x^{k}+\varepsilon
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Kan skattas med minsta kvadrat.
+ Se upp för 
+\series bold
+\color blue
+överanpassning
+\series default
+\color inherit
+!
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Överanpassning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename overfittingPoly.png
+	lyxscale 20
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Överanpassning - mjukhetsprior
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename overfittingRidge.png
+	lyxscale 20
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Regression med binär respons
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hittills har vi antagit kontinuerlig (normalfördelad) respons, 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Om 
+\begin_inset Formula $Y$
+\end_inset
+
+ är 
+\series bold
+binär
+\series default
+ kan vi inte anta 
+\begin_inset Formula $Y\vert(X=x)\sim N(\mu(x),\sigma^{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Bättre med 
+\begin_inset Formula 
+\[
+Y\vert(X=x)\sim Bernoulli(\theta(x))
+\]
+
+\end_inset
+
+och olika 
+\begin_inset Formula $Y$
+\end_inset
+
+-observationer är oberoende (givet 
+\begin_inset Formula $x$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Itemize
+Vanlig funktionsform för 
+\begin_inset Formula $\theta(x)$
+\end_inset
+
+ (
+\series bold
+\color blue
+logistisk regression
+\series default
+\color inherit
+):
+\begin_inset Formula 
+\[
+\theta(x)=\frac{\exp(\beta_{0}+\beta_{1}\cdot x)}{1+\exp(\beta_{0}+\beta_{1}\cdot x)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Minsta kvadrat är inte längre en bra estimationsmetod.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Maximum likelihood
+\series default
+ funkar alltid:
+\begin_inset Formula 
+\begin{align*}
+L(\beta_{0},\beta_{1}) & =\prod_{i=1}^{n}\theta(x_{i})^{y_{i}}(1-\theta(x_{i}))^{1-y_{i}}\\
+ & =\prod_{i=1}^{n}\left[\frac{\exp(\beta_{0}+\beta_{1}\cdot x)}{1+\exp(\beta_{0}+\beta_{1}\cdot x)}\right]^{y_{i}}\left[\frac{1}{1+\exp(\beta_{0}+\beta_{1}\cdot x)}\right]^{1-y_{i}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[fragile]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{ML skattningar i logistisk regression}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<fraudDetect, eval=TRUE, size='tiny'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Defining the log-likelihood function 
+\end_layout
+
+\begin_layout Plain Layout
+
+LogLik <- function(betaVect,y,X){   
+\end_layout
+
+\begin_layout Plain Layout
+
+	linFunc = X%*%betaVect 
+\end_layout
+
+\begin_layout Plain Layout
+
+	thetaVect = exp(linFunc)/(1+exp(linFunc))   
+\end_layout
+
+\begin_layout Plain Layout
+
+	logLikelihood <- sum(y*log(thetaVect) + (1-y)*log(1-thetaVect)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Reading in fraud data from file 
+\end_layout
+
+\begin_layout Plain Layout
+
+data <- read.csv('/Users/matvi05/Dropbox/Teaching/ProbStatUProg/Data/banknoteFrau
+d.csv', header = FALSE) 
+\end_layout
+
+\begin_layout Plain Layout
+
+names(data) <- c("varWave","skewWave","kurtWave","entropyWave","fraud")
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- data[,5] 
+\end_layout
+
+\begin_layout Plain Layout
+
+X <- as.matrix(cbind(1,data[,1:4]))     # Adding a column of ones for the
+ intercept 
+\end_layout
+
+\begin_layout Plain Layout
+
+nPara <- dim(X)[2]                      # Number of covariates incl intercept
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Optimize to the find the ML estimates.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+initPar <- matrix(0,nPara,1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+optimResults <- optim(initPar, LogLik, gr = NULL, y, X, control=list(fnscale=-1)
+) 
+\end_layout
+
+\begin_layout Plain Layout
+
+optimResults$par # betaHat, the ML estimates of beta = (beta0,beta1,...,beta4)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
