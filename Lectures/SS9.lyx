@@ -1355,6 +1355,10 @@ används när nollfördelningen är normalfördelad.
 
 \begin_layout Itemize
 Om 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ normalfördelad, men 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
@@ -1825,7 +1829,11 @@ Samplingfördelning
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
+ (om 
+\begin_inset Formula $X_{i}\sim\overset{iid}{\sim}N(\mu,\sigma^{2})$
+\end_inset
 
+)
 \begin_inset Formula 
 \[
 \frac{(n-1)s^{2}}{\sigma^{2}}=\sum_{i=1}^{n}\left(\frac{X_{i}-\bar{X}}{\sigma}\right)^{2}\sim\chi_{n-1}^{2}

@@ -435,6 +435,11 @@ regression
 
 .
  
+\begin_inset Formula $X$
+\end_inset
+
+ antas känd (ej stokastisk).
+ 
 \begin_inset VSpace smallskip
 \end_inset
 
@@ -493,7 +498,7 @@ E(Y\vert X=x)=\mu\left(x\right)=\beta_{0}+\beta_{1}x
 Kan också skrivas
 \begin_inset Formula 
 \[
-y=\beta_{0}+\beta_{1}x+\varepsilon,\qquad\varepsilon\sim N(0,\sigma^{2})
+Y=\beta_{0}+\beta_{1}x+\varepsilon,\qquad\varepsilon\sim N(0,\sigma^{2})
 \]
 
 \end_inset
@@ -684,6 +689,7 @@ e_{i}=y_{i}-\hat{y}_{i}
 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 Minsta kvadratmetoden: välj 
 \begin_inset Formula $\beta_{0}$
@@ -696,7 +702,7 @@ Minsta kvadratmetoden: välj
  så summan av kvadrerade residualerna minimeras
 \begin_inset Formula 
 \[
-Q=\sum_{i=1}^{n}e_{i}^{2}=\left(y_{i}-\beta_{0}-\beta_{1}\cdot x_{i}\right)^{2}
+Q=\sum_{i=1}^{n}e_{i}^{2}=\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}\cdot x_{i}\right)^{2}
 \]
 
 \end_inset
@@ -704,6 +710,7 @@ Q=\sum_{i=1}^{n}e_{i}^{2}=\left(y_{i}-\beta_{0}-\beta_{1}\cdot x_{i}\right)^{2}
 
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 (partial)derivera med avseende på 
 \begin_inset Formula $\beta_{0}$
@@ -765,7 +772,7 @@ Estimation - minsta kvadratmetoden
 ger lösningen
 \begin_inset Formula 
 \begin{align*}
-\hat{\beta}_{1} & =\frac{S_{xy}}{S_{xx}}=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{x})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}}\\
+\hat{\beta}_{1} & =\frac{S_{xy}}{S_{xx}}=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}}\\
 \hat{\beta}_{0} & =\bar{y}-\hat{\beta}_{1}\bar{x}
 \end{align*}
 
@@ -941,7 +948,7 @@ där
  fördelning
 \begin_inset Formula 
 \[
-f(y_{i})=\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left(-\frac{1}{2\sigma^{2}}\left(y_{i}-\mu_{i}(x)\right)^{2}\right)
+f(y_{i})=\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left(-\frac{1}{2\sigma^{2}}\left(y_{i}-\mu(x_{i})\right)^{2}\right)
 \]
 
 \end_inset
@@ -949,7 +956,7 @@ f(y_{i})=\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left(-\frac{1}{2\sigma^{2}}\left(y_
 Alltså
 \begin_inset Formula 
 \[
-L(\beta_{0},\beta_{1})=\left(\frac{1}{\sqrt{2\pi\sigma^{2}}}\right)^{n}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\mu_{i}(x)\right)^{2}\right)
+L(\beta_{0},\beta_{1})=\left(\frac{1}{\sqrt{2\pi\sigma^{2}}}\right)^{n}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\mu(x_{i})\right)^{2}\right)
 \]
 
 \end_inset
@@ -984,7 +991,7 @@ Likelihoodfunktionen
 
 \begin_inset Formula 
 \[
-L(\beta_{0},\beta_{1})=\left(\frac{1}{\sqrt{2\pi\sigma^{2}}}\right)^{n}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\mu_{i}(x)\right)^{2}\right)
+L(\beta_{0},\beta_{1})=\left(\frac{1}{\sqrt{2\pi\sigma^{2}}}\right)^{n}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\mu(x_{i})\right)^{2}\right)
 \]
 
 \end_inset
@@ -1000,7 +1007,7 @@ log-likelihoodfunktionen
 
 \begin_inset Formula 
 \[
-\ln L(\beta_{0},\beta_{1})=c-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\mu_{i}(x)\right)^{2},
+\ln L(\beta_{0},\beta_{1})=c-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\mu(x_{i})\right)^{2},
 \]
 
 \end_inset
@@ -1026,7 +1033,7 @@ Maximera
 \end_inset
 
  är detsamma som minimera 
-\begin_inset Formula $\sum_{i=1}^{n}\left(y_{i}-\mu_{i}(x)\right)^{2}$
+\begin_inset Formula $\sum_{i=1}^{n}\left(y_{i}-\mu(x_{i})\right)^{2}$
 \end_inset
 
 .
@@ -1132,7 +1139,7 @@ r=\frac{s_{xy}}{s_{x}s_{y}},\;\text{där }s_{x}=\sqrt{\sum_{i=1}^{n}(x_{i}-\bar{
 Relation mellan regression och korrelation
 \begin_inset Formula 
 \[
-\hat{\beta}_{1}=\frac{S_{xy}}{S_{x}}=\frac{s_{xy}}{s_{x}^{2}}=r\cdot\frac{s_{y}}{s_{x}}.
+\hat{\beta}_{1}=\frac{S_{xy}}{S_{xx}}=\frac{s_{xy}}{s_{x}^{2}}=r\cdot\frac{s_{y}}{s_{x}}.
 \]
 
 \end_inset
