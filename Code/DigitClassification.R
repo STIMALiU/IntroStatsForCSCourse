@@ -28,11 +28,11 @@ image(matrix(train$x[4,], nrow = 28)[,28:1], col=gray(12:1/12))
 image(matrix(train$x[5,], nrow = 28)[,28:1], col=gray(12:1/12)) 
 image(matrix(train$x[6,], nrow = 28)[,28:1], col=gray(12:1/12)) 
 
-# install.packages('glmnet') # uncomment this line if you haven't installed the glmnet package before.
+#install.packages('glmnet') # uncomment this line if you haven't installed the glmnet package before.
 library(glmnet)              # loading the glmnet package/module in memory
 
 # Fit a multinomial regression with elastic net shrinkage.
-fit = glmnet(x = train$x[1:nTrain,], y = train$y[1:nTrain], family = "multinomial", 
+fitMultiReg = glmnet(x = train$x[1:nTrain,], y = train$y[1:nTrain], family = "multinomial", 
              type.multinomial = "grouped", standardize = FALSE, lambda = exp(-6))
 
 # Plotting the first 6 test examples
@@ -45,9 +45,23 @@ image(matrix(test$x[5,], nrow = 28)[,28:1], col=gray(12:1/12))
 image(matrix(test$x[6,], nrow = 28)[,28:1], col=gray(12:1/12)) 
 
 # Predicting the digit class of the first six images in the test data.
-predict(fit, newx = test$x[1:6,], s = exp(-6), type = "class")
+predict(fitMultiReg, newx = test$x[1:6,], s = exp(-6), type = "class")
 test$y[1:6] # The truth
 
 # But we can also compute the probabilities over all digits:
-predClassProbs <- predict(fit, newx = test$x[1:6,], s = exp(-6), type = "response")
+predClassProbs <- predict(fitMultiReg, newx = test$x[1:6,], s = exp(-6), type = "response")
 predClassProbs[1:6,,1]
+
+# Evaluating multinomial regression predictions on all test data
+predAllMultiReg <- predict(fitMultiReg, newx = test$x, s = exp(-6), type = "class")
+confusMultiReg <- table(predAllMultiReg,test$y)
+
+# Fitting an svm
+# install.packages('e1071')
+# install.packages('rpart')
+library(e1071)
+library(rpart)
+
+fitSVM <- svm(y = train$y[1:nTrain], x=train$x[1:nTrain,], type = "C-classification")
+predAllSVM <- predict(fitSVM, test$x, type = "class")
+confusSVM <- table(as.matrix(predAllSVM),as.matrix(test$y))
