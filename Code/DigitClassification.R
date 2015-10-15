@@ -55,6 +55,7 @@ predClassProbs[1:6,,1]
 # Evaluating multinomial regression predictions on all test data
 predAllMultiReg <- predict(fitMultiReg, newx = test$x, s = exp(-6), type = "class")
 confusMultiReg <- table(predAllMultiReg,test$y)
+accuracyMultiReg <- sum(diag(confusMultiReg))/sum(confusMultiReg)
 
 # Fitting an svm
 # install.packages('e1071')
@@ -65,3 +66,4 @@ library(rpart)
 fitSVM <- svm(y = train$y[1:nTrain], x=train$x[1:nTrain,], type = "C-classification")
 predAllSVM <- predict(fitSVM, test$x, type = "class")
 confusSVM <- table(as.matrix(predAllSVM),as.matrix(test$y))
+accuracySVM <- sum(diag(confusSVM))/sum(confusSVM)

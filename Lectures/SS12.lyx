@@ -473,7 +473,7 @@ y=\beta_{0}+\beta_{1}x+\varepsilon
 \begin_layout Itemize
 Vad blir 
 \series bold
-prognosen
+prediktionen
 \series default
  av 
 \begin_inset Formula $Y$
@@ -792,7 +792,7 @@ prognosbana
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\tilde{y}_{T+h}^{(1)}\sim p(y_{T+h}|{\color{blue}\tilde{y}}_{{\color{blue}T+h+1}}^{{\color{blue}(1)}},{\color{red}\theta^{(1)}})$
+\begin_inset Formula $\tilde{y}_{T+h}^{(1)}\sim p(y_{T+h}|{\color{blue}\tilde{y}}_{{\color{blue}T+h-1}}^{{\color{blue}(1)}},{\color{red}\theta^{(1)}})$
 \end_inset
 
 
@@ -1602,7 +1602,13 @@ förlustfunktioner
 
 \begin_deeper
 \begin_layout Itemize
-Linjär: 
+
+\series bold
+\color blue
+Linjär
+\series default
+\color inherit
+: 
 \begin_inset Formula $L(a,\theta)=\left|a-\theta\right|$
 \end_inset
 
@@ -1610,7 +1616,13 @@ Linjär:
 \end_layout
 
 \begin_layout Itemize
-Kvadratisk: 
+
+\series bold
+\color blue
+Kvadratisk
+\series default
+\color inherit
+: 
 \begin_inset Formula $L(a,\theta)=(a-\theta)^{2}$
 \end_inset
 
@@ -1619,8 +1631,10 @@ Kvadratisk:
 
 \begin_layout Itemize
 
+\series bold
 \color blue
 Lin-Lin
+\series default
 \color inherit
 : 
 \begin_inset Formula 
@@ -1646,7 +1660,7 @@ Exempel:
 \begin_inset Formula $\theta$
 \end_inset
 
-antalet efterfrågade produkter
+ antalet efterfrågade produkter
 \end_layout
 
 \begin_layout Itemize
@@ -1661,8 +1675,8 @@ Nytta
 \begin_inset Formula 
 \[
 U(a,\theta)=\begin{cases}
-p\cdot\theta-c_{1}(a-\theta) & \textrm{om \ensuremath{a>\theta}\text{ [för litet lager]}}\\
-p\cdot a-c_{2}(\theta-a)^{2} & \textrm{om \ensuremath{a\leq\theta}\text{ [för stort lager]}}
+p\cdot\theta-c_{1}(a-\theta) & \textrm{om \ensuremath{a>\theta}\text{ [för stort lager]}}\\
+p\cdot a-c_{2}(\theta-a)^{2} & \textrm{om \ensuremath{a\leq\theta}\text{ [för litet lager]}}
 \end{cases}
 \]
 
@@ -1895,7 +1909,7 @@ Lin-Lin loss
 \end_inset
 
  
-\begin_inset Formula $c_{2}/(c_{1}+c_{2})$
+\begin_inset Formula $c_{1}/(c_{1}+c_{2})$
 \end_inset
 
  kvantilen i posteriorn är optimal
