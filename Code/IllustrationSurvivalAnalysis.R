@@ -87,9 +87,9 @@ hist(alphaBoot, 30, xlim = c(0.5,3), main = "Bootstrap approx of sampling distr.
 points(alphaEstML,0,col='red')
 points(1,0,col='blue')
 sdAlphaBoot <- sd(alphaBoot)
-Test <- (alphaEst - 1)/sdAlphaBoot
+Test <- (alphaEstML - 1)/sdAlphaBoot
 pValueAlphaTest <- pnorm(abs(Test), lower.tail = FALSE)
-ppValueAlphaTest # Reject!
+pValueAlphaTest # Reject!
 
 # 95 K.I. för alpha
 alphaLevel = 0.05;
