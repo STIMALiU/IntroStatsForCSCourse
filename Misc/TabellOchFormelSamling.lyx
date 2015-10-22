@@ -428,7 +428,7 @@ X\sim Ge(p)
 
 \begin_inset Formula 
 \[
-P(x)=(1-p)^{x}p,\qquad x=0,1,2,\ldots
+P(x)=(1-p)^{x-1}p,\qquad x=1,2,\ldots
 \]
 
 \end_inset
@@ -436,7 +436,7 @@ P(x)=(1-p)^{x}p,\qquad x=0,1,2,\ldots
 
 \begin_inset Formula 
 \[
-\mathbb{E}X=\frac{1-p}{p},\qquad Var(X)=\frac{1-p}{p^{2}}.
+\mathbb{E}X=\frac{1}{p},\qquad Var(X)=\frac{1-p}{p^{2}}.
 \]
 
 \end_inset

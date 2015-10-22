@@ -7,7 +7,7 @@
 # Made for teaching purposes
 
 # BEGIN USER INPUT
-nTrain <- 3000 # Number of training instances
+nTrain <- 10000 # Number of training instances. maximum is 60000
 # END USER INPUT
 
 setwd('~/Dropbox/Teaching/ProbStatUProg/')  # Set working directory
