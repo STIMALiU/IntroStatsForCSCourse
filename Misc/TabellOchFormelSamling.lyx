@@ -1044,7 +1044,7 @@ Var(a_{1}X_{1}+\ldots+a_{n}X_{n}+b)=\sum_{j=1}^{n}a_{j}^{2}Var(X_{j})+2\sum_{1\l
 \end_inset
 
  
-\begin_inset Formula $X\approx N(np,\sqrt{np(1-p)})$
+\begin_inset Formula $X\approx N(np,np(1-p))$
 \end_inset
 
 ,
@@ -1065,7 +1065,7 @@ Var(a_{1}X_{1}+\ldots+a_{n}X_{n}+b)=\sum_{j=1}^{n}a_{j}^{2}Var(X_{j})+2\sum_{1\l
 \end_inset
 
  
-\begin_inset Formula $X\approx N(\mu,\sqrt{\mu})$
+\begin_inset Formula $X\approx N(\mu,\mu)$
 \end_inset
 
 .
