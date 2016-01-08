@@ -109,71 +109,6 @@ knitr
 \begin_body
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<setup, include=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-library(knitr)
-\end_layout
-
-\begin_layout Plain Layout
-
-library(ggplot2)
-\end_layout
-
-\begin_layout Plain Layout
-
-library(tikzDevice)
-\end_layout
-
-\begin_layout Plain Layout
-
-source("MVutils.R")
-\end_layout
-
-\begin_layout Plain Layout
-
-opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='f
-ootnotesize')
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-read_chunk('Lecture4SlideCode.R')
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -1531,7 +1466,7 @@ Linjärkombination av normalvariabler är normalfördelade.
 
 \begin_inset Formula 
 \[
-Z=\frac{\bar{X}-\bar{Y}}{\sigma^{2}\left(\frac{1}{n}+\frac{1}{m}\right)}.
+Z=\frac{\bar{X}-\bar{Y}}{\sqrt{\sigma^{2}\left(\frac{1}{n}+\frac{1}{m}\right)}}.
 \]
 
 \end_inset
