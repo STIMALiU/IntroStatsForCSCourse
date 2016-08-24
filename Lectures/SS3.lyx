@@ -528,7 +528,7 @@ Var(X)=p\cdot q.
 \end_layout
 
 \begin_layout Itemize
-Bernoulliförsök: en sekvens av oberoende Bernoulli variabler, alla med sannolikh
+Bernoulliförsök: en sekvens av oberoende Bernoullivariabler, alla med sannolikh
 et 
 \begin_inset Formula $p$
 \end_inset
@@ -1106,7 +1106,7 @@ Låt
 \begin_inset Formula $X_{1},X_{2},...$
 \end_inset
 
- vara en sekvens Bernoulli försök med sannolikhet 
+ vara en sekvens Bernoulliförsök med sannolikhet
 \begin_inset Formula $p$
 \end_inset
 
