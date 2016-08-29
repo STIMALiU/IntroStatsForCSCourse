@@ -794,7 +794,7 @@ Fet stil eller ej spelar roll:
 \begin_inset Formula $P(x)$
 \end_inset
 
- är en enkel reel-värd funktion, precis som i vanlig analys.
+ är en enkel reellvärd funktion, precis som i vanlig analys.
 \end_layout
 
 \end_deeper
@@ -4223,7 +4223,7 @@ Chebyshevs olikhet: givet
 \end_inset
 
  med en sannolikhet som är åtminstone 
-\begin_inset Formula $1-\left(\sigma/\epsilon\right)^{2}$
+\begin_inset Formula $1-\left(\sigma/\varepsilon\right)^{2}$
 \end_inset
 
 .

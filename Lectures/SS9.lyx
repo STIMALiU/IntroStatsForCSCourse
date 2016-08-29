@@ -869,7 +869,7 @@ Steg vid hypotestest
 Välj 
 \series bold
 \color blue
-teststatistiska
+teststatistika
 \series default
 \color black
 , 
@@ -1027,7 +1027,7 @@ Steg vid hypotestest - Bernoulliexempel
 
 \series bold
 \color blue
-Teststatistiska
+Teststatistika
 \series default
 \color black
 , 
@@ -1640,7 +1640,7 @@ P-värde
 \end_layout
 
 \begin_layout Itemize
-Alternativ definition: Sannolikheten att acceptera en teststatistiska som
+Alternativ definition: Sannolikheten att acceptera en teststatistika som
  är lika extrem eller ännu mer extrem än 
 \begin_inset Formula $T_{obs}$
 \end_inset
@@ -1905,7 +1905,7 @@ status open
 
 \series bold
 \color blue
-Chi-två statistiskan
+Chi-två statistikan
 \color inherit
 
 \begin_inset Formula 

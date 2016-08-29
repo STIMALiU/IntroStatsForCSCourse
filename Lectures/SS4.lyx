@@ -330,7 +330,7 @@ Kontinuerliga slumpvariabler
 
 \begin_deeper
 \begin_layout Itemize
-Kontinuerliga slumpvariabler kan anta alla reela värden på ett inteval 
+Kontinuerliga slumpvariabler kan anta alla reella värden på ett intervall
 \begin_inset Formula $(a,b)$
 \end_inset
 
@@ -1532,7 +1532,7 @@ Täthet för
 
 \begin_inset Formula 
 \[
-f(x)=\frac{1}{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1}\quad\text{for }0\leq x\leq1
+f(x)=\frac{1}{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1}\quad\text{för }0\leq x\leq1
 \]
 
 \end_inset
