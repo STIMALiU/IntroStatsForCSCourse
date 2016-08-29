@@ -1076,7 +1076,7 @@ Var(a_{1}X_{1}+\ldots+a_{n}X_{n}+b)=\sum_{j=1}^{n}a_{j}^{2}Var(X_{j})+2\sum_{1\l
 
 \lang swedish
 Om 
-\begin_inset Formula $X_{1},...,X_{n}\overset{iid}{\sim}N(\mu,\sigma)$
+\begin_inset Formula $X_{1},...,X_{n}\overset{iid}{\sim}N(\mu,\sigma^{2})$
 \end_inset
 
 , gäller följande: 
