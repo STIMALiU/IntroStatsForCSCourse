@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass beamer
 \begin_preamble
 \setcounter{MaxMatrixCols}{10}
@@ -45,16 +47,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman palatino
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -186,9 +188,20 @@ status open
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Deskriptiv statistik
+\end_layout
+
 \begin_layout Itemize
 
 \series bold
@@ -236,12 +249,171 @@ och
 Chebyshevs olikhet
 \end_layout
 
-\begin_layout Pause
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Deskriptiv statistik
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Mätningar
+\series default
+: 
+\begin_inset Formula $x_{1},x_{2},...,x_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Exempel: Prestanda för 
+\begin_inset Formula $n=209$
+\end_inset
+
+ datorer.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Medelvärde
+\series default
+\color inherit
+: 
+\begin_inset Formula $\bar{x}=4.037$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Histogram
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename HistHardware.png
+	lyxscale 50
+	scale 27
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+10 mätningar 
+\begin_inset Formula $>6$
+\end_inset
+
+ , dvs ca 2.8% (10/209) av mätningarna hade hög prestanda (>6).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Deskriptiv statistik, forts
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename HistHardwareWithMean.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
 
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Deskriptiv statistik, forts
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename HistHardwareEstPubRatio.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -253,6 +425,10 @@ status open
 Slumpvariabler
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -271,6 +447,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -340,6 +521,10 @@ praktiska
 
 \begin_layout Itemize
 Två typer av slumpvariabler:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -438,7 +623,10 @@ Måtteori
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -453,10 +641,17 @@ Slumpvariabler - några exempel
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout ColumnsTopAligned
+\begin_inset Separator latexpar
+\end_inset
+
 
 \end_layout
 
@@ -490,6 +685,10 @@ status open
 
 Kasta två tärningar.
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -526,6 +725,10 @@ status open
 
 Singla två mynt.
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -558,6 +761,12 @@ antalet
 \end_inset
 
 .
+\size default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -609,6 +818,10 @@ status open
 
 Flyga quadcopter.
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -665,7 +878,10 @@ textwidth
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -677,6 +893,10 @@ status open
 Sannolikhetsfördelning
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -695,6 +915,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -739,6 +964,10 @@ P(x)=\mathbf{P}\{X=x\}
 
 \begin_layout Itemize
 Stora och små bokstäver spelar roll:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -771,6 +1000,10 @@ givet utfall
 \end_deeper
 \begin_layout Itemize
 Fet stil eller ej spelar roll:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -827,7 +1060,10 @@ support
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -839,6 +1075,10 @@ status open
 Fördelningsfunktion
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -857,6 +1097,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -940,7 +1185,10 @@ cdf
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -952,6 +1200,10 @@ status open
 Sannolikhets- och fördelningsfunktion
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -968,7 +1220,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1167,7 +1419,7 @@ status open
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /Users/matvi05/Dropbox/Teaching/ProbStatUProg/Figures/pmf.png
+	filename /Users/mv/Dropbox/Teaching/ProbStatUProg/Figures/pmf.png
 	lyxscale 20
 	scale 30
 
@@ -1175,7 +1427,7 @@ status open
 
 
 \begin_inset Graphics
-	filename /Users/matvi05/Dropbox/Teaching/ProbStatUProg/Figures/cdf.png
+	filename ../Figures/cdf.png
 	lyxscale 20
 	scale 30
 
@@ -1185,7 +1437,10 @@ status open
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1197,6 +1452,10 @@ status open
 Simultanfördelning
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1297,7 +1556,7 @@ Inbox/Spambox.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1476,7 +1735,10 @@ och
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1488,6 +1750,10 @@ status open
 Simultanfördelning
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1520,7 +1786,7 @@ avkastning aktie Y.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <column alignment="center" valignment="top">
@@ -1940,7 +2206,10 @@ tning?'
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1952,6 +2221,10 @@ status open
 Marginalfördelning
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2034,7 +2307,7 @@ Inbox/Spambox.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -2343,7 +2616,10 @@ cellcolor{gray97}
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -2355,6 +2631,10 @@ status open
 Marginalfördelning
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2387,7 +2667,7 @@ avkastning aktie Y.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <column alignment="center" valignment="top">
@@ -2904,7 +3184,10 @@ Vilka portföljandelar är optimala? Beslut under osäkerhet.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -2916,6 +3199,10 @@ status open
 Oberoende
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2934,6 +3221,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -3012,7 +3304,7 @@ Inbox/Spambox.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -3344,7 +3636,10 @@ Lättare att gissa box om man vet att mejlet är ham.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -3356,6 +3651,10 @@ status open
 Lägesmått
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3405,6 +3704,10 @@ lägesmått
 \series default
 \color inherit
 :
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -3486,7 +3789,10 @@ Typvärdet
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -3498,6 +3804,10 @@ status open
 Lägesmått - exempel
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3514,7 +3824,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -3666,7 +3976,7 @@ Väntevärdet
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /Users/matvi05/Dropbox/Teaching/ProbStatUProg/Figures/pmfWithLocSummary.png
+	filename /Users/mv/Dropbox/Teaching/ProbStatUProg/Figures/pmfWithLocSummary.png
 	lyxscale 20
 	scale 35
 
@@ -3676,7 +3986,10 @@ Väntevärdet
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -3691,6 +4004,10 @@ Lägesmått säger inget om spridningen
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -3702,7 +4019,7 @@ Väntevärdet är ett lägesmått.
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /Users/matvi05/Dropbox/Teaching/ProbStatUProg/Figures/pmfWithLocSummary.png
+	filename ../Figures/pmfWithLocSummary.png
 	lyxscale 20
 	scale 30
 
@@ -3710,7 +4027,7 @@ Väntevärdet är ett lägesmått.
 
 
 \begin_inset Graphics
-	filename /Users/matvi05/Dropbox/Teaching/ProbStatUProg/Figures/pmfWithLocSummaryTighter.png
+	filename ../Figures/pmfWithLocSummaryTighter.png
 	lyxscale 20
 	scale 30
 
@@ -3720,7 +4037,10 @@ Väntevärdet är ett lägesmått.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -3732,6 +4052,10 @@ status open
 Varians
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3822,7 +4146,10 @@ Standardavvikelse
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -3834,6 +4161,10 @@ status open
 Egenskaper hos väntevärde och varians
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3944,7 +4275,44 @@ Om
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Deskriptiv statistik - beroende
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ScatterHardware.png
+	lyxscale 50
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -3956,6 +4324,10 @@ status open
 Kovarians och korrelation
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4005,6 +4377,10 @@ Kovarians
 
 \begin_layout Itemize
 Positiv kovarians: 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -4083,7 +4459,10 @@ Korrelationskoefficienten
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -4095,6 +4474,10 @@ status open
 Egenskaper hos kovarians
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4175,7 +4558,10 @@ Om
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -4187,6 +4573,10 @@ status open
 Chebyshevs olikhet
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4279,7 +4669,10 @@ Chebyshevs olikhet är ofta nyttig i teoretiska sammanhang.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
