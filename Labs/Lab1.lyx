@@ -491,7 +491,7 @@ Diskreta fördelningar
 \mathbf{x}_{1} & \sim & \mbox{Bernoulli}(p=0.2)\\
 \mathbf{x}_{2} & \sim & \mbox{Binomial}(n=20,p=0.1)\\
 \mathbf{x}_{3} & \sim & \mbox{Binomial}(n=20,p=0.5)\\
-\mathbf{x}_{4} & \sim & \mbox{Geometrisk}(n=20,p=0.1)\\
+\mathbf{x}_{4} & \sim & \mbox{Geometrisk}(p=0.1)\\
 \mathbf{x}_{5} & \sim & \mbox{Poisson}(\lambda=10)
 \end{eqnarray*}
 
@@ -1239,7 +1239,7 @@ na för väntevärden och varians.
  Vi ska nu undersöka dessa delar mer genom simulering.
  Baserat på Mattias slides kan vi beräkna det teoretiska förväntade värdet
  och den teoretiska variansen.
- Med Monte carlo-metoder kan vi uppskatta det förväntade värdet med 
+ Med Monte Carlo-metoder kan vi uppskatta det förväntade värdet med 
 \family typewriter
 mean()
 \family default
