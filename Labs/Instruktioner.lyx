@@ -140,49 +140,21 @@ target "https://www.ida.liu.se/~TDAB01/index.sv.shtml"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
-Registrera dig på 
-\series bold
-webreg 
-\series default
-med följande länk:
-\begin_inset Separator latexpar
+Laborationsrapporten skickas in via 
+\begin_inset CommandInset href
+LatexCommand href
+name "LISAM"
+target "https://studentsubmissions.app.cloud.it.liu.se/Courses/TDAB01-2016HT/admin/opportunities"
+
 \end_inset
 
-
+.
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-https://www.ida.liu.se/webreg3/TDAB01-2015-1/LAB1
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Samtliga uppgifter ska skickas via e-post till 
-\series bold
-mattias.villani@liu.se
-\series default
- 
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Ange rubriken 
-\family typewriter
-Labb [labnummer] för grupp [labbgrupp] - TBDA01
-\family default
- i meddelandet.
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 \begin_inset CommandInset line
 LatexCommand rule
