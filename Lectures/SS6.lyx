@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass beamer
 \begin_preamble
 \setcounter{MaxMatrixCols}{10}
@@ -40,24 +42,21 @@
 \end_preamble
 \options xcolor=svgnames, handout
 \use_default_options false
-\begin_modules
-knitr
-\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman palatino
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -107,75 +106,6 @@ knitr
 \end_header
 
 \begin_body
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<setup, include=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-library(knitr)
-\end_layout
-
-\begin_layout Plain Layout
-
-library(ggplot2)
-\end_layout
-
-\begin_layout Plain Layout
-
-library(tikzDevice)
-\end_layout
-
-\begin_layout Plain Layout
-
-source("MVutils.R")
-\end_layout
-
-\begin_layout Plain Layout
-
-opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='f
-ootnotesize')
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-read_chunk('Lecture4SlideCode.R')
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Title
 \begin_inset Argument 1
@@ -258,6 +188,10 @@ status open
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -290,7 +224,10 @@ Poissonproces
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -302,6 +239,10 @@ status open
 Stokastiska processer
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -389,6 +330,10 @@ Stokastisk process
 \end_inset
 
  som också beror av tiden, där:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -416,7 +361,10 @@ Stokastisk process
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -428,6 +376,10 @@ status open
 Stokastiska processer
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -446,6 +398,10 @@ Stokastisk process
 \end_inset
 
  som också beror av tiden, där:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -481,6 +437,10 @@ Stokastisk process
 \end_inset
 
  kan betraktas på två sätt:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -541,7 +501,10 @@ sample path
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -553,6 +516,10 @@ status open
 Stokastiska processer
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -584,6 +551,10 @@ states
 
 \begin_layout Itemize
 Uppdelning av processer: 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -630,7 +601,10 @@ kontinuerligt tillstånd, kontinuerlig tid: en robots position vid tidpunkten
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -642,6 +616,10 @@ status open
 Markovprocesser
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -682,13 +660,13 @@ Markovprocess
 \end_inset
 
  och händelser 
-\begin_inset Formula $A,A_{1},...,A_{n}$
+\begin_inset Formula $A_{1},...,A_{n},A$
 \end_inset
 
 
 \begin_inset Formula 
 \[
-\mathbf{P}\left\{ X(t)\in A\vert X(t_{1})\in A_{1},...X(t_{n})\in A_{n}\right\} =\mathbf{P}\left\{ X(t)\in A\vert X(t_{1})\in A_{1}\right\} 
+\mathbf{P}\left\{ X(t)\in A\vert X(t_{1})\in A_{1},...X(t_{n})\in A_{n}\right\} =\mathbf{P}\left\{ X(t)\in A\vert X(t_{n})\in A_{n}\right\} 
 \]
 
 \end_inset
@@ -710,7 +688,10 @@ antagande
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -722,6 +703,10 @@ status open
 Markovkedjor
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -807,7 +792,10 @@ p_{ij}^{(h)}(t)=\mathbf{P}\left\{ X(t+h)=j\vert X(t)=i\right\}
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -819,6 +807,10 @@ status open
 Markovkedjor
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -838,7 +830,10 @@ Markovkedjor
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -850,6 +845,10 @@ status open
 Markovkedjor
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -936,7 +935,10 @@ P=\left(\begin{array}{ccc}
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -948,6 +950,10 @@ status open
 Markovkedjor
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1001,6 +1007,10 @@ Ex:
 \end_inset
 
  på två sätt: 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1054,7 +1064,10 @@ p_{12}^{(3)} & =p_{11}p_{11}p_{12}+p_{11}p_{12}p_{22}+p_{12}p_{21}p_{12}+p_{12}p
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1066,6 +1079,10 @@ status open
 Markovkedjor
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1139,7 +1156,10 @@ Resultat:
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1151,6 +1171,10 @@ status open
 Marginalfördelning
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1239,7 +1263,10 @@ P_{3}=\left(1/3,1/3,1/3\right)\left(\begin{array}{ccc}
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1251,6 +1278,10 @@ status open
 Bernoulliprocess
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1299,7 +1330,7 @@ Binomialprocess
 
  första
 \series default
- utav en sekvens oberoende Bernoulliförsök med sannolikhet 
+ in en sekvens oberoende Bernoulliförsök med sannolikhet 
 \begin_inset Formula $p$
 \end_inset
 
@@ -1341,7 +1372,10 @@ Binomialprocess
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1354,6 +1388,10 @@ Bernoulliprocess (Baron s.
  149)
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1373,7 +1411,10 @@ Bernoulliprocess (Baron s.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1385,6 +1426,10 @@ status open
 Bernoulliprocess
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1423,6 +1468,10 @@ time frame
 
  sekunder att utföra.
  
+\begin_inset Formula $n=t/\Delta$
+\end_inset
+
+.
 \begin_inset VSpace medskip
 \end_inset
 
@@ -1460,7 +1509,7 @@ Förväntat antal lyckade under hela tidsperioden
 \begin_layout Itemize
 
 \series bold
-Förväntat antal försök under 
+Förväntat antal lyckade försök under 
 \begin_inset Formula $t$
 \end_inset
 
@@ -1504,7 +1553,10 @@ förväntat antal lyckade per tidsenhet
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1516,6 +1568,10 @@ status open
 Bernoulliprocess
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1593,7 +1649,10 @@ Notera att Binomialprocessen kan vara restriktiv om
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1605,6 +1664,10 @@ status open
 Poissonprocess
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1725,7 +1788,10 @@ Se definition 6.14 för alternativ definition av Poissonprocessen.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1738,6 +1804,10 @@ Poissonprocess (Baron s.
  155)
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1757,7 +1827,10 @@ Poissonprocess (Baron s.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
