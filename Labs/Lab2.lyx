@@ -1225,7 +1225,7 @@ for i in 1 to 2000 do
 
 \begin_layout Verbatim
 
-   sigma2[i] = norm_sigma2_mle(x = y1, mu = 10) 
+   sigma1[i] = norm_sigma2_mle(x = y1, mu = 10) 
 \end_layout
 
 \begin_layout Verbatim
