@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass beamer
 \begin_preamble
 \setcounter{MaxMatrixCols}{10}
@@ -48,16 +50,16 @@ knitr
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman palatino
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -189,6 +191,10 @@ status open
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -224,7 +230,10 @@ Chi-tvåfördelningen
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -236,6 +245,10 @@ status open
 Hypotestest
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -311,7 +324,10 @@ Ex 4.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -323,6 +339,10 @@ status open
 Hypotestest
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -442,7 +462,10 @@ Ensidiga test skrivs ibland så här (det ger samma resultat):
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -454,6 +477,10 @@ status open
 Hypotestest
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -566,7 +593,10 @@ sum(runif(100)<=0.6)
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -578,6 +608,10 @@ status open
 Hypotestest
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -604,6 +638,10 @@ Vi vill kontrollera att
 \end_inset
 
  hålls på en förbestämd låg nivå.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -628,6 +666,10 @@ P\left\{ \text{Acceptera }H_{0}\vert H_{0}\text{ är falsk}\right\}
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -640,7 +682,7 @@ Ex Gödsel effektivt, men du väljer att inte gödsla.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -847,7 +889,10 @@ Applet: http://tube.geogebra.org/student/m137287.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -859,6 +904,10 @@ status open
 Steg vid hypotestest
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -975,7 +1024,10 @@ observerade
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -987,6 +1039,10 @@ status open
 Förkastningsregionen
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1005,7 +1061,10 @@ Förkastningsregionen
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1017,6 +1076,10 @@ status open
 Steg vid hypotestest - Bernoulliexempel
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1110,7 +1173,10 @@ qbinom(p=0.05,size=100,prob=0.6, lower.tail=F)
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1122,6 +1188,10 @@ status open
 Z-test
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1138,6 +1208,10 @@ Z-test
 \series default
 används när nollfördelningen är normalfördelad.
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1182,7 +1256,7 @@ En-sidigt Z-test
 \[
 \begin{cases}
 \text{Förkasta }H_{0} & \text{ om }Z\geq z_{\alpha}\\
-\text{Acceptera }H_{1} & \text{ om }Z<z_{\alpha}
+\text{Acceptera }H_{A} & \text{ om }Z<z_{\alpha}
 \end{cases}
 \]
 
@@ -1210,7 +1284,7 @@ Två-sidigt
 \[
 \begin{cases}
 \text{Förkasta }H_{0} & \text{ om }\left|Z\right|\geq z_{\alpha/2}\\
-\text{Acceptera }H_{1} & \text{ om }\left|Z\right|<z_{\alpha/2}
+\text{Acceptera }H_{A} & \text{ om }\left|Z\right|<z_{\alpha/2}
 \end{cases}
 \]
 
@@ -1220,7 +1294,10 @@ Två-sidigt
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1232,6 +1309,10 @@ status open
 Förkastningsregioner - Z-test
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1251,7 +1332,10 @@ Förkastningsregioner - Z-test
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1263,6 +1347,10 @@ status open
 T-test
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1345,7 +1433,10 @@ längre normalfördelad utan
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1357,6 +1448,10 @@ status open
 Z-test för skillanden mellan populationer
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1431,6 +1526,10 @@ Teststatistika
 \end_inset
 
 ?
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1472,7 +1571,10 @@ Z=\frac{\bar{X}-\bar{Y}}{\sqrt{\sigma^{2}\left(\frac{1}{n}+\frac{1}{m}\right)}}.
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1484,6 +1586,10 @@ status open
 Koppling mellan hypotestest och konfidensintervall
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1502,6 +1608,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -1553,7 +1664,10 @@ om och endast om
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1565,6 +1679,10 @@ status open
 p-värde
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1640,8 +1758,8 @@ P-värde
 \end_layout
 
 \begin_layout Itemize
-Alternativ definition: Sannolikheten att acceptera en teststatistika som
- är lika extrem eller ännu mer extrem än 
+Alternativ definition: Sannolikheten att få en teststatistika som är lika
+ extrem eller ännu mer extrem än 
 \begin_inset Formula $T_{obs}$
 \end_inset
 
@@ -1665,7 +1783,10 @@ p\text{-värde:}\quad P\left\{ Z\geq Z_{obs}\right\}
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1681,6 +1802,10 @@ Skatta en varians -
 -fördelningen
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1720,7 +1845,7 @@ s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}
  frihetsgrader
 \begin_inset Formula 
 \[
-f(X)=\frac{1}{2^{\nu/2}\Gamma(\nu/2)}x^{\nu/2-1}e^{-x/2},\quad x>0
+f(x)=\frac{1}{2^{\nu/2}\Gamma(\nu/2)}x^{\nu/2-1}e^{-x/2},\quad x>0
 \]
 
 \end_inset
@@ -1745,7 +1870,11 @@ Om
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\chi_{\nu}^{2}=Gamma(\nu/2,1/2)$
+\begin_inset Formula $\chi_{\nu}^{2}$
+\end_inset
+
+-fördelningen är ett specialfall av gamma: 
+\begin_inset Formula $Gamma(\nu/2,1/2)$
 \end_inset
 
 .
@@ -1757,11 +1886,11 @@ Om
 Samplingfördelning
 \series default
  för 
-\begin_inset Formula $\sigma^{2}$
+\begin_inset Formula $s^{2}$
 \end_inset
 
  (om 
-\begin_inset Formula $X_{i}\sim\overset{iid}{\sim}N(\mu,\sigma^{2})$
+\begin_inset Formula $X_{i}\overset{iid}{\sim}N(\mu,\sigma^{2})$
 \end_inset
 
 )
@@ -1788,7 +1917,10 @@ Samplingfördelning
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1803,6 +1935,10 @@ status open
  goodness of fit test
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1880,7 +2016,10 @@ Låt
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1895,6 +2034,10 @@ status open
  goodness of fit test
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2006,7 +2149,10 @@ Kontinuerliga fördelningar
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
