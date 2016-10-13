@@ -4,9 +4,10 @@
 library(survival)
 data(cancer) # Loading cancer data
 ?cancer      # Read up on what the data is all about
+head(cancer) # Have a look at the first rows in the data matrix
 cancer <- cancer[complete.cases(cancer),] # Remove the observations (rows) with at least one missing observation
 n <- dim(cancer)[1] # Number of observations
-
+head(cancer) 
 
 # fit an exponential distribution
 hist(cancer$time, freq=FALSE, main = 'Fit of Exp distribution')
@@ -17,12 +18,17 @@ lines(0:1100,dexp(0:1100,lambdaEstExp),col="red",lwd=3)
 alphaPrior <- 1
 betaPrior <- 1000
 lambdaGrid <- seq(0.00001,0.01,length = 10000)
-postMean <- (n+alphaPrior)/(n*mean(cancer$time) +betaPrior)
+postMeanLambda <- (n+alphaPrior)/(n*mean(cancer$time) +betaPrior)
+c(lambdaEstExp, postMeanLambda) # Compare the MLE with the Bayesian estimate
 plot(lambdaGrid,dgamma(lambdaGrid, alphaPrior,betaPrior), ylim = c(0,1700), 
-     type = "l", col = "red", lwd=3, xlab='lambda', ylab = "density")
-lines(lambdaGrid,dgamma(lambdaGrid, alphaPrior + n,betaPrior + n*mean(cancer$time)), lwd=3, col = "blue")
+     type = "l", col = "red", lwd=3, xlab='lambda', ylab = "density") # Plot the prior
+lines(lambdaGrid,dgamma(lambdaGrid, alphaPrior + n, betaPrior + n*mean(cancer$time)), lwd=3, col = "blue") # Add the posterior
 
-# Chi2 goodness of fit for exponential
+# Even with the help of Bayes, the exponential model does not seem adequate
+hist(cancer$time, freq=FALSE, main = 'Fit of Exp distribution')
+lines(0:1100,dexp(0:1100,postMeanLambda),col="red",lwd=3)
+
+# Let' test the fit of the exponential model formally using chi-squared test
 ProbsModel = diff(c(0,pexp(seq(100,900,by=100),lambdaEstExp),1))
 ExpectedCounts = n*ProbsModel # Oops, some expected counts < 5. No good. Merging group 7-8 and 9-10
 ExpectedCounts   # Oops, some expected counts < 5. No good. Merging group 7-8 and 9-10
@@ -51,6 +57,7 @@ plot(seq(0,40,by=0.1), dchisq(seq(0,40,by=0.1), df=Df), type ="l", main = 'Chi2 
      xlab = "Chi2-statistic", ylab="density")
 points(Chi2,0,col='red', lwd = 3)
 
+# Maybe a Gamma distribution would be better? It is more flexible with two parameters
 # Fit a Gamma by method of moments
 m1 = mean(cancer$time) # EX = alpha/lambda
 m2Central = (n-1)*var(cancer$time)/n  # Var(X) = alpha/lambda^2
@@ -58,7 +65,7 @@ alphaEstMom <- m1^2/m2Central
 lambdaEstMom <- m1/m2Central
 c(alphaEstMom,lambdaEstMom)
 
-# Fit Gamma by ML
+# Fit Gamma by ML - No closed form solution exists. No problem, just maximize numerically.
 LogLik <- function(theta,x){
   logL <- sum(dgamma(x,exp(theta[1]),exp(theta[2]), log = TRUE))
   return(logL)
@@ -68,6 +75,7 @@ optimResults <- optim(initPar, LogLik, gr = NULL, x = cancer$time, control=list(
 MLest <- exp(optimResults$par)
 alphaEstML <- MLest[1]
 lambdaEstML <- MLest[2]
+c(alphaEstML,lambdaEstML)
 
 # Testing exponential (alpha=1) vs gamma model
 # H0: alpha = 1
@@ -88,7 +96,7 @@ points(alphaEstML,0,col='red')
 points(1,0,col='blue')
 sdAlphaBoot <- sd(alphaBoot)
 Test <- (alphaEstML - 1)/sdAlphaBoot
-pValueAlphaTest <- pnorm(abs(Test), lower.tail = FALSE)
+pValueAlphaTest <- pnorm(abs(Test), lower.tail = FALSE) # Let's assume that the null distribution is normal
 pValueAlphaTest # Reject!
 
 # 95 K.I. för alpha
@@ -98,11 +106,10 @@ c(alphaEstML - zAlphaHalf*sdAlphaBoot,alphaEstML + zAlphaHalf*sdAlphaBoot) # Nor
 quantile(alphaBoot, probs = c(alphaLevel/2,1-alphaLevel/2)) # Bootstrap
 
 # fit an gamma distribution
-hist(cancer$time, freq=FALSE)
+hist(cancer$time, freq=FALSE, main = "Fit of Exp and Gamma distribution")
 lines(0:1100,dexp(0:1100,lambdaEstExp),col="blue",lwd=3)
 lines(0:1100,dgamma(0:1100,alphaEstMom,lambdaEstMom),col="red",lwd=3)
 lines(0:1100,dgamma(0:1100,alphaEstML,lambdaEstML),col="green",lwd=3)
-title('Fit of Exp and Gamma distribution')
 
 # Chi-square goodness of fit test for the gamma model
 ProbsModel = diff(c(0,pgamma(c(100,200,300,400,500,600,800),MLest[1],MLest[2]),1))
@@ -119,24 +126,24 @@ points(Chi2,0,col='red')
 
 # Censoring!
 # Fit Gamma by ML with censoring
-censored <- (status==1)
+censored <- (cancer$status==1)
 LogLik <- function(theta, x, censored){
   logL <- sum(dgamma(x[censored==F], exp(theta[1]), exp(theta[2]), log = TRUE)) +
           sum(pgamma(x[censored==T], exp(theta[1]), exp(theta[2]), log.p = TRUE, lower.tail = FALSE))
   return(logL)
 }
-initPar <- c(log(alphaEst),log(lambdaEst)) # Initial values from moment estimators
+initPar <- c(log(alphaEstMom),log(lambdaEstMom)) # Initial values from moment estimators
 optimResults <- optim(initPar, LogLik, gr = NULL, x = cancer$time, censored = censored, control=list(fnscale=-1))
 MLestCensoring <- exp(optimResults$par)
 MLestCensoring
 
 # fit an gamma distribution
-hist(cancer$time, freq=FALSE)
+hist(cancer$time, freq=FALSE, main = 'Fit of Exp and Gamma distribution')
 lines(0:1100,dexp(0:1100,1/mean(cancer$time)),col="blue",lwd=3)
 lines(0:1100,dgamma(0:1100,alphaEstMom,lambdaEstMom),col="red",lwd=3)
-lines(0:1100,dgamma(0:1100,alphaEstML,alphaEstML),col="green",lwd=3)
+lines(0:1100,dgamma(0:1100,alphaEstML,lambdaEstML),col="green",lwd=3)
 lines(0:1100,dgamma(0:1100,MLestCensoring[1],MLestCensoring[2]),col="yellow",lwd=3)
-title('Fit of Exp and Gamma distribution')
+
 
 # Regression survival time explained by age
 plot(cancer$age,cancer$time)
@@ -144,7 +151,7 @@ lm1 <- lm(time ~ age, data = cancer)
 summary(lm1)
 abline(lm1)
 
-plot(ph.ecog,time)
+plot(cancer$ph.ecog,cancer$time)
 lm2 <- lm(time ~ ph.ecog, data = cancer)
 summary(lm2)
 abline(lm2)

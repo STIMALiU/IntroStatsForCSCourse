@@ -1,3 +1,4 @@
+%% Demo convergence of random variables
 nIter = 10000;
 S = zeros(1,nIter);
 for n = 2:nIter
@@ -8,7 +9,7 @@ comet(n,S);title('S');pause(10)
 comet(n,S./n);title('S/n');pause(10)
 comet(n,S./sqrt(n));title('S/sqrt(n)');pause(10)
 
-
+%% Integration by simulation
 g = @(x) 0.7*x.^2 + 0.3*sin(4*x);
 x = linspace(0,1,10000);
 patch([x fliplr(x)],[g(x) zeros(size(x)) ],0.9*ones(1,3))
