@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass beamer
 \begin_preamble
 \setcounter{MaxMatrixCols}{10}
@@ -48,16 +50,16 @@ knitr
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman palatino
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -258,6 +260,10 @@ status open
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -290,7 +296,10 @@ Multinomialmodell med Dirichlet prior
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -305,6 +314,10 @@ Frekventistisk inferens
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -316,6 +329,10 @@ frekventistisk inferens
 \series default
 \color inherit
 .
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -412,7 +429,10 @@ Hypotestest
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -424,6 +444,10 @@ status open
 Subjektiva sannolikheter
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -560,7 +584,10 @@ Bayesiansk statistik
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -572,6 +599,10 @@ status open
 Thomas Bayes 1701-1761
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -590,7 +621,10 @@ Thomas Bayes 1701-1761
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -602,6 +636,10 @@ status open
 Subjektivitet i vetenskapen!
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -620,7 +658,10 @@ Subjektivitet i vetenskapen!
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -632,6 +673,10 @@ status open
 Bayesiansk inferens
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -773,7 +818,10 @@ betingar på observerade data
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -785,6 +833,10 @@ status open
 Bayes sats uppdaterar prior till posterior
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -874,7 +926,10 @@ P(\mathbf{x})=P(\mathbf{x}\vert\theta=0.1)P(\theta=0.1)+...+P(\mathbf{x}\vert\th
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -886,6 +941,10 @@ status open
 Bernoullimodell - s=2, f=3
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -925,7 +984,10 @@ Bernoullimodell - s=2, f=3
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -937,6 +999,10 @@ status open
 Bernoullimodell - s=20, f=30
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -976,7 +1042,10 @@ Bernoullimodell - s=20, f=30
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -988,6 +1057,10 @@ status open
 Bernoullimodell - s=200, f=300
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1027,7 +1100,10 @@ Bernoullimodell - s=200, f=300
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1039,6 +1115,10 @@ status open
 Bayes sats för kontinerliga variabler
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1101,6 +1181,10 @@ kontinuerlig
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1142,7 +1226,10 @@ Posterior
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1154,6 +1241,10 @@ status open
 Subjektivitet och objektivitet
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1237,7 +1328,10 @@ mjuk
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1249,6 +1343,10 @@ status open
 Bernoulli med Beta prior
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1340,7 +1438,10 @@ En täthet på formen
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1352,6 +1453,10 @@ status open
 Bayes sats på proportionell form
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1414,7 +1519,10 @@ Enklare form av Bayes sats:
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1426,6 +1534,10 @@ status open
 Bernoulli-exempel: spam
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1503,7 +1615,10 @@ Posterior
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1515,6 +1630,10 @@ status open
 Spam data (n=10): fyra olika priors
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1533,7 +1652,10 @@ Spam data (n=10): fyra olika priors
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1545,6 +1667,10 @@ status open
 Spam data (n=100): fyra olika priors
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1563,7 +1689,10 @@ Spam data (n=100): fyra olika priors
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1575,6 +1704,10 @@ status open
 Spam data (n=4601): fyra olika priors
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1593,7 +1726,10 @@ Spam data (n=4601): fyra olika priors
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1605,6 +1741,10 @@ status open
 Normal data, känd varians - normal prior
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1690,7 +1830,10 @@ Se Baron s.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1702,6 +1845,10 @@ status open
 Normal data, känd varians - normal prior
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1755,7 +1902,10 @@ Posterior väntevärde =
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1767,6 +1917,10 @@ status open
 Nedladdningshastigheter
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1822,7 +1976,10 @@ Min prior:
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1834,6 +1991,10 @@ status open
 Nedladdningshastigheter n=1
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1853,7 +2014,10 @@ Nedladdningshastigheter n=1
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1865,6 +2029,10 @@ status open
 Nedladdningshastigheter n=2
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1884,7 +2052,10 @@ Nedladdningshastigheter n=2
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1896,6 +2067,10 @@ status open
 Nedladdningshastigheter n=3
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1915,7 +2090,10 @@ Nedladdningshastigheter n=3
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1927,6 +2105,10 @@ status open
 Nedladdningshastigheter n=5
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1946,7 +2128,10 @@ Nedladdningshastigheter n=5
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1958,6 +2143,10 @@ status open
 Multinomial modell med Dirichlet prior
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2015,7 +2204,7 @@ Multinomial model
 l:
 \begin_inset Formula 
 \[
-p(y|\theta)\propto\prod_{k=1}^{K}\theta_{k}^{y_{k}},\text{ där }\sum_{k=1}^{K}\theta_{j}=1.
+p(y|\theta)\propto\prod_{k=1}^{K}\theta_{k}^{y_{k}},\text{ där }\sum_{k=1}^{K}\theta_{k}=1.
 \]
 
 \end_inset
@@ -2046,7 +2235,7 @@ prior
 
 \begin_inset Formula 
 \[
-p(\theta)\propto\prod_{k=1}^{K}\theta_{j}^{\alpha_{j}-1}.
+p(\theta)\propto\prod_{k=1}^{K}\theta_{k}^{\alpha_{k}-1}.
 \]
 
 \end_inset
@@ -2096,7 +2285,10 @@ Icke-informativ
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -2108,6 +2300,10 @@ status open
 Dirichletfördelningen
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2127,7 +2323,10 @@ Dirichletfördelningen
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -2139,6 +2338,10 @@ status open
 Multinomial model with Dirichlet prior
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2178,6 +2381,10 @@ Simulering
 \series default
 \color inherit
  från en Dirichlet-fördelning:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2218,7 +2425,10 @@ Beräkna
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -2233,11 +2443,19 @@ Exempel: marknadsandelar
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 En undersökning bland 513 smartphone-ägare gav:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2598,7 +2816,10 @@ end{frame}
 
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
