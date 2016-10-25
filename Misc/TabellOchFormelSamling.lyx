@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
@@ -9,16 +11,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -78,7 +80,7 @@
 \align left
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <column alignment="right" valignment="top">
@@ -265,7 +267,7 @@ TABELL- OCH FORMELSAMLING
 \align left
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row>
@@ -838,7 +840,7 @@ P(x_{1},...,x_{k})=\frac{\Gamma(\sum_{i=1}^{k}\alpha_{i})}{\prod_{i=1}^{k}\Gamma
 \align left
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row>
@@ -1080,6 +1082,10 @@ Om
 \end_inset
 
 , gäller följande: 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1110,7 +1116,21 @@ Om
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 Vid 
 \series bold
@@ -1119,17 +1139,13 @@ enkel linjär regression
  ges modellen av 
 \begin_inset Formula 
 \[
-Y_{i}=\beta_{0}+\beta_{1}x_{i}+\varepsilon_{i},
+y_{i}=\beta_{0}+\beta_{1}x_{i}+\varepsilon_{i},\qquad\text{för }i=1,\dots,n,
 \]
 
 \end_inset
 
 där 
 \begin_inset Formula $\varepsilon_{i}\sim N(0,\sigma)$
-\end_inset
-
- 
-\begin_inset Formula $i=1,\dots,n$
 \end_inset
 
  och oberoende.
@@ -1147,9 +1163,18 @@ Minsta kvadrat-skattningar
  
 \begin_inset Formula 
 \begin{align*}
-\hat{\beta}_{1} & =\frac{\sum_{i}(x_{i}-\overline{x})Y_{i}}{\sum_{i}(x_{i}-\overline{x})^{2}},\\
-\hat{\beta}_{0} & =\overline{Y}-\hat{\beta}_{1}\overline{x},\\
-\widehat{\sigma^{2}} & =S^{2}=\frac{1}{n-2}\sum_{j}(Y_{j}-\hat{\beta}_{0}-\hat{\beta}_{1}x_{j})^{2}.
+\hat{\beta}_{1} & =\frac{SS_{xy}}{SS_{xx}},\\
+\hat{\beta}_{0} & =\bar{y}-\hat{\beta}_{1}\overline{x},\\
+\widehat{\sigma^{2}} & =\frac{1}{n-2}\sum_{i=1}^{n}\left(y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1}x_{i}\right)^{2}
+\end{align*}
+
+\end_inset
+
+där 
+\begin_inset Formula 
+\begin{align*}
+S_{xx} & =\sum_{i=1}^{n}(x_{i}-\overline{x})^{2}\\
+S_{xy} & =\sum_{i=1}^{n}(x_{i}-\overline{x})(y_{i}-\bar{y})
 \end{align*}
 
 \end_inset
@@ -1168,6 +1193,10 @@ Minsta kvadrat-skattningar
 goodness of fit-test
 \series default
 .
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1320,7 +1349,7 @@ I båda fallen krävs att alla
 \align left
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row>
@@ -1515,6 +1544,10 @@ Posterior:
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1522,7 +1555,7 @@ Posterior:
 \align left
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row>
@@ -1630,6 +1663,10 @@ Tabell för
 
 .
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1639,7 +1676,7 @@ Tabell för
 \lang swedish
 \begin_inset Tabular
 <lyxtabular version="3" rows="45" columns="11">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -7626,6 +7663,10 @@ Tabell för
 
 .
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7635,7 +7676,7 @@ Tabell för
 \lang swedish
 \begin_inset Tabular
 <lyxtabular version="3" rows="40" columns="9">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -11987,6 +12028,10 @@ Tabell för
 
 .
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -11996,7 +12041,7 @@ Tabell för
 \lang swedish
 \begin_inset Tabular
 <lyxtabular version="3" rows="39" columns="12">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -17607,6 +17652,10 @@ Tabell för
 
 .
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -17616,7 +17665,7 @@ Tabell för
 \lang swedish
 \begin_inset Tabular
 <lyxtabular version="3" rows="39" columns="11">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -22780,6 +22829,10 @@ Tabell för
 
 .
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -22789,7 +22842,7 @@ Tabell för
 \lang swedish
 \begin_inset Tabular
 <lyxtabular version="3" rows="46" columns="12">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -29421,6 +29474,10 @@ Tabell för
 
 .
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -29430,7 +29487,7 @@ Tabell för
 \lang swedish
 \begin_inset Tabular
 <lyxtabular version="3" rows="37" columns="11">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
