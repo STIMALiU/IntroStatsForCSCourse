@@ -1163,7 +1163,7 @@ Minsta kvadrat-skattningar
  
 \begin_inset Formula 
 \begin{align*}
-\hat{\beta}_{1} & =\frac{SS_{xy}}{SS_{xx}},\\
+\hat{\beta}_{1} & =\frac{S_{xy}}{S_{xx}},\\
 \hat{\beta}_{0} & =\bar{y}-\hat{\beta}_{1}\overline{x},\\
 \widehat{\sigma^{2}} & =\frac{1}{n-2}\sum_{i=1}^{n}\left(y_{i}-\hat{\beta}_{0}-\hat{\beta}_{1}x_{i}\right)^{2}
 \end{align*}
