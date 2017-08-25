@@ -1286,9 +1286,8 @@ b)
 \end_inset
 
  för respektive fördelning.
- Vad är dina slutsatser? Hur förändras våra skattningar när vi har fler
- datapunkter som vi använder för att skatta våra parametrar? Vad beror detta
- på?
+ Hur förändras våra skattningar när vi har fler datapunkter som vi använder
+ för att skatta våra parametrar? Vad beror detta på?
 \end_layout
 
 \end_inset
@@ -1395,6 +1394,16 @@ optim()
 \family default
  är de initiala värdena där optimeraren startar.
  Tänk på att ge initieringsvärden som är definierade i funktionen.
+ För att undvika att 
+\family typewriter
+optim()
+\family default
+ ska söka i exakt 0 kan man ange 
+\family typewriter
+.Machine$double.eps
+\family default
+ som lägsta värde (d.v.s.
+ lägsta positiva numeriska värde).
 \end_layout
 
 \begin_layout Standard
@@ -1409,7 +1418,7 @@ status open
 \begin_layout Plain Layout
 
 opt_res <- optim(par = c(0,1), fn = llnormal2, x=test_x, method="L-BFGS-B",
- lower = c(-Inf,0))
+ lower = c(-Inf, .Machine$double.eps))
 \end_layout
 
 \begin_layout Plain Layout
