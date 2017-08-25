@@ -542,7 +542,13 @@ Beräkna och visualisera loglikelihood värden för
 \begin_inset Formula $\beta$
 \end_inset
 
- får du det maximala värdet på log-likelihoodfunktionen? 
+ får du det maximala värdet på log-likelihoodfunktionen? Visualisera log-likelih
+oodfunktionen för de olika värdena på 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Paragraph*
@@ -699,8 +705,10 @@ c)
 \end_inset
 
 .
- Vad är dina slutsatser? Går det att se på log-likelihoodfunktionen om datat
- kommer från en gammafördelning?
+ Visualisera en gammafördelnings pdf och normalfördelningens pdf tillsammans
+ med datamaterialet (som histogram).
+ Vilken modell, Normalfördelningen eller Gammafördelningen, tycker du passar
+ datamaterialet bäst?
 \end_layout
 
 \end_inset
