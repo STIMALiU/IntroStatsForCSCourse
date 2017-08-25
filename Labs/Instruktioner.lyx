@@ -140,6 +140,9 @@ target "https://www.ida.liu.se/~TDAB01/index.sv.shtml"
 
 \end_inset
 
+
+\series default
+\color inherit
 .
 \end_layout
 
@@ -153,6 +156,14 @@ target "https://studentsubmissions.app.cloud.it.liu.se/Courses/TDAB01-2016HT/adm
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Itemize
+För att få godkänt på laborationen krävs godkänt på 
+\series bold
+75%
+\series default
+ av uppgifterna.
 \end_layout
 
 \begin_layout Standard

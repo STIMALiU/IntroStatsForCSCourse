@@ -427,9 +427,26 @@ Simulera 10 och 10000 dragningar från en normalfördelning med
 \end_inset
 
 .
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+a)
+\series default
  Visualisera fördelningarna i två histogram.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+b)
+\series default
  Beskriv skillnaden mellan de olika graferna.
- Vad är de största visuella skillnaderna?
 \end_layout
 
 \end_inset
@@ -467,18 +484,17 @@ status open
 Uppgift 2 Simulera och visualisera andra fördelningar
 \end_layout
 
-\begin_layout Plain Layout
-Simulera och visualisera nu på liknande sätt förljande fördelningar med
- 10000 dragningar från varje fördelning.
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+a)
+\series default
+ Simulera och visualisera följande fördelningar med 10000 dragningar från
+ varje fördelning.
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
+\begin_deeper
 \begin_layout Plain Layout
 
 \series bold
@@ -495,13 +511,6 @@ Diskreta fördelningar
 \mathbf{x}_{5} & \sim & \mbox{Poisson}(\lambda=10)
 \end{eqnarray*}
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset VSpace medskip
 \end_inset
 
 
@@ -531,14 +540,11 @@ Kontinuerliga fördelningar
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset VSpace medskip
-\end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-Tips! 
+\series bold
+Tips!
+\series default
+ 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -557,6 +563,7 @@ scale
  för gammafördelningen i R.
 \end_layout
 
+\end_deeper
 \end_inset
 
 
@@ -611,10 +618,8 @@ Uppgift 3 Relation mellan fördelningar
 \end_layout
 
 \begin_layout Plain Layout
-Nedan finns tre stycken sannolikhetsfördelningar som konvergerar mot en
- annan sannolikhetsfördelning.
- Beskriv vilken annan fördelning som den konvergerar mot och simulera dragningar
- från denna fördelning.
+Nedan finns tre stycken sannolikhetsfördelningar som konvergerar mot andra
+ sannolikhetsfördelningar.
  
 \end_layout
 
@@ -654,6 +659,191 @@ Observera att du ska simulera två (oberoende) exponentialfördelningar och
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+a)
+\series default
+ Simulera 1000 värden från respektive fördelning och visualisera fördelningen
+ i ett histogram.
+ 
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+hist()
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+b)
+\series default
+ Ta reda på (ex.
+ via Wikipedia) vilken annan fördelning som respektive fördelning konvergerar
+ mot.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+c)
+\series default
+ Simulera dragningar från dessa fördelning och jämför fördelningarna med
+ de resultat du fick i 
+\series bold
+a)
+\series default
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Subsubsection*
+Uppgift 4 Hiearkiska sannolikhetsfördelningar
+\end_layout
+
+\begin_layout Plain Layout
+Vi ska nu simulera en blandad sannolikhetsfördelning (mixture distribution).
+ Börja att läsa in datamaterialet 
+\family typewriter
+faithful
+\family default
+ i R med 
+\family typewriter
+data(faithful)
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+a)
+\series default
+ Visualisera variabeln 
+\family typewriter
+waiting
+\family default
+ i ett histogram.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+b)
+\series default
+ Simulera från följande modell och visualisera fördelningen i ett histogram.
+ Simulera först från 
+\begin_inset Formula $X$
+\end_inset
+
+ och sedan från 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ Sätt 
+\begin_inset Formula $p=0.3$
+\end_inset
+
+, 
+\begin_inset Formula $\mu_{1}=15,\sigma_{1}=3,\mu_{2}=4$
+\end_inset
+
+ och 
+\begin_inset Formula $\sigma_{2}=2$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+x_{i}\sim\text{Bernoulli}(p)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+y_{i}\sim x_{i}\cdot N(\mu_{1},\sigma_{1})+(1-x_{i})\cdot N(\mu_{2},\sigma_{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+c)
+\series default
+ Välj nu värden på 
+\begin_inset Formula $\mu_{1},\mu_{2},\sigma_{1},\sigma_{2}$
+\end_inset
+
+ och 
+\begin_inset Formula $p$
+\end_inset
+
+ så du får en liknande fördelning som för datamaterialet i variabeln 
+\family typewriter
+waiting
+\family default
+.
+ Visualisera denna fördelning i ett histogram.
 \end_layout
 
 \end_inset
@@ -704,7 +894,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Subsubsection
-Uppgift 4 Analytisk sannolikhet och approximation med 
+Uppgift 5 Analytisk sannolikhet och approximation med 
 \begin_inset Quotes sld
 \end_inset
 
@@ -761,12 +951,13 @@ Y & \sim & \mbox{Bin}(\mbox{n=10},p=0.1)
 
 \end_layout
 
-\begin_layout Paragraph*
-a)
-\end_layout
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
-\begin_layout Plain Layout
-Använd täthetsfunktionen i R för att beräkna 
+\series bold
+a)
+\series default
+ Använd täthetsfunktionen i R för att beräkna 
 \begin_inset Formula $P(Y=0)$
 \end_inset
 
@@ -783,6 +974,13 @@ Använd täthetsfunktionen i R för att beräkna
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 Beräkna nu på liknande sätt 
 \begin_inset Formula $P(Y=10)$
 \end_inset
@@ -791,17 +989,18 @@ Beräkna nu på liknande sätt
  
 \end_layout
 
-\begin_layout Paragraph*
-b)
-\end_layout
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
-\begin_layout Plain Layout
-Använd nu den kumulativa fördelningsfunktionen i R för att beräkna följande
+\series bold
+b)
+\series default
+ Använd nu den kumulativa fördelningsfunktionen i R för att beräkna följande
  sannolikheter.
- Gör motsvarande beräkning genom simulering.
  
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
 \begin_inset Formula $P(X<0)$
 \end_inset
@@ -842,6 +1041,28 @@ Använd nu den kumulativa fördelningsfunktionen i R för att beräkna följande
 \end_inset
 
 
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+c)
+\series default
+ Beräkna samma sannolikheter som i 
+\series bold
+b)
+\series default
+ men genom att simulera dragningar från 
+\begin_inset Formula $X$
+\end_inset
+
+ och 
+\begin_inset Formula $Y$
+\end_inset
+
+ i R.
 \end_layout
 
 \end_inset
@@ -891,7 +1112,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Subsubsection*
-Uppgift 5 Beräkna (icke-triviala) sannolikheter
+Uppgift 6 Beräkna (icke-triviala) sannolikheter
 \end_layout
 
 \begin_layout Plain Layout
@@ -946,24 +1167,44 @@ Det alternativ du står inför är betydligt mycket osäkrare, du vet inte hur
 
 \begin_layout Plain Layout
 För att lösa detta problem gör 10 000 simuleringar för det nuvarande systemet
- och 10 000 simuleringar för det gamla systemet och besvara förljande frågor.
+ och 10 000 simuleringar för det gamla systemet och besvara följande frågor.
+ 
+\series bold
+Obs!
+\series default
+ Tänk på att en sannolikhet är definierad på intervallet 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Enumerate
-Vad är det förväntade antalet fel för de båda systemen?
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+a)
+\series default
+ Vad är det förväntade antalet fel för de båda systemen?
 \end_layout
 
-\begin_layout Enumerate
-Vad är sannolikheten att det nuvarande systemet genererar färre fel än det
- nya systemet?
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+b)
+\series default
+ Vad är sannolikheten att det nuvarande systemet genererar färre fel än
+ det nya systemet? 
 \end_layout
 
-\begin_layout Enumerate
-Vad är sannolikheten att du kommer få fler än 50 fel för respektive system?
-\end_layout
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
-\begin_layout Enumerate
-Vad är sannolikheten att du inte kommer ha något fel i respektive system?
+\series bold
+c)
+\series default
+ Vad är sannolikheten att du kommer få fler än 50 fel för respektive system?
 \end_layout
 
 \end_inset
@@ -986,8 +1227,7 @@ Monte carlo
 \begin_inset Quotes srd
 \end_inset
 
--metoder kan också användas för att lösa andra problem än rena sannolikhetsberäk
-ningar.
+-metoder kan också användas för att lösa andra problm än sannolikhetsberäkningar.
  
 \end_layout
 
@@ -1018,7 +1258,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Paragraph*
-Uppgift 6 Markovmetoder
+Uppgift 7 Monte Carlo metoder för integrering
 \end_layout
 
 \begin_layout Plain Layout
@@ -1052,6 +1292,15 @@ y
 \end_inset
 
 .
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+a)
+\series default
  Visualisera de punkter som är kvar i en scatterplot.
  
 \series bold
@@ -1062,6 +1311,13 @@ Tips!
 plot()
 \family default
  
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -1081,18 +1337,75 @@ Gör följande beräkning:
 
 \end_inset
 
-Vad blir ditt resultat?
+
 \end_layout
 
 \begin_layout Plain Layout
-Upprepa beräkningen men simulera nu 1 000 000 likformiga dragningar från
- 
-\begin_inset Formula $U(0,1)$
+Upprepa beräkningen men simulera nu 10 000, 100 000 och 1 000 000 likformiga
+ dragningar från 
+\begin_inset Formula $X\sim U(0,1)$
+\end_inset
+
+ och 
+\begin_inset Formula $Y\sim U(0,1)$
 \end_inset
 
 .
- Vad är din slutsats? Vilken konstant har vi försökt approximera och hur
- väl tycker du vi lyckas?
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+b)
+\series default
+ Vilken konstant har vi försökt approximera och hur väl tycker du vi lyckas?
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+c)
+\series default
+ Vad händer med approximationen när vi ökar antalet dragningar?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+d)
+\series default
+ Beräkna 
+\begin_inset Formula $\int_{0}^{2}x^{2}dx$
+\end_inset
+
+ analytiskt (eller med funktionen 
+\family typewriter
+integrate()
+\family default
+ i R).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+e)
+\series default
+ Simulera nu 100 000 värden från 
+\begin_inset Formula $X\sim U(0,2)$
+\end_inset
+
+ och 
+\begin_inset Formula $Y\sim U(0,4)$
+\end_inset
+
+ och beräkna samma integral med en Monte Carlo approximation.
+ 
 \end_layout
 
 \end_inset
@@ -1158,7 +1471,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Paragraph*
-Uppgift 7 Stora talens lag
+Uppgift 8 Stora talens lag
 \end_layout
 
 \begin_layout Plain Layout
@@ -1177,32 +1490,41 @@ Y & \sim & \mbox{Gamma}(\alpha=2,\beta=2)
 
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
 a)
+\series default
+ Använd wikipedia för att beräkna de (teoretiska) förväntade värdena (
+\begin_inset Formula $E(X)$
+\end_inset
+
+ och 
+\begin_inset Formula $E(Y)$
+\end_inset
+
+) för dessa stokastiska variabler.
 \end_layout
 
-\begin_layout Plain Layout
-Använd wikipedia för att beräkna de (teoretiska) förväntade värdena för
- dessa variabler.
-\end_layout
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
-\begin_layout Paragraph*
+\series bold
 b)
-\end_layout
-
-\begin_layout Plain Layout
-Dra 10, 20, ..., 990, 1000 antal värden från respektive fördelning, räkna ut
- medelvärdet med 
+\series default
+ Dra 10, 20, ..., 90, 100, 200, ..., 900, 1000, 2000, ..., 9000 och 10000 antal värden
+ från respektive fördelning, räkna ut medelvärdet med 
 \family typewriter
 mean()
 \family default
- och spara medelvärdet en vektor av längd 1.
+ och spara varje medelvärde i en vektor.
  Visualisera hur medelvärdet förändras ju fler dragningar som görs med hjälp
  av 
 \family typewriter
 plot()
 \family default
- med 
+ och 
 \family typewriter
 type=
 \begin_inset Quotes srd
@@ -1214,7 +1536,7 @@ l
 
 
 \family default
-.
+ (d.v.s antal dragningar på x-axeln och medelvärdet på y-axeln).
 \end_layout
 
 \end_inset
@@ -1278,7 +1600,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Subsubsection*
-Uppgift 8 Väntevärde och varians
+Uppgift 9 Väntevärde och varians
 \end_layout
 
 \begin_layout Plain Layout
@@ -1297,12 +1619,13 @@ Y & \sim & \mbox{Poisson}(\lambda=3)
 
 \end_layout
 
-\begin_layout Paragraph*
-a)
-\end_layout
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
-\begin_layout Plain Layout
-Besök wikipediasidorna för dessa två fördelningar för att ta reda på följande
+\series bold
+a)
+\series default
+ Besök wikipediasidorna för dessa två fördelningar för att ta reda på följande
  (teoretiska) storheter 
 \begin_inset Formula $E(X)$
 \end_inset
@@ -1319,8 +1642,16 @@ Besök wikipediasidorna för dessa två fördelningar för att ta reda på följ
 \begin_inset Formula $Var(Y)$
 \end_inset
 
-.
- Simulera nu 10 000 värden och beräkna 
+ och beräkna dessa teoretiska värden.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+b)
+\series default
+ Simulera 10 000 värden och beräkna 
 \begin_inset Formula $E(X)$
 \end_inset
 
@@ -1340,15 +1671,17 @@ Besök wikipediasidorna för dessa två fördelningar för att ta reda på följ
  
 \end_layout
 
-\begin_layout Paragraph*
-b)
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+c)
+\series default
+ Använd de teoretiska formlerna från Mattias material (eller från Wikipedia)
+ för att beräkna följande storheter (analytiskt):
 \end_layout
 
-\begin_layout Plain Layout
-Använd de teoretiska formlerna från Mattias material för att beräkna följande
- storheter:
-\end_layout
-
+\begin_deeper
 \begin_layout Enumerate
 \begin_inset Formula $E(3)$
 \end_inset
@@ -1406,10 +1739,7 @@ Använd de teoretiska formlerna från Mattias material för att beräkna följan
 
 \end_layout
 
-\begin_layout Paragraph*
-c)
-\end_layout
-
+\end_deeper
 \begin_layout Plain Layout
 Vill vi beräkna 
 \begin_inset Formula $E(2\cdot Z-5)$
@@ -1462,18 +1792,23 @@ sanna
 \end_inset
 
  teoretiska värdet 
-\begin_inset Formula $E(2\cdot Z-5)=-5$
+\begin_inset Formula $E(2\cdot Z-5)=2\cdot E(Z)-5=-5$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Plain Layout
-Upprepa nu samtliga beräkningar i
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
 \series bold
- b)
+d)
 \series default
- ovan men med hjälp av simulering.
+ Upprepa nu samtliga beräkningar i
+\series bold
+ c)
+\series default
+ ovan men gör det genom simulering.
  
 \end_layout
 
@@ -1532,7 +1867,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Subsubsection*
-Uppgift 9 Centrala gränsvärdessatsen
+Uppgift 10 Centrala gränsvärdessatsen
 \end_layout
 
 \begin_layout Plain Layout
@@ -1552,8 +1887,13 @@ Z & \sim & \mbox{Binom}(n=10,p=0.01)
 
 \end_layout
 
-\begin_layout Plain Layout
-Dra 1000 observationer från respektive fördelning och visualisera fördelningen
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+a)
+\series default
+ Dra 1000 observationer från respektive fördelning och visualisera fördelningen
  med 
 \family typewriter
 hist()
@@ -1561,12 +1901,13 @@ hist()
 .
 \end_layout
 
-\begin_layout Paragraph*
-a)
-\end_layout
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
-\begin_layout Plain Layout
-Skriv en loop/funktion i R som drar 10 värden från 
+\series bold
+b)
+\series default
+ Skriv en loop/funktion i R som drar 10 värden från 
 \begin_inset Formula $X$
 \end_inset
 
@@ -1574,22 +1915,36 @@ Skriv en loop/funktion i R som drar 10 värden från
 \begin_inset Formula $Y$
 \end_inset
 
- och beräknar medelvärdet för dessa värden.
- Upprepa detta 1000 gånger och spara varje medelvärde i en vektor.
- Visualisera denna vektor med 
+ och beräknar medelvärdena, 
+\begin_inset Formula $\bar{X}$
+\end_inset
+
+ och 
+\begin_inset Formula $\bar{Y}$
+\end_inset
+
+, baserat på dessa 10 värden.
+ Upprepa detta 1000 gånger och spara varje medelvärdena i en vektor.
+ Visualisera denna fördelning av medelvärden med 
 \family typewriter
 hist()
 \family default
 .
+ 
 \end_layout
 
-\begin_layout Paragraph*
-b)
-\end_layout
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
-\begin_layout Plain Layout
-Upprepa det du gjorde i uppgift a) men dra nu 30, 100 och 1000 värden istället
- och visualisera resultatet.
+\series bold
+c)
+\series default
+ Upprepa det du gjorde i uppgift 
+\series bold
+a)
+\series default
+ men dra nu 30, 100 och 1000 värden istället för 10 värden och visualisera
+ resultatet.
  Vilken fördelning konvergerar medelvärdena mot? Vilken av de stokastiska
  variablerna 
 \begin_inset Formula $X,Y$
@@ -1599,8 +1954,7 @@ Upprepa det du gjorde i uppgift a) men dra nu 30, 100 och 1000 värden istället
 \begin_inset Formula $Z$
 \end_inset
 
- konvergerar snabbast? Varför? Du behöver inte inkludera samtliga grafer
- i laborationsrapporten.
+ konvergerar snabbast mot denna fördelning? Varför?
 \end_layout
 
 \end_inset
