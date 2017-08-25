@@ -170,8 +170,8 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path <- "/Users/mv/Dropbox/Teaching/ProbStatUProg/Hidden/exercise_solut
-ions/"
+solution_path <- "/Users/mansmagnusson/Dropbox (Personlig)/Doktorandstudier/Unde
+rvisning/IntroStatsForCSCourse/Hidden/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -538,15 +538,11 @@ Beräkna och visualisera loglikelihood värden för
 \end_inset
 
 , förslagsvis med en stegstorlek på 0.01.
- Vad är din visuella bedömning av funktionens maximum? 
-\series bold
-Tips!
-\series default
- 
-\family typewriter
-plot()
-\family default
- 
+ För vilket av de upprepade värdena för 
+\begin_inset Formula $\beta$
+\end_inset
+
+ får du det maximala värdet på log-likelihoodfunktionen? 
 \end_layout
 
 \begin_layout Paragraph*
@@ -579,7 +575,11 @@ b)
 \end_inset
 
 .
- Vad är din visuella bedömning av funktionens maximum?
+ Vilket värde på 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ ger det maximala värdet för log-likelihood-funktionen?
 \end_layout
 
 \begin_layout Paragraph*
@@ -1098,7 +1098,7 @@ rnorm()
 \end_layout
 
 \begin_layout Section
-Samplingfördelning och väntevärdesriktighet
+Estimatorers samplingfördelning
 \end_layout
 
 \begin_layout Standard
@@ -1288,104 +1288,6 @@ b)
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-I föregående laboration så studerade vi fördelningars förväntade värde,
- 
-\begin_inset Formula $E(X)$
-\end_inset
-
-, och varians, 
-\begin_inset Formula $Var(X)$
-\end_inset
-
-.
- När vi arbetar med estimatorer kan vi också tala om en estimators förväntade
- värde på precis samma sätt som i föregående laboration.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Doublebox
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Subsubsection
-Uppgift 5 Det förväntade värdet för 
-\begin_inset Formula $\hat{\beta}_{MLE}$
-\end_inset
-
-, 
-\begin_inset Formula $\hat{\mu}_{MLE}$
-\end_inset
-
- och 
-\begin_inset Formula $\hat{\sigma^{2}}_{MLE}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-Beräkna det förväntade värdet för 
-\begin_inset Formula $\hat{\beta}_{MLE}$
-\end_inset
-
-, 
-\begin_inset Formula $\hat{\mu}_{MLE}$
-\end_inset
-
- och 
-\begin_inset Formula $\hat{\sigma^{2}}_{MLE}$
-\end_inset
-
- baserat på de samplingfördelningar du beräknat ovan.
- Vad är din slutsats? Förändras det förväntade värdet om vi ökar urvalsstorleken
-?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-På ett liknande sätt går det att beräkna en estimators varians.
-\end_layout
-
 \begin_layout Section
 Numerisk maximum likelihood estimation
 \end_layout
@@ -1475,7 +1377,16 @@ optim()
 \family default
  för att numeriskt finna våra maximum likelihoodskattningar.
  Jämför med resultaten vi fick ovan med de analytiska lösningarna.
- 
+ Argumentet 
+\family typewriter
+par
+\family default
+ i 
+\family typewriter
+optim()
+\family default
+ är de initiala värdena där optimeraren startar.
+ Tänk på att ge initieringsvärden som är definierade i funktionen.
 \end_layout
 
 \begin_layout Standard
@@ -1489,8 +1400,8 @@ status open
 
 \begin_layout Plain Layout
 
-opt_res <- optim(c(0,1), llnormal2, x=test_x, method="L-BFGS-B", lower =
- c(-Inf,0))
+opt_res <- optim(par = c(0,1), fn = llnormal2, x=test_x, method="L-BFGS-B",
+ lower = c(-Inf,0))
 \end_layout
 
 \begin_layout Plain Layout
@@ -1535,7 +1446,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Subsubsection
-Uppgift 6 Log-likelihoodfunktionen för betafördelningen
+Uppgift 5 Log-likelihoodfunktionen för betafördelningen
 \end_layout
 
 \begin_layout Paragraph*
@@ -1586,8 +1497,8 @@ b)
 \end_layout
 
 \begin_layout Plain Layout
-Simulera 50 dragningar från en 
-\begin_inset Formula $\mathcal{B}(\alpha=0.2,\beta=2)$
+Simulera 100 dragningar från en 
+\begin_inset Formula $\text{Beta}(\alpha=0.2,\beta=2)$
 \end_inset
 
  och visualisera dragningarna med ett histogram.
@@ -1639,7 +1550,7 @@ optim()
 
  
 \series default
-när du anger intervallen till 
+när du anger intervallen och startvärdena till 
 \family typewriter
 optim()
 \family default
