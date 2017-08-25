@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass report
 \begin_preamble
 \usepackage{fancyhdr}%The first page setting
@@ -32,16 +34,16 @@ knitr
 \language_package auto
 \inputencoding auto
 \fontencoding default
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -335,6 +337,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Subsubsection
@@ -525,6 +532,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Subsubsection
@@ -706,6 +718,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Subsubsection
@@ -984,7 +1001,7 @@ garna är normalfördelade.
 \end_layout
 
 \begin_layout Section
-Multinomial - dirichlet
+Multinomial - Dirichlet
 \end_layout
 
 \begin_layout Standard
@@ -1013,6 +1030,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Subsubsection
@@ -1042,24 +1064,23 @@ a)
 \end_layout
 
 \begin_layout Plain Layout
-Vi börjar med att försöka bestämma vår a priori-fördelning för de olika
- partierna.
+Vi börjar med att försöka bestämma vår apriori-fördelning för de olika partierna.
  Vår apriorifördelning specificerar vi som en dirichletfördelning med en
  parameter 
 \begin_inset Formula $\alpha$
 \end_inset
 
  per parti.
- Pröva dig fram och simulera från din prior, dirichletfördelningen finns
+ Pröva dig fram och simulera från din prior, Dirichletfördelningen finns
  i R-paketet 
 \family typewriter
 gtools
 \family default
 .
- Eftersom dirichletfördelningen är multivariat görs en dragning för alla
+ Eftersom Dirichletfördelningen är multivariat görs en dragning för alla
  partier på en och samma gång.
- Gör 1000 dragningar från din apriorifördelning och presentera din prior
- för respektive parti.
+ Gör 1000 dragningar från din apriorifördelning och presentera din (marginella)
+ prior för respektive parti som ett histogram.
  I din apriorifördelning bör utfallen från valet 2014 inte vara allt för
  osannolikt.
  Använd 
@@ -1070,7 +1091,8 @@ abline()
 \family typewriter
 v
 \family default
- för att visualisera din prior för respektive parti och valresultatet.
+ för att visualisera din valresultatet 2014 tillsammans med din (marginella)
+ prior.
 \end_layout
 
 \begin_layout Plain Layout
@@ -1185,10 +1207,6 @@ Vad är sannolikheten att KD
 inte
 \series default
  skulle komma in i Riksdagen (få mindre än 4 %)
-\end_layout
-
-\begin_layout Enumerate
-Vad är sannolikheten att Fi skulle komma in i Riksdagen?
 \end_layout
 
 \begin_layout Enumerate
