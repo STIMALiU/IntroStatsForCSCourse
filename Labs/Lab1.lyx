@@ -354,7 +354,7 @@ För att enkelt visualisera en fördelning kan vi använda funktionen
 \family typewriter
 hist()
 \family default
- på följande sätt:
+ och fördelningens pdf på följande sätt:
 \end_layout
 
 \begin_layout Standard
@@ -369,12 +369,27 @@ status open
 
 \begin_layout Plain Layout
 
-a <- rbinom(n = 10000, size = 1000, prob = 0.1)
+a <- rbinom(n = 10000, size = 1000, prob = 0.1) 
 \end_layout
 
 \begin_layout Plain Layout
 
-hist(a)
+hist(a, probability = TRUE) 
+\end_layout
+
+\begin_layout Plain Layout
+
+xfit <- seq(50, 150, 1)   
+\end_layout
+
+\begin_layout Plain Layout
+
+yfit <- dbinom(xfit, size = 1000, prob = 0.1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+lines(xfit, yfit, col="blue", lwd=2) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -418,7 +433,7 @@ Uppgift 1 Simulering av normalfördelning
 \end_layout
 
 \begin_layout Plain Layout
-Simulera 10 och 10000 dragningar från en normalfördelning med 
+Simulera 100 och 10000 dragningar från en normalfördelning med 
 \begin_inset Formula $\mu=10$
 \end_inset
 
@@ -437,6 +452,7 @@ Simulera 10 och 10000 dragningar från en normalfördelning med
 a)
 \series default
  Visualisera fördelningarna i två histogram.
+ Visualisera fördelningens pdf i samma graf.
  
 \end_layout
 
@@ -491,7 +507,7 @@ Uppgift 2 Simulera och visualisera andra fördelningar
 a)
 \series default
  Simulera och visualisera följande fördelningar med 10000 dragningar från
- varje fördelning.
+ varje fördelning samt fördelningens pmf/pdf.
 \end_layout
 
 \begin_deeper
@@ -634,8 +650,7 @@ Nedan finns tre stycken sannolikhetsfördelningar som konvergerar mot andra
 \begin_inset Formula 
 \begin{eqnarray*}
 \mathbf{x}_{1} & \sim & \mbox{Binomial}(n=10000,p=0.001)\\
-\mathbf{x}_{2} & \sim & \mbox{Exp}(\theta=1)+\mbox{Exp}(\theta=1)\\
-\mathbf{x}_{3} & \sim & \mbox{Student-t}(\nu=10000)
+\mathbf{x}_{2} & \sim & \mbox{Student-t}(\nu=10000)
 \end{eqnarray*}
 
 \end_inset
@@ -650,17 +665,6 @@ Nedan finns tre stycken sannolikhetsfördelningar som konvergerar mot andra
 
 \end_layout
 
-\begin_layout Plain Layout
-Observera att du ska simulera två (oberoende) exponentialfördelningar och
- lägga ihop deras värde.
- D.v.s.
- 
-\begin_inset Formula $\mbox{Exp}(\theta=1)+\mbox{Exp}(\theta=1)\neq2\cdot\mbox{Exp}(\theta=1)$
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
@@ -668,17 +672,7 @@ Observera att du ska simulera två (oberoende) exponentialfördelningar och
 a)
 \series default
  Simulera 1000 värden från respektive fördelning och visualisera fördelningen
- i ett histogram.
- 
-\series bold
-Tips!
-\series default
- 
-\family typewriter
-hist()
-\family default
-.
- 
+ i ett histogram tillsammans med fördelningens pmf/pdf.
 \end_layout
 
 \begin_layout Labeling
@@ -1925,12 +1919,7 @@ b)
 
 , baserat på dessa 10 värden.
  Upprepa detta 1000 gånger och spara varje medelvärdena i en vektor.
- Visualisera denna fördelning av medelvärden med 
-\family typewriter
-hist()
-\family default
-.
- 
+ Visualisera denna fördelning av medelvärden i ett histogram.
 \end_layout
 
 \begin_layout Labeling
