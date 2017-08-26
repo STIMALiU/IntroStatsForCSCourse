@@ -106,7 +106,6 @@ Labben ska vara en
 PDF-rapport
 \series default
  med kod, analys och grafer.
- Ett tips är att använda R markdown.
  I rapporten ska följande ingå:
 \begin_inset Separator latexpar
 \end_inset
@@ -120,14 +119,36 @@ Båda studenternas namn och LiU-id.
 \end_layout
 
 \begin_layout Itemize
-Universitet och institution
-\end_layout
-
-\begin_layout Itemize
 Laborationsnummer
 \end_layout
 
+\begin_layout Itemize
+Uppgifterna ni besvarar (ex.
+ som rubriker).
+\end_layout
+
 \end_deeper
+\begin_layout Itemize
+Ett tips är att använda R markdown.
+
+\series bold
+\color blue
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "Här"
+target "https://raw.githubusercontent.com/STIMALiU/IntroStatsForCSCourse/master/Labs/Template.Rmd"
+
+\end_inset
+
+
+\series default
+\color inherit
+ finns en R markdownmall att utgå ifrån.
+ Antingen kan ni skapa PDF direkt från denna mall i R-Studio (med TeX) eller
+ så skapar ni ett Word/HTML dokument som sedan skrivs ut till PDF.
+\end_layout
+
 \begin_layout Itemize
 Deadlinen för laborationen framgår av 
 \series bold
