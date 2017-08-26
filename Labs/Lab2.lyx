@@ -12,8 +12,8 @@
   \fancyhf{} % clear all header and footer fields
   \fancyhead[L]{
     LINK\"OPING UNIVERSITY\\
-    Avdelningen för Statistik och maskininlärning\\
-    Institutionen för datavetenskap
+    Avdelningen för Statistik och Maskininlärning (Stima)\\
+    Institutionen för data- och informationsvetenskap (Ida)
   }
   \fancyhead[R]{TBDA01}
 }

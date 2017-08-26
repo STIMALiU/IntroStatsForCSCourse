@@ -12,15 +12,15 @@
   \fancyhf{} % clear all header and footer fields
   \fancyhead[L]{
     LINK\"OPING UNIVERSITY\\
-    Avdelningen för Statistik och maskininlärning (STIMA)\\
-    Institutionen för datavetenskap
+    Avdelningen för Statistik och Maskininlärning (Stima)\\
+    Institutionen för data- och informationsvetenskap (Ida)
   }
-  \fancyhead[R]{Programming i R}
+  \fancyhead[R]{TDAB01}
 }
 %The remaining pages
 
 \fancyhead[RO,LE]{}
-\fancyhead[C]{Programming i R}
+\fancyhead[C]{TDAB01}
 \fancyhead[LO,RE]{}
 
  
