@@ -1,0 +1,43 @@
+---
+title: "Lab 1"
+author: "Mans Magnusson (manma97) and Mattias Villani (matvi73)"
+date: '20XX-XX-XX'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Uppgift 1 Simulering av normalfördelning
+
+### a) Visualisera fördelningarna i två histogram. Visualisera fördelningens pdf i samma graf.
+
+Nedan simuleras normalfördelningen med olika antalet dragningar.
+
+```{r }
+x1 <- rnorm(100, mean = 10, sd = 4)
+x2 <- rnorm(10000, mean = 10, sd = 4)
+```
+
+I figurerna nedan visas resultatet av dragningarna som ett histogram tillsammans med täthetsfunktionen.
+
+```{r, echo=FALSE}
+hist(x1, probability = TRUE) 
+xfit <- seq(0, 20, 0.1)   
+yfit <- dnorm(xfit, mean = 10, sd = 4) 
+lines(xfit, yfit, col="blue", lwd=2) 
+```
+
+```{r, echo=FALSE}
+hist(x2, probability = TRUE) 
+xfit <- seq(-5, 25, 0.1)   
+yfit <- dnorm(xfit, mean = 10, sd = 4) 
+lines(xfit, yfit, col="blue", lwd=2) 
+```
+
+### b) Beskriv skillnaden mellan de olika graferna.
+
+Vi kan tydligare se normalfördelningsformen om vi gör fler dragningar/simuleringar.
+
+
