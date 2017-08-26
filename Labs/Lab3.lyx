@@ -166,8 +166,8 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/TBDA1/exe
-rcise_solutions/"
+solution_path <- "/Users/mansmagnusson/Dropbox (Personlig)/Doktorandstudier/Unde
+rvisning/IntroStatsForCSCourse/Hidden/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -177,6 +177,11 @@ rcise_solutions/"
 \begin_layout Plain Layout
 
 solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+# print(solution_files)
 \end_layout
 
 \begin_layout Plain Layout
@@ -359,8 +364,20 @@ Vi ska nu visualisera en lite klurigare posterior.
 \begin_inset Formula $\mu$
 \end_inset
 
- och vill beräkna dess posterior.
- Som prior väljer du student-t fördelning med 
+ för denna normalfördelning och vill beräkna posteriorn för 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Som prior för 
+\begin_inset Formula $\mu$
+\end_inset
+
+ använder vi en t-fördelning med 
 \begin_inset Formula $\nu=1$
 \end_inset
 
@@ -383,28 +400,14 @@ dt()
 
 .
  
+\series bold
+Obs!
+\series default
+ Gör detta utan att titta på datamaterialet.
 \end_layout
 
 \begin_layout Paragraph*
 b)
-\end_layout
-
-\begin_layout Plain Layout
-Härled den proportionella (onormaliserade) posteriorn, d.v.s.
- 
-\begin_inset Formula $p(\theta|\mathbf{y})\propto p(\mathbf{y}|\theta)p(\theta)$
-\end_inset
-
-.
- Tänk på att de faktorer som inte innehåller 
-\begin_inset Formula $\mu$
-\end_inset
-
- kan förkortas bort.
-\end_layout
-
-\begin_layout Paragraph*
-c)
 \end_layout
 
 \begin_layout Plain Layout
@@ -432,7 +435,12 @@ set.seed(42)
 
 \begin_layout Plain Layout
 
-rnorm(7, 10)
+data <- rnorm(7, 10)
+\end_layout
+
+\begin_layout Plain Layout
+
+data
 \end_layout
 
 \begin_layout Plain Layout
@@ -462,21 +470,99 @@ hist()
 \end_layout
 
 \begin_layout Paragraph*
+c)
+\end_layout
+
+\begin_layout Plain Layout
+Skapa en funktion för log likelihooden för 
+\begin_inset Formula $\mu$
+\end_inset
+
+ som du kallar 
+\family typewriter
+normal_log_likelihood(mu, data)
+\family default
+.
+ Anta att 
+\begin_inset Formula $\sigma=1$
+\end_inset
+
+.
+ Visualisera likelihooden för 
+\begin_inset Formula $\mu$
+\end_inset
+
+ över intervallet 
+\begin_inset Formula $[-5,15]$
+\end_inset
+
+, precis som med priorn i uppgift 
+\series bold
+a)
+\series default
+.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+llik <- normal_log_likelihood(5, data)
+\end_layout
+
+\begin_layout Plain Layout
+
+round(llik, 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
 d)
 \end_layout
 
 \begin_layout Plain Layout
-Visualisera den onormaliserade posteriorn genom att beräkna värden för 1000
- punkter på intervallet 
-\begin_inset Formula $[-5,15]$
+Härled (analytiskt, steg för steg) den proportionella (onormaliserade) posterior
+n för 
+\begin_inset Formula $\mu$
 \end_inset
 
- med funktionen du härlett i b) ovan.
- Visualisera den onormaliserade posteriorn med 
-\family typewriter
-plot(type='l')
-\family default
+, d.v.s.
+ 
+\begin_inset Formula $p(\theta|\mathbf{y})\propto p(\mathbf{y}|\theta)p(\theta)$
+\end_inset
+
 .
+ Tänk på att de faktorer som inte innehåller 
+\begin_inset Formula $\mu$
+\end_inset
+
+ kan förkortas bort.
+\end_layout
+
+\begin_layout Paragraph*
+e)
+\end_layout
+
+\begin_layout Plain Layout
+Visualisera den onormaliserade posteriorn på samma sätt som priorn och likelihoo
+den ovan.
+ 
 \end_layout
 
 \end_inset
@@ -547,8 +633,33 @@ Uppgift 2 Produkt A eller B?
 Du har precis skapat en startup med två produktidéer, A och B.
  Du har skapat prototyper för de två produkterna och demonstrerat dem för
  ett antal personer.
- Produkt A har du demonstrerat för 13 personer varav 8 var intresserade
- och produkt 
+ 
+\end_layout
+
+\begin_layout Paragraph
+a)
+\end_layout
+
+\begin_layout Plain Layout
+För att det ska gå att dra slutsatser från materialet behöver du bestämma
+ din prior som parametrar i en Betafördelning.
+ Vilka parametrar väljer du och varför? 
+\series bold
+Obs!
+\series default
+ Tänk på att du ännu inte observerat några data ännu.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Produkt A har du demonstrerat för 13 personer varav 8 var intresserade och
+ produkt 
 \begin_inset Formula $B$
 \end_inset
 
@@ -559,49 +670,70 @@ Du har precis skapat en startup med två produktidéer, A och B.
 \end_layout
 
 \begin_layout Paragraph
-a)
-\end_layout
-
-\begin_layout Plain Layout
-För att det ska gå att dra slutsatser från materialet behöver du bestämma
- din prior som parametrar i en Betafördelning.
- Vilka parametrar väljer du och varför.
- Simulera och visualisera din prior i ett histogram, eller om du väljer
- två olika priorfördelning (en för varje produkt), visualisera båda.
-\end_layout
-
-\begin_layout Paragraph
 b)
 \end_layout
 
 \begin_layout Plain Layout
-Använd konjugategenskapen mellan beta och binomialfördelningen för att räkna
+Visualisera din prior, eller om du väljer två olika priorfördelning (en
+ för varje produkt), visualisera båda dessa prior-sannolikhetsfördelningar.
+\end_layout
+
+\begin_layout Paragraph
+c)
+\end_layout
+
+\begin_layout Plain Layout
+Använd konjugategenskapen mellan Beta och binomialfördelningen för att räkna
  ut din posteriorfördelning analytiskt i respektive fall.
- Beräkna analytiskt den förväntade proportionen för respektive produkt.
+ Beräkna den förväntade proportionen för respektive produkt (med hjälp av
+ det förväntade värdet för en Betafördelning).
  Vilken produkt har den högsta förväntade proportionen intresserade?
 \end_layout
 
 \begin_layout Paragraph
 
 \series bold
-c)
+d)
 \end_layout
 
 \begin_layout Plain Layout
 Precis som när det gäller maximum likelihood kan vi studera maximum av vår
  posteriorifördelning, vilket ofta kallas maximum aposteriori skattningen
  (MAP).
- Ta reda på hur maximum beräknas för betafördelningen.
+ Detta kan vi göra på tre sätt, analytiskt, numeriskt (med ex.
+ 
+\family typewriter
+optim()
+\family default
+) eller ta reda på maximum (
+\begin_inset Quotes sld
+\end_inset
+
+mode
+\begin_inset Quotes srd
+\end_inset
+
+) för Betafördelningen.
+ Ta reda på hur man beräknar 
+\begin_inset Quotes sld
+\end_inset
+
+mode
+\begin_inset Quotes srd
+\end_inset
+
+ i en Beta fördelning (se ex.
+ Wikipedia).
  Vad är MAP skattningen för respektive produkt?
 \end_layout
 
 \begin_layout Paragraph
-d)
+e)
 \end_layout
 
 \begin_layout Plain Layout
-Simulera och visualisera dina två posteriorfördelning ovan i ett histogram
- och svara på följande frågor:
+Visualisera dina två posteriorfördelning ovan i ett histogram och svara
+ på följande frågor:
 \end_layout
 
 \begin_layout Enumerate
@@ -633,36 +765,41 @@ e)
 Storleken på er marknad är 87 andra företag ni vill nå med era produkter.
  Använd era två aposteriorfördelningar för respektive produkt för att simulera
  hur många intresserade kunder ni kan tänkas få för respektive produkt.
- Simulera först från er betafördeling (posterior) och sedan använder ni
- de simulerade värdena 
-\begin_inset Formula $p$
+ Simulera först från er (posterior) betafördeling och använd sedan de simulerade
+ värdena 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ för produkt 
+\begin_inset Formula $i$
 \end_inset
 
  för att dra en binomialfördelad variabel med 
-\begin_inset Formula $\mbox{Bin}(n=87,p)$
+\begin_inset Formula $X_{i}\sim\mbox{Bin}(n=87,p_{i})$
 \end_inset
 
 .
- Visualisera fördelningenöver antale intresserade kunder ni kommer ha med
- respektive produkt.
+ Visualisera fördelningen över antalet intresserade kunder ni kommer ha
+ med respektive produkt.
  
 \end_layout
 
 \begin_layout Enumerate
-Hur stor är sannolikheten att få fler än 40 intresserade kunder med respektive
- produkt?
+Hur stor är sannolikheten att ni får fler än 40 intresserade kunder med
+ respektive produkt?
 \end_layout
 
 \begin_layout Enumerate
-Vad är det förväntade antalet intresserade kunder med respektive produkt?
-\end_layout
+Vad är det förväntade antalet intresserade kunder med respektive produkt
+ (
+\begin_inset Formula $E(X_{1})$
+\end_inset
 
-\begin_layout Paragraph
-f)
-\end_layout
+ och 
+\begin_inset Formula $E(X_{2})$
+\end_inset
 
-\begin_layout Plain Layout
-Vilken produkt skulle ni satsa på och varför?
+)?
 \end_layout
 
 \end_inset
@@ -695,7 +832,7 @@ key "baron2013probability"
 \begin_inset Formula $\mu$
 \end_inset
 
- i en normalmodell.
+ i en normal likelihoodmodell.
  
 \end_layout
 
@@ -763,7 +900,37 @@ där
 \end_inset
 
 .
- Nedan följer den dagliga avkastningen för aktien SCA A under vecka 39.
+ Vi är intresserade av att modellera den dagliga avkastningen för SCAs B-aktie.
+ 
+\end_layout
+
+\begin_layout Paragraph
+a)
+\end_layout
+
+\begin_layout Plain Layout
+Börja med att ange en prior för 
+\begin_inset Formula $\mu$
+\end_inset
+
+och ange också din osäkerhet med apriorivariansen 
+\begin_inset Formula $\tau^{2}$
+\end_inset
+
+.
+ Visualisera vad du tror, a priori, om den dagliga avkastningen för SCA
+ B.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Nedan följer den dagliga avkastningen för aktien SCA B under vecka 39.
 \end_layout
 
 \begin_layout Plain Layout
@@ -816,7 +983,7 @@ ler med väntevärde
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
- är följande värde för SCA A:
+ är följande värde för SCA B:
 \end_layout
 
 \begin_layout Plain Layout
@@ -844,24 +1011,6 @@ var(x)
 \end_layout
 
 \begin_layout Paragraph
-a)
-\end_layout
-
-\begin_layout Plain Layout
-Börja med att ange en prior för 
-\begin_inset Formula $\mu$
-\end_inset
-
-och ange också din osäkerhet med apriorivariansen 
-\begin_inset Formula $\tau^{2}$
-\end_inset
-
-.
- Simulera och visualisera var du tror, a priori, om den dagliga avkastningen
- för SCA A.
-\end_layout
-
-\begin_layout Paragraph
 b)
 \end_layout
 
@@ -884,7 +1033,7 @@ key "baron2013probability"
 \begin_inset Formula $Data$
 \end_inset
 
- representerar observerad avkastning för SCA A under vecka 39?
+ representerar observerad avkastning för SCA B under vecka 39?
 \end_layout
 
 \begin_layout Paragraph
@@ -967,21 +1116,18 @@ för varje simulerat värde för
 \end_layout
 
 \begin_layout Paragraph
-Tips!
-\end_layout
-
-\begin_layout Plain Layout
-
-\family typewriter
-quantile()
-\end_layout
-
-\begin_layout Paragraph
 d)
 \end_layout
 
 \begin_layout Plain Layout
 Beräkna ett 95% sannolikhetsintervall för Value-at-Risk.
+ 
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+quantile()
 \end_layout
 
 \begin_layout Paragraph*
@@ -992,7 +1138,7 @@ e)
 Din modell ovan antar att avkastningarna är oberoende över tid och att avkastnin
 garna är normalfördelade.
  Diskutera om du tror att dessa antaganden är rimliga.
- Finns det något bra sätt att undersöka om dessa antaganden är rimliga?
+ 
 \end_layout
 
 \end_inset
@@ -1042,21 +1188,8 @@ Uppgift 4 Analys av opinionsundersökningar
 \end_layout
 
 \begin_layout Plain Layout
-
-\series bold
-\color blue
-\begin_inset CommandInset href
-LatexCommand href
-name "Här"
-target "https://github.com/MansMeg/SwedishPolls"
-
-\end_inset
-
-
-\series default
-\color inherit
- finns samtliga svenska opinionsundersökningar.
- 
+I denna uppgift ska vi analysera väljarstödet för de olika partierna i den
+ Svenska Riksdagen.
 \end_layout
 
 \begin_layout Paragraph
@@ -1065,14 +1198,14 @@ a)
 
 \begin_layout Plain Layout
 Vi börjar med att försöka bestämma vår apriori-fördelning för de olika partierna.
- Vår apriorifördelning specificerar vi som en dirichletfördelning med en
- parameter 
-\begin_inset Formula $\alpha$
+ Vår apriorifördelning specificerar vi som en dirichletfördelning med parametrar
+na 
+\begin_inset Formula $\alpha_{1},...,\alpha_{9}$
 \end_inset
 
- per parti.
- Pröva dig fram och simulera från din prior, Dirichletfördelningen finns
- i R-paketet 
+.
+ Pröva dig fram och simulera från din prior.
+ Dirichletfördelningen finns i R-paketet 
 \family typewriter
 gtools
 \family default
@@ -1092,7 +1225,12 @@ abline()
 v
 \family default
  för att visualisera din valresultatet 2014 tillsammans med din (marginella)
- prior.
+ prior för 
+\series bold
+samtliga
+\series default
+ partier.
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1153,28 +1291,32 @@ b)
 \end_layout
 
 \begin_layout Plain Layout
-Ladda ned eller använd en av de senaste undersökningarna (och ange vilken
- du valt).
- Det finns en hel del problem med opinionsundersökningar (se 
+
 \series bold
 \color blue
-
 \begin_inset CommandInset href
 LatexCommand href
-name "här"
-target "http://bottenada.se/2015/09/18/bortfallsmodeller-ar-viktigare-an-urvalsmetoden/"
+name "Här"
+target "https://github.com/MansMeg/SwedishPolls"
 
 \end_inset
 
 
 \series default
 \color inherit
- för en diskussion) vilket gör att vi inte kan räkna baserat på institutens
- urvalsstorlekar direkt.
+ finns samtliga svenska opinionsundersökningar.
+ Ladda ned eller använd en av de senaste undersökningarna.
+ Ange vilken undersökning du valt.
+ Det finns en hel del problem med opinionsundersökningar vilket gör att
+ vi inte kan räkna baserat på institutens urvalsstorlekar direkt.
  Anta därför istället att den undersökning du valt har 200 personer som
  deltagit och räkna ut (och avrunda) hur många som svarat för respektive
  parti.
- Ange vilken undersökning du valt och dina (avrundade) antal observationer
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Ange vilken undersökning du valt och dina (avrundade) antal observationer
  för respektive parti.
 \end_layout
 
@@ -1188,8 +1330,9 @@ c)
 Beräkna nu aposteriorifördelningen för andelen per riksdagsparti och gör
  10 000 simuleringar från din aposteriorifördelning.
  När du svarar på frågorna nedan ska du ta hänsyn till de s k 4% spärren,
- dvs att ett parti måste få minst 4% av rösterna för att sitta i riksdagen.
- Svara sedan på följande frågor om det vore val idag:
+ dvs att ett parti måste få minst 4% av rösterna för att sitta i Riksdagen.
+ Får ett parti mindre än 4% ska du sätta deras andel till 0% för denna dragning.
+ Svara på följande frågor:
 \end_layout
 
 \begin_layout Enumerate
@@ -1197,12 +1340,12 @@ Vad är sannolikheten att de rödgröna är större än alliansen?
 \end_layout
 
 \begin_layout Enumerate
-Vad är sannolikheten att Sverigedemokraterna har en vågmästarroll, d.v.s.
- varken de rödgröna eller alliansen får egen majoritet?
+Vad är sannolikheten att Sverigedemokraterna (SD) är större än Moderaterna
+ (M)?
 \end_layout
 
 \begin_layout Enumerate
-Vad är sannolikheten att KD 
+Vad är sannolikheten att Kristidemokraterna 
 \series bold
 inte
 \series default
@@ -1210,11 +1353,7 @@ inte
 \end_layout
 
 \begin_layout Enumerate
-Vad är sannolikheten att FP skulle åka ur Riksdagen?
-\end_layout
-
-\begin_layout Enumerate
-Vad är sannolikheten att SD skulle bli Sveriges största parti?
+Vad är sannolikheten att Miljöpartiet (MP) skulle åka ur Riksdagen?
 \end_layout
 
 \begin_layout Enumerate
