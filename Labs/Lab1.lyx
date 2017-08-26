@@ -206,7 +206,7 @@ Simulering och Monte Carlo-metoder
 \begin_layout Standard
 De första uppgifterna i denna laboration syftar till hur vi kan använda
  oss av simulering (eller Monte Carlo-metoder) för att studera sannolikhetsförde
-lningar.
+lningar och lösa statistiska problem.
  I R är det mycket enkelt att simulera från de flesta sannolikhetsfördelningar
  som har behandlats i kursen såhär långt.
 \end_layout
@@ -354,7 +354,7 @@ För att enkelt visualisera en fördelning kan vi använda funktionen
 \family typewriter
 hist()
 \family default
- och fördelningens pdf på följande sätt:
+ och fördelningens täthetsfunktion på följande sätt:
 \end_layout
 
 \begin_layout Standard
@@ -507,7 +507,7 @@ Uppgift 2 Simulera och visualisera andra fördelningar
 a)
 \series default
  Simulera och visualisera följande fördelningar med 10000 dragningar från
- varje fördelning samt fördelningens pmf/pdf.
+ varje fördelning samt fördelningens täthetsfunktioner.
 \end_layout
 
 \begin_deeper
@@ -599,7 +599,11 @@ Som behandlats under föreläsningarna finns det också relationer mellan olika
 \begin_inset Formula $\alpha=\beta=1$
 \end_inset
 
- ger en likformig fördelning.
+ ger en likformig fördelning, 
+\begin_inset Formula $U(0,1)$
+\end_inset
+
+.
  Det finns flera sådana relationer som är värdefulla att känna till.
 \end_layout
 
@@ -634,7 +638,7 @@ Uppgift 3 Relation mellan fördelningar
 \end_layout
 
 \begin_layout Plain Layout
-Nedan finns tre stycken sannolikhetsfördelningar som konvergerar mot andra
+Nedan finns två stycken sannolikhetsfördelningar som konvergerar mot andra
  sannolikhetsfördelningar.
  
 \end_layout
@@ -672,7 +676,7 @@ Nedan finns tre stycken sannolikhetsfördelningar som konvergerar mot andra
 a)
 \series default
  Simulera 1000 värden från respektive fördelning och visualisera fördelningen
- i ett histogram tillsammans med fördelningens pmf/pdf.
+ i ett histogram tillsammans med fördelningens täthetsfunktionen.
 \end_layout
 
 \begin_layout Labeling
@@ -682,8 +686,8 @@ a)
 b)
 \series default
  Ta reda på (ex.
- via Wikipedia) vilken annan fördelning som respektive fördelning konvergerar
- mot.
+ via Wikipedia) vilken annan fördelning som respektive fördelning börjar
+ konvergera mot.
  
 \end_layout
 
@@ -693,8 +697,8 @@ b)
 \series bold
 c)
 \series default
- Simulera dragningar från dessa fördelning och jämför fördelningarna med
- de resultat du fick i 
+ Simulera dragningar från dessa fördelning och jämför resultatet med de
+ resultat du fick i 
 \series bold
 a)
 \series default
@@ -770,7 +774,8 @@ waiting
 \series bold
 b)
 \series default
- Simulera från följande modell och visualisera fördelningen i ett histogram.
+ Simulera 10000 från följande modell och visualisera fördelningen i ett
+ histogram.
  Simulera först från 
 \begin_inset Formula $X$
 \end_inset
@@ -837,7 +842,8 @@ c)
 waiting
 \family default
 .
- Visualisera denna fördelning i ett histogram.
+ Simulera 10000 dragningar från denna fördelning och visualisera detta i
+ ett histogram.
 \end_layout
 
 \end_inset
@@ -974,15 +980,6 @@ a)
 
 \end_layout
 
-\begin_layout Plain Layout
-Beräkna nu på liknande sätt 
-\begin_inset Formula $P(Y=10)$
-\end_inset
-
- både med täthetsfunktionen och genom simulering.
- 
-\end_layout
-
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
@@ -1075,7 +1072,7 @@ b)
 Som ett nästa steg ska vi försöka göra en lite mer realistisk beräkning
  av sannolikheter och hur simuleringar kan användas för att hjälpa oss fatta
  beslut under osäkerhet.
- Vi kan genom att specificera vår osäkerhet som sannolikhetsfördelningar
+ Vi kan, genom att specificera vår osäkerhet som sannolikhetsfördelningar,
  enkelt få svar på komplexa frågor genom simuleringar.
 \end_layout
 
@@ -1112,12 +1109,12 @@ Uppgift 6 Beräkna (icke-triviala) sannolikheter
 \begin_layout Plain Layout
 Du är CTO för ett företag och är osäker på om du ska bygga om ert nuvarande
  system för att minska kostnaden för underhåll.
- I ert nuvarande system vet du att ni har en felfrekvens cirka 10% eller
+ I ert nuvarande system vet du att ni har en felfrekvens cirka 10%, eller
  
 \begin_inset Formula $p=0.1$
 \end_inset
 
- sett till antalet kunder och år.
+, sett till antalet kunder och år.
  Ni har totalt 
 \begin_inset Formula $337$
 \end_inset
@@ -1139,8 +1136,11 @@ Du är CTO för ett företag och är osäker på om du ska bygga om ert nuvarand
 
 \begin_layout Plain Layout
 Det alternativ du står inför är betydligt mycket osäkrare, du vet inte hur
- stor felfrekvensen kommer bli så du uppskattar att felfrekvensen kommer
- ligga mellan 0.02 och 0.16.
+ stor felfrekvensen kommer bli så du uppskattar att felfrekvensen, 
+\begin_inset Formula $p$
+\end_inset
+
+, kommer ligga mellan 0.02 och 0.16.
  Din osäkerhet kan således beskrivas som en likformig fördelning 
 \begin_inset Formula $P\sim U(0.02,0.16)$
 \end_inset
@@ -1160,7 +1160,7 @@ Det alternativ du står inför är betydligt mycket osäkrare, du vet inte hur
 \end_layout
 
 \begin_layout Plain Layout
-För att lösa detta problem gör 10 000 simuleringar för det nuvarande systemet
+För att lösa detta problem, gör 10 000 simuleringar för det nuvarande systemet
  och 10 000 simuleringar för det gamla systemet och besvara följande frågor.
  
 \series bold
@@ -1198,7 +1198,7 @@ b)
 \series bold
 c)
 \series default
- Vad är sannolikheten att du kommer få fler än 50 fel för respektive system?
+ Vad är sannolikheten att du kommer få fler än 50 fel i respektive system?
 \end_layout
 
 \end_inset
@@ -1221,7 +1221,8 @@ Monte carlo
 \begin_inset Quotes srd
 \end_inset
 
--metoder kan också användas för att lösa andra problm än sannolikhetsberäkningar.
+-metoder kan också användas för att lösa andra problem än sannolikhetsberäkninga
+r.
  
 \end_layout
 
@@ -1261,7 +1262,7 @@ Simulera två likformiga fördelningar (
 \end_inset
 
  ) av storlek 
-\begin_inset Formula $n=1000$
+\begin_inset Formula $n=100$
 \end_inset
 
  som du kallar 
@@ -1398,8 +1399,7 @@ e)
 \begin_inset Formula $Y\sim U(0,4)$
 \end_inset
 
- och beräkna samma integral med en Monte Carlo approximation.
- 
+ och beräkna samma integral med Monte Carlo approximation.
 \end_layout
 
 \end_inset
@@ -1508,7 +1508,8 @@ a)
 b)
 \series default
  Dra 10, 20, ..., 90, 100, 200, ..., 900, 1000, 2000, ..., 9000 och 10000 antal värden
- från respektive fördelning, räkna ut medelvärdet med 
+ från respektive fördelning.
+ Räkna ut medelvärdet med 
 \family typewriter
 mean()
 \family default
@@ -1550,8 +1551,8 @@ Egenskaper hos väntevärden och varians
 \end_layout
 
 \begin_layout Standard
-I Mattias slides (slide 17) från föreläsning 2 finns de (vanligaste) räkneregler
-na för väntevärden och varians.
+I Mattias slides från föreläsning 2 finns de (vanligaste) räknereglerna
+ för väntevärden och varians.
  Vi ska nu undersöka dessa delar mer genom simulering.
  Baserat på Mattias slides kan vi beräkna det teoretiska förväntade värdet
  och den teoretiska variansen.
@@ -1619,7 +1620,7 @@ Y & \sim & \mbox{Poisson}(\lambda=3)
 \series bold
 a)
 \series default
- Besök wikipediasidorna för dessa två fördelningar för att ta reda på följande
+ Besök Wikipedia för dessa två fördelningar för att ta reda på följande
  (teoretiska) storheter 
 \begin_inset Formula $E(X)$
 \end_inset
@@ -1636,7 +1637,15 @@ a)
 \begin_inset Formula $Var(Y)$
 \end_inset
 
- och beräkna dessa teoretiska värden.
+ och beräkna dessa teoretiska värden för 
+\begin_inset Formula $X$
+\end_inset
+
+ och 
+\begin_inset Formula $Y$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
@@ -1735,6 +1744,13 @@ c)
 
 \end_deeper
 \begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 Vill vi beräkna 
 \begin_inset Formula $E(2\cdot Z-5)$
 \end_inset
@@ -1744,7 +1760,7 @@ Vill vi beräkna
 \end_inset
 
  genom simulering gör vi på följande sätt i R.
- I exemplet nedan gör jag 10000 dragningar.
+ I exemplet nedan gör jag 10 000 dragningar.
 \end_layout
 
 \begin_layout Plain Layout
@@ -1918,7 +1934,7 @@ b)
 \end_inset
 
 , baserat på dessa 10 värden.
- Upprepa detta 1000 gånger och spara varje medelvärdena i en vektor.
+ Upprepa detta 1000 gånger och spara varje medelvärde i en vektor.
  Visualisera denna fördelning av medelvärden i ett histogram.
 \end_layout
 
@@ -1933,7 +1949,7 @@ c)
 a)
 \series default
  men dra nu 30, 100 och 1000 värden istället för 10 värden och visualisera
- resultatet.
+ resultatet i histogrm.
  Vilken fördelning konvergerar medelvärdena mot? Vilken av de stokastiska
  variablerna 
 \begin_inset Formula $X,Y$

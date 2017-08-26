@@ -254,7 +254,7 @@ Laboration
 \begin_layout Standard
 I denna laboration kommer vi gå djupare in på bayesianska metoder.
  När vi arbetar med bayesianska metoder betraktar vi inte längre våra okända
- parametrar som konstanta strheter, utan vi betraktar dem som okända stokastiska
+ parametrar som konstanta, utan vi betraktar dem som okända stokastiska
  variabler.
 \end_layout
 
@@ -308,7 +308,7 @@ p(\theta|\mathbf{y})\propto p(\mathbf{y}|\theta)p(\theta)
 
 \end_inset
 
-
+ vilket är en onormaliserad aposteriorifördelning.
 \end_layout
 
 \begin_layout Standard
@@ -399,11 +399,6 @@ dt()
 \end_inset
 
 .
- 
-\series bold
-Obs!
-\series default
- Gör detta utan att titta på datamaterialet.
 \end_layout
 
 \begin_layout Paragraph*
@@ -633,7 +628,11 @@ Uppgift 2 Produkt A eller B?
 Du har precis skapat en startup med två produktidéer, A och B.
  Du har skapat prototyper för de två produkterna och demonstrerat dem för
  ett antal personer.
- 
+ Du är intresserad av att veta hur stor andel, 
+\begin_inset Formula $p$
+\end_inset
+
+, av ett antal företag som kan vara intresserad av dessa produkter.
 \end_layout
 
 \begin_layout Paragraph
@@ -650,6 +649,15 @@ Obs!
  Tänk på att du ännu inte observerat några data ännu.
 \end_layout
 
+\begin_layout Paragraph
+b)
+\end_layout
+
+\begin_layout Plain Layout
+Visualisera din prior, eller om du väljer två olika priorfördelning (en
+ för varje produkt), visualisera båda dessa prior-sannolikhetsfördelningar.
+\end_layout
+
 \begin_layout Plain Layout
 \begin_inset VSpace medskip
 \end_inset
@@ -658,8 +666,8 @@ Obs!
 \end_layout
 
 \begin_layout Plain Layout
-Produkt A har du demonstrerat för 13 personer varav 8 var intresserade och
- produkt 
+Produkt A har du nu demonstrerat för 13 personer varav 8 var intresserade
+ och produkt 
 \begin_inset Formula $B$
 \end_inset
 
@@ -670,21 +678,12 @@ Produkt A har du demonstrerat för 13 personer varav 8 var intresserade och
 \end_layout
 
 \begin_layout Paragraph
-b)
-\end_layout
-
-\begin_layout Plain Layout
-Visualisera din prior, eller om du väljer två olika priorfördelning (en
- för varje produkt), visualisera båda dessa prior-sannolikhetsfördelningar.
-\end_layout
-
-\begin_layout Paragraph
 c)
 \end_layout
 
 \begin_layout Plain Layout
-Använd konjugategenskapen mellan Beta och binomialfördelningen för att räkna
- ut din posteriorfördelning analytiskt i respektive fall.
+Använd konjugategenskapen mellan Beta- och Binomialfördelningen för att
+ räkna ut din posteriorfördelning analytiskt i respektive fall.
  Beräkna den förväntade proportionen för respektive produkt (med hjälp av
  det förväntade värdet för en Betafördelning).
  Vilken produkt har den högsta förväntade proportionen intresserade?
@@ -705,7 +704,7 @@ Precis som när det gäller maximum likelihood kan vi studera maximum av vår
 \family typewriter
 optim()
 \family default
-) eller ta reda på maximum (
+) eller genom att ta reda på maximum (
 \begin_inset Quotes sld
 \end_inset
 
@@ -1078,7 +1077,7 @@ Simulera 10 000 dragningar från din posteriorfördelning för
 \end_inset
 
 .
- Nu har du fått en fördelning för 1% percentilen, 
+ Nu har du fått en fördelning för den 1% percentilen, 
 \begin_inset Formula $p_{1}$
 \end_inset
 
@@ -1151,8 +1150,8 @@ Multinomial - Dirichlet
 \end_layout
 
 \begin_layout Standard
-En generalisering av betafördelningen är dirichletfördelningen och på samma
- sätt är multinomialfördelningen en generalisering av binomialfördelningen.
+En generalisering av Betafördelningen är Dirichletfördelningen och på samma
+ sätt är Multinomialfördelningen en generalisering av Binomialfördelningen.
  Använd Mattias föreläsningsanteckningar om apriori och aposteriorifördelningen
  för multinomialfördelningen för att lösa dessa uppgifter.
 \end_layout
@@ -1198,7 +1197,7 @@ a)
 
 \begin_layout Plain Layout
 Vi börjar med att försöka bestämma vår apriori-fördelning för de olika partierna.
- Vår apriorifördelning specificerar vi som en dirichletfördelning med parametrar
+ Vår apriorifördelning specificerar vi som en Dirichletfördelning med parametrar
 na 
 \begin_inset Formula $\alpha_{1},...,\alpha_{9}$
 \end_inset
@@ -1329,9 +1328,11 @@ c)
 \begin_layout Plain Layout
 Beräkna nu aposteriorifördelningen för andelen per riksdagsparti och gör
  10 000 simuleringar från din aposteriorifördelning.
- När du svarar på frågorna nedan ska du ta hänsyn till de s k 4% spärren,
- dvs att ett parti måste få minst 4% av rösterna för att sitta i Riksdagen.
- Får ett parti mindre än 4% ska du sätta deras andel till 0% för denna dragning.
+ När du svarar på frågorna nedan ska du ta hänsyn till den s.k.
+ 4% spärren, dvs att ett parti måste få minst 4% av rösterna för att sitta
+ i Riksdagen.
+ Får ett parti mindre än 4% ska du sätta deras andel till 0% för denna dragning
+ och normalisera om proportionerna.
  Svara på följande frågor:
 \end_layout
 
