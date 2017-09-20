@@ -18,6 +18,21 @@ manipulate(
   p = slider(0, 1, step=0.05, initial = 0.5, label = "The hyperparameter p in Bernoulli(p) distribution")
 )
 
+####################################################################
+## Poisson pmf
+####################################################################
+
+PoissonPlot <- function(lambda){
+  xGrid <- seq(0,lambda+4*sqrt(lambda))
+  pmf = dpois(xGrid, lambda = lambda)
+  barplot(pmf, names.arg=xGrid, main = 'Poisson(lambda) density')
+}
+
+manipulate(
+  PoissonPlot(lambda),
+  lambda = slider(0, 50, step=0.5, initial = 1, label = "The hyperparameter lambda in Poisson(lambda) distribution")
+)
+
 
 ####################################################################
 ## Binomial pmf
@@ -35,6 +50,21 @@ manipulate(
   p = slider(0, 1, step=0.05, initial = 0.5, label = "The hyperparameter p in Binomial(n,p)  distribution")
 )
 
+
+####################################################################
+## Geometric pmf
+####################################################################
+
+GeomPlot <- function(p){
+  xGrid <- seq(1,1/p+4*sqrt((1-p)/p^2))
+  pmf = dgeom(x = xGrid-1,prob = p)
+  barplot(pmf, names.arg=xGrid, main = 'Geometric(p) density')
+}
+
+manipulate(
+  GeomPlot(p),
+  p = slider(0, 1, step=0.05, initial = 0.5, label = "The hyperparameter p in Geometric(p) distribution")
+)
 
 
 ####################################################################

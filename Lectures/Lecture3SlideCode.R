@@ -105,17 +105,17 @@ p1 <- ggplot(data, aes(x,pmf)) + geom_bar(width=.2, stat="identity") + ggtitle(e
   scale_x_discrete(breaks=seq(0,n,2))
 
 data <- data.frame(pmf = dpois(seq(0,n), lambda = 1), x = as.factor(seq(0,n)))
-p2 <- ggplot(data, aes(x,pmf)) + geom_bar(width=.2, stat="identity") + ggtitle(expression(lambda == 0.5)) +
+p2 <- ggplot(data, aes(x,pmf)) + geom_bar(width=.2, stat="identity") + ggtitle(expression(lambda == 1)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.title.y = element_blank()) + 
   scale_x_discrete(breaks=seq(0,n,2))
 
 data <- data.frame(pmf = dpois(seq(0,n), lambda = 5), x = as.factor(seq(0,n)))
-p3 <- ggplot(data, aes(x,pmf)) + geom_bar(width=.2, stat="identity") + ggtitle(expression(lambda == 0.5)) +
+p3 <- ggplot(data, aes(x,pmf)) + geom_bar(width=.2, stat="identity") + ggtitle(expression(lambda == 5)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.title.y = element_blank()) + 
   scale_x_discrete(breaks=seq(0,n,2))
 
 data <- data.frame(pmf = dpois(seq(0,n), lambda = 10), x = as.factor(seq(0,n)))
-p4 <- ggplot(data, aes(x,pmf)) + geom_bar(width=.2, stat="identity") + ggtitle(expression(lambda == 0.5)) +
+p4 <- ggplot(data, aes(x,pmf)) + geom_bar(width=.2, stat="identity") + ggtitle(expression(lambda == 10)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.title.y = element_blank()) + 
   scale_x_discrete(breaks=seq(0,n,2))
 

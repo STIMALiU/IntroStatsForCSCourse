@@ -1419,7 +1419,7 @@ status open
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /Users/mv/Dropbox/Teaching/ProbStatUProg/Figures/pmf.png
+	filename /Users/matvi05/Dropbox/Teaching/ProbStatUProg/Figures/pmf.png
 	lyxscale 20
 	scale 30
 
@@ -1429,7 +1429,7 @@ status open
 \begin_inset Graphics
 	filename ../Figures/cdf.png
 	lyxscale 20
-	scale 30
+	scale 27
 
 \end_inset
 
@@ -3976,7 +3976,7 @@ Väntevärdet
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /Users/mv/Dropbox/Teaching/ProbStatUProg/Figures/pmfWithLocSummary.png
+	filename /Users/matvi05/Dropbox/Teaching/ProbStatUProg/Figures/pmfWithLocSummary.png
 	lyxscale 20
 	scale 35
 

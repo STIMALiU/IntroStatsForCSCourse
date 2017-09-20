@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass beamer
 \begin_preamble
 \setcounter{MaxMatrixCols}{10}
@@ -48,16 +50,16 @@ knitr
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman palatino
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -258,6 +260,10 @@ status open
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -311,7 +317,10 @@ t-fördelningen
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -323,6 +332,10 @@ status open
 Kontinuerliga slumpvariabler
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -417,7 +430,10 @@ Icke-avtagande
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -429,6 +445,10 @@ status open
 Täthetsfunktion
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -447,6 +467,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -524,7 +549,7 @@ Sannolikheter för intervall ges av ytor under pdf:n
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename pdf.svg
+	filename pdf.png
 	lyxscale 30
 	scale 30
 
@@ -534,7 +559,10 @@ Sannolikheter för intervall ges av ytor under pdf:n
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -546,6 +574,10 @@ status open
 Täthetsfunktion
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -638,7 +670,10 @@ Se Table 4.1 i Baron för en jämförelse av diskreta och kontinuerliga fördeln
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -650,6 +685,10 @@ status open
 Väntevärde och varians
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -685,7 +724,10 @@ Exempel: triangelfördelning.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -697,6 +739,10 @@ status open
 Simultanfördelning för kontinuerliga variabler
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -771,7 +817,10 @@ Cov(X,Y) & =\mathbb{E}\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)\\
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -783,6 +832,10 @@ status open
 Likformig fördelning
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -861,7 +914,10 @@ niform på engelska.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -873,6 +929,10 @@ status open
 Likformig fördelning
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -954,7 +1014,10 @@ X=a+(b-a)Y\text{ där }Y\sim U(0,1)\Longrightarrow X\sim U(a,b).
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -966,6 +1029,10 @@ status open
 Exponentialfördelningen
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1027,14 +1094,15 @@ Var(X)=\frac{1}{\lambda^{2}}
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename Exponential_pdf.svg
+	filename Exponential_pdf.png
 	scale 40
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename Exponential_cdf.svg
+	filename Exponential_cdf.png
+	lyxscale 15
 	scale 40
 
 \end_inset
@@ -1043,7 +1111,10 @@ Var(X)=\frac{1}{\lambda^{2}}
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1058,6 +1129,10 @@ Exponentialfördelningen
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1068,7 +1143,7 @@ Tiden mellan Poissonhändelser är exponentialfördelad.
 
 \begin_layout Itemize
 Låt 
-\begin_inset Formula $t\sim Po(\lambda t)$
+\begin_inset Formula $X\sim Po(\lambda t)$
 \end_inset
 
  räkna antalet händelser i tidsintervallet 
@@ -1110,7 +1185,10 @@ minneslösa
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1122,6 +1200,10 @@ status open
 Gammafördelningen
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1234,7 +1316,10 @@ Var(X)=\frac{\alpha}{\lambda^{2}}
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1246,6 +1331,10 @@ status open
 Gammafördelningen
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1276,7 +1365,10 @@ paperwidth'>>=
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1288,6 +1380,10 @@ status open
 Normalfördelningen
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1362,7 +1458,10 @@ CDF
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1374,6 +1473,10 @@ status open
 Normalfördelningen
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1404,7 +1507,10 @@ paperwidth'>>=
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1416,6 +1522,10 @@ status open
 Normalfördelningen
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1494,7 +1604,10 @@ Standardisering är praktiskt.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1506,6 +1619,10 @@ status open
 Betafördelningen
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1597,7 +1714,10 @@ varians
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1613,6 +1733,10 @@ t
 -fördelningen
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1707,7 +1831,10 @@ Var(X)=\sigma^{2}\frac{\nu}{\nu-2}\quad\text{om }\nu>2
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1723,6 +1850,10 @@ t
 -fördelningen
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1777,6 +1908,10 @@ Viktig koppling mellan
 \end_inset
 
 fördelning och normalfördelning:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1828,7 +1963,10 @@ okänd
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
