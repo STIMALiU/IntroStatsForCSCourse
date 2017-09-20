@@ -739,7 +739,15 @@ c)
 d)
 \series default
 ).
- Visualisera också datamaterialet (som histogram).
+ Visualisera också datamaterialet (som ett histogram med 
+\family typewriter
+histogram()
+\family default
+ 
+\series bold
+Tips!
+\series default
+ Se labb 1).
  Vilken modell, Normalfördelningen eller Gammafördelningen, tycker du passar
  datamaterialet bäst?
 \end_layout
@@ -1228,12 +1236,12 @@ for i in 1 to 2000 do
 
 \begin_layout Verbatim
 
-   x1 = draw Gamma(n =10, alpha= 4, beta = 1)
+   x1 = draw Gamma(n = 10, alpha= 4, beta = 1)
 \end_layout
 
 \begin_layout Verbatim
 
-   x2 = draw Gamma(n =100, alpha= 4, beta = 1)
+   x2 = draw Gamma(n = 10000, alpha= 4, beta = 1)
 \end_layout
 
 \begin_layout Verbatim
@@ -1257,7 +1265,7 @@ for i in 1 to 2000 do
 
 \begin_layout Verbatim
 
-   y2 = draw Normal(n = 100, mu = 10, sigma2 = 4)
+   y2 = draw Normal(n = 10000, mu = 10, sigma2 = 4)
 \end_layout
 
 \begin_layout Verbatim
@@ -1272,12 +1280,12 @@ for i in 1 to 2000 do
 
 \begin_layout Verbatim
 
-   sigma1[i] = norm_sigma2_mle(x = y1, mu = 10) 
+   sigma1[i] = norm_sigma2_mle(x = y1) 
 \end_layout
 
 \begin_layout Verbatim
 
-   sigma2[i] = norm_sigma2_mle(x = y2, mu = 10)
+   sigma2[i] = norm_sigma2_mle(x = y2)
 \end_layout
 
 \begin_layout Paragraph
