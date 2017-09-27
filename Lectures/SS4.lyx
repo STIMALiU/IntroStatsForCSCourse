@@ -1152,9 +1152,17 @@ Låt
 
 .
  
+\end_layout
+
+\begin_layout Itemize
+Låt 
+\begin_inset Formula $T$
+\end_inset
+
+ vara tiden till nästa händelse
 \begin_inset Formula 
 \begin{align*}
-P\left\{ \text{nästa händelse innan \ensuremath{t}}\right\}  & =1-P\left\{ \text{nästa händelse efter \ensuremath{t}}\right\} \\
+P\left\{ \text{\ensuremath{T\leq t}}\right\}  & =1-P\left\{ T>t\right\} \\
  & =1-P\left\{ \text{inga händelser i intervallet \ensuremath{[0,t)}}\right\} \\
  & =1-\frac{e^{-\lambda t}(\lambda t)^{0}}{0!}=1-e^{-\lambda t}
 \end{align*}

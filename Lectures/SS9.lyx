@@ -977,7 +977,7 @@ förkastningsregionen
 \end_inset
 
  i nollfördelningen så att 
-\begin_inset Formula $P\left\{ T\in\mathcal{R}\right\} =\alpha$
+\begin_inset Formula $P\left\{ T\in\mathcal{R}|H_{0}\right\} =\alpha$
 \end_inset
 
 .
@@ -1256,7 +1256,7 @@ En-sidigt Z-test
 \[
 \begin{cases}
 \text{Förkasta }H_{0} & \text{ om }Z\geq z_{\alpha}\\
-\text{Acceptera }H_{A} & \text{ om }Z<z_{\alpha}
+\text{Acceptera }H_{0} & \text{ om }Z<z_{\alpha}
 \end{cases}
 \]
 
@@ -1284,7 +1284,7 @@ Två-sidigt
 \[
 \begin{cases}
 \text{Förkasta }H_{0} & \text{ om }\left|Z\right|\geq z_{\alpha/2}\\
-\text{Acceptera }H_{A} & \text{ om }\left|Z\right|<z_{\alpha/2}
+\text{Acceptera }H_{0} & \text{ om }\left|Z\right|<z_{\alpha/2}
 \end{cases}
 \]
 
