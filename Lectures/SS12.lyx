@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass beamer
 \begin_preamble
 \setcounter{MaxMatrixCols}{10}
@@ -48,16 +50,16 @@ knitr
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman palatino
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -258,6 +260,10 @@ status open
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -283,7 +289,10 @@ Beslut
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -298,6 +307,10 @@ Prediktion
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -307,6 +320,10 @@ Prediktion
 Prediktion
 \series default
 : inferens för okända men potentiellt observerbara kvantiteter.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -315,11 +332,11 @@ antalet buggar i en kod.
 \end_layout
 
 \begin_layout Itemize
-Sjukdom.
+sjukdom.
 \end_layout
 
 \begin_layout Itemize
-Mängden brytbara mineraler.
+mängden brytbara mineraler.
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -333,26 +350,33 @@ Mängden brytbara mineraler.
 Prognos
 \series default
 : prediktion av framtida utfall.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-lägenhetspriserna i linköping Jan 2016.
+lägenhetspriserna i Linköping Jan 2020.
  
 \end_layout
 
 \begin_layout Itemize
-Framtida försäljning.
+framtida försäljning.
  
 \end_layout
 
 \begin_layout Itemize
-Slutpris i en eBay auktion.
+slutpris i en eBay auktion.
 \end_layout
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -364,6 +388,10 @@ status open
 Prediktion för att utvärdera modeller
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -427,6 +455,10 @@ Accuracy
 
 \begin_layout Itemize
 Handwritten digits data (3000 obs för träning, 10000 för test):
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -440,7 +472,10 @@ Support vector machine: accuracy: 89.42%
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -452,6 +487,10 @@ status open
 Prediktion i regression
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -568,7 +607,10 @@ Prognosintervall
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -583,14 +625,20 @@ Bayesiansk prediktion
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \series bold
+\color blue
 Prediktiv fördelning
 \series default
+\color inherit
  för ny observation 
 \begin_inset Formula $\tilde{X}$
 \end_inset
@@ -640,7 +688,13 @@ Vår bästa prognos:
 \end_layout
 
 \begin_layout Itemize
-Prediktionsvarians = Varians pga osäkerhet om 
+
+\series bold
+\color blue
+Prediktionsvarians
+\series default
+\color inherit
+ = Varians pga osäkerhet om 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -659,8 +713,43 @@ Prediktionsvarians = Varians pga osäkerhet om
 ).
 \end_layout
 
+\begin_layout Itemize
+Prediktiv fördelning genom 
+\series bold
+\color blue
+simulering
+\series default
+\color inherit
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Simulera parameter 
+\begin_inset Formula $\theta^{(1)}\sim\pi(\theta\vert x_{1},...,x_{n})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Simulera observeration 
+\begin_inset Formula $\tilde{x}\sim f(\tilde{x}|\theta^{(1)})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Upprepa Steg 1 och 2 många ggr
+\end_layout
+
 \end_deeper
-\begin_layout Separator
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -672,6 +761,10 @@ status open
 Bayesiansk prediktion - AR-process
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -688,24 +781,12 @@ Autoregressiv process
 av första ordningen
 \begin_inset Formula 
 \[
-y_{t}=\mu+\phi\left(y_{t-1}-\mu\right)+\varepsilon_{t},\;\;\varepsilon_{t}\overset{iid}{\sim}N(0,\sigma^{2})
+y_{t}=\mu+\phi(y_{t-1}-\mu)+\varepsilon_{t},\;\;\varepsilon_{t}\overset{iid}{\sim}N(0,\sigma^{2})
 \]
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Steady-state
-\series default
- (processens obetingade väntevärde): 
-\begin_inset Formula $\mu$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Itemize
@@ -742,6 +823,10 @@ Simulering
 \end_inset
 
 :
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -751,7 +836,7 @@ Simulera
 \end_inset
 
  från posteriorn 
-\begin_inset Formula $p(\phi,\mu,\sigma|y_{1},...,y_{T})$
+\begin_inset Formula $\pi(\phi,\mu,\sigma|y_{1},...,y_{T})$
 \end_inset
 
 
@@ -774,14 +859,14 @@ prognosbana
 \end_inset
 
 
-\begin_inset Formula $p(y_{T+1}|y_{T},{\color{red}\theta^{(1)}})$
+\begin_inset Formula $f(y_{T+1}|y_{T},{\color{red}\theta^{(1)}})$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\tilde{y}_{T+2}^{(1)}\sim p(y_{T+2}|{\color{blue}\tilde{y}}_{{\color{blue}T+1}}^{{\color{blue}(1)}},{\color{red}\theta^{(1)}})$
+\begin_inset Formula $\tilde{y}_{T+2}^{(1)}\sim f(y_{T+2}|{\color{blue}\tilde{y}}_{{\color{blue}T+1}}^{{\color{blue}(1)}},{\color{red}\theta^{(1)}})$
 \end_inset
 
 
@@ -792,7 +877,7 @@ prognosbana
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\tilde{y}_{T+h}^{(1)}\sim p(y_{T+h}|{\color{blue}\tilde{y}}_{{\color{blue}T+h-1}}^{{\color{blue}(1)}},{\color{red}\theta^{(1)}})$
+\begin_inset Formula $\tilde{y}_{T+h}^{(1)}\sim f(y_{T+h}|{\color{blue}\tilde{y}}_{{\color{blue}T+h-1}}^{{\color{blue}(1)}},{\color{red}\theta^{(1)}})$
 \end_inset
 
 
@@ -808,7 +893,10 @@ Upprepa steg 1 och 2 ett stort antal gånger.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -823,13 +911,17 @@ AR(1)-process
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename AR1Process.svg
+	filename AR1Process.png
 	lyxscale 30
 	scale 55
 
@@ -843,7 +935,10 @@ AR(1)-process
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -859,6 +954,10 @@ Bayesian
 -step ahead predictive distribution
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -881,7 +980,10 @@ Bayesian
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -893,6 +995,10 @@ status open
 Beslutsteori
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1003,7 +1109,10 @@ L(a,\theta)=-U(a,\theta)
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1015,6 +1124,10 @@ status open
 Diskreta tillstånd, diskreta beslut
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1033,7 +1146,7 @@ Förlusttabell för problem med två möjliga
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1239,7 +1352,7 @@ Exempel:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1410,7 +1523,10 @@ cellcolor{robinsegg}
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1422,6 +1538,10 @@ status open
 Beslut
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1470,6 +1590,10 @@ Kontinuerligt
 \end_inset
 
 :
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1500,6 +1624,10 @@ Diskret
 \end_inset
 
 :
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1548,6 +1676,10 @@ Kontinuerligt
 \end_inset
 
 :
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1564,7 +1696,10 @@ Kontinuerligt
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1576,6 +1711,10 @@ status open
 Kontinuerliga tillstånd, kontinuerliga beslut
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1598,6 +1737,10 @@ förlustfunktioner
 \end_inset
 
  är kontinuerliga: 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1653,6 +1796,10 @@ c_{2}\cdot\left|a-\theta\right| & \textrm{if \ensuremath{a>\theta}}
 \end_deeper
 \begin_layout Itemize
 Exempel: 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1687,7 +1834,10 @@ p\cdot a-c_{2}(\theta-a)^{2} & \textrm{om \ensuremath{a\leq\theta}\text{ [för l
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1699,6 +1849,10 @@ status open
 Optimala beslut
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1825,7 +1979,10 @@ välj det
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1837,6 +1994,10 @@ status open
 Väntevärde, median eller typvärde?
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1868,6 +2029,10 @@ Att välja en punktskattning är ett beslutsproblem.
 
 \begin_layout Itemize
 Valet beror på din förlustfunktion:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1936,7 +2101,10 @@ Noll-ett förlust
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1951,13 +2119,17 @@ Förlustfunktioner
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename Lossfunctions.svg
+	filename Lossfunctions.png
 	scale 50
 
 \end_inset
@@ -1973,7 +2145,10 @@ Förlustfunktioner
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
