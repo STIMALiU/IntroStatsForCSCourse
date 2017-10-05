@@ -2402,7 +2402,7 @@ Slumpa
 
 \begin_layout Itemize
 Beräkna 
-\begin_inset Formula $y_{k}=x_{k}/(\sum_{j=1}^{K}x_{j})$
+\begin_inset Formula $z_{k}=x_{k}/(\sum_{j=1}^{K}x_{j})$
 \end_inset
 
 .
@@ -2413,7 +2413,7 @@ Beräkna
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $y=(y_{1},...,y_{K})$
+\begin_inset Formula $\mathbf{z}=(z_{1},...,z_{K})$
 \end_inset
 
  är nu en slumpvektor från 

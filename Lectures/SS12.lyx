@@ -501,7 +501,7 @@ Prediktion i regression
 Linjär regression
 \begin_inset Formula 
 \[
-y=\beta_{0}+\beta_{1}x+\varepsilon
+y=\beta_{0}+\beta_{1}x+\varepsilon,\;\varepsilon\sim N(0,\sigma^{2})
 \]
 
 \end_inset
