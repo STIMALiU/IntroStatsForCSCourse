@@ -1,4 +1,4 @@
-# Analysis of 
+# Analysis of survival times for cancer patients
 
 #install.packages('survival') # Uncomment if you this the first time you use this package.
 library(survival)
@@ -7,19 +7,20 @@ data(cancer) # Loading cancer data
 head(cancer) # Have a look at the first rows in the data matrix
 cancer <- cancer[complete.cases(cancer),] # Remove the observations (rows) with at least one missing observation
 n <- dim(cancer)[1] # Number of observations
+n
 head(cancer) 
 
 # fit an exponential distribution
 hist(cancer$time, freq=FALSE, main = 'Fit of Exp distribution')
-lambdaEstExp <- 1/mean(cancer$time) # Maximum likelihood estimate
-lines(0:1100,dexp(0:1100,lambdaEstExp),col="red",lwd=3)
+lambdaEstML <- 1/mean(cancer$time) # Maximum likelihood estimate
+lines(0:1100,dexp(0:1100,lambdaEstML),col="red",lwd=3)
 
 # Bayesian inference in the exponential model
 alphaPrior <- 1
 betaPrior <- 1000
 lambdaGrid <- seq(0.00001,0.01,length = 10000)
-postMeanLambda <- (n+alphaPrior)/(n*mean(cancer$time) +betaPrior)
-c(lambdaEstExp, postMeanLambda) # Compare the MLE with the Bayesian estimate
+postMeanLambda <- (n+alphaPrior)/(n*mean(cancer$time) + betaPrior)
+c(lambdaEstML, postMeanLambda) # Compare the MLE with the Bayesian estimate
 plot(lambdaGrid,dgamma(lambdaGrid, alphaPrior,betaPrior), ylim = c(0,1700), 
      type = "l", col = "red", lwd=3, xlab='lambda', ylab = "density") # Plot the prior
 lines(lambdaGrid,dgamma(lambdaGrid, alphaPrior + n, betaPrior + n*mean(cancer$time)), lwd=3, col = "blue") # Add the posterior
@@ -29,11 +30,11 @@ hist(cancer$time, freq=FALSE, main = 'Fit of Exp distribution')
 lines(0:1100,dexp(0:1100,postMeanLambda),col="red",lwd=3)
 
 # Let' test the fit of the exponential model formally using chi-squared test
-ProbsModel = diff(c(0,pexp(seq(100,900,by=100),lambdaEstExp),1))
+ProbsModel = diff(c(0,pexp(seq(100,900,by=100),lambdaEstML),1))
 ExpectedCounts = n*ProbsModel # Oops, some expected counts < 5. No good. Merging group 7-8 and 9-10
 ExpectedCounts   # Oops, some expected counts < 5. No good. Merging group 7-8 and 9-10
 
-ProbsModel = diff(c(0,pexp(c(100,200,300,400,500,600,800),lambdaEstExp),1))
+ProbsModel = diff(c(0,pexp(c(100,200,300,400,500,600,800),lambdaEstML),1))
 ExpectedCounts = n*ProbsModel
 ExpectedCounts   # All good now (>5 for each class)!
 
@@ -107,7 +108,7 @@ quantile(alphaBoot, probs = c(alphaLevel/2,1-alphaLevel/2)) # Bootstrap
 
 # fit an gamma distribution
 hist(cancer$time, freq=FALSE, main = "Fit of Exp and Gamma distribution")
-lines(0:1100,dexp(0:1100,lambdaEstExp),col="blue",lwd=3)
+lines(0:1100,dexp(0:1100,lambdaEstML),col="blue",lwd=3)
 lines(0:1100,dgamma(0:1100,alphaEstMom,lambdaEstMom),col="red",lwd=3)
 lines(0:1100,dgamma(0:1100,alphaEstML,lambdaEstML),col="green",lwd=3)
 
