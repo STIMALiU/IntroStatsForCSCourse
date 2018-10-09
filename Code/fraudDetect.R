@@ -9,7 +9,7 @@ LogLik <- function(betaVect,y,X){
 }
 
 # Reading in fraud data from file
-data <- read.csv('~/Dropbox/Teaching/ProbStatUProg/Data/banknoteFraud.csv', header = FALSE)
+data <- read.csv('https://github.com/STIMALiU/AdvMLCourse/raw/master/GaussianProcess/Code/banknoteFraud.csv', header=FALSE, sep=',')
 names(data) <- c("varWave","skewWave","kurtWave","entropyWave","fraud")
 SelectTraining <- sample(1:dim(data)[1], size = 1000, replace = FALSE)
 y <- data[,5]
