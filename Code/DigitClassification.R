@@ -78,9 +78,9 @@ load('mnist')
 train$x <- train$x/255
 test$x <- test$x/255 
 nTrain<-1000
-nTest<-5000
+nTest<-nrow(test$x)
 model<-mlp(x=train$x[1:nTrain,],y=decodeClassLabels(train$y[1:nTrain]),
-           size=c(5),maxit=100,learnFuncParams=c(0.1),
+           size=c(25),maxit=100,learnFuncParams=c(0.1),
            inputsTest=test$x[1:nTest,],targetsTest=decodeClassLabels(test$y[1:nTest]))
 plotIterativeError(model)
 predictions<-predict(model,train$x[1:nTrain,])
