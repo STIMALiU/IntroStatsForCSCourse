@@ -10,8 +10,7 @@
 nTrain <- 1000 # Number of training instances. maximum is 60000
 # END USER INPUT
 
-setwd('~/Dropbox/Teaching/ProbStatUProg/')  # Set working directory
-load('Data/mnist/mnist')                    # Load mnist data (http://yann.lecun.com/exdb/mnist/). 
+load('mnist')                    # Load mnist data (http://yann.lecun.com/exdb/mnist/). 
                                             # Contains the two lists train and test.
                                             # train$x[3,] contains the 28*28=784 grayscale (0-255)
                                             # pixels for the third data point in the training data
@@ -67,3 +66,28 @@ fitSVM <- svm(y = train$y[1:nTrain], x=train$x[1:nTrain,], type = "C-classificat
 predAllSVM <- predict(fitSVM, test$x, type = "class")
 confusSVM <- table(as.matrix(predAllSVM),as.matrix(test$y))
 accuracySVM <- sum(diag(confusSVM))/sum(confusSVM)
+
+# Classification of MNIST with NNs
+# Author: jose.m.pena@liu.se
+# Made for teaching purposes
+
+# install.packages('RSNNS')
+library(RSNNS)
+
+load('mnist')
+train$x <- train$x/255
+test$x <- test$x/255 
+nTrain<-1000
+nTest<-nrow(test$x)
+model<-mlp(x=train$x[1:nTrain,],y=decodeClassLabels(train$y[1:nTrain]),
+           size=c(25),maxit=100,learnFuncParams=c(0.1),
+           inputsTest=test$x[1:nTest,],targetsTest=decodeClassLabels(test$y[1:nTest]))
+plotIterativeError(model)
+predictions<-predict(model,train$x[1:nTrain,])
+confusions<-confusionMatrix(decodeClassLabels(train$y[1:nTrain]),predictions)
+confusions
+sum(diag(confusions))/sum(confusions)
+predictions<-predict(model,test$x[1:nTest,])
+confusions<-confusionMatrix(decodeClassLabels(test$y[1:nTest]),predictions)
+confusions
+sum(diag(confusions))/sum(confusions)
