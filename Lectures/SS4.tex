@@ -1,0 +1,433 @@
+%% LyX 2.3.4.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english,xcolor=svgnames, handout]{beamer}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{calc}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+<<setup, include=FALSE>>=
+library(knitr)
+library(ggplot2)
+library(tikzDevice)
+source("MVutils.R")
+opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='footnotesize')
+@
+
+<<echo=FALSE>>=
+read_chunk('Lecture4SlideCode.R')
+@
+\title[TDAB01]{Sannolikhetslära och Statistik\\
+Föreläsning 4}
+\author[Mattias Villani]{Mattias Villani}
+\institute[\textbf{STIMA, LiU}]{\textbf{Avdelningen för Statistik och Maskininlärning}\\
+\textbf{Institutionen för datavetenskap}\\
+\textbf{Linköpings universitet }}
+\date{\includegraphics[scale=0.15]{LiU_secondary_1_black}\,}
+\makebeamertitle
+\begin{frame}{Översikt}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Täthetsfunktion}}
+\item \textbf{\textcolor{blue}{Likformig fördelning}}
+\item \textbf{\textcolor{blue}{Exponentialfördelningen}}
+\item \textbf{\textcolor{blue}{Gammafördelningen}}
+\item \textbf{\textcolor{blue}{Normalfördelningen}}
+\item \textbf{\textcolor{blue}{Betafördelningen}}
+\item \textbf{\textcolor{blue}{t-fördelningen}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Kontinuerliga slumpvariabler}
+
+\begin{itemize}
+\item Kontinuerliga slumpvariabler kan anta alla reella värden på ett intervall$(a,b)$,
+speciellt $(-\infty,\infty)$.
+\item $X$ kontinuerlig $\Rightarrow$ $P(x)=0$ för alla $x$. Pmf inte
+användbar.
+\item Fördelningsfunktionen funkar dock: $F(x)=\mathbf{P}\left\{ X\leq x\right\} $.
+\item Eftersom $P(x)=0$ för alla $x$ så gäller $\mathbf{P}\left\{ X\leq x\right\} =\mathbf{P}\left\{ X<x\right\} $.
+\item Om $X$ kontinuerlig slumpvariabel: $F(x)$ \textbf{kontinuerlig}.
+Inga hopp. \textbf{Icke-avtagande}. 
+\[
+\lim_{x\rightarrow\infty}F(x)=1\quad\lim_{x\rightarrow-\infty}F(x)=0.
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Täthetsfunktion}
+
+\noindent\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+\textcolor{red}{Definition}. \textbf{\textcolor{blue}{Täthetsfunktionen}}
+$f(x)$ för en kontinuerlig slumpvariabel $X$ är derivatan av CDF:n
+\[
+f(x)=F'(x).
+\]
+%
+\end{minipage}}
+\begin{itemize}
+\item Fördelningen är kontinuerlig om den har en täthetsfunktion.
+\item Täthetsfunktion heter \textbf{probability density function}, \textbf{pdf}
+på engelska.
+\item cdf:n $F(x)$ är antiderivatan av pdf:n.
+\item Sannolikheter för intervall ges av ytor under pdf:n
+\[
+\mathbf{P}\left\{ a<X<b\right\} =\int_{a}^{b}f(x)dx
+\]
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.3]{pdf}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Täthetsfunktion}
+
+\begin{itemize}
+\item $f(x)=F'(x)$ så 
+\[
+\int_{-\infty}^{b}f(x)dx=F(b)-F(-\infty)=F(b)-0=F(b).
+\]
+\item Täthetsfunktioner integrerar till ett:
+\[
+\int_{-\infty}^{\infty}f(x)dx=F(\infty)-F(-\infty)=1-0=1.
+\]
+\item Täthetsfunktionens värden, t ex $f(2)$, är inte en sannolikhet. $f(2)>1$
+helt ok. Men $f(x)\geq0$ måste gälla.
+\item För litet $\epsilon$: $\mathrm{Pr}\left(a-\frac{\epsilon}{2}\leq X\leq a+\frac{\epsilon}{2}\right)\approx\epsilon\cdot f(a)$.
+\item \texttt{Exempel}: triangelfördelningen över support $[0,a]$. Normaliseringskonstant.
+Fördelningsfunktion. $P\{X>a/2\}$. \\
+Se också Example 4.1 i Baron.
+\item Se Table 4.1 i Baron för en jämförelse av diskreta och kontinuerliga
+fördelningar.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Väntevärde och varians}
+
+\begin{itemize}
+\item Repetition: för diskreta slumpvariabler:
+\[
+\mathbb{E}X=\sum_{x}x\cdot P(x)\quad Var(X)=\mathbb{E}\left(X-\mu\right)^{2}=\sum_{x}\left(x-\mu\right)^{2}P(x)
+\]
+\item För kontinuerliga slumpvariabler:
+\[
+\mathbb{E}X=\int x\cdot f(x)dx\qquad Var(X)=\mathbb{E}\left(X-\mu\right)^{2}=\int(x-\mu)^{2}f(x)dx
+\]
+\item Exempel: triangelfördelning.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Simultanfördelning för kontinuerliga variabler}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Simultan fördelningsfunktion}}
+\[
+F_{(X,Y)}(x,y)=\mathbf{P}\left\{ X\leq x\cap Y\leq y\right\} 
+\]
+\item \textbf{\textcolor{blue}{Simultan täthetsfunktion}}
+\[
+f_{(X,Y)}(x,y)=\frac{\partial^{2}}{\partial x\partial y}F_{(X,Y)}(x,y)
+\]
+\item Ofta skriver vi bara $f(x,y)$ istället för $f_{(X,Y)}(x,y)$.
+\item \textbf{\textcolor{blue}{Kovarians}}
+\begin{align*}
+Cov(X,Y) & =\mathbb{E}\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)\\
+ & =\int\int\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)f(x,y)dxdy
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Likformig fördelning}
+
+\begin{itemize}
+\item \textbf{Täthetsfunktion} för likformig fördelad slumpvariabel över
+$[a,b]$
+\[
+f(x)=\frac{1}{b-a}\quad\text{för }a\leq x\leq b,\;\text{och }f(x)=0\text{ annars}.
+\]
+\item Man skriver of $X\sim U(a,b)$ för att säga: \\
+'Slumpvariabel $X$ följer en likformig fördelning på intervallet
+$(a,b)$. \\
+Likformig = \textbf{\textcolor{blue}{U}}niform på engelska.
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.2]{UniformPDF}\includegraphics[scale=0.18]{UniformCDF}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Likformig fördelning}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Väntevärde}}:
+\begin{align*}
+\mathbb{E}X & =\int x\cdot f(x)dx=\frac{1}{b-a}\int xdx=\frac{1}{b-a}\left[\frac{1}{2}x^{2}\right]_{a}^{b}\\
+ & =\frac{1}{2(b-a)}\left(b^{2}-a^{2}\right)=\frac{(b-a)(b+a)}{2(b-a)}=\frac{a+b}{2}
+\end{align*}
+\item \textbf{\textcolor{blue}{Varians}}: $Var(X)=\mathbb{E}X^{2}-\mu^{2}$
+\begin{align*}
+\mathbb{E}X^{2} & =\int x^{2}\cdot f(x)dx=\frac{1}{b-a}\int x^{2}dx=\frac{a^{2}+b^{2}+ab}{3}
+\end{align*}
+\begin{align*}
+Var(X) & =\mathbb{E}X^{2}-\mu^{2}=\frac{a^{2}+b^{2}+ab}{3}-\left(\frac{a+b}{2}\right)^{2}=\frac{(b-a)^{2}}{12}
+\end{align*}
+\item Alt. härledning, se Baron s. 81. Alla likformiga variabler kan genereras
+från \textbf{\textcolor{blue}{standardmedlemmen}}: $Y\sim U(0,1)$
+genom följande resultat:
+\[
+X=a+(b-a)Y\text{ där }Y\sim U(0,1)\Longrightarrow X\sim U(a,b).
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exponentialfördelningen}
+
+\begin{itemize}
+\item \textbf{Täthetsfunktion} för exponentialfördelad slumpvariabel över
+$(0,\infty)$
+\[
+f(x)=\lambda e^{-\lambda x},\text{ för }x>0.
+\]
+\item Vi skriver: $\mathrm{X\sim Exp}(\lambda)$.
+\item Väntevärde
+\[
+\mathbb{E}X=\frac{1}{\lambda}
+\]
+\item Varians
+\[
+Var(X)=\frac{1}{\lambda^{2}}
+\]
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.4]{Exponential_pdf}\includegraphics[scale=0.4]{Exponential_cdf}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Exponentialfördelningen}
+
+\begin{itemize}
+\item Tiden mellan Poissonhändelser är exponentialfördelad. 
+\item Låt $X\sim Po(\lambda t)$ räkna antalet händelser i tidsintervallet
+$[0,t)$. 
+\item Låt $T$ vara tiden till nästa händelse
+\begin{align*}
+P\left\{ \text{\ensuremath{T\leq t}}\right\}  & =1-P\left\{ T>t\right\} \\
+ & =1-P\left\{ \text{inga händelser i intervallet \ensuremath{[0,t)}}\right\} \\
+ & =1-\frac{e^{-\lambda t}(\lambda t)^{0}}{0!}=1-e^{-\lambda t}
+\end{align*}
+vilket är cdf:en för en $\mathrm{Exp}(\lambda)$ variabel.
+\item Exponentialfördelade variabler är \textbf{minneslösa}:
+\[
+\mathbf{P}\left\{ T>t+x\vert T>t\right\} =\mathbf{P}\left\{ T>x\right\} 
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Gammafördelningen}
+
+\begin{itemize}
+\item Antag att tiden för att ladda ner en fil är $\mathrm{Exp}(\lambda)$
+fördelad. \\
+Tiden för att ladda ner $\alpha$ filer följer en $\mathrm{Gamma}(\alpha,\lambda)$
+fördelning om nedladdningstiderna är oberoende.
+\item Alltså: Om $X_{1},X_{2},...,X_{\alpha}$ är $\alpha$ stycken \textbf{oberoende}
+$\mathrm{Exp}(\lambda)$ variabler:
+\[
+Y=X_{1}+X_{2}+...+X_{\alpha}\sim\mathrm{Gamma}(\alpha,\lambda)
+\]
+\item $\alpha$ kallas för en \textbf{\textcolor{blue}{shape}}parameter.
+$\lambda$ är en \textbf{\textcolor{blue}{frekvens}}parameter.
+\item Exponential är ett specialfall av Gamma: $\mathrm{Gamma}(1,\lambda)=\mathrm{Exp}(\lambda)$.
+\item Väntevärde
+\[
+\mathbb{E}X=\frac{\alpha}{\lambda}
+\]
+\item Varians
+\[
+Var(X)=\frac{\alpha}{\lambda^{2}}
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Gammafördelningen}
+
+<<GammaPlot, echo=FALSE, dev='tikz', out.width='.63\\paperwidth'>>=
+@
+\end{frame}
+
+\begin{frame}{Normalfördelningen}
+
+\begin{itemize}
+\item \textbf{Täthetsfunktion} för $X\sim N(\mu,\sigma^{2})$
+\[
+f(x)=\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left[-\frac{\left(x-\mu\right)^{2}}{2\sigma^{2}}\right]\quad\text{för }-\infty<x<\infty
+\]
+\item \textbf{\textcolor{blue}{Väntevärde}} och \textbf{\textcolor{blue}{varians}}
+\[
+\mathbb{E}X=\mu,\qquad Var(X)=\sigma^{2}
+\]
+\item \textbf{\textcolor{blue}{CDF}} finns inte i sluten form. Om $Z\sim N(0,1)$
+så är CDFn
+\[
+\Phi(z)=\int_{-\infty}^{z}\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{z^{2}}{2}\right)
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Normalfördelningen}
+
+<<NormalPlot, echo=FALSE, dev='tikz', out.width='.63\\paperwidth'>>=
+@
+\end{frame}
+
+\begin{frame}{Normalfördelningen}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Standardmedlem}}: $Z\sim N(0,1)$. 
+\[
+X=\mu+\sigma Z\text{ där }Z\sim N(0,1)\Longrightarrow X\sim N(\mu,\sigma^{2}).
+\]
+\item \textbf{\textcolor{blue}{Standardisering}}
+\[
+Z=\frac{X-\mu}{\sigma}\sim N(0,1)
+\]
+\item $\mathbf{P}\left\{ Z<1.35\right\} =\Phi(1.35)=0.9115$ och $\mathbf{P}\left\{ Z>1.35\right\} =1-\Phi(1.35)=0.0885$
+\end{itemize}
+Standardisering är praktiskt. Låt $X\sim N(\mu=900,\sigma=200)$
+\begin{align*}
+\mathbf{P}\left\{ 600<X<1200\right\}  & =\mathbf{P}\left\{ \frac{600-\mu}{\sigma}<\frac{X-\mu}{\sigma}<\frac{1200-\mu}{\sigma}\right\} \\
+ & =\mathbf{P}\left\{ -1.5<Z<1.5\right\} \\
+ & =\Phi(1.5)-\Phi(-1.5)=0.9332-0.0668=0.8664
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Betafördelningen}
+
+\begin{itemize}
+\item Passar \textbf{kontinuerliga} variabler i intervallet $[0,1]$, t
+ex andelar.
+\item Täthet för $X\sim Beta(\alpha,\beta)$
+\[
+f(x)=\frac{1}{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1}\quad\text{för }0\leq x\leq1
+\]
+\item \textbf{Betafunktionen}
+\[
+B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}
+\]
+\item \textbf{Väntevärde} och \textbf{varians}
+\[
+\mathbb{E}X=\frac{\alpha}{\alpha+\beta}\qquad Var(X)=\frac{\alpha\beta}{(\alpha+\beta)^{2}(\alpha+\beta+1)}
+\]
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.14]{BetaPDF}\includegraphics[scale=0.14]{BetaCDF}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{\emph{t}-fördelningen}
+
+\begin{itemize}
+\item Normalfördelningen har \textbf{tunna svansar}. Mycket osannolikt att
+observera extrema observationer.
+\item $t$-fördelningen är en generalisering av normalfördelningen med en
+parameter $\nu$ (\textbf{frihetsgrader}) som modellerar hur tunga
+svansarna är.
+\item En \textbf{\textcolor{blue}{$t$-fördelad}} variabel $X\sim t_{\nu}(\mu,\sigma^{2})$
+har täthetsfunktionen
+\[
+f(x)=\frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\Gamma\left(\frac{\nu}{2}\right)\sqrt{\pi\nu\sigma^{2}}}\left(1+\frac{1}{\nu}\left(\frac{x-\mu}{\sigma}\right)\right)^{-\frac{\nu+1}{2}}
+\]
+\item \textbf{Väntevärde} och \textbf{varians}
+\[
+\mathbb{E}X=\mu\quad\text{om }\nu>1
+\]
+\[
+Var(X)=\sigma^{2}\frac{\nu}{\nu-2}\quad\text{om }\nu>2
+\]
+\item $t_{\nu}(0,1)$ är standardmedlemmen. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{\emph{t}-fördelningen}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Cauchy-fördelningen}} är speciallfallet med
+$\nu=1$.
+\item Normalfördelningen fås när $\nu\rightarrow\infty$.
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.2]{TPDF}\includegraphics[scale=0.2]{TCDF}
+\par\end{center}
+\begin{itemize}
+\item Viktig koppling mellan $t-$fördelning och normalfördelning:
+
+\begin{itemize}
+\item $X_{1},..,X_{n}\vert\mu,\sigma^{2}\overset{iid}{\sim}N(\mu,\sigma^{2})$.
+$\sigma^{2}$ \textbf{känd}. $Z=\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}\sim N(0,1)$
+\item $X_{1},..,X_{n}\vert\mu,\sigma^{2}\overset{iid}{\sim}N(\mu,\sigma^{2})$.
+$\sigma^{2}$ \textbf{okänd}, skattas med $s^{2}$. $T=\frac{\bar{X}-\mu}{s/\sqrt{n}}\sim t_{n-1}(0,1).$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\end{document}

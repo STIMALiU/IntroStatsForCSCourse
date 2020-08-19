@@ -1,0 +1,436 @@
+%% LyX 2.3.4.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english,xcolor=svgnames, handout]{beamer}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{calc}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title[TDAB01]{Sannolikhetslära och Statistik\\
+Föreläsning 9}
+\author[Mattias Villani]{Mattias Villani}
+\institute[\textbf{STIMA, LiU}]{\textbf{Avdelningen för Statistik och Maskininlärning}\\
+\textbf{Institutionen för datavetenskap}\\
+\textbf{Linköpings universitet }}
+\date{\includegraphics[scale=0.15]{LiU_secondary_1_black}\,}
+\makebeamertitle
+\begin{frame}{Översikt}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Hypotesttest}}
+\item \textbf{\textcolor{blue}{Chi-tvåfördelningen}} ($\chi^{2})$
+\item \textbf{\textcolor{blue}{$\chi^{2}$-test modellutvärdering}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hypotestest}
+
+\begin{itemize}
+\item Ex 1. genomsnittshastigheten på ditt bredband är sämre än leverantören
+utlovat.
+\[
+\text{\textbf{Nollhypotes}}:\;H_{0}:\mbox{\ensuremath{\mu\geq}8Mbit/s}
+\]
+\[
+\text{\textbf{Alternativhypotes}: }\;H_{A}:\mbox{\ensuremath{\mu}<8Mbit/s}
+\]
+\item Ex 2. En ny medicin påverkar blodtrycket.
+\[
+\text{\textbf{Nollhypotes}}:\;H_{0}:\mbox{\ensuremath{\mu}=0}
+\]
+\[
+\text{\textbf{Alternativhypotes}: }\;H_{A}:\mbox{\ensuremath{\mu\neq}0}
+\]
+\item Ex 3. en UI-förändring ökar andelen nöjda användare.
+\[
+\text{\textbf{Nollhypotes}}:\;H_{0}:p\leq p_{0}
+\]
+\[
+\text{\textbf{Alternativhypotes}: }\;H_{A}:p>p_{0}
+\]
+\item Ex 4. andelen KD-väljare är under 4\%-spärren.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hypotestest}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Tvåsidigt}}\textcolor{blue}{{} }\textbf{\textcolor{blue}{test}}
+förkastar $H_{0}$ om $\mu$ är större \textbf{eller} mindre än $\mu_{0}$
+\[
+\text{\textbf{Nollhypotes}}:\;H_{0}:\mu=\mu_{0}
+\]
+\[
+\text{\textbf{Alternativhypotes}: }\;H_{A}:\mu\neq\mu_{0}
+\]
+\item \textbf{\textcolor{blue}{Ensidigt}}\textcolor{blue}{{} }\textbf{\textcolor{blue}{test}}
+\[
+\text{\textbf{Nollhypotes}}:\;H_{0}\mbox{:\ensuremath{\mu\leq\mu}}_{0}
+\]
+\[
+\text{\textbf{Alternativhypotes}: }\;H_{A}:\mu>\mu_{0}
+\]
+eller
+\[
+\text{\textbf{Nollhypotes}}:\;H_{0}\mbox{:\ensuremath{\mu\geq\mu}}_{0}
+\]
+\[
+\text{\textbf{Alternativhypotes}: }\;H_{A}:\mu<\mu_{0}
+\]
+\item Ensidiga test skrivs ibland så här (det ger samma resultat):
+\[
+\text{\textbf{Nollhypotes}}:\;H_{0}\mbox{:\ensuremath{\mu}=\ensuremath{\mu}}_{0}
+\]
+\[
+\text{\textbf{Alternativhypotes}: }\;H_{A}:\mu<\mu_{0}
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hypotestest}
+
+\begin{itemize}
+\item Notera att \textbf{hypotesen gäller} \textbf{populationen} ($\mu$
+eller $p$). För en patient kan förändring i blodtrycket vara skild
+från noll, trots att $\mu=0$. 
+\item \textbf{Stickprov} från populationen. Dra \textbf{slutsatser} om $H_{0}$
+eller $H_{A}$ är sann.
+\item Ex 3. $p_{0}=0.6$. $s=70$ baserat på ett stickprov av $n=100$ användare.
+Är $s=70$ \textbf{tillräckligt} \textbf{stort} för att förkasta $H_{0}:p\leq p_{0}$? 
+\item Prova: \texttt{\textcolor{blue}{sum(runif(100)<=0.6)}} i R.
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.17]{SampDistpHat}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Hypotestest}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Typ I fel}}
+\[
+\alpha=P\left\{ \text{Förkasta }H_{0}\vert H_{0}\text{ är sann}\right\} 
+\]
+Vi vill kontrollera att $\alpha$ hålls på en förbestämd låg nivå.
+
+\begin{itemize}
+\item Ex Gödsel inte effektivt, men du väljer att gödsla ändå.
+\end{itemize}
+\item \textbf{\textcolor{blue}{Typ II fel}}
+\[
+P\left\{ \text{Acceptera }H_{0}\vert H_{0}\text{ är falsk}\right\} 
+\]
+
+\begin{itemize}
+\item Ex Gödsel effektivt, men du väljer att inte gödsla.
+\end{itemize}
+\end{itemize}
+\begin{center}
+\begin{tabular}{l|cc}
+ & Acceptera $H_{0}$ & Förkasta $H_{0}$\tabularnewline
+\hline 
+$H_{0}$ sann & \textrm{\scriptsize{}\cellcolor{robinsegg}}Korrekt beslut & \textrm{\scriptsize{}\cellcolor{robinsegg}}Typ 1 fel\tabularnewline
+$H_{A}$ sann & \textrm{\scriptsize{}\cellcolor{robinsegg}}Typ II fel & \textrm{\scriptsize{}\cellcolor{robinsegg}}Korrekt beslut\tabularnewline
+\end{tabular}
+\par\end{center}
+\begin{itemize}
+\item Popper: man kan bara förkasta en nollhypotes, aldrig acceptera den.
+\item \textbf{\textcolor{blue}{Styrka}} (power): $p(\theta)=P\left\{ \text{Förkasta }H_{0}\vert H_{A}\text{ är sann}\right\} $.
+\item Applet: http://tube.geogebra.org/student/m137287.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Steg vid hypotestest}
+
+\begin{enumerate}
+\item Välj \textbf{\textcolor{blue}{teststatistika}}\textcolor{black}{,
+$T=T(X_{\text{1}},...,X_{n})$. \bigskip{}
+}
+\item \textcolor{black}{Beräkna }\textbf{\textcolor{blue}{nollfördelningen}}\textcolor{black}{{}
+för $T$ (dvs samplingfördelningen $F_{0}$ för $T$ om $H_{0}$ är
+sann).\bigskip{}
+}
+\item Bestäm \textbf{\textcolor{blue}{förkastningsregionen}} $\mathcal{R}$
+i nollfördelningen så att $P\left\{ T\in\mathcal{R}|H_{0}\right\} =\alpha$.\textcolor{black}{\bigskip{}
+}
+\item Förkasta $H_{0}$ på \textbf{\textcolor{blue}{signifikansnivån}} $\alpha$
+om $T_{obs}\in\mathcal{R}$, där $T_{obs}$ är det \textbf{observerade}
+värdet på $T$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Förkastningsregionen}
+
+\begin{center}
+\includegraphics{HypoTestRejectionRegions}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Steg vid hypotestest - Bernoulliexempel}
+
+\begin{enumerate}
+\item \textbf{\textcolor{blue}{Teststatistika}}\textcolor{black}{, $T=S=\sum_{i=1}^{n}X_{i}=n\hat{p}$.
+\bigskip{}
+}
+\item \textbf{\textcolor{blue}{Nollfördelningen}}\textcolor{black}{{} för
+$T$: $\sum_{i=1}^{n}X_{i}\sim Bin(n,p_{0})$.\bigskip{}
+}
+\item Låt $\alpha=0.05$. \texttt{\textcolor{blue}{qbinom(p=0.05,size=100,prob=0.6,
+lower.tail=F)}} ger $\mathcal{R}=[68,100]$ (ungefär).\textcolor{black}{\bigskip{}
+}
+\item $T_{obs}=70$ så $T_{obs}\in\mathcal{R}$ och nollhypotesen $p\leq0.6$
+förkastas på signifikansnivån $0.05$. 
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Z-test}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Z-test}}\textbf{ }används när nollfördelningen
+är normalfördelad. 
+
+\begin{itemize}
+\item Ex 1. $X_{1},...,X_{n}\overset{iid}{\sim}N(\mu,\sigma^{2})$ och 
+\[
+Z=\frac{\bar{X}-\mu_{0}}{\sigma/\sqrt{n}}.
+\]
+\item Ex 2. CLT.
+\end{itemize}
+\item Exempel: $H_{0}:\mu=\mu_{0}$ och $H_{A}:\mu>\mu_{0}$.
+\item En-sidigt Z-test
+\[
+\begin{cases}
+\text{Förkasta }H_{0} & \text{ om }Z\geq z_{\alpha}\\
+\text{Acceptera }H_{0} & \text{ om }Z<z_{\alpha}
+\end{cases}
+\]
+\item Två-sidigt $Z$-test. $H_{0}:\mu=\mu_{0}$ och $H_{A}:\mu\neq\mu_{0}$.
+\[
+\begin{cases}
+\text{Förkasta }H_{0} & \text{ om }\left|Z\right|\geq z_{\alpha/2}\\
+\text{Acceptera }H_{0} & \text{ om }\left|Z\right|<z_{\alpha/2}
+\end{cases}
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Förkastningsregioner - Z-test}
+
+\begin{center}
+\includegraphics[scale=0.8]{HypoTestDifferentRejectRegions}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{T-test}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Z-test}}\textbf{ }används när nollfördelningen
+är normalfördelad.\bigskip{}
+\item Om $\hat{\theta}$ normalfördelad, men $\sigma^{2}$ \textbf{inte}
+är känd utan skattas med $s^{2}$ blir inte 
+\[
+\frac{\hat{\theta}-\theta_{0}}{s/\sqrt{n}}
+\]
+\bigskip{}
+längre normalfördelad utan \textbf{$t$-fördelad} med $n-1$ frihetsgrader.\bigskip{}
+\item $z_{\alpha}$ blir istället $t_{\alpha}$ och hämtas från Tabell 5
+i Byron. Se avsnitt 9.4.8 i Baron.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Z-test för skillanden mellan populationer}
+
+\begin{itemize}
+\item Vi kan också testa om \textbf{två} populationer har samma väntevärde:
+\[
+H_{0}:\mu_{X}=\mu_{Y}
+\]
+\[
+H_{A}:\mu_{X}\neq\mu_{Y}
+\]
+\item Ex är andelen KD-sympatisörer lika stor i Stockholm och Göteborg?
+\item Låt $X_{\text{1}},...X_{n}$ vara ett slumpmässigt stickprov från
+$N(\mu_{X},\sigma^{2})$. 
+\item Låt $Y_{1},...,Y_{m}$ vara ett slumpmässigt stickprov från $N(\mu_{Y},\sigma^{2})$.
+\item \textbf{Teststatistika}: $\bar{X}-\bar{Y}$. Samplingfördelning under
+$H_{0}$?
+
+\begin{itemize}
+\item Linjärkombination av normalvariabler är normalfördelade. $\bar{X}-\bar{Y}$
+är normalfördelad.
+\item $E(\bar{X}-\bar{Y})=\mu_{X}-\mu_{Y}=0$ under $H_{0}$. 
+\item $Var(\bar{X}-\bar{Y})=Var(\bar{X})+Var(\bar{Y})=\sigma^{2}/n+\sigma^{2}/m=\sigma^{2}\left(1/n+1/m\right).$
+\[
+Z=\frac{\bar{X}-\bar{Y}}{\sqrt{\sigma^{2}\left(\frac{1}{n}+\frac{1}{m}\right)}}.
+\]
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Koppling mellan hypotestest och konfidensintervall}
+
+\noindent\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+\begin{center}
+Ett test av $H_{0}:\theta=\theta_{0}$ mot $H_{A}:\theta\neq\theta_{0}$
+på signfikansnivån $\alpha$
+\par\end{center}
+\begin{center}
+accepterar nollhypotesen 
+\par\end{center}
+\begin{center}
+om och endast om
+\par\end{center}
+\begin{center}
+$\theta_{0}$ ingår i ett symmetriskt $(1-\alpha)100\%$ konfidensintervall
+för $\theta$
+\par\end{center}%
+\end{minipage}}
+\end{frame}
+
+\begin{frame}{p-värde}
+
+\begin{itemize}
+\item Hur väljer vi $\alpha$?
+\item \textbf{Lågt $\alpha$} ställer mycket \textbf{stora krav} på bevisningen:
+teststatistikan måste anta mycket stora (positiva eller negativa)
+värden för att vi ska kunna förkasta $H_{0}$.
+\item \textbf{Stort $\alpha$} ställer \textbf{låga krav}. Vi förkastar
+baserat på väldigt lite bevis.
+\item Idé: presentera resultat för alla $\alpha$.
+\item \textbf{\textcolor{blue}{P-värde}} = den lägsta signifikansnivån $\alpha$
+där vi kan förkasta nollhypotesen.
+\item Alternativ definition: Sannolikheten att få en teststatistika som
+är lika extrem eller ännu mer extrem än $T_{obs}$.
+\item Exempel: ensidigt $Z$-test:
+\[
+p\text{-värde:}\quad P\left\{ Z\geq Z_{obs}\right\} 
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Skatta en varians - $\chi^{2}$-fördelningen}
+
+\begin{itemize}
+\item Väntevärdesriktig estimator av $\sigma^{2}$
+\[
+s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}
+\]
+\item \textbf{\textcolor{blue}{$\chi2$ (Chi-två) fördelningen}} med $\nu$
+frihetsgrader
+\[
+f(x)=\frac{1}{2^{\nu/2}\Gamma(\nu/2)}x^{\nu/2-1}e^{-x/2},\quad x>0
+\]
+\item Om $X\sim\chi_{\nu}^{2}$ så gäller
+\[
+\mathbb{E}X=\nu,\qquad Var(X)=2\nu
+\]
+\item $\chi_{\nu}^{2}$-fördelningen är ett specialfall av gamma: $Gamma(\nu/2,1/2)$.
+\item \textbf{Samplingfördelning} för $s^{2}$ (om $X_{i}\overset{iid}{\sim}N(\mu,\sigma^{2})$)
+\[
+\frac{(n-1)s^{2}}{\sigma^{2}}=\sum_{i=1}^{n}\left(\frac{X_{i}-\bar{X}}{\sigma}\right)^{2}\sim\chi_{n-1}^{2}
+\]
+\item $\chi^{2}$-fördelning kan användas för K.I. och hypotestest för $\sigma^{2}$
+.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\chi^{2}$ goodness of fit test}
+
+\begin{itemize}
+\item Antag att din population har följande diskreta fördelning $F_{0}:$
+$P(X=1)=p_{1},P(X=2)=p_{2},...,P(X=m)=p_{m}$. \bigskip{}
+\item Om du har observerat $n$ observationer så förväntar du dig $np_{k}$
+observationer där $X=k$. \bigskip{}
+\item Låt $Exp(k)$ beteckna förväntat antal observationer med värde $k$
+om $F_{0}$ är en korrekt populationsmodell.\bigskip{}
+\item Låt $Obs(k)$ beteckna faktiskt antal observationer med värde $k$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\chi^{2}$ goodness of fit test}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Chi-två statistikan}}\textbf{
+\[
+\chi^{2}=\sum_{k=1}^{N}\frac{\left[Obs(k)-Exp(k)\right]^{2}}{Exp(k)}
+\]
+}
+\item Om $\chi^{2}$ är för stort så drar vi slutsatsen att data inte kommer
+från populationen med fördelningen $F_{0}$ ovan.
+\item Men hur stort är för stort? Jämför med samplingfördelningen för $\chi^{2}$
+under $H_{0}:$ $F=F_{0}$ mot $H_{A}:F\neq F_{0}$. 
+\item Vid stora stickprov följer Chi-två statistikan en $\chi^{2}$-fördelning
+med $m-1$ frihetsgrader, om $Exp(k)>5$ för alla $k$.
+\item Kan även testa om data kommer från $F_{0}(\theta)$ där $\theta$
+är en okänd parameter som skattas med en konsistent estimator. Frihetsgrader
+=$n-1-d$.
+\item \textbf{Kontinuerliga fördelningar} kan hanteras genom diskretisering
+(men se till att $Exp(k)>5$ för alla $k$.
+\end{itemize}
+\end{frame}
+
+
+\end{document}

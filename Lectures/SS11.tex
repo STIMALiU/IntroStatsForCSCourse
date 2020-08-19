@@ -1,0 +1,385 @@
+%% LyX 2.3.4.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english,xcolor=svgnames, handout]{beamer}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+<<setup, include=FALSE>>=
+library(knitr)
+library(ggplot2)
+library(tikzDevice)
+source("MVutils.R")
+opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='footnotesize')
+@
+
+<<echo=FALSE>>=
+read_chunk('Lecture4SlideCode.R')
+@
+\title[TDAB01]{Sannolikhetslära och Statistik\\
+Föreläsning 11}
+\author[Mattias Villani]{Mattias Villani}
+\institute[\textbf{STIMA, LiU}]{\textbf{Avdelningen för Statistik och Maskininlärning}\\
+\textbf{Institutionen för datavetenskap}\\
+\textbf{Linköpings universitet }}
+\date{\includegraphics[scale=0.15]{LiU_secondary_1_black}\,}
+\makebeamertitle
+\begin{frame}{Översikt}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Enkel regression}}
+\item \textbf{\textcolor{blue}{Kovarians och korrelation}}
+\item \textbf{\textcolor{blue}{Multipel regression}}
+\item \textbf{\textcolor{blue}{Regression med binär respons}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Regression}
+
+\begin{itemize}
+\item Hittills: modeller utan förklaringsvärde. $\theta$= sannolikheten
+för spam.\smallskip{}
+\item Samma spam-sannolikhet, $\theta$, för:
+
+\begin{itemize}
+\item ett mejl med 256 \$-tecken, som inte nämner mitt namn, och som kommer
+från avsändare utanför min adressbok
+\item ett mejl utan \$-tecken, som nämner mitt namn, och som kommer från
+en avsändare i min adressbok.\smallskip{}
+\end{itemize}
+\item Prediktion av siffror: vi vill koppla klassen (0-9) till gråheten
+i pixlarna.\smallskip{}
+\item Lösning: låt $\theta$ vara en funktion av förklaringsvariabler, t
+ex antal\$, mittNamn, kändAvsändare etc. \smallskip{}
+\item \textbf{\textcolor{blue}{Regression}}: låt fördelning för en \textbf{\textcolor{blue}{responsvariabel}}
+$Y$ (t ex binära Spam/Ham) bero på ett antal \textbf{\textcolor{blue}{förklarande
+variabler}} $X^{(1)},...,X^{(k)}$ (alt. namn: prediktorer, kovariater,
+oberoende variabler). 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Enkel regression}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Enkel}} \textbf{regression}: en enda förklarande
+variabel, $X$. $X$ antas känd (ej stokastisk). \smallskip{}
+\item Regression modellerar den betingade fördelningen $f(Y\vert X=x)$.\smallskip{}
+\item Vanligast: $X$ påverkar bara väntevärdet i fördelningen: $E(Y\vert X=x)$.\smallskip{}
+\item Antag $Y\vert(X=x)\sim N\left(\mu\left(x\right),\sigma^{2}\right)$,
+där
+\[
+E(Y\vert X=x)=\mu\left(x\right)=\beta_{0}+\beta_{1}x
+\]
+\smallskip{}
+\item Kan också skrivas
+\[
+Y=\beta_{0}+\beta_{1}x+\varepsilon,\qquad\varepsilon\sim N(0,\sigma^{2})
+\]
+\smallskip{}
+\item $\varepsilon$ kallas för \textbf{störning} eller \textbf{felterm}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Enkel regression}
+
+\begin{center}
+\includegraphics[scale=0.45]{RegCondDens}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Exempel: stoppsträcka=f(hastighet)}
+
+\begin{center}
+\includegraphics[scale=0.35]{CarsOrigData}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Exempel: stoppsträcka=f(hastighet)}
+
+\begin{center}
+\includegraphics[scale=0.35]{CarsLogScale}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Estimation - minsta kvadratmetoden}
+
+\begin{itemize}
+\item \textbf{Data} är X-Y talpar: $(x_{1},y_{1}),...,(x_{n},y_{n})$.
+\item \textbf{\textcolor{blue}{Regressionlinjen}} $\beta_{0}+\beta_{1}\cdot x$
+ger prognoserna: $\hat{y}_{i}=\beta_{0}+\beta_{1}\cdot x_{i},\:i=1,...,n.$
+\item \textbf{\textcolor{blue}{Residualen}} vid $x_{i}$
+\[
+e_{i}=y_{i}-\hat{y}_{i}
+\]
+\end{itemize}
+\end{frame}
+\begin{itemize}
+\item Minsta kvadratmetoden: välj $\beta_{0}$ och $\beta_{1}$ så summan
+av kvadrerade residualerna minimeras
+\[
+Q=\sum_{i=1}^{n}e_{i}^{2}=\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}\cdot x_{i}\right)^{2}
+\]
+
+\begin{itemize}
+\item (partial)derivera med avseende på $\beta_{0}$ och $\beta_{1}$ och
+lös ekvationssystemet
+\begin{align*}
+\frac{\partial Q}{\partial\beta_{0}} & =0\\
+\frac{\partial Q}{\partial\beta_{1}} & =0
+\end{align*}
+\end{itemize}
+\end{itemize}
+
+\begin{frame}{Estimation - minsta kvadratmetoden}
+
+\begin{itemize}
+\item (partial)derivera med avseende på $\beta_{0}$ och $\beta_{1}$ och
+lös ekvationssystemet
+\begin{align*}
+\frac{\partial Q}{\partial\beta_{0}} & =0\\
+\frac{\partial Q}{\partial\beta_{1}} & =0
+\end{align*}
+ger lösningen
+\begin{align*}
+\hat{\beta}_{1} & =\frac{S_{xy}}{S_{xx}}=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}}\\
+\hat{\beta}_{0} & =\bar{y}-\hat{\beta}_{1}\bar{x}
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Regression i R}
+<<RegInR, eval=TRUE, size='tiny'>>=
+
+data(cars) # Loading one of R's internal data sets 
+attach(cars) # Making variables in cars available (outside of 'namespace')
+lmFit <- lm(log(dist) ~ log(speed)) # general:lm(y ~ x1 + x2 + x1*x2)
+summary(lmFit)
+
+@
+\end{frame}
+
+\begin{frame}{Exempel: stoppsträcka=f(hastighet)}
+
+\begin{center}
+\includegraphics[scale=0.35]{CarsLogScaleReg}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Estimation - maximum likelihood}
+
+\begin{itemize}
+\item \textbf{ML}: välj värden på $\beta_{0}$ och $\beta_{1}$ som maximerar
+sannolikheten (tätheten) för data. Antag oberoende normalfördelade
+feltermer ($\varepsilon_{1},...,\varepsilon_{n})$.
+\item \textbf{Likelihoodfunktionen}
+\[
+L(\beta_{0},\beta_{1})=\prod_{i=1}^{n}N\left(y_{i}\vert\mu(x_{i}),\sigma^{2}\right)
+\]
+där $N\left(y_{i}\vert\mu(x_{i}),\sigma^{2}\right)$ är tätheten för
+en $N(\mu(x_{i}),\sigma^{2})$ fördelning
+\[
+f(y_{i})=\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left(-\frac{1}{2\sigma^{2}}\left(y_{i}-\mu(x_{i})\right)^{2}\right)
+\]
+Alltså
+\[
+L(\beta_{0},\beta_{1})=\left(\frac{1}{\sqrt{2\pi\sigma^{2}}}\right)^{n}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\mu(x_{i})\right)^{2}\right)
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimation - maximum likelihood}
+
+\begin{itemize}
+\item \textbf{Likelihoodfunktionen}
+\[
+L(\beta_{0},\beta_{1})=\left(\frac{1}{\sqrt{2\pi\sigma^{2}}}\right)^{n}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\mu(x_{i})\right)^{2}\right)
+\]
+\item Vi kan lika gärna maximera \textbf{log-likelihoodfunktionen}
+\[
+\ln L(\beta_{0},\beta_{1})=c-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\mu(x_{i})\right)^{2},
+\]
+där $c=-n\ln\left(\sqrt{2\pi\sigma^{2}}\right)$ är en konstant som
+inte beror på $\beta_{0}$ och $\beta_{1}$.
+\item Maximera $\ln L(\beta_{0},\beta_{1})$ är detsamma som minimera $\sum_{i=1}^{n}\left(y_{i}-\mu(x_{i})\right)^{2}$. 
+\item \textbf{ML = minsta kvadrat!}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Regression och korrelation}
+
+\begin{itemize}
+\item \textbf{Kovarians
+\[
+Cov(X,Y)=\mathbb{E}\left[\left(X-\mathbb{E}X\right)\left(Y-\mathbb{E}Y\right)\right]
+\]
+}
+\item \textbf{Korrelationskoefficient} $-1\le\rho\leq1$
+\[
+\rho=\frac{Cov(X,Y)}{Std(X)\cdot Std(Y)}
+\]
+\item \textbf{Stickprovskovarians} (väntevärdesriktig estimator av $Cov(X,Y)$):
+\[
+s_{xy}=\frac{\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)\left(y_{i}-\bar{y}\right)}{n-1}
+\]
+\item \textbf{Stickprovskorrelationskoefficient}
+\[
+r=\frac{s_{xy}}{s_{x}s_{y}},\;\text{där }s_{x}=\sqrt{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}/(n-1)}
+\]
+\item Relation mellan regression och korrelation
+\[
+\hat{\beta}_{1}=\frac{S_{xy}}{S_{xx}}=\frac{s_{xy}}{s_{x}^{2}}=r\cdot\frac{s_{y}}{s_{x}}.
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Multipel regression}
+
+\begin{itemize}
+\item Fler än en förklarande variabel.
+\item Antag 
+\[
+Y\vert X^{(1)}=x^{(1)},...,X^{(k)}=x^{(k)})\sim N\left(\mu\left(x^{(1)},...,x^{(k)}\right),\sigma^{2}\right)
+\]
+där
+\[
+\mu\left(x^{(1)},...,x^{(k)}\right)=\beta_{0}+\beta_{1}x^{(1)}+...+\beta_{k}x^{(k)}
+\]
+\item Kan också skrivas
+\[
+y=\beta_{0}+\beta_{1}x^{(1)}+...+\beta_{k}x^{(k)}+\varepsilon,\qquad\varepsilon\sim N(0,\sigma^{2})
+\]
+\item Se Baron 11.3.2 för minsta kvadrat. ML = minsta kvadrat.
+\item \textbf{\textcolor{blue}{Polynomregression}} för icke-linjär regression
+\[
+y=\beta_{0}+\beta_{1}x+\beta_{2}x^{2}+...+\beta_{k}x^{k}+\varepsilon
+\]
+\item Kan skattas med minsta kvadrat. Se upp för \textbf{\textcolor{blue}{överanpassning}}!
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Överanpassning}
+
+\begin{center}
+\includegraphics[scale=0.4]{overfittingPoly}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Överanpassning - mjukhetsprior}
+
+\begin{center}
+\includegraphics[scale=0.4]{overfittingRidge}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Regression med binär respons}
+
+\begin{itemize}
+\item Hittills har vi antagit kontinuerlig (normalfördelad) respons, $Y$.
+\item Om $Y$ är \textbf{binär} kan vi inte anta $Y\vert(X=x)\sim N(\mu(x),\sigma^{2})$.
+\item Bättre med 
+\[
+Y\vert(X=x)\sim Bernoulli(\theta(x))
+\]
+och olika $Y$-observationer är oberoende (givet $x$). 
+\item Vanlig funktionsform för $\theta(x)$ (\textbf{\textcolor{blue}{logistisk
+regression}}):
+\[
+\theta(x)=\frac{\exp(\beta_{0}+\beta_{1}\cdot x)}{1+\exp(\beta_{0}+\beta_{1}\cdot x)}
+\]
+\item Minsta kvadrat är inte längre en bra estimationsmetod.
+\item \textbf{Maximum likelihood} funkar alltid:
+\begin{align*}
+L(\beta_{0},\beta_{1}) & =\prod_{i=1}^{n}\theta(x_{i})^{y_{i}}(1-\theta(x_{i}))^{1-y_{i}}\\
+ & =\prod_{i=1}^{n}\left[\frac{\exp(\beta_{0}+\beta_{1}\cdot x)}{1+\exp(\beta_{0}+\beta_{1}\cdot x)}\right]^{y_{i}}\left[\frac{1}{1+\exp(\beta_{0}+\beta_{1}\cdot x)}\right]^{1-y_{i}}
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{ML skattningar i logistisk regression}
+<<fraudDetect, eval=TRUE, size='tiny'>>=
+
+# Defining the log-likelihood function 
+LogLik <- function(betaVect,y,X){   
+	linFunc = X%*%betaVect 
+	thetaVect = exp(linFunc)/(1+exp(linFunc))   
+	logLikelihood <- sum(y*log(thetaVect) + (1-y)*log(1-thetaVect)) 
+}
+
+# Reading in fraud data from file 
+data <- read.csv('/Users/matvi05/Dropbox/Teaching/ProbStatUProg/Data/banknoteFraud.csv', header = FALSE) 
+names(data) <- c("varWave","skewWave","kurtWave","entropyWave","fraud") 
+y <- data[,5] 
+X <- as.matrix(cbind(1,data[,1:4]))     # Adding a column of ones for the intercept 
+nPara <- dim(X)[2]                      # Number of covariates incl intercept
+
+# Optimize to the find the ML estimates. 
+initPar <- matrix(0,nPara,1) 
+optimResults <- optim(initPar, LogLik, gr = NULL, y, X, control=list(fnscale=-1)) 
+optimResults$par # betaHat, the ML estimates of beta = (beta0,beta1,...,beta4)
+
+@
+\end{frame}
+\end{document}

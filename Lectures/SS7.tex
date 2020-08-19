@@ -1,0 +1,329 @@
+%% LyX 2.3.4.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english,xcolor=svgnames, handout]{beamer}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+<<setup, include=FALSE>>=
+library(knitr)
+library(ggplot2)
+library(tikzDevice)
+source("MVutils.R")
+opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='footnotesize')
+@
+
+<<echo=FALSE>>=
+read_chunk('Lecture4SlideCode.R')
+@
+\title[TDAB01]{Sannolikhetslära och Statistik\\
+Föreläsning 7}
+\author[Mattias Villani]{Mattias Villani}
+\institute[\textbf{STIMA, LiU}]{\textbf{Avdelningen för Statistik och Maskininlärning}\\
+\textbf{Institutionen för datavetenskap}\\
+\textbf{Linköpings universitet }}
+\date{\includegraphics[scale=0.15]{LiU_secondary_1_black}\,}
+\makebeamertitle
+\begin{frame}{Översikt}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Population, parametrar, stickprov och statistik.}}
+\item \textbf{\textcolor{blue}{Deskriptiv statistik}}
+\item \textbf{\textcolor{blue}{Introduktion till parameterestimation och
+samplingfördelningar.}}
+\item \textbf{\textcolor{blue}{Grafiska metoder - demo}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Grundläggande begrepp}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Population}} = alla enheter av intresse.
+
+\begin{itemize}
+\item Sveriges befolkning. 
+\item Alla möjliga handskrivna siffror.
+\item Alla producerade enheter vid en fabrik.
+\end{itemize}
+\item \textbf{\textcolor{blue}{Parameter}} = numerisk beskrivning av populationen.
+
+\begin{itemize}
+\item Genomsnittsinkomst ($\mu$) eller inkomstspridning ($\sigma^{2}$).
+\item Medelintensitet i gråskala vid en viss pixel i en bild av en 8:a.
+\item Andelen trasiga produkter.
+\end{itemize}
+\item \textbf{\textcolor{blue}{Stickprov}} (eng. sample) = en delmängd av
+observerade enheter från populationen.
+
+\begin{itemize}
+\item 1000 slumpmässigt valda personer.
+\item 1000 handskrivna siffror (0-9) av olika personer i olika åldrar.
+\item 10 utvalda lådor med produkter.
+\end{itemize}
+\item \textbf{\textcolor{blue}{Statistika}} (eng. statistic) = sammanfattande
+funktion av stickprovet.
+
+\begin{itemize}
+\item $\bar{X}$, medelvärdet. $s^{2}$, stickprovsvariansen, andelen trasiga
+produkter $\hat{p}$.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sannolikhetslära och statistisk inferens}
+
+\begin{quotation}
+\begin{center}
+\includegraphics[scale=0.25]{StatistiskInferens}
+\par\end{center}
+
+\end{quotation}
+\end{frame}
+
+\begin{frame}{Estimator}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Populationsparameter:}} $\theta$. Okänd.
+\textbf{Inferens}/\textbf{learning}: lära sig om $\theta$ från data.
+\item $\hat{\theta}$ är en \textbf{\textcolor{blue}{estimator}} av $\theta$.
+För ett givet stickprov får vi ett \textbf{estimat} (ett värde) av
+$\hat{\theta}$ som representerar vår \textbf{bästa ``gissning''
+}av $\theta$ baserat på information i stickprovet.
+\item Exempel: $\theta=p$, sannolikheten i en sekvens Bernoulliförsök:
+\[
+\hat{p}=\frac{\sum_{i=1}^{n}X_{i}}{n}=\text{andelen lyckade}
+\]
+\item $\hat{p}$ är \textbf{rätt i genomsnitt} sett över alla möjliga stickprov
+av storleken $n$
+\[
+\mathbb{E}\hat{p}=\mathbb{E}\left(\frac{\sum_{i=1}^{n}X_{i}}{n}\right)=\left(\frac{\sum_{i=1}^{n}\mathbb{E}X_{i}}{n}\right)=\frac{\sum_{i=1}^{n}p}{n}=\frac{np}{n}=p
+\]
+\item En estimator $\hat{\theta}$ av $\theta$ är \textbf{\textcolor{blue}{väntevärdesriktig}}
+(eng. \textbf{unbiased}) om 
+\[
+\mathbb{E}\hat{\theta}=\theta
+\]
+\item \textbf{\textcolor{blue}{Bias}}:
+\[
+Bias(\hat{\theta})=\mathbb{E}\left(\hat{\theta}\right)-\theta
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Samplingfördelning}
+
+\begin{itemize}
+\item Men \textbf{hur fel kan det bli i ett givet stickprov}?\medskip{}
+\item \textbf{\textcolor{blue}{Samplingfördelning}} för $\hat{\theta}$
+beskriver hur $\hat{\theta}$ kan variera från stickprov till stickprov.\medskip{}
+\item Ex. Population: $\{3,5,5,7,10\}$. $\theta=\frac{3+5+5+7+10}{5}=6$.
+\item Stickprov av storleken $n$, utan återläggning. 
+\item Samplingfördelning för $\bar{X}$.
+\item Ex. $n=3$. 
+
+\begin{itemize}
+\item Stickprov 1: $\{3,5,5\}$ med $\bar{x}=4.333.$
+\item Stickprov 2: $\{3,5,7\}$ med $\bar{x}=5.000.$
+\item $\vdots$
+\item Stickprov 10: $\{5,7,10\}$ med $\bar{x}=7.333.$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Samplingfördelning för $\bar{X}$}
+
+\begin{center}
+\includegraphics[scale=0.2]{SamplingDistn2}\includegraphics[scale=0.2]{SamplingDistn3}
+\par\end{center}
+
+\begin{center}
+\includegraphics[scale=0.2]{SamplingDistn4}\includegraphics[scale=0.2]{SamplingDistn5}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Medelvärdesestimatorn}
+
+\begin{itemize}
+\item Medelvärde: $\bar{X}=\frac{X_{1}+...+X_{n}}{n}$
+\item \textbf{Väntevärdesriktig} för $\mu=E(X)$
+\[
+\mathbb{E}\bar{X}=\mu
+\]
+\item \textbf{\textcolor{blue}{Enkelt slumpmässigt urval}}: \textbf{samplingdesign}
+där enheter väljs \textbf{oberoende} av varandra från populationen
+och med \textbf{lika} \textbf{sannolikheter}.
+\item \textbf{\textcolor{blue}{iid}} (\textbf{i}ndependent \textbf{i}dentically
+\textbf{d}istributed). sv. \textbf{oberoende likafördelade}.
+\item \textbf{\textcolor{blue}{Samplingvarians}}, eller \textbf{\textcolor{blue}{standardfel}},
+för $\bar{X}$ om $X_{1},...,X_{n}$ är \textbf{iid} med väntevärde
+$\mu$ och varians $\sigma^{2}$: 
+\[
+Var(\bar{X})=Var\left(\frac{\sum_{i=1}^{n}X_{i}}{n}\right)=\frac{1}{n^{2}}\sum_{i=1}^{n}Var(X_{i})=\frac{1}{n^{2}}n\sigma^{2}=\frac{\sigma^{2}}{n}
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Linjärkombinationer av normalvariabler är normal}
+
+\begin{itemize}
+\item Sats: Om $X\sim N(\mu_{X},\sigma_{X}^{2})$ och $Y\sim N(\mu_{Y},\sigma_{Y}^{2})$
+är oberoende så gäller att
+\[
+aX+bY\sim N(a\mu_{X}+b\mu_{Y},a^{2}\sigma_{X}^{2}+b^{2}\sigma_{Y}^{2})
+\]
+\item Om $X$ och $Y$ är beroende är $aX+bY$ fortfarande normalfördelad,
+men med annan varians.
+\item Detta resultat gäller även för fel variabler. Speciellt gäller för
+$X_{1},...,X\overset{iid}{\sim}N(\mu,\sigma^{2})$
+\[
+\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i}\sim N\left(\mu,\frac{\sigma^{2}}{n}\right).
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Konsistens och CLT}
+
+\begin{itemize}
+\item $\bar{X}$ är \textbf{\textcolor{blue}{konsistent}} för $\mu$ om
+samplingfördelningen blir alltmer koncentrerad kring $\mu$ när stickprovsstorleken
+$n$ ökar. 
+\item Formellt är estimatorn $\hat{\theta}$ konsistent för $\theta$ om,
+för alla $\varepsilon>0$
+\[
+\mathbf{P}\left\{ \left|\hat{\theta}-\theta\right|>\varepsilon\right\} \rightarrow0\text{ när }n\rightarrow\infty
+\]
+\item \textbf{Sats}: för ett iid stickprov är $\bar{X}$ är konsistent för
+$\mu=\mathbb{E}X$. 
+\item \textbf{Bevis}: Chebyshevs olikhet:
+\[
+\mathbf{P}\left\{ \left|\bar{X}-\mu\right|>\varepsilon\right\} \leq\frac{Var(\bar{X})}{\varepsilon^{2}}=\frac{\sigma^{2}/n}{\varepsilon^{2}}\rightarrow0\text{ när }n\rightarrow\infty.
+\]
+\item \textbf{\textcolor{blue}{Centralagränsvärdessatsen}} säger att samplingfördelningen
+för $\bar{X}$ är approximativt $N\left(\mu,\sigma^{2}/n\right)$
+för stora $n$ (tumregel: $n>30)$. 
+\item Formellt: CDFn för 
+\[
+Z=\frac{\bar{X}-\mathbb{E}\bar{X}}{Std(\bar{X})}=\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}
+\]
+konvergerar mot CDFn för en standard normal $N(0,1)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Median och kvantiler}
+
+\begin{itemize}
+\item Medelvärdet är känsligt till extrema mätvärden, s k \textbf{\textcolor{blue}{outliers}}. 
+\item \textbf{\textcolor{blue}{Medianen}}, $M$, är mer \textbf{\textcolor{blue}{robust}}
+\begin{align*}
+P\left(X>M\right) & \leq0.5\\
+P(X<M) & \leq0.5
+\end{align*}
+\item Median = hälften av sannolikhetsmassan till vänster, hälften till
+höger.
+\item \textbf{\textcolor{blue}{Samplemedianen}} 
+\[
+\hat{M}=\begin{cases}
+\left(\text{\ensuremath{\frac{n+1}{2}}}\right)\text{:te minsta observationen} & \text{ om }n\text{ udda}\\
+\text{medelvärdet av \ensuremath{\left(\text{\ensuremath{\frac{n}{2}}}\right)\text{:te minsta observation och \ensuremath{\left(\frac{n+2}{2}\right)\text{:te}} observationen}}} & \text{ om }n\text{jämnt}
+\end{cases}
+\]
+\item Generalisering av median: $p$-\textbf{kvantil} är ett tal $c$ som
+löser
+\begin{align*}
+P\left(X>c\right) & \leq p\\
+P(X<c) & \leq1-p
+\end{align*}
+\item \textbf{Percentiler}: $5\%,$ $37\%$ etc\textbf{. Kvartiler}: $25\%$,
+$50\%$, $75\%$.
+\item $R:$\textcolor{black}{{} }\texttt{\textcolor{black}{qnorm(p=0.05,mean=1,sd
+=$2$) }}\textcolor{black}{returnerar $-2.289707$.}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Stickprovsvariansen}
+
+\begin{itemize}
+\item Populationsvarians: $\sigma^{2}=\mathbb{E}\left(X-\mu\right)^{2}$.
+Hur skatta $\sigma^{2}$ från stickprov?
+\item \textbf{\textcolor{blue}{Stickprovsvariansen}}
+\[
+s^{2}=\frac{\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}}{n-1}
+\]
+\item $s^{2}$ verkar vara en naturlig estimator, men varför division med
+$n-1$?
+\item Svar: därför att bara med $n-1$ får man $\mathbb{E}s^{2}=\sigma^{2}$.
+\item Bevis: Vi kan skriva om $s^{2}$ som (se Remark på sid. 220 för bevis):\textcolor{black}{\footnotesize{}
+\[
+s^{2}=\frac{\sum_{i=1}^{n}X_{i}^{2}-n\bar{X}^{2}}{n-1}
+\]
+\[
+\mathbb{E}s^{2}=\frac{\sum_{i=1}^{n}\mathbb{E}X_{i}^{2}-n\mathbb{E}\left(\bar{X}^{2}\right)}{n-1}
+\]
+där $\mathbb{E}X_{i}^{2}=Var(X_{i})+\mu^{2}=\sigma^{2}+\mu^{2}$ och
+$\mathbb{E}\left(\bar{X}^{2}\right)=Var(\bar{X})+\left(\mathbb{E}\bar{X}\right)^{2}=\frac{\sigma^{2}}{n}+\mu^{2}$.
+Så
+\[
+\sum_{i=1}^{n}\mathbb{E}X_{i}^{2}-n\mathbb{E}\left(\bar{X}^{2}\right)=n\left(\sigma^{2}+\mu^{2}\right)-n\left(\frac{\sigma^{2}}{n}+\mu^{2}\right)=\sigma^{2}(n-1)
+\]
+} 
+\end{itemize}
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,577 @@
+%% LyX 2.3.4.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english,xcolor=svgnames, handout]{beamer}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{calc}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title[TDAB01]{Sannolikhetslära och Statistik\\
+Föreläsning 2}
+\author[Mattias Villani]{Mattias Villani}
+\institute[\textbf{STIMA, LiU}]{\textbf{Avdelningen för Statistik och Maskininlärning}\\
+\textbf{Institutionen för datavetenskap}\\
+\textbf{Linköpings universitet }}
+\date{\includegraphics[scale=0.15]{LiU_secondary_1_black}\,}
+\makebeamertitle
+\begin{frame}{Översikt}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Deskriptiv statistik}}
+\item \textbf{\textcolor{blue}{Slumpvariabler}}
+\item \textbf{\textcolor{blue}{Sannolikhetsfördelning}}
+\item \textbf{\textcolor{blue}{Väntevärde }}\textcolor{black}{och}\textbf{\textcolor{blue}{{}
+varians}}
+\item \textbf{\textcolor{blue}{Kovarians }}\textcolor{black}{och}\textbf{\textcolor{blue}{{}
+korrelation}}
+\item \textbf{\textcolor{blue}{Chebyshevs olikhet}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Deskriptiv statistik}
+
+\begin{itemize}
+\item \textbf{Mätningar}: $x_{1},x_{2},...,x_{n}$.
+\item Exempel: Prestanda för $n=209$ datorer. 
+\item \textbf{\textcolor{blue}{Medelvärde}}: $\bar{x}=4.037$.
+\item \textbf{\textcolor{blue}{Histogram}}
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.27]{HistHardware}
+\par\end{center}
+\begin{itemize}
+\item 10 mätningar $>6$ , dvs ca 2.8\% (10/209) av mätningarna hade hög
+prestanda (>6).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Deskriptiv statistik, forts}
+\begin{center}
+\includegraphics[scale=0.35]{HistHardwareWithMean}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Deskriptiv statistik, forts}
+\begin{center}
+\includegraphics[scale=0.35]{HistHardwareEstPubRatio}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Slumpvariabler}
+
+\noindent\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+\textcolor{red}{Definition}. En \textbf{\textcolor{blue}{slumpvariabel}}
+$X$ är en funktion från utfallsrummet $\Omega$ till $\mathbb{R}$
+\[
+X=f(\omega)
+\]
+där $\omega\in\Omega$ är ett utfall.%
+\end{minipage}}\bigskip{}
+
+\begin{itemize}
+\item Slumpvariabler är \textbf{praktiska}: vi bryr oss ofta bara om enklare
+variabler (X) vars utfall är en funktion av den underliggande slumpen
+$\omega$.\bigskip{}
+\item Två typer av slumpvariabler:
+
+\begin{itemize}
+\item \textrm{\textbf{\textcolor{blue}{Kontinuerlig}}}: $X$ antar värden
+i $\mathbb{R}$ (eller $(0,1)$). Längdhopp.
+\item \textrm{\textbf{\textcolor{blue}{Diskret:}}} $X$ antar ett ändligt
+(t ex $\{0,1,2,...,n\}$) eller uppräkneligt $(\{0,1,2,...\})$ antal
+värden. Höjdhopp. \bigskip{}
+\end{itemize}
+\item Ett annat ord för slumpvariabel (eng. random variable) är \textrm{\textbf{\textcolor{blue}{stokastisk
+variabel}}} (eng. stochastic variable). 
+\item Funktionen $f()$ måste vara \textbf{mätbar.} Teknikalitet. Hänger
+ihop med \textbf{sigma-algebra} (se sid 14-15 i Baron). \textbf{Måtteori}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Slumpvariabler - några exempel}
+
+\begin{columns}[t]
+
+
+\column{.75\textwidth}
+\begin{itemize}
+\item [Ex]Kasta två tärningar. 
+
+\begin{itemize}
+\item $\Omega=\{(1,1),(1,2),....,(6,5),(6,6)\}$. 
+\item $X=$ antalet prickar på två kast.\smallskip{}
+\end{itemize}
+\item [Ex]Singla två mynt. 
+
+\begin{itemize}
+\item {\footnotesize{}$\Omega=\{(H,H),(H,T),(T,H),(T,T)\}$.}{\footnotesize\par}
+\item {\footnotesize{}$X=$antalet $H$ (krona). $X$ kan anta värdena $0,1,2$.}
+
+\begin{itemize}
+\item {\footnotesize{}$P(X=0)=1/4$}{\footnotesize\par}
+\item {\footnotesize{}$P(X=1)=1/2$}{\footnotesize\par}
+\item {\footnotesize{}$P(X=2)=1/4$.}\smallskip{}
+\end{itemize}
+\end{itemize}
+\item [Ex]Flyga quadcopter. 
+
+\begin{itemize}
+\item $\Omega=$\textcolor{black}{Abstrakt utfallsrum med alla möjliga utfall
+på faktorer som bestämmer quadcopterns resväg.}
+\item $X=$ Tre-dimensionella koordinater (x,y,z) över quadcopterns position
+vid tidpunkt $t$.
+\end{itemize}
+\end{itemize}
+
+\column{.25\textwidth}
+
+\includegraphics[scale=0.13]{sumOfTwoDiceWithDist} 
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Sannolikhetsfördelning}
+
+\noindent\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+\textcolor{red}{Definition}. \textbf{\textcolor{blue}{(sannolikhets)fördelningen}}
+för en slumpvariabel $X$ är sannolikheterna för alla dess utfall,
+dvs 
+\[
+P(x)=\mathbf{P}\{X=x\}
+\]
+ för alla möjliga utfall $x$.%
+\end{minipage}}\bigskip{}
+
+\begin{itemize}
+\item Stora och små bokstäver spelar roll:
+
+\begin{itemize}
+\item $X$ är \textbf{slumpvariabeln}. Ex. summan av två tärningarna
+\item $x$ är ett \textbf{givet utfall}. Ex. 7 prickar.
+\end{itemize}
+\item Fet stil eller ej spelar roll:
+
+\begin{itemize}
+\item $\mathbf{P}$ är sannolikheten för ett givet utfall. $\mathbf{P}\{X=x\}$
+betyder egentligen 'Sannolikheten för alla de utfall {[}$(1,6),(2,5)\text{ etc}${]}
+som ger summan 7'.
+\item $P(x)$ är en enkel reellvärd funktion, precis som i vanlig analys.
+\end{itemize}
+\item För diskreta slumpvariabler kallas $P(x)$ ofta för \textrm{\textbf{\textcolor{blue}{pmf}}}:en
+(probability mass function).
+\item Slumpvariabelns \textbf{support}: $\left\{ x:P(x)>0\right\} $.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fördelningsfunktion}
+
+\noindent\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+\textcolor{red}{Definition}.\textbf{\textcolor{blue}{{} Fördelningsfunktionen}}
+för en slumpvariabel $X$ defineras som 
+\[
+F(x)=\mathbf{P}\{X\leq x\}=\sum_{y\leq x}P(y).
+\]
+%
+\end{minipage}}\bigskip{}
+
+\begin{itemize}
+\item En sannolikhetsfördelning summerar till 1:
+\[
+\sum_{\text{alla }x}P(x)=\sum_{\text{alla }x}\mathbf{P}\{X=x\}=1.
+\]
+\item Fördelningsfunktionen är icke-avtagande mellan 0 och 1:
+\[
+\lim_{x\downarrow-\infty}F(x)=0\qquad\lim_{x\uparrow+\infty}F(x)=1.
+\]
+\item Fördelningsfunktionen kallas också för den \textrm{\textbf{\textcolor{blue}{kumulativa
+täthetsfunktionen}}} (cumulative density function), eller \textrm{\textbf{\textcolor{blue}{cdf}}}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sannolikhets- och fördelningsfunktion}
+
+\begin{center}
+\begin{table}
+\begin{tabular}{cccccc}
+\hline 
+$x$ & 0 & 1 & 2 & 3 & 4\tabularnewline
+\hline 
+$P(x)$ & 0.15 & 0.20 & 0.40 & 0.20 & 0.05\tabularnewline
+$F(x)$ & 0.15 & 0.35 & 0.75 & 0.95 & 1.00\tabularnewline
+\hline 
+\end{tabular}
+\end{table}
+\par\end{center}
+
+\begin{center}
+\includegraphics[scale=0.3,bb = 0 0 200 100, draft, type=eps]{/Users/matvi05/Dropbox/Teaching/ProbStatUProg/Figures/pmf.png}\includegraphics[scale=0.27]{../Figures/cdf}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Simultanfördelning}
+
+\begin{itemize}
+\item Låt $X$ och $Y$ vara slumpvariabler. 
+\item $(X,Y)$ är en \textrm{\textbf{\textcolor{blue}{slumpvektor }}}med
+typiskt utfall $(x,y)$.
+\item Fördelningen för $(X,Y)$ kallas \textrm{\textbf{\textcolor{blue}{simultanfördelning}}}.
+\[
+P(x,y)=\mathbf{P}\{(X,Y)=(x,y)\}=\mathbf{P}\{X=x\cap Y=y\}.
+\]
+\item Simultanfördelningen är en sannolikhetsfördelning:
+\[
+\sum_{x}\sum_{y}P(x,y)=1.
+\]
+\item [Ex]$X=$Spam/Ham och $Y=$Inbox/Spambox.
+\end{itemize}
+\begin{center}
+\begin{tabular}{lcc}
+ & Spam & Ham\tabularnewline
+\hline 
+Inbox & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.02 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.88\tabularnewline
+Spambox & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.09 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.01\tabularnewline
+\end{tabular}
+\par\end{center}
+\begin{itemize}
+\item Simultanfördelningen: 'Vad är sannolikheten att få ett ham-mejl \textbf{och}
+att det hamnar i spamboxen?'
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Simultanfördelning}
+
+\begin{itemize}
+\item [Ex]$X=$avkastning aktie X och $Y=$avkastning aktie Y.
+\end{itemize}
+\begin{center}
+\begin{tabular}{llccc}
+ &  & \multicolumn{3}{c}{Aktie Y}\tabularnewline
+ &  & Låg & Medel & Hög\tabularnewline
+\hline 
+ & Låg & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.05 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.05 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.15\tabularnewline
+Aktie X & Medel & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.10 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.30 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.20\tabularnewline
+ & Hög & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.05 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.05 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.05\tabularnewline
+\end{tabular}
+\par\end{center}
+\begin{itemize}
+\item Aktieportfölj: 50\% i aktie X och 50\% i aktie Y.
+\item Simultanfördelningen: 'Vad är sannolikheten att min aktieportfölj
+får medelavkastning?'
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Marginalfördelning}
+
+\begin{itemize}
+\item Fördelningen för bara X kallas \textrm{\textbf{\textcolor{blue}{marginalfördelningen}}}
+(för X). 
+\item Fördelningen för bara Y kallas marginalfördelningen (för Y).
+\item Marginalfördelningen: 'Vad är sannolikheten att få ett spam-mejl (oavsett
+var det hamnar)?'
+\item Marginalfördelningen fås genom att summera ut den andra variabeln:
+\[
+P_{X}(x)=\sum_{y}P(x,y)
+\]
+\[
+P_{Y}(y)=\sum_{x}P(x,y)
+\]
+\item Jämför med Lagen om total sannolikhet (F1).\smallskip{}
+\item [Ex]$X=$Spam/Ham och $Y=$Inbox/Spambox.
+\end{itemize}
+\begin{center}
+\begin{tabular}{lccc}
+ & Spam & Ham & \tabularnewline
+\hline 
+Inbox & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.02 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.88 & \textrm{\scriptsize{}\cellcolor{gray97}}0.9\tabularnewline
+Spambox & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.09 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.01 & \textrm{\scriptsize{}\cellcolor{gray97}}0.1\tabularnewline
+\hline 
+ & \textrm{\scriptsize{}\cellcolor{gray97}}0.11 & \textrm{\scriptsize{}\cellcolor{gray97}}0.89 & \tabularnewline
+\end{tabular}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Marginalfördelning}
+
+\begin{itemize}
+\item [Ex]$X=$avkastning aktie X och $Y=$avkastning aktie Y.
+\end{itemize}
+\begin{center}
+\begin{tabular}{llcccc}
+ &  & \multicolumn{3}{c}{Aktie Y} & \tabularnewline
+ &  & Låg & Medel & Hög & \tabularnewline
+\hline 
+ & Låg & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.05 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.05 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.15 & 0.25\tabularnewline
+Aktie X & Medel & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.10 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.30 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.20 & 0.6\tabularnewline
+ & Hög & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.05 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.05 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.05 & 0.15\tabularnewline
+\hline 
+ &  & 0.20 & 0.40 & 0.40 & \tabularnewline
+\end{tabular}
+\par\end{center}
+\begin{itemize}
+\item Vilka portföljandelar är optimala? Beslut under osäkerhet.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Oberoende}
+
+\noindent\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+\textcolor{red}{Definition}. Slumpvariablerna $X$ och $Y$ är \textrm{\textbf{\textcolor{blue}{oberoende}}}
+om 
+\[
+P(x,y)=P_{X}(x)\cdot P_{Y}(y)
+\]
+för \textbf{alla} värden på $x$ och $y$.%
+\end{minipage}}
+\begin{itemize}
+\item [Ex]$X=$Spam/Ham och $Y=$Inbox/Spambox.
+\end{itemize}
+\begin{center}
+\begin{tabular}{lccc}
+ & Spam & Ham & \tabularnewline
+\hline 
+Inbox & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.02 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.88 & \textrm{\scriptsize{}\cellcolor{gray97}}0.9\tabularnewline
+Spambox & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.09 & \textrm{\scriptsize{}\cellcolor{robinsegg}}0.01 & \textrm{\scriptsize{}\cellcolor{gray97}}0.1\tabularnewline
+\hline 
+ & \textrm{\scriptsize{}\cellcolor{gray97}}0.11 & \textrm{\scriptsize{}\cellcolor{gray97}}0.89 & \tabularnewline
+\end{tabular}
+\par\end{center}
+\begin{itemize}
+\item Valet av box är inte oberoende av om mejlet är ham eller spam:
+\[
+P(\text{inbox})\cdot P(\text{ham})=0.9\cdot0.89=0.801\neq0.88=P(\text{inbox},\text{ham})
+\]
+\item $P(\text{inbox}\vert\text{ham})=\frac{P(\text{inbox},\text{ham})}{P(ham)}=\frac{0.88}{0.89}=0.988>0.9=P(\text{inbox})$.
+\item Lättare att gissa box om man vet att mejlet är ham.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Lägesmått}
+
+\begin{itemize}
+\item En sannolikhetsfördelning $P(x)$ beskriver \textbf{all} osäkerhet
+om $X$. 
+\item Kan vara komplicerat att förmedla hela $P(x)$, speciellt om $X$
+är en fler-dimensionell slumpvektor.\medskip{}
+\item Naturliga \textrm{\textbf{\textcolor{blue}{lägesmått}}}:
+
+\begin{itemize}
+\item \textrm{\textbf{\textcolor{blue}{Median}}}, $m$. $P(X\leq m)=0.5$.
+Hälften av sannolikhetsmassan ligger till vänster om $m$.
+\item \textrm{\textbf{\textcolor{blue}{Väntevärdet}}} (eng. expected value),
+$\mu$ eller $\mathbf{\mathbb{E}(}X)$, är det genomsnittliga värdet
+för $X$:
+\[
+\mu=\mathbf{\mathbb{E}}(X)=\sum_{x}x\cdot P(x).
+\]
+\item \textrm{\textbf{\textcolor{blue}{Typvärdet}}} (eng. mode) är det mest
+sannolika värdet, dvs $\mathrm{argmax_{x}}P(x)$.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Lägesmått - exempel}
+
+\begin{center}
+\begin{table}
+\begin{tabular}{cccccc}
+\hline 
+$x$ & 0 & 1 & 2 & 3 & 4\tabularnewline
+\hline 
+$P(x)$ & 0.15 & 0.20 & 0.40 & 0.20 & 0.05\tabularnewline
+\hline 
+\end{tabular}
+\end{table}
+\par\end{center}
+\begin{itemize}
+\item Väntevärdet
+\[
+\mathbf{\mathbb{E}}(X)=0\cdot0.15+1\cdot0.20+2\cdot0.40+3\cdot0.20+4\cdot0.05=1.8
+\]
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.35,bb = 0 0 200 100, draft, type=eps]{/Users/matvi05/Dropbox/Teaching/ProbStatUProg/Figures/pmfWithLocSummary.png}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Lägesmått säger inget om spridningen}
+
+\begin{itemize}
+\item Väntevärdet är ett lägesmått. Ingen info om fördelningens spridning.
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.3]{../Figures/pmfWithLocSummary}\includegraphics[scale=0.3]{../Figures/pmfWithLocSummaryTighter}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Varians}
+
+\begin{itemize}
+\item Storleken på avvikelserna $x-\mathbf{\mathbb{E}}(X)$ säger något
+om spridningen. 
+\item Idé till spridningsmått: den förväntade avvikelsen: 
+\[
+\mathbf{\mathbb{E}}\left(X-\mu\right)=\sum_{x}P(x)\cdot\left(X-\mu\right)
+\]
+\item Problem: $\mathbf{\mathbb{E}}\left(X-\mu\right)$ är alltid exakt
+noll ... Positiva och negativa avvikelser tar ut varandra.
+\item \textrm{\textbf{\textcolor{blue}{Varians}}}: förväntade kvadrerade
+avvikelsen:
+\[
+\sigma^{2}=Var(X)=\mathrm{\mathbf{\mathbb{E}}}\left(X-\mu\right)^{2}=\sum_{x}\left(x-\mu\right)^{2}\cdot P(x).
+\]
+\item Alternativ formel
+\[
+Var(X)=\mathbf{\mathbb{E}}X^{2}-\mu^{2}.
+\]
+\item \textrm{\textbf{\textcolor{blue}{Standardavvikelse}}}: $\sigma=Std(X)=\sqrt{Var(X)}$.
+Samma skala som $X$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Egenskaper hos väntevärde och varians}
+
+\begin{itemize}
+\item $\mathbb{E}(c)=c$, där $c$ är en konstant.\medskip{}
+\item $\mathbf{\mathbb{E}}(aX+b)=a\mathbf{\mathbb{E}}(X)+b$, $a,b$ konstanter.\medskip{}
+\item $\mathbf{\mathbb{E}}(X+Y)=\mathbb{E}X+\mathbb{E}Y$\medskip{}
+\item $\mathbf{\mathbb{E}}(aX+bY+c)=a\mathbf{\mathbb{E}}(X)+b\mathbb{E}(Y)+c$,
+$a,b,c$ konstanter.\medskip{}
+\item $Var(aX+b)=a^{2}\cdot Var(X)$\medskip{}
+\item Om $X$ och $Y$ oberoende: $\mathbb{E}(X\cdot Y)=\mathbb{E}(X)\cdot\mathbb{E}(Y)$\medskip{}
+\item Om $X$ och $Y$ oberoende: $Var(X+Y)=Var(X)+Var(Y)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Deskriptiv statistik - beroende}
+\begin{center}
+\includegraphics[scale=0.35]{ScatterHardware}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Kovarians och korrelation}
+
+\begin{itemize}
+\item Mått på \textrm{\textbf{\textcolor{blue}{samvariation}}}. Sammanfattning
+av simultanfördelning.
+\item \textrm{\textbf{\textcolor{blue}{Kovarians}}} mellan $X$ och $Y$:
+\[
+\sigma_{XY}=Cov(X,Y)=\mathbb{E}\left\{ \left(X-\mathbb{E}X\right)\left(Y-\mathbb{E}Y\right)\right\} 
+\]
+\item Positiv kovarians: 
+
+\begin{itemize}
+\item $X$ tenderar att vara större än $\mathbb{E}X$ samtidigt som $Y$
+tenderar att vara större än $\mathbb{E}Y$.
+\item $X$ tenderar att vara mindre än $\mathbb{E}X$ samtidigt som $Y$
+tenderar att vara mindre än $\mathbb{E}Y$.
+\end{itemize}
+\item \textrm{\textbf{\textcolor{blue}{Korrelationskoefficienten}}} mellan
+$X$ och $Y$
+\[
+\rho=Corr(X,Y)=\frac{Cov(X,Y)}{Std(X)\cdot Std(Y)}.
+\]
+\item $-1\leq\rho\leq1$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Egenskaper hos kovarians}
+
+\begin{itemize}
+\item $Cov(X,Y)=Cov(Y,X)$\medskip{}
+\item $Var(aX+bY+c)=a^{2}\cdot Var(X)+b^{2}\cdot Var(Y)+2a\cdot b\cdot Cov(X,Y)$,
+$a,b,c$ konstanter.\medskip{}
+\item $Cov(a\cdot X+b,c\cdot Y+d)=a\cdot c\cdot Cov(X,Y)$\medskip{}
+\item Om $X$ och $Y$ oberoende: $Cov(X,Y)=0$.\medskip{}
+\item Om $X$ och $Y$ oberoende: $\rho(X,Y)=0$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Chebyshevs olikhet}
+
+\begin{itemize}
+\item Väntevärdet $\mu$ och Variansen $\sigma^{2}$ innehåller information
+om sannolikhetsfördelningen.
+\item Chebyshevs olikhet: givet $\mu$ och $\sigma^{2}$ så kommer $X$
+ligga i intervallet $[\mu-\varepsilon,\mu+\varepsilon]$ med en sannolikhet
+som är åtminstone $1-\left(\sigma/\varepsilon\right)^{2}$.
+\item \textrm{\textbf{\textcolor{blue}{Chebyshevs olikhet}}}
+\[
+P\left\{ \left|X-\mu\right|>\varepsilon\right\} \leq\left(\frac{\sigma}{\varepsilon}\right)^{2}.
+\]
+\item Notera att Chebyshevs olikhet endast kräver vetskap om $\mu$ och
+$\sigma^{2}$. Inget andra egenskaper behövs (symmetri, skevhet).
+\item Men den lilla information har sitt pris: $\left(\frac{\sigma}{\varepsilon}\right)^{2}$
+är ofta bra mycket större än den sanna sannolikheten $P\left\{ \left|X-\mu\right|>\varepsilon\right\} $.
+\item Chebyshevs olikhet är ofta nyttig i teoretiska sammanhang.
+\end{itemize}
+\end{frame}
+
+
+\end{document}

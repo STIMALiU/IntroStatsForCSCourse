@@ -1,0 +1,382 @@
+%% LyX 2.3.4.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english,xcolor=svgnames, handout]{beamer}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+<<setup, include=FALSE>>=
+library(knitr)
+library(ggplot2)
+library(tikzDevice)
+source("MVutils.R")
+opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='footnotesize')
+@
+
+<<echo=FALSE>>=
+read_chunk('Lecture4SlideCode.R')
+@
+\title[TDAB01]{Sannolikhetslära och Statistik\\
+Föreläsning 5}
+\author[Mattias Villani]{Mattias Villani}
+\institute[\textbf{STIMA, LiU}]{\textbf{Avdelningen för Statistik och Maskininlärning}\\
+\textbf{Institutionen för datavetenskap}\\
+\textbf{Linköpings universitet }}
+\date{\includegraphics[scale=0.15]{LiU_secondary_1_black}\,}
+\makebeamertitle
+\begin{frame}{Översikt}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Stora talen lag}}
+\item \textbf{\textcolor{blue}{Centrala gränsvärdessatsen}}
+\item \textbf{\textcolor{blue}{Simulering}}
+\item \textbf{\textcolor{blue}{Monte Carlo metoder}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Stora talens lag}
+
+\begin{itemize}
+\item Medelvärde: $\bar{X}_{n}=\frac{X_{1}+X_{2}+...+X_{n}}{n}$
+\item Medelvärden av många oberoende slumpvariabler med samma fördelning
+kommer att ligga allt närmare variablernas väntevärde.
+\item \textbf{Stora talens lag}:
+\[
+\lim_{n\rightarrow\infty}P\left(\left|\bar{X}_{n}-\mu\right|>\epsilon\right)=0
+\]
+\item Bevis via Chebyshevs olikhet
+\[
+P\left\{ \left|X-\mu\right|>\varepsilon\right\} \leq\frac{\sigma^{2}}{\varepsilon^{2}}
+\]
+eftersom $\sigma^{2}$ i detta fall är $Var(\bar{X}_{n})=Var(X_{i})/n\rightarrow0$
+när $n\rightarrow\infty$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Centrala gränsvärdessatsen}
+
+\begin{itemize}
+\item Hur är summan $S_{n}=X_{1}+X_{2}+...+X_{n}$ utav $n$ oberoende variabler
+fördelad?\medskip{}
+\item Demo av 
+
+\begin{itemize}
+\item $S_{n}\qquad\qquad Var(S_{n})=n\sigma^{2}\rightarrow\infty$
+\item $S_{n}/n\qquad\quad Var(S_{n}/n)=\sigma^{2}/n\rightarrow0$
+\item $S_{n}/\sqrt{n}\qquad Var(S_{n}/\sqrt{n})=\sigma^{2}$.\medskip{}
+\end{itemize}
+\item \textbf{CLT: Medelvärden} av $n$ oberoende variabler med godtycklig
+fördelning \textbf{blir alltmer normalfördelade när $n$ ökar}.\medskip{}
+\item $n>30$ är en vanlig tumregel.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Centrala gränsvärdessatsen}
+
+\begin{theorem}
+Låt $X_{1},X_{2},...,X_{n}$ vara oberoende variabler med väntevärde
+$\mu=\mathbb{E}X_{i}$ och standardavvikelse $\sigma=\mathrm{Std}(X_{i})$
+och låt
+\[
+S_{n}=\sum_{i=1}^{n}X_{i}=X_{1}+X_{2}+...+X_{n}.
+\]
+När $n\rightarrow\infty$ så kommer den standardiserade summan 
+\[
+Z_{n}=\frac{S_{n}-\mathbb{E}S_{n}}{\mathrm{Std}(S_{n})}
+\]
+att \textbf{\textcolor{blue}{konvergera i fördelning}} till en $N(0,1)$
+variabel, dvs
+\[
+F_{Z_{n}}(z)=P\left\{ \frac{S_{n}-n\mu}{\sigma\sqrt{n}}\leq z\right\} \longrightarrow\Phi(z)
+\]
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}{Simulering}
+
+\begin{itemize}
+\item \textbf{Pseudoslumptalsgenerator}: Datorer kan generera en lång sekvens
+tal som ser ut som $U(0,1)$ slumptal. Good enough.
+\item R: \texttt{runif(1)}. Matlab: \texttt{rand}. Python: \texttt{numpy.random.uniform()}.
+\item Från $U\sim U(0,1)$ kan vi skapa slumptal från andra fördelningar.
+\item Ex. \textbf{Bernoulli} med sannolikhet $p$ att lyckas: 
+\[
+X=\begin{cases}
+1 & \text{om }U<p\\
+0 & \text{om }U\geq p
+\end{cases}
+\]
+
+\begin{itemize}
+\item R kod Bernoulli: \texttt{U=runif(1); X=(U<p)}
+\end{itemize}
+\item Ex. \textbf{Binomial}. Summan av Bernoullis
+
+\begin{itemize}
+\item R-kod för Binomial(n,p): \texttt{U=runif(n); X=sum(U<p)}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Simulering från diskret fördelning}
+
+\begin{itemize}
+\item Simulering från allmän diskret fördelning:
+\[
+p_{i}=\mathbf{P}\left\{ X=x_{i}\right\} ,\quad\sum_{i=1}p_{i}=1
+\]
+\item Dela upp intervallet $[0,1]$ i delintervall: 
+
+\begin{itemize}
+\item $A_{1}=[0,p_{1})$ 
+\item $A_{2}=[p_{1},p_{2})$ 
+\item $\vdots$
+\item $A_{n}=[p_{n-1},1)$ 
+\end{itemize}
+\item Slumpa $U\sim U(0,1)$
+\item Om $U\in A_{i}$ låt $X=x_{i}$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Inversa CDF metoden - diskreta fallet}
+
+\begin{center}
+\includegraphics[scale=0.95]{InverseCDF}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Inversa CDF metoden - kontinuerlig}
+
+\begin{theorem}
+Låt $X$ vara en kontinuerlig variabel med cdf $F_{X}(x)$ och låt
+$U=F_{X}(X)$ vara en ny slumpvariabel. Då gäller att $U\sim U(0,1)$.\medskip{}
+
+\begin{itemize}
+\item \textbf{Inversa transformationsmetoden}: Antag att $X$ har cdf $F(X)$.
+X kan då simuleras med hjälp av en $U\sim U(0,1)$ variabel: 
+\[
+X=F^{-1}(U)
+\]
+. 
+\item Dvs lös ut $X$ från ekvationen $U=F(X).$
+\item Ex. $X\sim Exp(\lambda)$.
+\[
+U=1-e^{\lambda X}
+\]
+\[
+X=-\frac{1}{\lambda}\ln(1-U)
+\]
+\end{itemize}
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}{Inversa CDF metoden - kontinuerlig}
+
+\begin{center}
+\includegraphics{InverseCDFCont}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Simulering i R}
+
+\begin{itemize}
+\item $n$ \textbf{slumptal} från $N(\mu=2,\sigma^{2}=3^{2})$ simuleras
+med \texttt{}~\\
+\texttt{rnorm(n, mean = 2, sd = 3)}
+\item $n$ \textbf{slumptal} från $Gamma(\alpha=2,\lambda=3)$ simuleras
+med \texttt{}~\\
+\texttt{rgamma(n, shape = 2 , rate = 3)}
+\end{itemize}
+\bigskip{}
+
+\begin{itemize}
+\item Beräkna \textbf{pdf:en} i punkten $x=1.5$ för $N(\mu=2,\sigma^{2}=3^{2})$:
+\texttt{}~\\
+dnorm\texttt{(x=1.5, mean = 2, sd = 3)}
+\item Beräkna \textbf{cdf:en} i punkten $x=1.5$ för $N(\mu=2,\sigma^{2}=3^{2})$:
+\texttt{}~\\
+pnorm\texttt{(x=1.5, mean = 2, sd = 3)}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Testar inversa CDF metoden}
+
+\begin{itemize}
+\item Följande funkar (dvs Fx blir likformigt fördelad):
+
+\begin{itemize}
+\item \texttt{x = rgamma(10000, shape = 2, rate = 3)}
+\item \texttt{Fx = pgamma(x, shape = 2, rate = 3) }
+\item \texttt{hist(Fx,30)}
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.2]{InverseCDFCorrect}\qquad{}\qquad{}\includegraphics[scale=0.2]{InverseCDFWrong}
+\par\end{center}
+\item Följande funkar inte (dvs Fx blir \textbf{inte} likformigt fördelad):
+
+\begin{itemize}
+\item \texttt{x = rgamma(10000, shape = 2, rate = 3)}
+\item \texttt{Fx = pgamma(x, }\texttt{\textbf{\textcolor{red}{shape = 1}}}\texttt{,
+rate = 3) }
+\item \texttt{hist(Fx,30)}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Monte Carlo metoder}
+
+\begin{itemize}
+\item Simulering från fördelningar kan användas för att approximera t ex
+olika sannolikheter. \medskip{}
+\item Låt $X_{1},X_{2},...,X_{N}$ vara oberoende dragningar från en sannolikhetsfördelning.
+Vi kan t ex approximera sannolikheten $p=\mathbf{P}\{X<2\}$ med
+\[
+\hat{p}=\hat{\mathbf{P}}\{X<2\}=\frac{\text{antal av }X_{1},X_{2},...,X_{N}\text{ som är mindre än 2}}{N}
+\]
+\medskip{}
+\item $\hat{\theta}$ (t ex $\hat{p}$) är en \textbf{\textcolor{blue}{estimator}}
+(uppskattning) av kvantiteten $\theta$ (t ex $p$).\medskip{}
+\item \texttt{x = rnorm(10000, mean = 1, sd = 2); }~\\
+\texttt{pHat = sum(x<2)/10000}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Monte Carlo metoder, forts.}
+
+\begin{itemize}
+\item Men $\hat{p}$ är bara en \textbf{skattning} av $p$. Varierar från
+stickprov till stickprov. 
+\item Om vi upprepar hela receptet flera ggr, varje gång med ett nytt stickprov
+av storleken $N$, kommer vi då att ha rätt i genomsnitt? \\
+Är $\mathbb{E}(\hat{p})=p$? 
+\item Hur mycket kommer $\hat{p}$ att variera från stickprov till stickprov?
+\\
+Hur stor är $Var(\hat{p})$?
+\item $Y=$Antal $X_{1},...,X_{N}$ som är mindre än $2$. $Y\sim Bin(N,p)$.
+Så
+\[
+\mathbb{E}(\hat{p})=\mathbb{E}\left(\frac{Y}{N}\right)=\frac{1}{N}N\cdot p=p
+\]
+så $\hat{p}$ är en \textbf{väntevärdesriktig} (\textbf{unbiased})
+estimator av $p$. 
+\[
+Var(\hat{p})=Var\left(\frac{Y}{N}\right)=\frac{1}{N^{2}}Np(1-p)=\frac{p(1-p)}{N}.
+\]
+\item Se Baron s. 115-116 om hur man kan välja $N$ för att nå given exakthet
+$\mathbf{P}\left\{ \left|\hat{p}-p\right|>\varepsilon\right\} \leq\alpha$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Monte Carlo integration}
+
+\begin{itemize}
+\item Mål: $\mbox{\ensuremath{\mathcal{I}}}=\int_{0}^{1}g(x)dx$ där $0\leq x\leq1$
+och $0\leq g(x)\leq1$.\medskip{}
+\item Simulera likformigt fördelade tal $U_{1},...,U_{N}$ och $V_{1},...,V_{N}$.\medskip{}
+\item Monte Carlo skattning 
+\[
+\hat{\mathcal{I}}=\frac{\text{Antal dragningar där }V_{i}<g(U_{i})}{N}
+\]
+\medskip{}
+\item \texttt{u = runif(10000);}~\\
+\texttt{v = runif(10000);}~\\
+\texttt{IHat = mean(v < g(u))}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Monte Carlo integration}
+
+\begin{center}
+\includegraphics[scale=0.5]{MonteCarloOnSquare}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Importance sampling}
+
+\begin{itemize}
+\item Räkna \textbf{integraler som väntevärden}
+\[
+\mathcal{I}=\int_{a}^{b}g(x)dx=\frac{1}{b-a}\int_{a}^{b}(b-a)g(x)dx=\mathbb{E}\left\{ (b-a)g(X)\right\} 
+\]
+\item Stora talens lag: Om $X_{1},...,X_{N}$ dras från $U(a,b)$ så kommer
+\[
+\frac{(b-a)g(X_{1})+...+(b-a)g(X_{N})}{N}
+\]
+vara nära $\mathbb{E}\left\{ (b-a)g(X)\right\} $ när $N$ är stort
+(konvergerar i sannolikhet).
+\item \textbf{\textcolor{blue}{Importance sampling}}. Samma trick, med godtycklig
+pdf $f(x)$
+\[
+\mathcal{I}=\int_{a}^{b}g(x)dx=\int_{a}^{b}\frac{g(x)}{f(x)}f(x)dx=\mathbb{E}\left(\frac{g(X)}{f(X)}\right)
+\]
+där väntevärdet beräknas med avseende på $f(x)$.
+\item \textbf{Importance sampling estimatorn}: $X_{1},...,X_{N}$ oberoende
+från $f(X):$ 
+\[
+\hat{\mathcal{I}}=\frac{1}{N}\sum_{i=1}^{N}\frac{g(X_{i})}{f(X_{i})}
+\]
+\end{itemize}
+\end{frame}
+
+
+\end{document}

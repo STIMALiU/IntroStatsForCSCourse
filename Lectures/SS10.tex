@@ -1,0 +1,582 @@
+%% LyX 2.3.4.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english,xcolor=svgnames, handout]{beamer}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+<<setup, include=FALSE>>=
+library(knitr)
+library(ggplot2)
+library(tikzDevice)
+source("MVutils.R")
+opts_chunk$set(fig.path='figure/beamer-',fig.align='center',fig.show='hold',size='footnotesize')
+@
+
+<<echo=FALSE>>=
+read_chunk('Lecture4SlideCode.R')
+@
+\title[TDAB01]{Sannolikhetslära och Statistik\\
+Föreläsning 10}
+\author[Mattias Villani]{Mattias Villani}
+\institute[\textbf{STIMA, LiU}]{\textbf{Avdelningen för Statistik och Maskininlärning}\\
+\textbf{Institutionen för datavetenskap}\\
+\textbf{Linköpings universitet }}
+\date{\includegraphics[scale=0.15]{LiU_secondary_1_black}\,}
+\makebeamertitle
+\begin{frame}{Översikt}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Bayesiansk inferens}}
+\item \textbf{\textcolor{blue}{Binomialmodell med beta prior}}
+\item \textbf{\textcolor{blue}{Normalmodell med normal prior}}
+\item \textbf{\textcolor{blue}{Multinomialmodell med Dirichlet prior}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Frekventistisk inferens}
+
+\begin{itemize}
+\item Hittills på kursen: \textbf{\textcolor{blue}{frekventistisk inferens}}.
+
+\begin{itemize}
+\item \textbf{Parametrar $\theta$ är fixa} (icke slumpmässiga) storheter. 
+\item \textbf{Data} är \textbf{slumpvariabler}: $f(X_{1},...,X_{n}\vert\theta)$.
+\end{itemize}
+\item Frekventistisk inferens: hur en \textbf{metod} beter sig över \textbf{upprepade
+stickprov} från populationen. 
+\item \textbf{\textcolor{blue}{Samplingfördelningar}} är i fokus. 'Vilka
+värden kan min estimator förväntas anta för olika stickprov?'
+\item \textbf{\textcolor{blue}{Väntevärderiktighet}}: 'min skattningsmetod
+kommer att vara korrekt i genomsnitt' (sett över alla möjliga stickprov). 
+\item \textbf{\textcolor{blue}{Konfidensintervall}}: 'min intervallskattningsmetod
+kommer att täcka det sanna parametervärdet $\theta$ i 95\% av alla
+möjliga stickprov från populationen'.
+\item \textbf{\textcolor{blue}{Hypotestest}}: 'min testmetod kommer bara
+att dra fel slutsats i 5\% av alla stickprov om nollhypotesen är sann'.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Subjektiva sannolikheter}
+
+\begin{itemize}
+\item Du \textbf{vet inte} värdet på en populationsparameter $\theta$.
+Du är \textbf{osäker} om $\theta$. Påståendet $P(\theta\leq2)$ är
+meningsfullt.\smallskip{}
+\item \textbf{Det är }\textbf{\textcolor{blue}{osäkerheten}}\textbf{ som
+är relevant}. Om $\theta$ är en fix, konstant, storhet eller ej spelar
+ingen roll. 
+\item Jag vet inte 10:e decimalen av $\pi$. Då kan jag säga 
+\[
+P(10:e\text{ decimal av }\pi=9)=1/10.
+\]
+\smallskip{}
+\item Det är \textbf{min} osäkerhet som spelar roll. Du kanske vet 10:e
+decimalen av $\pi$. För mig är $\pi$ osäker och jag kan prata om
+sannolikhetsfördelningen för 10:e decimalen av $\pi$. \smallskip{}
+\item Sannolikheter är ett \textbf{\textcolor{blue}{subjektivt}} mått på
+personlig\textbf{ }\textbf{\textcolor{blue}{grad av tilltro}}. \smallskip{}
+\item \textbf{\textcolor{blue}{Bayesiansk statistik}} bygger på ett subjektivt
+sannolikhetsbegrepp.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Thomas Bayes 1701-1761}
+
+\begin{center}
+\includegraphics[scale=0.4]{thomas-bayes}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Subjektivitet i vetenskapen!}
+
+\begin{center}
+\includegraphics[scale=0.7]{skriethomer}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Bayesiansk inferens}
+
+\begin{itemize}
+\item Bernoullimodellen: $X_{1},...,X_{n}\vert\theta\sim\mathrm{Bern}(\theta)$.
+T ex slantsingling.\smallskip{}
+\item Sannolikheten för krona, $\theta$, är okänd.\smallskip{}
+\item Innan vi har börjat singla slant beskriver jag min osäkerhet om $\theta$
+med min\textbf{\textcolor{blue}{{} apriorifördelning}}: $\pi(\theta)$.
+\smallskip{}
+\item \textbf{a priori} = \textbf{före} (före jag har observerat data).\smallskip{}
+\item Antag nu att vi har observerat ett antal slantsinglingar: $X_{1}=x_{1},...,X_{n}=x_{n}$
+(t ex $0,0,1,1,0$). \smallskip{}
+\item Hur bör vi \textbf{\textcolor{blue}{uppdatera}} vår apriorifördelning
+med denna datainformation? Hur lär vi oss från data? \textbf{\textcolor{blue}{Learning}}.\smallskip{}
+\item \textbf{\textcolor{blue}{Aposteriorifördelning}}: $\pi(\theta\vert x_{1},...,x_{n})$.
+Posterior = efter (data).\smallskip{}
+\item Bayesiansk inferens \textbf{betingar på observerade data}. $P(\text{Okänt \ensuremath{\vert\ \text{Känt}}})$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bayes sats uppdaterar prior till posterior}
+
+\begin{itemize}
+\item Antag att $\theta$ bara kan anta värdena: $0.1,0.2,...,0.9$ (diskretisering). 
+\item Kom ihåg: \textbf{\textcolor{blue}{Bayes sats}} för händelser $A$
+och $B$:
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.08]{BayesTheoremNeon}
+\par\end{center}
+\begin{itemize}
+\item Låt t ex $A=\{\theta=0.1\}$ och $B=\{\mathbf{X}=\mathbf{x}\}$. 
+\item Bayes sats ger \textbf{\textcolor{blue}{posteriorfördelningen}}:
+\[
+P(\theta=0.1\vert\mathbf{x})=\frac{P(\mathbf{x}\vert\theta=0.1)P(\theta=0.1)}{P(\mathbf{x})}
+\]
+där satsen om total sannolikhet ger
+\[
+P(\mathbf{x})=P(\mathbf{x}\vert\theta=0.1)P(\theta=0.1)+...+P(\mathbf{x}\vert\theta=0.9)P(\theta=0.9)
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bernoullimodell - s=2, f=3}
+
+\begin{center}
+\includegraphics[scale=0.25]{BernDiscretePrior}\includegraphics[scale=0.25]{BernDiscreteLike}\\
+\includegraphics[scale=0.25]{BernDiscretePost}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Bernoullimodell - s=20, f=30}
+
+\begin{center}
+\includegraphics[scale=0.25]{BernDiscretePriorBig}\includegraphics[scale=0.25]{BernDiscreteLikeBig}\\
+\includegraphics[scale=0.25]{BernDiscretePostBig}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Bernoullimodell - s=200, f=300}
+
+\begin{center}
+\includegraphics[scale=0.25]{BernDiscretePriorVeryBig}\includegraphics[scale=0.25]{BernDiscreteLikeVeryBig}\\
+\includegraphics[scale=0.25]{BernDiscretePostVeryBig}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Bayes sats för kontinerliga variabler}
+
+\begin{itemize}
+\item Diskretisering $\theta\in\left\{ \theta_{1},\theta_{2},...,\theta_{K}\right\} $
+\[
+P(\theta=\theta_{i}\vert\mathbf{x})=\frac{P(\mathbf{x}\vert\theta=\theta_{i})P(\theta=\theta_{i})}{\sum_{j=\text{1}}^{K}P(\mathbf{x}\vert\theta=\theta_{j})P(\theta=\theta_{j})}
+\]
+\item Finare och finare grid ($\theta_{i+1}-\theta_{i}\rightarrow0$) ger
+\[
+f(\theta\vert\mathbf{x})=\frac{P(\mathbf{x}\vert\theta)f(\theta)}{\int P(\mathbf{x}\vert\theta)f(\theta)d\theta},
+\]
+\item \textbf{\textcolor{blue}{Bayes sats}} för \textbf{kontinuerlig} parameter
+$\theta$
+\[
+\pi(\theta\vert\mathbf{x})=\frac{f(\mathbf{x}\vert\theta)\pi(\theta)}{\int f(\mathbf{x}\vert\theta)\pi(\theta)d\theta}
+\]
+
+\begin{itemize}
+\item \textbf{Prior}: $\pi(\theta)$
+\item \textbf{Likelihood}: $f(\mathbf{x}\vert\theta)$
+\item \textbf{Posterior}: $\pi(\theta\vert\mathbf{x})$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Subjektivitet och objektivitet}
+
+\begin{itemize}
+\item $\pi(\theta)$ är en \textbf{\textcolor{blue}{subjektiv}} fördelning
+som varierar från person till person baserat på erfarenhet etc.
+\item \textbf{\textcolor{blue}{Hur vi lär oss från data}}, dvs uppdaterar
+från prior till posterior, bestäms av Bayes sats. 
+\item \textbf{\textcolor{blue}{Uppdateringmekanismen är objektiv}} (matematik).
+\item Resultat: när $n\rightarrow\infty$ (\textbf{stora datamängder}) kommer
+alla personers posteriors att konvergera till samma fördelning. Objektivitet
+genom \textbf{\textcolor{blue}{subjektivt konsensus}}.
+\item Vid rapportering av resultat kan man använda \textbf{\textcolor{blue}{icke-informativa}}
+\textbf{apriorifördelningar} (dvs svag information) eller priorinformation
+som är lättförståelig.
+\item Machine learning: mycket vanligt med aprioriinformation av typen:
+'Jag tror att den okända funktionen är \textbf{mjuk}, men jag vet
+inte mycket mer om den exakta funktionsformen'.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bernoulli med Beta prior}
+
+\begin{itemize}
+\item Bernoullimodellen: $X_{1},...,X_{n}\vert\theta\sim\mathrm{Bern}(\theta)$.
+\textbf{Likelihood: $\theta^{s}(1-\theta)^{f}$.}
+\item $\theta\in[0,1]$. Lämplig \textbf{prior}: $\theta\sim Beta(\alpha,\beta$):
+\[
+\pi(\theta)=\frac{1}{B(\alpha,\beta)}\theta^{\alpha-1}\theta^{\beta-1}
+\]
+\item \textbf{Posterior}
+\begin{align*}
+\pi(\theta\vert\mathbf{x}) & =\frac{f(\mathbf{x}\vert\theta)\pi(\theta)}{\int f(\mathbf{x}\vert\theta)\pi(\theta)d\theta}=\frac{\theta^{s}(1-\theta)^{f}\frac{1}{B(\alpha,\beta)}\theta^{\alpha-1}\theta^{\beta-1}}{\int\theta^{s}(1-\theta)^{f}\frac{1}{B(\alpha,\beta)}\theta^{\alpha-1}\theta^{\beta-1}d\theta}\\
+ & =\frac{\theta^{\alpha+s-1}(1-\theta)^{\beta+f-1}}{\int\theta^{\alpha+s-1}(1-\theta)^{\beta+f-1}d\theta}=c\cdot\theta^{\alpha+s-1}(1-\theta)^{\beta+f-1}
+\end{align*}
+där $c=1/\int\theta^{\alpha+s-1}(1-\theta)^{\beta+f-1}d\theta$ är
+en konstant (beror inte på $\theta$).
+\item En täthet på formen $c\cdot\theta^{\alpha+s-1}(1-\theta)^{\beta+f-1}$
+känns igen som en $Beta(\alpha+s,\beta+f)$:
+\[
+\pi(\theta\vert\mathbf{x})=\frac{1}{B(\alpha+s,\beta+f)}\theta^{(\alpha+s)-1}\theta^{(\beta+f)-1}.
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bayes sats på proportionell form}
+
+\begin{itemize}
+\item Notera att vi aldrig behövde räkna ut nämnaren i Bayes sats: $\int f(\mathbf{x}\vert\theta)\pi(\theta)d\theta$.
+Vi kände igen Beta-fördelningen ändå. 
+\item Tätheter måste integrera till ett. Proportionalitetskonstanter kan
+vi ``strunta i''.
+\item Enklare form av Bayes sats:
+\[
+\pi(\theta\vert\mathbf{x})\propto f(\mathbf{x}\vert\theta)\pi(\theta)
+\]
+\[
+\text{Posterior }\propto\text{ Likelihood }\times\text{ Prior}
+\]
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.3]{BayesTattoo}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Bernoulli-exempel: spam}
+
+\begin{itemize}
+\item George har gått igenom $4601$ e-mail (elbrev). $1813$ av dessa var
+spam.\bigskip{}
+\item \textbf{Modell}: Låt $x_{i}=1$ om det i:te elbrevet var spam. Antag
+$x_{i}|\theta\overset{iid}{\sim}Bernoulli(\theta)$ \bigskip{}
+\item \textbf{Prior}: $\theta\sim\mathrm{Beta}(\alpha,\beta)$.\bigskip{}
+\item \textbf{Posterior}
+\[
+\theta|\mathbf{x}\sim Beta(\alpha+1813,\beta+2788)
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Spam data (n=10): fyra olika priors}
+
+\begin{center}
+\includegraphics[scale=0.5,bb = 0 0 200 100, draft, type=eps]{/Users/matvi05/Dropbox/Projects/BayesBook/Figures/SpamDataSmall.eps}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Spam data (n=100): fyra olika priors}
+
+\begin{center}
+\includegraphics[scale=0.5,bb = 0 0 200 100, draft, type=eps]{/Users/matvi05/Dropbox/Projects/BayesBook/Figures/SpamDataMedium.eps}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Spam data (n=4601): fyra olika priors}
+
+\begin{center}
+\includegraphics[scale=0.5,bb = 0 0 200 100, draft, type=eps]{/Users/matvi05/Dropbox/Projects/BayesBook/Figures/SpamDataFull.eps}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Normal data, känd varians - normal prior}
+
+\begin{itemize}
+\item \textbf{Modell}: $X_{1},...,X_{n}\overset{iid}{\sim}N(\theta,\sigma^{2})$,
+$\sigma^{2}$ känd.
+\item \textbf{Prior} 
+\[
+\theta\sim N(\mu,\tau^{2})
+\]
+\item \textbf{Posterior}
+\begin{eqnarray*}
+p(\theta|x_{1},...,x_{n}) & \propto & p(x_{1},...,x_{n}|\theta,\sigma^{2})p(\theta)\\
+ & \propto & N(\theta|\mu_{x},\tau_{x}^{2}),
+\end{eqnarray*}
+där
+\[
+\frac{1}{\tau_{x}^{2}}=\frac{n}{\sigma^{2}}+\frac{1}{\tau^{2}},
+\]
+\[
+\mu_{x}=w\bar{x}+(1-w)\mu,
+\]
+och
+\[
+w=\frac{\frac{n}{\sigma^{2}}}{\frac{n}{\sigma^{2}}+\frac{1}{\tau^{2}}}.
+\]
+\item Se Baron s. 344 för en härledning.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Normal data, känd varians - normal prior}
+
+\begin{center}
+$\theta\sim N(\mu,\tau^{2})\overset{x_{1},...,x_{n}}{\Longrightarrow}\theta|\mathbf{x}\sim N(\mu_{x},\tau_{x}^{2}).$
+\par\end{center}
+
+\begin{center}
+\bigskip{}
+\par\end{center}
+
+\begin{center}
+Posterior precision = Data precision + Prior precision
+\par\end{center}
+
+\begin{center}
+\bigskip{}
+\par\end{center}
+
+\begin{center}
+Posterior väntevärde =
+\par\end{center}
+
+\begin{center}
+$\frac{\text{Data precision}}{\text{Posterior precision}}$(Data medelvärde)
++ $\frac{\text{Prior precision}}{\text{Posterior precision}}$(Prior
+väntevärde) 
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Nedladdningshastigheter}
+
+\begin{itemize}
+\item Data: $\mbox{x}=(22.42,34.01,35.04,38.74,25.15)$.\bigskip{}
+\item Modell: $X_{1},...,X_{5}\sim N(\theta,\sigma^{2})$.\bigskip{}
+\item Antag $\sigma=5$ (mätningar kan variera $\pm10$MBit med 95\% sannolikhet)\bigskip{}
+\item Min prior: $\theta\sim N(50,5^{2})$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Nedladdningshastigheter n=1}
+
+\begin{center}
+\includegraphics[scale=0.35]{InternetSpeedData1}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Nedladdningshastigheter n=2}
+
+\begin{center}
+\includegraphics[scale=0.35]{InternetSpeedData2}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Nedladdningshastigheter n=3}
+
+\begin{center}
+\includegraphics[scale=0.35]{InternetSpeedData3}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Nedladdningshastigheter n=5}
+
+\begin{center}
+\includegraphics[scale=0.35]{InternetSpeedData5}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Multinomial modell med Dirichlet prior}
+
+\begin{itemize}
+\item \textit{Data}: $y=(y_{1},...y_{K})$. $y_{k}=$ antalet obs i den
+$k$:te klassen.
+\item Exempel: $K=8$, $y_{k}$ antal som röstar på parti $k$ i en valundersökning
+med $n=\sum_{k=1}^{K}y_{k}$ tillfrågade personer.
+\item \textbf{\textcolor{blue}{Multinomial model}}l:
+\[
+p(y|\theta)\propto\prod_{k=1}^{K}\theta_{k}^{y_{k}},\text{ där }\sum_{k=1}^{K}\theta_{k}=1.
+\]
+\item \textbf{\textit{\textcolor{blue}{\emph{Konjugerad}}}}\textit{\textcolor{blue}{\emph{
+}}}\textbf{\textit{\textcolor{blue}{\emph{prior}}}}\emph{:} $\mathrm{Dirichlet}(\alpha_{1},...,\alpha_{K})$
+\[
+p(\theta)\propto\prod_{k=1}^{K}\theta_{k}^{\alpha_{k}-1}.
+\]
+\item \textbf{Väntevärde} för $\theta=(\theta_{1},...,\theta_{K})'\sim Dirichlet(\alpha_{1},...,\alpha_{K})$
+\begin{align*}
+\mathrm{\mathbb{E}}(\theta_{k}) & =\frac{\alpha_{k}}{\sum_{j=1}^{K}\alpha_{j}}
+\end{align*}
+\item Variansen minskar för större $\alpha$-värden. \textbf{Icke-informativ}
+prior har små värden, t ex $\alpha_{k}=1$ för alla $k$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dirichletfördelningen}
+
+\begin{center}
+\includegraphics[scale=0.3]{DirichletPlot}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Multinomial model with Dirichlet prior}
+
+\begin{itemize}
+\item \textbf{\textit{\textcolor{blue}{\emph{Uppdatering från prior till
+posterior}}}}\emph{:}
+\begin{gather*}
+Modell\text{: \ \ \ \ }y=(y_{1},...y_{K})\sim\mathrm{Multin}(n;\theta_{1},...,\theta_{K})\\
+Prior:\text{ \ \ }\theta=(\theta_{1},...,\theta_{K})\sim\mathrm{Dirichlet}(\alpha_{1},...,\alpha_{K})\\
+Posterior:\text{ \ \ }\theta|y\sim\mathrm{Dirichlet}(\alpha_{1}+y_{1},...,\alpha_{K}+y_{K}).
+\end{gather*}
+\item \textbf{\textcolor{blue}{Simulering}} från en Dirichlet-fördelning:
+
+\begin{itemize}
+\item Slumpa $x_{1}\sim Gamma(\alpha_{1},1),...,x_{K}\sim Gamma(\alpha_{K},1)$.\medskip{}
+\item Beräkna $z_{k}=x_{k}/(\sum_{j=1}^{K}x_{j})$.\medskip{}
+\item $\mathbf{z}=(z_{1},...,z_{K})$ är nu en slumpvektor från $\mathrm{Dirichlet}(\alpha_{1},...,\alpha_{K})$-fördelningen.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exempel: marknadsandelar}
+
+\begin{itemize}
+\item En undersökning bland 513 smartphone-ägare gav:
+
+\begin{itemize}
+\item 180 föredrar en iPhone
+\item 230 föredrar en Androidtelefon
+\item 62 föredrar en Blackberrytelefon
+\item 41 föredrar något annat märke
+\end{itemize}
+\item Tidigare undersökning: iPhone 30\%, Android 30\%, Blackberry 20\%
+och Annat 20\%.
+\item P(Android har störst marknadsandel | Data)
+\item Prior: $\alpha_{1}=15,\alpha_{2}=15,\alpha_{3}=10\text{ och }\alpha_{4}=10$
+(prior info motsvarar en undersökning med $50$ svarande)
+\item Posterior: \textrm{$(\theta_{1},\theta_{2},\theta_{3},\theta_{4})|\mathbf{y}\sim\mathrm{Dirichlet(195,245,72,51)}$}
+\end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+\frametitle{R kod för marknadsandelar}
+<<MultinomialPrior2Post1, eval=TRUE, size='tiny'>>=
+
+# Setting up data and prior
+y <- c(180,230,62,41) # The cell phone survey data (K=4)
+alpha <- c(15,15,10,10) # Dirichlet prior hyperparameters 
+nIter <- 1000 # Number of posterior draws
+
+# Defining a function that simulates from a Dirichlet distribution 
+SimDirichlet <- function(nIter, param){ 	
+  nCat <- length(param) 	
+  thetaDraws <- as.data.frame(matrix(NA, nIter, nCat)) # Storage. 	
+  for (j in 1:nCat){ 		
+    thetaDraws[,j] <- rgamma(nIter,param[j],1) 	
+  } 	
+  for (i in 1:nIter){ 		
+    thetaDraws[i,] = thetaDraws[i,]/sum(thetaDraws[i,])	
+  } 	
+  return(thetaDraws) 
+}
+
+# Posterior sampling from Dirichlet posterior
+thetaDraws <- SimDirichlet(nIter,y + alpha)
+
+@
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{R kod för marknadsandelar}
+<<MultinomialPrior2Post2, eval=TRUE, size='tiny'>>=
+# Posterior mean and standard deviation of Androids share (in %)
+message(mean(100*thetaDraws[,2])) 
+message(sd(100*thetaDraws[,2]))
+
+# Computing the posterior probability that Android is the largest
+PrAndroidLargest <- sum(thetaDraws[,2] > max(thetaDraws[,c(1,3,4)]))/nIter
+message(paste('Pr(Android has the largest market share) = ', PrAndroidLargest))
+
+@
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{R code for market share example, cont}
+<<MultinomialPrior2Post3, echo = FALSE, eval=TRUE, out.height='0.5\\linewidth'>>=
+
+# Plots histograms of the posterior draws 
+par(mfrow = c(1,2)) # Splits the graphical window in four parts
+hist(100*thetaDraws[,1], breaks = 25, main ='iPhone market share (%)')  
+hist(100*thetaDraws[,2], breaks = 25, main ='Android market share (%)')
+
+@
+\end{frame}
+
+
+\end{document}

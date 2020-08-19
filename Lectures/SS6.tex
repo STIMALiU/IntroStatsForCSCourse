@@ -1,0 +1,393 @@
+%% LyX 2.3.4.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english,xcolor=svgnames, handout]{beamer}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title[TDAB01]{Sannolikhetslära och Statistik\\
+Föreläsning 6}
+\author[Mattias Villani]{Mattias Villani}
+\institute[\textbf{STIMA, LiU}]{\textbf{Avdelningen för Statistik och Maskininlärning}\\
+\textbf{Institutionen för datavetenskap}\\
+\textbf{Linköpings universitet }}
+\date{\includegraphics[scale=0.15]{LiU_secondary_1_black}\,}
+\makebeamertitle
+\begin{frame}{Översikt}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Stokastiska processer}}
+\item \textbf{\textcolor{blue}{Markovkedjor}}
+\item \textbf{\textcolor{blue}{Binomialprocess}}
+\item \textbf{\textcolor{blue}{Poissonproces}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Stokastiska processer}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Stokastisk process}}: En \textbf{sekvens}
+av slumpvariabler $X_{1},X_{2},...,X_{T}$ \textbf{observerade över
+tid}.\bigskip{}
+\item Ex. $X_{t}$ = antalet påträffade buggar under dag $t$, $t=1,2,...,T.$
+\item Ex. $X_{t}$ = slutkursen på Ericsson aktie vid dag $t$.
+\item Ex. temperaturen vid en viss plats vid tidpunkt $t$.\bigskip{}
+\item \textbf{\textcolor{blue}{Stokastisk process}}: en slumpvariabel $X(t,\omega)$
+som också beror av tiden, där:
+
+\begin{itemize}
+\item $t\in\mathcal{T}$, och $\mathcal{T}$ är en mängd tidpunkter, t ex
+$\mathcal{T}=\left\{ 1,2,3,...\right\} $
+\item $\omega\in\Omega$, är utfallet i ett experiment (precis som förut).
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Stokastiska processer}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Stokastisk process}}: en slumpvariabel $X(t,\omega)$
+som också beror av tiden, där:
+
+\begin{itemize}
+\item $t\in\mathcal{T}$, och $\mathcal{T}$ är en mängd tidpunkter, t ex
+$\mathcal{T}=\left\{ 1,2,3,...\right\} $
+\item $\omega\in\Omega$, är utfallet i ett experiment (precis som förut).\bigskip{}
+\end{itemize}
+\item $X(t,\omega)$ kan betraktas på två sätt:
+
+\begin{itemize}
+\item För givet $t\in\mathcal{T}$ är $X_{t}(\omega)$ en vanlig slumpvariabel
+\item För givet $\omega\in\Omega$ är $X_{\omega}(t)$ en deterministisk
+funktion av tiden $t$. \bigskip{}
+\end{itemize}
+\item $X_{\omega}(t)$ kallas för en \textbf{\textcolor{blue}{realisation}}
+(eng. \textbf{sample path} eller trajectory) av processen $X(t,\omega)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Stokastiska processer}
+
+\begin{itemize}
+\item Värden på $X(t,\omega)$ kallas \textbf{\textcolor{blue}{tillstånd}}
+(eng. \textbf{states})\bigskip{}
+\item Uppdelning av processer: 
+
+\begin{itemize}
+\item diskreta eller kontinuerliga \textbf{tillstånd}.
+\item diskret eller kontinuerlig \textbf{tid}.\bigskip{}
+\end{itemize}
+\item diskret tillstånd, kontinuerlig tid: väljarsympatier över tid.
+\item diskret tillstånd, diskret tid: väljarsympatier på valdagen.
+\item kontinuerligt tillstånd, diskret tid: dagens högsta temperatur
+\item kontinuerligt tillstånd, kontinuerlig tid: en robots position vid
+tidpunkten $t$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Markovprocesser}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Markovprocess}}: prognosen för morgondagen
+beror endast på idag:
+\[
+P\left\{ \text{framtiden}\vert\text{nu},\text{historiken}\right\} =P\left\{ \text{framtiden}\vert\text{nu}\right\} 
+\]
+\bigskip{}
+\item \textbf{\textcolor{blue}{Markovprocess}}: för alla tidpunkter $t_{1}<...<t_{n}<t$
+och händelser $A_{1},...,A_{n},A$
+\[
+\mathbf{P}\left\{ X(t)\in A\vert X(t_{1})\in A_{1},...X(t_{n})\in A_{n}\right\} =\mathbf{P}\left\{ X(t)\in A\vert X(t_{n})\in A_{n}\right\} 
+\]
+\bigskip{}
+\item Många processer är inte Markov. Praktiskt \textbf{antagande}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Markovkedjor}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Markovkedja}}: \textbf{diskret tid}, \textbf{diskreta
+tillstånd}. \bigskip{}
+\item $\mathcal{T}=\left\{ 0,1,2,...\right\} $ och $\Omega=\left\{ 1,2,...,n\right\} $
+(godtyckliga labels, jfr partier).\bigskip{}
+\item \textbf{\textcolor{blue}{Transitionssannolikheter (en-stegs)}}
+\[
+p_{ij}(t)=\mathbf{P}\left\{ X(t+1)=j\vert X(t)=i\right\} 
+\]
+\bigskip{}
+\item \textbf{\textcolor{blue}{Transitionssannolikheter (h-stegs)}}
+\[
+p_{ij}^{(h)}(t)=\mathbf{P}\left\{ X(t+h)=j\vert X(t)=i\right\} 
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Markovkedjor}
+
+\begin{center}
+\includegraphics[scale=0.3]{3state_markov}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Markovkedjor}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Homogen Markovkedja}}: transitionssannolikheterna
+är konstanta över tiden:
+\[
+p_{ij}(t)=p_{ij}
+\]
+\item \textbf{\textcolor{blue}{Transitionsmatris}}\textbf{
+\[
+\mathbf{P}=\left(\begin{array}{cc}
+p_{11} & p_{12}\\
+p_{21} & p_{22}
+\end{array}\right)
+\]
+}
+\item Ex. två tillstånd, $\Omega=\{\mbox{sol},\mbox{ regn}\}$
+\[
+\mathbf{P}=\left(\begin{array}{cc}
+0.9 & 0.1\\
+0.7 & 0.3
+\end{array}\right)
+\]
+\item Ex. tre tillstånd, $\Omega=\{\text{RödGröna},\text{Alliansen, SD}\}$
+\[
+P=\left(\begin{array}{ccc}
+0.8 & 0.1 & 0.1\\
+0.1 & 0.6 & 0.3\\
+0.1 & 0.5 & 0.4
+\end{array}\right)
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Markovkedjor}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Transitionssannolikheter (h-stegs)}}
+\[
+p_{ij}^{(h)}(t)=\mathbf{P}\left\{ X(t+h)=j\vert X(t)=i\right\} 
+\]
+\item Komplext. Det finns många vägar som tar oss $i\rightarrow j$ när
+$h>1$. 
+\item Ex: $\Omega=\left\{ 1,2\right\} $. Om $h=2$ kan vi göra resan $1\rightarrow2$
+på två sätt: 
+
+\begin{itemize}
+\item $1\rightarrow1\rightarrow2$
+\item $1\rightarrow2\rightarrow2$
+\end{itemize}
+\item 2-stegs transitionssannolikhet $1\rightarrow2$:
+\[
+p_{12}^{(2)}=p_{11}p_{12}+p_{12}p_{22}
+\]
+\item 3-stegs transitionssannolikhet $1\rightarrow2$:
+\begin{align*}
+p_{12}^{(3)} & =p_{11}p_{11}p_{12}+p_{11}p_{12}p_{22}+p_{12}p_{21}p_{12}+p_{12}p_{22}p_{22}\\
+ & =p_{11}(p_{11}p_{12}+p_{12}p_{22})+p_{12}(p_{21}p_{12}+p_{22}p_{22})\\
+ & =p_{11}p_{12}^{(2)}+p_{12}p_{22}^{(2)}
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Markovkedjor}
+
+\begin{itemize}
+\item Transitionsmatris $1$-steg
+\[
+\mathbf{P}=\left(\begin{array}{cccc}
+p_{11} & p_{12} & \cdots & p_{1n}\\
+p_{21} & p_{22} & \cdots & p_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+p_{n1} & p_{n2} & \cdots & p_{nn}
+\end{array}\right)
+\]
+\item Transitionsmatris $h$-steg
+\[
+\mathbf{P}^{(h)}=\left(\begin{array}{cccc}
+p_{11}^{(h)} & p_{12}^{(h)} & \cdots & p_{1n}^{(h)}\\
+p_{21}^{(h)} & p_{22}^{(h)} & \cdots & p_{2n}^{(h)}\\
+\vdots & \vdots & \ddots & \vdots\\
+p_{n1}^{(h)} & p_{n2}^{(h)} & \cdots & p_{nn}^{(h)}
+\end{array}\right)
+\]
+\item Resultat: $\mathbf{P}^{(h)}$ är $h$:te matrispotensen av $\mathbf{P}$
+\[
+\mathbf{P}^{(h)}=\mathbf{P}\cdot\mathbf{P}\cdots\mathbf{P}=\mathbf{P}^{h}
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Marginalfördelning}
+
+\begin{itemize}
+\item \textbf{Initialfördelning} vid $t=0$ är radvektorn
+\[
+P_{0}=\left(P_{0}(1),P_{0}(2),....,P_{0}(n)\right)
+\]
+\item Sannolikhetsfördelning över tillstånden efter $h$ steg (tidsperioder)
+\[
+P_{h}=\left(P_{h}(1),P_{h}(2),....,P_{h}(n)\right)
+\]
+\item Resultat
+\[
+P_{h}=P_{0}P^{h}
+\]
+\item Ex. $P_{0}=\left(1/3,1/3,1/3\right)$ och 
+\[
+P=\left(\begin{array}{ccc}
+0.8 & 0.1 & 0.1\\
+0.1 & 0.6 & 0.3\\
+0.1 & 0.5 & 0.4
+\end{array}\right)
+\]
+\[
+P_{3}=\left(1/3,1/3,1/3\right)\left(\begin{array}{ccc}
+0.8 & 0.1 & 0.1\\
+0.1 & 0.6 & 0.3\\
+0.1 & 0.5 & 0.4
+\end{array}\right)^{3}=\left(0.333,0.407,0.259\right)
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bernoulliprocess}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Räkneprocesser}}\textbf{:} $X(t)$ är antalet
+räknade saker t o m tidpunkt $t$.\medskip{}
+\item \textbf{\textcolor{blue}{Binomialprocess}}: $X(n)$ är\textbf{ antalet
+lyckade försök i de $n$ första} in en sekvens oberoende Bernoulliförsök
+med sannolikhet $p$.\medskip{}
+\item $X(n)\sim Binomial(n,p)$\medskip{}
+\item $Y$ = antalet försök mellan två lyckade. \medskip{}
+\item $Y\sim Geometrisk(p)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bernoulliprocess (Baron s. 149)}
+
+\begin{center}
+\includegraphics[scale=0.9]{BinomialProcess}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Bernoulliprocess}
+
+\begin{itemize}
+\item Ett nytt Bernoulliförsök var $\Delta$ sekund. $\Delta$= \textbf{time
+frame}. Jfr film.\medskip{}
+\item $n$ försök tar $t=n\Delta$ sekunder att utföra. $n=t/\Delta$.\medskip{}
+\item Processen kan defineras som funktion av (klock)tid: $X(n)=X(t/\Delta)$.\medskip{}
+\item Förväntat antal lyckade under hela tidsperioden $t$ är $\mathbb{E}X(n)=np$.\medskip{}
+\item \textbf{Förväntat antal lyckade försök under $t$ sekund}er: 
+\[
+\mathbb{E}X\left(\frac{t}{\Delta}\right)=\frac{t}{\Delta}p,
+\]
+dvs $\lambda=p/\Delta$ förväntat antal lyckade per sekund.\medskip{}
+\item \textbf{\textcolor{blue}{Ankomstfrekvensen}} (arrival rate): $\lambda=p/\Delta$
+är \textbf{förväntat antal lyckade per tidsenhet} (t ex sekund).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bernoulliprocess}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Interarrival time}} $T$ är tiden mellan
+lyckade försök.\medskip{}
+\item $Y$ = antalet försök mellan två lyckade. \medskip{}
+\item $Y\sim Geometrisk(p)$\medskip{}
+\item $T=Y\Delta$. Följer en skalad geometrisk fördelning med support $\Delta,2\Delta,3\Delta,...$\medskip{}
+\item Notera att Binomialprocessen kan vara restriktiv om $\Delta$ väljs
+för stort. Endast en Bernoullihändelse i varje time frame $\Delta$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Poissonprocess}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Poissonprocessen}} fås genom att låta $\Delta\downarrow0$
+samtidigt som $\lambda$ hålls konstant (dvs även $p\downarrow0$).\medskip{}
+\item Kom ihåg: $X(t)\sim Binomial(n,p)\rightarrow Poisson(\lambda)$ när
+$n\rightarrow\infty$ och $p\rightarrow0$ och $\lambda=np$ är konstant.
+\medskip{}
+\item \textcolor{black}{Poissonprocessen}\textbf{\textcolor{white}{{} }}\textcolor{black}{är
+en process i }\textbf{\textcolor{black}{kontinuerlig tid}}\textcolor{black}{.
+Jfr frames i filmer.}\medskip{}
+\item Interarrival time $T\sim Exp(\lambda)$. Används vid simulering, see
+\texttt{\textcolor{blue}{SimulatePoissonProcess.R}}.\medskip{}
+\item Interarrvival för $k$ framtida händelser $T_{k}\sim Gamma(k,\lambda)$.\medskip{}
+\item Se definition 6.14 för alternativ definition av Poissonprocessen.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Poissonprocess (Baron s. 155)}
+
+\begin{center}
+\includegraphics[scale=0.9]{PoissonProcess}
+\par\end{center}
+
+\end{frame}
+
+
+\end{document}

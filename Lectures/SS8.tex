@@ -1,0 +1,443 @@
+%% LyX 2.3.4.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english,xcolor=svgnames, handout]{beamer}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title[TDAB01]{Sannolikhetslära och Statistik\\
+Föreläsning 8}
+\author[Mattias Villani]{Mattias Villani}
+\institute[\textbf{STIMA, LiU}]{\textbf{Avdelningen för Statistik och Maskininlärning}\\
+\textbf{Institutionen för datavetenskap}\\
+\textbf{Linköpings universitet }}
+\date{\includegraphics[scale=0.15]{LiU_secondary_1_black}\,}
+\makebeamertitle
+\begin{frame}{Översikt}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Punktskattning}}
+\item \textbf{\textcolor{blue}{Samplingfördelning}}
+\item \textbf{\textcolor{blue}{Konfidensintervall}}
+\item \textbf{\textcolor{blue}{Konfidensintervall för populationsväntevärden}}
+\item \textbf{\textcolor{blue}{Konfidensintervall för proportioner}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Punktskattning}
+
+\begin{itemize}
+\item Grundproblem: sannolikhetsmodeller har \textbf{okända} \textbf{parametrar},
+$\theta$. \bigskip{}
+
+\begin{itemize}
+\item Ex medelinkomsten i Sverige: populationens väntevärde$\mu$
+\item Ex andelen defekta komponenter i produktionen av en produkt $p$.
+\item Ex spamfilter: $\beta_{0}$ och $\beta_{1}$ är parametrar 
+\[
+\mathrm{Pr}\left(\text{Spam}\vert\text{antal\$}\right)=\frac{\exp\left(\beta_{0}+\beta_{1}\cdot\text{antal\$}\right)}{1+\exp\left(\beta_{0}+\beta_{1}\cdot\text{antal\$}\right)}
+\]
+\bigskip{}
+\end{itemize}
+\item Vi vill använda (tränings)data för att bestämma värden för dessa parametrar.
+\bigskip{}
+\item \textbf{\textcolor{blue}{Punktskattning}}: vår \textbf{bästa gissning}
+utifrån data.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Momentmetoden}
+
+\begin{itemize}
+\item Ex $X_{1},...,X_{n}\vert\mu$$\overset{iid}{\sim}$Poisson$(\mu)$.
+$E(X)=\mu$. 
+\item Rimlig punktskattning av populationväntevärdet $\mu$:
+\[
+\hat{\mu}=\bar{x}
+\]
+\item \textbf{Moment} av ordningen $k=1,2,...$
+\[
+\mu_{k}=\mathbb{E}\left(X^{k}\right)
+\]
+\item \textbf{Samplemoment} av ordningen $k$
+\[
+m_{k}=\frac{1}{n}\sum_{i=1}^{n}X_{i}^{k}
+\]
+\item Ex: $k=1$: $\mu_{1}=\mu=\mathbb{E}X$ och $m_{1}=\frac{1}{n}\sum_{i=1}^{n}X_{i}=\bar{X}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Momentmetoden}
+
+\begin{itemize}
+\item Momentmetoden för att skatta $k$ modellparametrar $\theta_{1},...,\theta_{k}$:
+Lös följande ekvationssystem m a p $\theta_{1},...,,\theta_{k}:$
+\begin{align*}
+\mu_{1} & =m_{1}\\
+\mu_{2} & =m_{2}\\
+ & \vdots\\
+\mu_{k} & =m_{k}
+\end{align*}
+\item Notera att $\mu_{1},...,\mu_{k}$ är funktioner av $\theta_{1},...,\theta_{k}$.
+Mer korrekt:
+\begin{align*}
+\mu_{1}(\theta_{1},...,\theta_{k}) & =m_{1}\\
+\mu_{2}(\theta_{1},...,\theta_{k}) & =m_{2}\\
+ & \vdots\\
+\mu_{k}(\theta_{1},...,\theta_{k}) & =m_{k}
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Momentmetoden}
+
+\begin{itemize}
+\item Ibland mer praktiskt att jobba med centralmoment\textbf{.}
+\item \textbf{Centralmoment} av ordningen $k=2,3...$
+\[
+\mu_{k}^{'}=\mathbb{E}\left(X-\mu_{1}\right)^{k}
+\]
+\item \textbf{Samplecentralmoment} av ordningen $k$
+\[
+m_{k}^{'}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{k}
+\]
+\item Notera att $\mu_{2}^{'}=Var(X)$ och 
+\[
+m_{2}^{'}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}\neq\frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Momentmetoden - Beta exempel}
+
+\begin{itemize}
+\item Ex $X_{1},...,X_{n}\vert\alpha,\beta\overset{iid}{\sim}\mathrm{Beta}(\alpha,\beta)$:
+\[
+\mu_{1}=\mathbb{E}X=\frac{\alpha}{\alpha+\beta}
+\]
+\[
+\mu_{2}=\mathbb{E}(X^{2})=\frac{\alpha(\alpha+1)}{(\alpha+\beta)(\alpha+\beta+1)}
+\]
+\item Momentskattningar: lös för $\alpha$ och $\beta$
+\begin{align*}
+\frac{\alpha}{\alpha+\beta} & =m_{1}\\
+\frac{\alpha(\alpha+1)}{(\alpha+\beta)(\alpha+\beta+1)} & =m_{2}
+\end{align*}
+ger $\hat{\alpha}=\frac{m_{1}(m_{2}-m_{1})}{m_{1}^{2}-m_{2}}$ och
+$\hat{\beta}=\frac{(m_{1}-m_{2})(m_{1}-1)}{m_{1}^{2}-m_{2}}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Maximum likelihood-metoden}
+
+\begin{itemize}
+\item \textbf{\textcolor{blue}{Maximum likelihood (ML) estimatorn}}: Välj
+det $\theta$ som maximerar sannolikheten för data:
+\[
+\hat{\theta}=\mathrm{argmax}_{\theta\in\Theta}P(x_{1},...,x_{n}\vert\theta)
+\]
+\item Kontinuerliga fallet: 
+\[
+\hat{\theta}=\mathrm{argmax}_{\theta\in\Theta}f(x_{1},...,x_{n}\vert\theta)
+\]
+\item \textbf{\textcolor{blue}{Likelihoodfunktionen}} är sannolikheten för
+stickprovet sett \textbf{som en funktion av parametern}
+\[
+L(\theta)=P(x_{1},...,x_{n}\vert\theta)
+\]
+\item ML-estimatorn maximerar $L(\theta)$.
+\item Ex data från Bernoulli med sannolikhet $p$: $X_{1}=0,X_{2}=1,X_{3}=1,X_{4}=0,X_{5}=1$.
+\[
+L(p)=(1-p)pp(1-p)p=p^{3}(1-p)^{2}
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Maximum likelihood - Bernoulliexempel}
+
+\begin{center}
+\includegraphics[scale=0.3]{BernLikes3f2}\includegraphics[scale=0.3]{BernLikes1f4}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Maximum likelihood-metoden}
+
+\begin{itemize}
+\item Vi kan hitta \textbf{ML-skattningen} analytiskt: Lös m a p $\theta$
+\[
+\frac{\partial L(\theta)}{\partial\theta}=0.
+\]
+\item Oftast enklare att \textbf{maximera log-likelihoodfunktionen}
+\[
+\frac{\partial\ln L(\theta)}{\partial\theta}=0
+\]
+\item Ex Bernoulli:
+\[
+\frac{\partial\ln L(p)}{\partial p}=\frac{\partial}{\partial p}\left(s\ln p+f\ln(1-p)\right)=\frac{s}{p}+f\frac{-1}{1-p}=\frac{s}{p}-\frac{f}{1-p}=0
+\]
+vilket ger lösningen $\hat{p}=\frac{s}{s+f}=\frac{s}{n}$.
+\item Kontrollera $\hat{p}$ är ett maximum - andraderivatan är negativ
+i $p=\hat{p}$ 
+\[
+\frac{\partial^{2}\ln L(\theta)}{\partial\theta^{2}}=-\frac{s}{p^{2}}-\frac{f}{(1-p)^{2}}<0
+\]
+för alla $p\in[0,1]$, inklusive $p=\hat{p}.$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{ML-metoden}
+
+\begin{itemize}
+\item Notera att oberoende data är praktiskt
+\[
+L(\theta)=\prod_{i=1}^{n}f(x_{i}\vert\theta)
+\]
+så log-likelihooden blir en summa som är lättare att derivera
+\[
+\ln L(\theta)=\sum_{i=1}^{n}\ln f(x_{i}\vert\theta).
+\]
+\item Ex: $X_{1},...,X_{n}\vert\lambda\overset{iid}{\sim}Exp(\lambda)$
+ger
+\[
+L(\lambda)=\prod_{i=1}^{n}\lambda e^{-\lambda x_{i}}=\lambda^{n}e^{-\lambda\sum_{i=1}^{n}x_{i}}
+\]
+och 
+\[
+\frac{\partial\ln L(\lambda)}{\partial\lambda}=\frac{n}{\lambda}-\sum_{i=1}^{n}x_{i}=\frac{n}{\lambda}-n\bar{x},
+\]
+och därmed $\hat{\lambda}=1/\bar{x}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Samlingfördelningen}
+
+\begin{itemize}
+\item Hur bra är en \textbf{\textcolor{blue}{estimator}} $\hat{\theta}$?\smallskip{}
+\item \textbf{\textcolor{blue}{Väntevärdesriktig}}? $\mathbb{E}\hat{\theta}=\theta$.\smallskip{}
+\item $\mathrm{Bias}(\hat{\theta})=\mathbb{E}(\hat{\theta})-\theta$.\smallskip{}
+\item \textbf{\textcolor{blue}{Samplingfördelningen}} beskriver variationen
+i $\hat{\theta}$ \textbf{över alla stickprov} av en viss storlek
+$n$.\smallskip{}
+\item \textbf{\textcolor{blue}{Standardfelet}} för $\hat{\theta}$ är $\sqrt{Var(\hat{\theta})}$,
+dvs standardavvikelsen för $\hat{\theta}$ \textbf{över alla stickprov}
+av storleken $n$.\smallskip{}
+\item \textbf{\textcolor{blue}{Mean Squared Error}} (MSE): 
+\[
+MSE(\hat{\theta})=\mathbb{E}\left(\hat{\theta}-\theta\right)^{2}=\mbox{Var}(\hat{\theta})+\left[\mathrm{Bias}(\hat{\theta})\right]^{2}
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Samlingfördelningen}
+
+\begin{itemize}
+\item Ex. Poisson. ML-estimator för $\mu$: $\bar{X}$. 
+\item Väntevärdesriktig: $\mathbb{E}(\hat{\mu})=\mu$ och $Var(\hat{\mu})=\frac{\sigma^{2}}{n}=\frac{\mu}{n}$.
+\item Notera att $Var(\hat{\mu})=\frac{\mu}{n}$ beror på den okända parametern
+$\mu$. Lösning: sätt $\mu=\hat{\mu}=\bar{x}.$
+\item Tekniker för att härleda samplingfördelningen för en estimator $\hat{\theta}$:
+
+\begin{itemize}
+\item Om $X_{1},...,X_{n}$ är iid från $N(\mu,\sigma^{2})$ så är $\hat{\theta}=\bar{X}\sim N(\mu,\sigma^{2}/n$),
+exakt. 
+\item \textbf{Centrala gränsvärdessatsen}: $\hat{\theta}\overset{approx}{\sim}N\left[\theta,Var(\hat{\theta})\right]$.
+\item \textbf{Bootstrap}simulering.
+\end{itemize}
+\item \textbf{\textcolor{blue}{Bootstrap}}: 
+
+\begin{itemize}
+\item Skapa $N$ \textbf{bootstrapstickprov} $\mathbf{x}^{(1)},...,\mathbf{x}^{(N)}$av
+samma storlek som det ursprungliga stickprovet genom dragning \textbf{med}
+\textbf{återläggning}. 
+\item Beräkna estimatet $\hat{\theta}(\mathbf{x}^{(1)}),...,\hat{\theta}(\mathbf{x}^{(N)})$
+för var och ett av dessa $N$ stickprov. 
+\item Den empiriska fördelningen för $\hat{\theta}(\mathbf{x}^{(1)}),...,\hat{\theta}(\mathbf{x}^{(N)})$
+(tänk histogram) är en approximation av samplingfördelningen för $\hat{\theta}$.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Konfidensintervall (K.I.)}
+
+\begin{itemize}
+\item Punktskattning ger bara en bästa gissning för $\theta$. Konfidensintervall
+är ett försök att beskriva osäkerheten om $\theta$.\medskip{}
+\item \textbf{95\%-igt }\textbf{\textcolor{blue}{konfidensintervall}} för
+$\theta$ är ett intervall $[a,b]$ sådant att 
+\[
+\mathbf{P}\{a\leq\theta\leq b\}=0.95.
+\]
+\medskip{}
+\item Viktigt: det är \textbf{intervallet} som är \textbf{slumpmässigt}.
+Parametern $\theta$ är en fix konstant.\medskip{}
+\item \textbf{Tolkning}: ett 95\%-igt konfidensintervall $[a,b]$ kommer
+att \textbf{täcka} ($\theta\in[a,b]$) parametervärdet $\theta$ i
+95\% av alla möjliga stickprov.\medskip{}
+\item Man kan naturligtvis ha andra \textbf{\textcolor{blue}{konfidensnivåer}}
+än 95\%. \\
+90\%, 95\% och 99\% är vanligast. Se den lite klumpiga allmänna notationen
+$(1-\alpha)\cdot100\%$-igt konfidensintervall i Baron.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Konfidensintervall}
+
+\begin{center}
+\includegraphics[scale=0.5]{CICoveragePlot}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Konfidensintervall - standardprocedur}
+\begin{itemize}
+\item Antag normalfördelad väntevärdesriktig estimator $\hat{\theta}$,
+t ex $\bar{X}$ vid normalfördelade data (eller CLT argument). Då
+gäller 
+\[
+Z=\frac{\hat{\theta}-\theta}{\sigma(\hat{\theta})}\sim N(0,1)
+\]
+\item Låt $z_{\alpha}$ vara $(1-\alpha)$\% percentilen i $N(0,1)$-fördelningen.
+Det värde som klipper av ytan $\alpha$ till \textbf{höger}. Tabell
+A4 i Baron ger att $z_{0.025}=1.96$.
+\item Då gäller att
+\[
+\mathbf{P}\left\{ -z_{0.025}\leq\frac{\hat{\theta}-\theta}{\sigma(\hat{\theta})}\leq z_{0.025}\right\} =0.95
+\]
+vilket kan skrivas om som
+\[
+\mathbf{P}\left\{ \hat{\theta}-z_{0.025}\cdot\sigma(\hat{\theta})\leq\theta\leq\hat{\theta}+z_{0.025}\cdot\sigma(\hat{\theta})\right\} =0.95
+\]
+\item Alltså: $[\hat{\theta}-z_{\alpha/2}\cdot\sigma(\hat{\theta}),\hat{\theta}+z_{\alpha/2}\cdot\sigma(\hat{\theta})]$
+är ett $(1-\alpha)\%$-igt konfidensintervall för $\theta$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Kopplingen mellan $(1-\alpha)$100\%-iga intervall och tabelltalen
+$z_{\alpha/2}$}
+
+\begin{center}
+\includegraphics{GaussianQuantiles}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Konfidensintervall för populationsväntevärdet}
+
+\begin{itemize}
+\item $\theta=\mu$. $\hat{\theta}=\bar{X}$. $\sigma(\hat{\theta})=Std(\bar{X})=\sigma/\sqrt{n}$.
+$\sigma$ antas känd.\bigskip{}
+\item Centrala gränsvärdessatsen ger att $\hat{\theta}=\bar{X}$ är approximativt
+normalfördelad när $n$ är stort ($n\geq30$). Oavsett hur data är
+fördelade. Om data är normalfördelade är intervallet exakt.\bigskip{}
+\item Alltså: $\bar{X}\pm z_{0.025}\cdot\frac{\sigma}{\sqrt{n}}$ är ett
+(approximativt) $95\%$-igt konfidensintervall för $\theta$.\bigskip{}
+\item \textbf{\textcolor{blue}{Bestämning av stickprovsstorlek}} $n$. Vi
+kan bestämma $n$ så att vi får ett konfidensintervall av given bredd.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Konfidensintervall - okänt standardfel}
+
+\begin{itemize}
+\item I praktiken är $\sigma(\hat{\theta})$ inte känd utan måste skattas
+(estimeras) från data. Ex: $Std(\bar{X})=\sigma/\sqrt{n}$ och $\sigma$
+är ofta okänd.
+\item Vid stort $n$ får vi ett bra approximativt konfidensintervall genom
+att ersätta $\sigma(\hat{\theta})$ med en skattning. T ex $s/\sqrt{n}$
+istället för $\sigma/\sqrt{n}$.
+\item Konfidensintervall för populationsväntevärdet $\mu$ vid \textbf{små
+stickprov} \textbf{en} \textbf{normalfördel}ad \textbf{population}:
+\[
+t=\frac{\bar{X}-\mu}{s/\sqrt{n}}\sim t_{n-1}\left(0,1\right)
+\]
+\item Så ett exakt 95\%-igt konfidensintervall för $\mu$ ges då av
+\[
+\bar{X}\pm t_{0.025}(n-1)\frac{s}{\sqrt{n}}
+\]
+där $t_{0.025}(n-1)$ är $97.5\%$ percentilen i \textbf{$t$-fördelningen}
+med $\nu=n-1$ frihetsgrader. Läses av från Tabell A5 i Baron. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Konfidensintervall för en andel}
+
+\begin{itemize}
+\item Ex. 196 av 2000 utfrågade svarar att de röstar på centerpartiet. Hur
+stor andel $p$ röstar på centerpartiet i hela populationen?
+\item $\hat{p}=0.098$ är ML-skattningen. Men hur säkra är vi?
+\item $\hat{p}=\frac{1}{n}\sum_{i=1}^{n}X_{i}$ där $X_{i}=1$ om den i:te
+utfrågade person röstar på centerpartiet och $X_{i}=0$ annars. Så
+$\hat{p}$ är också ett medelvärde!
+\item Antag att $X_{i}\overset{iid}{\sim}$$Bernoulli(p).$ Då gäller $\mathbb{E}X_{i}=p$
+och $Var(X_{i})=p(1-p)$. Alltså
+\[
+\mathbb{E}\hat{p}=p\qquad Var(\hat{p})=\frac{1}{n^{2}}\sum_{^{i=1}}^{n}Var(X_{i})=\frac{1}{n^{2}}np(1-p)=\frac{p(1-p)}{n}.
+\]
+\item $\sigma(\hat{p})$ beror på $p$, som vi ersätter med en skattning:
+$s(\hat{p})=\sqrt{\hat{p}(1-\hat{p})/n}$.
+\item Centrala gränsvärdessatsen ger ett approximativt $(1-\alpha)100\%$-igt
+intervall 
+\[
+\hat{p}\pm z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}=\left(0.085,0.111\right)
+\]
+\end{itemize}
+\end{frame}
+
+
+\end{document}
