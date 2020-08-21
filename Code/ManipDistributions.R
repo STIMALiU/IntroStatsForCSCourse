@@ -89,6 +89,22 @@ manipulate(
 # Author: Jose M. Peña, Statistics, Linkoping University, Sweden. e-mail: jose.m.pena@liu.se
 
 ####################################################################
+## Negative binomial pmf
+####################################################################
+
+NegativeBinomialPlot <- function(k,p){
+  xGrid <- seq(1,k/p+4*sqrt(k*(1-p)/p^2))
+  pmf = choose(xGrid-1,k-1)*p^k*(1-p)^(xGrid-k)
+  barplot(pmf, names.arg=xGrid, main = 'NegativeBinomial(k,p) distribution')
+}
+
+manipulate(
+  NegativeBinomialPlot(k,p),
+  k = slider(0, 10, step=1, initial = 3, label = "The hyperparameter k in NegativeBinomial(k,p)  distribution"),
+  p = slider(0, 1, step=0.05, initial = 0.5, label = "The hyperparameter p in NegativeBinomial(k,p)  distribution")
+)
+
+####################################################################
 ## Exponential pdf
 ####################################################################
 
