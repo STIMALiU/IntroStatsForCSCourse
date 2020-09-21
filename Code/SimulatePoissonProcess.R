@@ -1,6 +1,7 @@
 # Simulates a Poisson process
 # Author: Mattias Villani, Division of Statistics and Machine Learning, LinkÃ¶ping University
 # http://mattiasvillani.com
+# Modified by Jose M. Peña to show the arrival times.
 
 SimPoissonProcess <- function(lambda,M){
   s=0; T=0;
@@ -9,13 +10,17 @@ SimPoissonProcess <- function(lambda,M){
     s = s + y;
     T = c(T,s)
   }
-  N = length(T)
-  x = matrix(NA,M,1)
-  for (t in 1:M){
-    x[t] <- sum(T<=t)
-  }
-  return(x)
+  return(T)
 }
 
-x <- SimPoissonProcess(lambda=1, M = 20)
+M <- 20
+T <- SimPoissonProcess(lambda=1, M)
+N = length(T)
+x = matrix(NA,M,1)
+for (t in 1:M){
+  x[t] <- sum(T<=t)
+}
+T
+t(x)
+
 plot(x, xlab='time')
