@@ -91,3 +91,47 @@ Le6
 6.22: (a) 0.735 (b) 7500 dollars and 3354 dollars
 6.23: (a) 0.003 (b) 0.6 minutes and 0.12 minutes^2
 6.24: 0.544
+
+Le7
+
+8.1: (b) min(X) = 37, Q1_hat = 43, M_hat = 50, Q3_hat = 56, max(X) = 60
+8.2: (a) X_bar = 17.9540, s^2 = 9.9682, s= 3.1573 (b) 0.4465
+8.3:
+8.4: 0.9930
+8.5:
+
+pop<-matrix(data=c(seq(1790,2010,10),3.9,5.3,7.2,9.6,12.9,17.1,23.2,31.4,38.6,50.2,63.0,
+                   76.2,92.2,106.0,123.2,132.2,151.3,179.3,203.3,226.5,248.7,281.4,308.7),
+            ncol = 2,nrow = 23)
+
+plot(pop,xlim=c(1790,2010))
+
+8.6:
+
+popinc<-matrix(data=NA,ncol=2,nrow=22)
+for(i in 1:22){
+  popinc[i,1]<-pop[i+1]
+  popinc[i,2]<-pop[i+1,2]-pop[i,2]
+}
+
+plot(popinc,xlim=c(1800,2010))
+mean(popinc[,2])
+median(popinc[,2])
+var(popinc[,2])
+
+8.7:
+
+poprel<-matrix(data=NA,ncol=2,nrow=22)
+for(i in 1:22){
+  poprel[i,1]<-pop[i+1]
+  poprel[i,2]<-(pop[i+1,2]-pop[i,2])/pop[i,2]
+}
+
+plot(poprel,xlim=c(1800,2010))
+mean(poprel[,2])
+median(poprel[,2])
+var(poprel[,2])
+cor(x=poprel[,2],y=popinc[,2])
+
+8.8: (b) Set 1: X_bar = 14.9667, M_hat = 15.5. Set 2: X_bar = 20.8333, M_hat = 21.0. Set 3: X_bar = 41.3, M_hat = 39.5
+8.9: (a) X_bar = 49.6, M_hat = 47.5, Q1_hat = 43, Q3_hat = 52, and s = 23.5
