@@ -135,3 +135,11 @@ cor(x=poprel[,2],y=popinc[,2])
 
 8.8: (b) Set 1: X_bar = 14.9667, M_hat = 15.5. Set 2: X_bar = 20.8333, M_hat = 21.0. Set 3: X_bar = 41.3, M_hat = 39.5
 8.9: (a) X_bar = 49.6, M_hat = 47.5, Q1_hat = 43, Q3_hat = 52, and s = 23.5
+
+Le9
+
+9.1: (b) 5/8 (c) 0.171
+9.2: (b) 5/20
+9.3: (a) a_hat = min(x_i) and b_hat = max(x_i) (b) lambda_hat = 1/X_bar (c) mu_hat = X_bar (d) sigma_hat = sqrt(sum_i (x_i - mu)^2/n) (e) mu_hat = X_bar and sigma_hat = sqrt(sum_i (x_i - X_hat)^2/n)
+9.4: 2.1766
+9.5:
