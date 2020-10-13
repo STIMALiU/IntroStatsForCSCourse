@@ -136,10 +136,27 @@ cor(x=poprel[,2],y=popinc[,2])
 8.8: (b) Set 1: X_bar = 14.9667, M_hat = 15.5. Set 2: X_bar = 20.8333, M_hat = 21.0. Set 3: X_bar = 41.3, M_hat = 39.5
 8.9: (a) X_bar = 49.6, M_hat = 47.5, Q1_hat = 43, Q3_hat = 52, and s = 23.5
 
-Le9
+Le8
 
 9.1: (b) 5/8 (c) 0.171
 9.2: (b) 5/20
 9.3: (a) a_hat = min(x_i) and b_hat = max(x_i) (b) lambda_hat = 1/X_bar (c) mu_hat = X_bar (d) sigma_hat = sqrt(sum_i (x_i - mu)^2/n) (e) mu_hat = X_bar and sigma_hat = sqrt(sum_i (x_i - X_hat)^2/n)
 9.4: 2.1766
 9.5:
+
+Le9
+
+9.7: (a) 37.7 ± 1.5 or [36.2, 39.2] (b) H0 : μ = 35 vs HA : μ > 35. Z = 2.9348 ≥ z_0.01 = 2.326. Therefore, reject H0 in favor of HA.
+9.8: (a) 42± 1.225 or [40.775, 43.225] (b) 0.1790
+9.9: (a) 50± 33.7 or [16.3, 83.7] (b) H0 : μ = 80 vs HA : μ ̸= 80. t = −2.598 belongs to the acceptance region (−2.920; 2.920), therefore, H0 is not rejected. (c) [11.6, 89.4] (thousand dollars)
+9.10: (a) 0.12 ± 0.047 or [0.073, 0.167] (b) H0 : p ≤ 0.1 (or H0 : p = 0.1) vs HA : p > 0.1. Z = 0.8704. Therefore H0 is not rejected in either case.
+9.12: (a) 0.62 ± 0.054 or [0.566, 0.674] (b) 0.2358
+9.13: 0.0062
+9.14: 
+9.16: 
+9.17: 
+10.1: 
+10.2: 
+10.3: 
+10.4: 
+10.5:
