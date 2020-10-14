@@ -152,10 +152,12 @@ Le9
 9.10: (a) 0.12 ± 0.047 or [0.073, 0.167] (b) H0 : p ≤ 0.1 (or H0 : p = 0.1) vs HA : p > 0.1. Z = 0.8704. Therefore H0 is not rejected in either case.
 9.12: (a) 0.62 ± 0.054 or [0.566, 0.674] (b) 0.2358
 9.13: 0.0062
-9.16: 
-9.17: 
-10.1: 
-10.2: 
-10.3: 
-10.4: 
-10.5:
+9.16: (a) −0.02 ± 0.043 or [−0.063, 0.023] (b) H0 : p1 = p2 is not rejected because the 98% confidence interval contains 0
+9.17: 0.0325 or 3.25% for pHat1 = 45%, 0.0312 or 3.12% for pHat2 = 35%, 0.0450 or 4.50% for pHat1 − pHat2 = 10%
+10.1: H0 : F = Poisson(λ) for some λ vs HA : F ̸= Poisson(λ) for any λ. Moreover, λHat = XBar= 10. Choose bins [0, 6], [7, 8], [9, 10], [11, 12], and [13, ∞), for example. Then, chi^2_obs = 52.27 > 11.3 = critical value. So, H0 is rejected.
+10.2: H0 : F = Exponential(λ) for some λ vs HA : F ̸= Exponential(λ) for any λ. Moreover, λHat = 1/XBar= 0.2. Choose bins [0, 1.5), [1.5, 3), [3, 4.5), [4.5, 6), [6, 9), and [9, ∞), for example. Then, chi^2_obs = 6.55 and 0.1 < p-value < 0.2. So, H0 is not rejected.
+10.3: (a) H0 : F = Normal(0, 1) vs HA : F ̸= Normal(0, 1). For example, let the bins be (−∞,−1.5), [−1.5,−1.0), [−1.0,−0.5), [−0.5, 0), [0, 0.5), [0.5, 1), [1, 1.5), [1.5,∞). Then, chi^2_obs = 8.8731 and 0.2 < p-value < 0.8. So, H0 is not rejected.
+      (b) H0 : F = Uniform(−3, 3) vs HA : F ̸= Uniform(−3, 3). For example, let the bins be (−∞,−2), [−2,−1), [−1, 0), [0, 1), [1, 2), [2,∞). Then, chi^2_obs = 43.52 and p-value < 0.001. So, H0 is rejected.
+      (c)
+10.4: H0 : F = Normal(μ, σ) for some (μ, σ) vs HA : F ̸= Normal(μ, σ) for any (μ, σ). Choose bins, for example, (−∞, 15], [15, 17), [17, 19), [19, 21), [21,∞). Then, chi^2_obs = 0.945 and 0.2 < p-value < 0.8. So, H0 is not rejected.
+10.5: Degrees of freedom = k - 1 - 2 where k is number of bins. So, k > 4 to have positive degrees of freedom. So, at least 20 observations are needed to have 5 expected counts per bin. But we only have 18 observations.
