@@ -1,3 +1,5 @@
+Övningar enligt 2a upplagan.
+
 Le1
 
 2.1: 1/15
@@ -72,7 +74,6 @@ Le5
 5.1: 0.01
 5.2: (a) 0.3693 (b) 1 (c) 5 (d) 2 (e) 0.7351 (f) −0.5902 (g) 4.0026
 5.6:
-5.11:
 
 Le6
 
@@ -92,7 +93,8 @@ Le6
 
 Le7
 
-8.1: (b) min(X) = 37, Q1_hat = 43, M_hat = 50, Q3_hat = 56, max(X) = 60
+8.1: (b) min(X) = 37, Q1_hat = 43, M_hat = 50, Q3_hat = 56, max(X) = 60, and min(X) = 21, Q1_hat = 35, M_hat = 39, Q3_hat = 46, max(X) = 53.
+
 8.2: (a) X_bar = 17.9540, s^2 = 9.9682, s= 3.1573 (b) 0.4465
 8.3:
 8.4: 0.9930
@@ -129,10 +131,8 @@ plot(poprel,xlim=c(1800,2010))
 mean(poprel[,2])
 median(poprel[,2])
 var(poprel[,2])
-cor(x=poprel[,2],y=popinc[,2])
 
-8.8: (b) Set 1: X_bar = 14.9667, M_hat = 15.5. Set 2: X_bar = 20.8333, M_hat = 21.0. Set 3: X_bar = 41.3, M_hat = 39.5
-8.9: (a) X_bar = 49.6, M_hat = 47.5, Q1_hat = 43, Q3_hat = 52, and s = 23.5
+8.9: (a) X_bar = 49.6, M_hat = 47.5, Q1_hat = 43, Q3_hat = 52, and s = 23.5 (b) 105 is an outlier (c) X_bar = 43.4, M_hat = 45, Q1_hat = 43, Q3_hat = 51, and s = 13.9 (d) note the change in sample mean and standard deviation whereas the quartiles do not change that much (robust).
 
 Le8
 
