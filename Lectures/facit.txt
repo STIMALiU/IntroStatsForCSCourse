@@ -163,3 +163,13 @@ Le10
 10.37: 0.5145
 10.39:
 10.40: (a) 0.9 and 9/1100, (b) [0.7743, 1], (c) reject H0
+
+Le11
+
+11.1: y_hat = 0.009 + 0.000246x and 0.107 seconds
+11.3: (a) y_hat = 24.77 − 0.0000395x
+11.5: (a) b0 = 13.3586, b1 = 2.3569, b2 = 4.0926
+11.8: (a) y_hat = 19.50 + 17.36x, (b) 88.94
+11.10: (a) y_hat = −32.1+ 1.36x, (c) 260.4 and 267.2 million people
+11.11: (a) b0 = 5.8700, b1 = 0.0057, and b2 = 0.0068, (b) 320.2 and 335.0 million people
+11.12: (a) the quadratic model is more appropriate, (b) b0 = 7.716, b1 = 1.312, and b2 = −0.024, (d) 25.53 and 28.41 lbs
