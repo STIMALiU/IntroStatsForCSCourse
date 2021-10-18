@@ -173,3 +173,18 @@ Le11
 11.10: (a) y_hat = −32.1+ 1.36x, (c) 260.4 and 267.2 million people
 11.11: (a) b0 = 5.8700, b1 = 0.0057, and b2 = 0.0068, (b) 320.2 and 335.0 million people
 11.12: (a) the quadratic model is more appropriate, (b) b0 = 7.716, b1 = 1.312, and b2 = −0.024, (d) 25.53 and 28.41 lbs
+
+Le12
+
+11.2: (c) [0.4547, 0.6703]. This interval does not contain 0, therefore, the slope is significant (significantly
+different from 0) at a 1% level of significance.
+11.3: (b) R2 = r2 = 0.0289. This model can explain only 2.89% of the total
+variation of the number of miles per gallon. This is a rather poor fit. The number
+of miles per gallon should probably depend on many factors other than mileage, (c) [16.74, 30.04] and [22.78, 24.00]
+11.4: (b) there is significant evidence against the null hypothesis H0 : β1 = 1.8 (1000 dollars), (c) [50.40; 67.02], (d) It is wrong to say that the actual investment will be between 50,400 and 67,020
+with probability 0.95. Rather, 95% refers to the long run proportion of prediction
+intervals constructed by the same procedure as we used in (c). That is, about 95%
+of prediction intervals computed from a large number of independent samples will
+contain the actual 2017 investment
+11.5: (b) 52.8047 thousand dollars, (c) Our prediction
+will decrease by b2 = 4.0926 thousand dollars
